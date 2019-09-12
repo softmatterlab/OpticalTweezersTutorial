@@ -46,7 +46,9 @@ mU=kb*T*(mlogh-min(mlogh));
 EU=kb*T*Elogh;
 
 w=1./Elogh.^2;
-
+if ismember(Inf, w)
+    w=ones(size(w));
+end
 %
 xbins=(edges(2:end)+edges(1:end-1))/2;
 
@@ -96,7 +98,7 @@ set(gca,'FontSize',16)
 xlabel('$x(\mu m)$','Interpreter','Latex')
 
 ylabel('$\langle \textrm{Counts}\rangle_{n_e}$','Interpreter','Latex')
-title('Probability distribution')
+title('Probability distribution, linear fit')
 %
 figure(2)
 
@@ -113,7 +115,7 @@ set(gca,'FontSize',16)
 xlabel('$x(\mu m)$','Interpreter','Latex')
 
 ylabel('$U(k_BT)$','Interpreter','Latex')
-title('Potential')
+title('Potential, linear fit')
 %
 disp('...')
 

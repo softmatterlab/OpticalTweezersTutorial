@@ -47,6 +47,9 @@ xbins=(edges(2:end)+edges(1:end-1))/2;
 
 % weights
 w=1./Ehist.^2;
+if ismember(Inf, w)
+    w=ones(size(w));
+end
 
 maxbin=max(abs(xbins)); % to normalize the data to avoid "Equation is badly conditioned"
 
@@ -107,7 +110,7 @@ xlabel('$x(\mu m)$', 'Interpreter','Latex')
 ylabel('$\overline{\rho^{(\textrm{ex})}}(\mu m^{-1})$','Interpreter','Latex')
 
 
-title('Probability distribution')
+title('Probability distribution, non-linear fit')
 figure(4)
 
 
@@ -124,7 +127,7 @@ set(gca,'FontSize',16)
 xlabel('$x(\mu m)$','Interpreter','Latex')
 
 ylabel('$U(k_BT)$','Interpreter','Latex')
-title('Potential')
+title('Potential, non-linear fit')
 %
 disp('...')
 
