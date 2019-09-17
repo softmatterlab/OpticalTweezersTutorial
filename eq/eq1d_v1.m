@@ -1,4 +1,4 @@
-function [mk, Ek]=eq1d(Vx,T,deltax)
+function [k_eq, Ek_eq]=eq1d_v1(Vx,T,deltax)
 %function [mk, Ek]=eq1d(Vx,T,deltax)
 % deltax: error in the position detection
 % EQ1D   1D implementation of the EQUIPARTITION METHOD
@@ -20,13 +20,13 @@ for j=1:Nexp
     kexp(j)=k;
     
 end
-mk=mean(kexp);
+k_eq=mean(kexp);
 
-Ek=sqrt(var(kexp)+mean(Ekexp2));
+Ek_eq=sqrt(var(kexp)+mean(Ekexp2));
 
 %
 disp('...')
 
 disp('Equipartition analysis')
 
-disp(['k_eq: ' num2str(mk) '+-' num2str(Ek)]);
+disp(['k_eq: ' num2str(k_eq) '+-' num2str(Ek_eq)]);
