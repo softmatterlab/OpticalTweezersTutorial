@@ -13,10 +13,10 @@ tau=(0:maxlag-1)*dt;
 
 for j=1:Nexp
     
-    x=x(:,j);
+    xx=x(:,j);
     
     for k=1:maxlag
-    msd1(k)=mean((x(k:end)-x(1:end-k+1)).^2);    
+    msd1(k)=mean((xx(k:end)-xx(1:end-k+1)).^2);    
     end
     
     msd(:,j)=msd1';
