@@ -1,4 +1,4 @@
-function [xbins, mU, EU, k_pot, Ek_pot, mhist, Ehist, h0, x_eq]=pot_lfit_v1(x,T,nb)
+function [ k_pot, Ek_pot, xbins, mU, EU,mrho, Erho, rho0, x_eq]=pot_lfit_v1(x,T,nb)
 %function [xbins, mU, EU, k_pot, Ek_pot, mhist, Ehist, h0, x0]=pot_lfit(Vx,T,nb)
 % POT_LFIT   1D implementation of the POTENTIAL METHOD
 %
@@ -16,14 +16,22 @@ for j=1:Nexp
 
     [nc(:,j)]=histcounts(xx,edges);
 end
+xbins=(edges(2:end)+edges(1:end-1))/2;
+
 
 dx=edges(2)-edges(1);
 
-%rho=nc./(sum(nc,1)*dx); %probability density
+nc=nc./(sum(nc,1)*dx); %probability density
 
-mhist=mean(nc,2);
+ind=find(nc==0);
 
-Ehist=std(nc,[],2);
+nc(ind)=[];
+
+xbins(ind)=[];
+
+mrho=mean(nc,2);
+
+Erho=std(nc,[],2);
 
 logh=-log(nc);
 
@@ -31,32 +39,20 @@ mlogh=mean(logh,2);
 
 Elogh=std(logh,[],2);
 
-ind=find(isinf(mlogh));
-
-mlogh(ind)=[];
-
-Elogh(ind)=[];
-
-mhist(ind)=[];
-
-Ehist(ind)=[];
-
 mU=kb*T*(mlogh-min(mlogh));
 
 EU=kb*T*Elogh;
 
 w=1./Elogh.^2;
-if ismember(Inf, w)
-    w=ones(size(w));
-end
-%
-xbins=(edges(2:end)+edges(1:end-1))/2;
 
-max_xc=max(abs(xbins));
+w(isinf(w))=1;
+
+%
+
+max_xc=xbins(end);
 
 xbins=xbins/max_xc; % normalization to avoid "Equation is badly conditioned"
 
-xbins(ind)=[];
 
 % Approximation to a quadratic function, Using linear ftting with weights
 
@@ -68,7 +64,7 @@ k_pot=2*kb*T*c.p1/max_xc^2;
 
 x_eq=-c.p2/(2*c.p1)*max_xc;
 
-h0=exp(c.p1/max_xc^2*x_eq^2-c.p3);
+rho0=exp(c.p1/max_xc^2*x_eq^2-c.p3);
 
 cint=confint(c,0.95);
 
@@ -85,13 +81,13 @@ col1=[0,0.6,0.8];
 col2=[0.9,0.4,0.2];
 
 figure(1)
-histogram('BinEdges',[xbins-dx/2,xbins(end)+dx/2]*1e6,'BinCounts',round(mhist))
+histogram('BinEdges',[xbins-dx/2,xbins(end)+dx/2]*1e6,'BinCounts',round(mrho))
 
 hold on
 
-errorbar(xbins*1e6,mhist,Ehist,'o','LineWidth',1,'Color',col1);
+errorbar(xbins*1e6,mrho,Erho,'o','LineWidth',1,'Color',col1);
 
-plot(xbins*1e6,h0*exp(-1/2*k_pot*(xbins-x_eq).^2/(kb*T)),'LineWidth',1,'Color',col2)
+plot(xbins*1e6,rho0*exp(-1/2*k_pot*(xbins-x_eq).^2/(kb*T)),'LineWidth',1,'Color',col2)
 
 set(gca,'FontSize',16)
 
