@@ -116,5 +116,5 @@ disp('...')
 
 disp('Potential analysis using linear fitting')
 
-disp(['k_pot: ' num2str(k_pot) '+-' num2str(Ek_pot)]);
+disp(['k_pot: ' num2str(k_pot*1e6) '+-' num2str(Ek_pot*1e6) ' pN/um']);
 

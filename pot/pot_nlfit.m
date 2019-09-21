@@ -117,5 +117,5 @@ disp('...')
 
 disp('Potential analysis using non linear fitting')
 
-disp(['k_pot: ' num2str(k_pot) '+-' num2str(Ek_pot)]);%agregar unidades en pN/um
+disp(['k_pot: ' num2str(k_pot*1e6) '+-' num2str(Ek_pot*1e6) ' pN/um']);
 
