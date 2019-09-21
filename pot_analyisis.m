@@ -18,11 +18,8 @@ kb=1.38064852e-23;
 subs=1; %use a subsampled data set
 
 %linear fit
-[xbins,mU,EU,k_pot,Ek_pot,mhist,Ehist,h0,x_eq]=pot_lfit_v1(x(1:subs:size(x,1),1),T,50);
-disp(['tau_0: ' num2str(6*pi*eta*a/k_pot)])
-disp(['dt: ' num2str(dt*subs)])
+[k_potlf, Ek_potlf, xbinslf, mrholf, Erholf, mUlf, EUlf, rho0lf, x_eqlf]=pot_lfit(x(1:subs:size(x,1),:),T,100);
+
 %non-linear fit
-[xbins,mU,EU,k_pot,Ek_pot,mhist,Ehist,h0,x_eq]=pot_nlfit_v1(x(1:subs:size(x,1),1),T,50);
-
-
+[k_potnl, Ek_potml, xbinsnl, mrhonl, Erhonl, mUnl, EUnl, rho0nl, x_eqnl]=pot_nlfit(x(1:subs:size(x,1),:),T,100);
 
