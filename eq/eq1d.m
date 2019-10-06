@@ -15,14 +15,14 @@ for j=1:Nexp
     
     k=kb*T./(var(xx,[],1)-deltax^2);
     
-    Delta_kexp2(j)=4/(Nexp*N)*k^2/sigma2*deltax^2;
+    sigma2_kexp2(j)=4/(Nexp*N)*k^2/sigma2*deltax^2;
     
     kexp(j)=k;
     
 end
 k_eq=mean(kexp);
 
-sigma2_k_eq=sqrt(var(kexp)+mean(Delta_kexp2));
+sigma2_k_eq=sqrt(var(kexp)+mean(sigma2_kexp2));
 
 %
 disp('...')
