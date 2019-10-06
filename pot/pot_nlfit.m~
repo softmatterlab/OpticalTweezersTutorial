@@ -61,64 +61,51 @@ frequency=frequency./(sum(frequency,1)*dx);
 %mean probability distribution
 mrho=mean(frequency,2);
 
-%delete values of zero probability and their correspondent values of x  
-[ind]=find(mrho==0);
-
-x_alpha(ind)=[];
-
-mrho(ind)=[];
-
 %standard deviation squared of probability distribution
 sigma2_rho=std(frequency,[],2);
 
 %delete zeros to avoid Inf in weights
-sigma2_rho(sigma2_rho==0)=[];
+sigma2_rho(sigma2_rho==0)=1;
 
 % weights for fitting
 w=1./sigma2_rho.^2;
 
-
+%in case any other Inf value arises
 w(isinf(w))=1;
 
-w(ind)=[];
-
-maxbin=x_alpha(end); 
 
 %normalization to avoid "Equation is badly conditioned"
+maxbin=x_alpha(end); 
 x_alpha=x_alpha/maxbin; 
 
+%%delete values of zero probability and their correspondent values of x  and weights 
 ind=find(mrho==Inf);
-
 mrho(ind)=[];
-
 x_alpha(ind)=[];
-
 w(ind)=[];
 
 % Guess for the initial conditions for the non-linear fitting
 a0=(max(mrho)*sqrt(pi))^2;
-
 b0=0;
 
 
 %Using non-linear fitting with weights
-
 ft=fittype('sqrt(a/pi)*exp(-a*(x-b)^2)');
-
 c=fit(x_alpha',mrho*maxbin,ft,'weights',w/maxbin^2,'StartPoint',[a0*maxbin^2,b0]);
 
 %return to original variables after fit
-
 x_alpha=x_alpha*maxbin;
 
 %stiffness
 k_pot=2*kb*T*c.a/maxbin^2; 
 
+%equilibrium position
 x_eq=c.b*maxbin^2;
 
 %0.68 corresponds to one standard deviation
 cint=confint(c,0.68);  
 
+%standard deviation squared for the stiffness
 sigma2_k_pot=2*kb*T/maxbin^2*(cint(2,1)-cint(1,1))/2;
 
 %estimate energy potential

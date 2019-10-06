@@ -64,31 +64,30 @@ mrho=mean(frequency,2);
 sigma2_rho=std(frequency,[],2);
 
 
+%delete zeros to avoid Inf in weights
+sigma2_rho(sigma2_rho==0)=1;
+
 % weights for fitting
 w=1./sigma2_rho.^2;
 
 %in case any other Inf value arises
 w(isinf(w))=1;
 
-%delete values of zero probability and their correspondent values of x  and weights 
-[ind]=find(mrho==0);
-
-x_alpha(ind)=[];
-
-mrho(ind)=[];
-
-w(ind)=[];
-
 %normalization to avoid "Equation is badly conditioned"
 maxbin=x_alpha(end);
-
 x_alpha=x_alpha/maxbin; 
 
-logh=-log(frequency);
+%delete values of zero probability distribution and their correspondent 
+%values of x  and weights and frequency
+[ind]=find(mrho==0);
+mrho(ind)=[];
+x_alpha(ind)=[];
+w(ind)=[];
+
+%estimate energy potential
+logh=-log(mrho);
 
 mlogh=mean(logh,2);
-
-
 
 Elogh=std(logh,[],2);
 
@@ -102,16 +101,19 @@ c=fit(x_alpha',mlogh,'poly2','weights',w);
 %return to original variables after fit
 x_alpha=x_alpha*maxbin;
 
+%stiffness
 k_pot=2*kb*T*c.p1/maxbin^2;
 
+%equilibrium position
 x_eq=-c.p2/(2*c.p1)*maxbin;
 
+%estimation for the normalization factor
 rho0=exp(c.p1/maxbin^2*x_eq^2-c.p3);
 
 %0.68 corresponds to one standard deviation
 cint=confint(c,0.68); 
 
-
+%standard deviation squared for the stiffness
 sigma2_k_pot=2*kb*T/maxbin^2*(cint(2,1)-cint(1,1))/2;
 
 
