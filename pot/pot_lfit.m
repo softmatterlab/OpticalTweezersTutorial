@@ -1,4 +1,4 @@
-function [k_pot, Delta_k_pot, x_alpha, mrho, Delta_rho, mU, Delta_U, rho0, x_eq]=pot_lfit(x,T,varargin)
+function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_eq]=pot_lfit(x,T,varargin)
     %POT_LFIT   1D implementation of the POTENTIAL METHOD using linear fitting.
     %   POT_LFIT(X,T, nb) generates a estimator of the stiffness k_pot
     %   for the potential method using linear fitting. 
@@ -11,12 +11,12 @@ function [k_pot, Delta_k_pot, x_alpha, mrho, Delta_rho, mU, Delta_U, rho0, x_eq]
     %   Outputs
     %   k_pot: estimated stiffness using  non-linear fitting for the potential
     %   analysis
-    %   Delta_k_pot: standard deviation of the stiffness
+    %   sigma2_k_pot: standard deviation squared of the stiffness
     %   x_alpha: x -edges for the histogram
     %   mrho: mean of the probablility distribution, average over experiments
-    %   Delta_rho: standard deviation of the probablility distribution
+    %   sigma2_rho: standard deviation squared of the probablility distribution
     %   mU: mean of the potential energy, average over experiments
-    %   Delta_U: standard deviation of the potential energy
+    %   sigma2_U: standard deviation squared of the potential energy
     %   rho0: normalization factor
     %   x_eq: equilibrium position
 
@@ -56,13 +56,13 @@ mrho=mean(frequency,2);
 
 x_alpha(ind)=[];
 
-Delta_rho=std(frequency,[],2);
+sigma2_rho=std(frequency,[],2);
 
-Delta_rho(Delta_rho==0)=1;
+sigma2_rho(sigma2_rho==0)=1;
 
 % weights for fitting
 
-w=1./Delta_rho.^2;
+w=1./sigma2_rho.^2;
 
 w(isinf(w))=1;
 
@@ -86,7 +86,7 @@ Elogh=std(logh,[],2);
 
 mU=kb*T*(mlogh-min(mlogh));
 
-Delta_U=kb*T*Elogh;
+sigma2_U=kb*T*Elogh;
 
 % Approximation to a quadratic function, Using linear ftting with weights
 
@@ -105,7 +105,7 @@ rho0=exp(c.p1/maxbin^2*x_eq^2-c.p3);
 cint=confint(c,0.68); %0.68 corresponds to one standard deviation
 
 
-Delta_k_pot=2*kb*T/maxbin^2*(cint(2,1)-cint(1,1))/2;
+sigma2_k_pot=2*kb*T/maxbin^2*(cint(2,1)-cint(1,1))/2;
 
 
 
@@ -114,5 +114,5 @@ disp('...')
 
 disp('Potential analysis using linear fitting')
 
-disp(['k_pot: ' num2str(k_pot*1e6) '+-' num2str(Delta_k_pot*1e6) ' pN/um']);
+disp(['k_pot: ' num2str(k_pot*1e6) '+-' num2str(sigma2_k_pot*1e6) ' pN/um']);
 
