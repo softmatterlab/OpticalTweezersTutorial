@@ -6,7 +6,7 @@ function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_
     %   Inputs
     %   x: time series of the position of the particle
     %   T: temperature
-    %   nb: (optional) number of bins for the histogram, default is 50
+    %   P: (optional) number of bins for the histogram, default is 50
     %
     %   Outputs
     %   k_pot: estimated stiffness using  non-linear fitting for the potential
@@ -26,13 +26,13 @@ x = x - repmat(mean(x),size(x,1),1);
 
 [~,Nexp]=size(x);
 
-nb=50;
+P=50;
 
 if nargin>2
-    nb=varargin{1};
+    P=varargin{1};
 end
 
-edges=linspace(min(x(:)),max(x(:)),nb);
+edges=linspace(min(x(:)),max(x(:)),P);
 
 %define the histogram
 
