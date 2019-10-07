@@ -25,9 +25,6 @@ kb=1.38064852e-23;
 %translate everithing to zero
 x = x - repmat(mean(x),size(x,1),1);
 
-%obtain number of experiments
-[~,Nexp]=size(x);
-
 %default number of bins
 P=50;
 
@@ -36,33 +33,8 @@ if nargin>2
     P=varargin{1};
 end
 
-%defines the bins edges
-edges=linspace(min(x(:)),max(x(:)),P);
+[x_alpha, mrho, sigma2_rho, frequency]=prob_dist(x,P);
 
-%defines the lenght of bins
-dx=edges(2)-edges(1);
-
-%defines central position of the bins
-x_alpha=(edges(2:end)+edges(1:end-1))/2;
-
-%define the histogram
-for j=1:Nexp
-    
-    xx=x(:,j);
-    
-    [frequency(:,j)]=histcounts(xx,edges);
-
-end
-
-
-% after normalization it becomes the probability density
-frequency=frequency./(sum(frequency,1)*dx);
-
-%mean probability distribution
-mrho=mean(frequency,2);
-
-%standard deviation squared of probability distribution
-sigma2_rho=std(frequency,[],2);
 
 %delete zeros to avoid Inf in weights
 sigma2_rho(sigma2_rho==0)=1;
@@ -108,16 +80,20 @@ cint=confint(c,0.68);
 %standard deviation squared for the stiffness
 sigma2_k_pot=2*kb*T/maxbin^2*(cint(2,1)-cint(1,1))/2;
 
-%estimate energy potential
-logh=log(frequency);
+%log of the frequency
+logh=-log(frequency);
 
+%mean log of the frequency
 mlogh=mean(logh,2);
 
-Delta_logh=std(logh,[],2);
+%standard deviation of the log of the frequency
+Elogh=std(logh,[],2);
 
-mU=-kb*T*(mlogh-max(mlogh));
+%mean value of the potential energy
+mU=kb*T*(mlogh-min(mlogh));
 
-sigma2_U=-kb*T*Delta_logh;
+%standard deviation of the potential energy
+sigma2_U=kb*T*Elogh;
 
 %estimation for the normalization factor
 rho0=sqrt(c.a/pi)*1/maxbin;  

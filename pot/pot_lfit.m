@@ -25,9 +25,6 @@ kb=1.38064852e-23;
 %translate everithing to zero
 x = x - repmat(mean(x),size(x,1),1);
 
-%obtain number of experiments
-[~,Nexp]=size(x);
-
 %default number of bins
 P=50;
 
@@ -36,33 +33,7 @@ if nargin>2
     P=varargin{1};
 end
 
-%defines the bins edges
-edges=linspace(min(x(:)),max(x(:)),P);
-
-%defines the lenght of bins
-dx=edges(2)-edges(1);
-
-%defines central position of the bins
-x_alpha=(edges(2:end)+edges(1:end-1))/2;
-
-%define the histogram
-for j=1:Nexp
-    
-    xx=x(:,j);
-
-    [frequency(:,j)]=histcounts(xx,edges);
-    
-end
-
-% after normalization it becomes the probability density
-frequency=frequency./(sum(frequency,1)*dx);
-
-%mean probability distribution
-mrho=mean(frequency,2);
-
-%standard deviation squared of probability distribution
-sigma2_rho=std(frequency,[],2);
-
+[x_alpha, mrho, sigma2_rho, frequency]=prob_dist(x,P);
 
 %delete zeros to avoid Inf in weights
 sigma2_rho(sigma2_rho==0)=1;
@@ -77,24 +48,30 @@ w(isinf(w))=1;
 maxbin=x_alpha(end);
 x_alpha=x_alpha/maxbin; 
 
-%delete values of zero probability distribution and their correspondent 
-%values of x  and weights and frequency
-[ind]=find(mrho==0);
-mrho(ind)=[];
-x_alpha(ind)=[];
-w(ind)=[];
-frequency(ind)=[];
 
-%estimate energy potential
+%log of the frequency
 logh=-log(frequency);
 
+%mean log of the frequency
 mlogh=mean(logh,2);
 
+
+%standard deviation of the log of the frequency
 Elogh=std(logh,[],2);
 
+%mean value of the potential energy
 mU=kb*T*(mlogh-min(mlogh));
 
+%standard deviation of the potential energy
 sigma2_U=kb*T*Elogh;
+
+%deal with Inf in mlogh
+ind=find(mlogh==Inf);
+x_alpha(ind)=[];
+mlogh(ind)=[];
+w(ind)=[];
+mrho(ind)=[];
+
 
 %Approximation to a quadratic function, Using linear ftting with weights
 c=fit(x_alpha',mlogh,'poly2','weights',w);
