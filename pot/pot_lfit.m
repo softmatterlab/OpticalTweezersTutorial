@@ -1,7 +1,9 @@
 function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_eq]=pot_lfit(x,T,varargin)
     %POT_LFIT   1D implementation of the POTENTIAL METHOD using linear fitting.
     %   POT_LFIT(X,T, P) generates a estimator of the stiffness k_pot
-    %   for the potential method using linear fitting. 
+    %   for the potential method using linear fitting
+    %   c=fit(x_alpha',mlogh,'poly2','weights',w)  corresponding to 
+    %   c(x) = p1*x^2 + p2*x + p3
     %
     %   Inputs
     %   x: time series of the position of the particle
@@ -33,7 +35,7 @@ if nargin>2
     P=varargin{1};
 end
 
-[x_alpha, mrho, sigma2_rho, frequency]=prob_dist(x,P);
+[x_alpha, mrho, sigma2_rho, ~,~, mlogh, ~,mU,  sigma2_U]=prob_dist_energy(x,P, T);
 
 %delete zeros to avoid Inf in weights
 sigma2_rho(sigma2_rho==0)=1;
@@ -44,37 +46,25 @@ w=1./sigma2_rho.^2;
 %in case any other Inf value arises
 w(isinf(w))=1;
 
+
+%delete values with Inf in mlogh
+ind=find(mlogh==Inf);
+mlogh(ind)=[];
+%and all the corresponding values of that data point in 
+%%order to keep the same arra size for all variables
+x_alpha(ind)=[];
+w(ind)=[];
+sigma2_rho(ind)=[];
+mU(ind)=[];
+sigma2_U(ind)=[];
+
 %normalization to avoid "Equation is badly conditioned"
 maxbin=x_alpha(end);
 x_alpha=x_alpha/maxbin; 
 
-
-%log of the frequency
-logh=-log(frequency);
-
-%mean log of the frequency
-mlogh=mean(logh,2);
-
-
-%standard deviation of the log of the frequency
-Elogh=std(logh,[],2);
-
-%mean value of the potential energy
-mU=kb*T*(mlogh-min(mlogh));
-
-%standard deviation of the potential energy
-sigma2_U=kb*T*Elogh;
-
-%deal with Inf in mlogh
-ind=find(mlogh==Inf);
-x_alpha(ind)=[];
-mlogh(ind)=[];
-w(ind)=[];
-mrho(ind)=[];
-
-
-%Approximation to a quadratic function, Using linear ftting with weights
+%Approximation to a quadratic function, Using linear fitting with weights
 c=fit(x_alpha',mlogh,'poly2','weights',w);
+
 
 %return to original variables after fit
 x_alpha=x_alpha*maxbin;
@@ -93,8 +83,6 @@ cint=confint(c,0.68);
 
 %standard deviation squared for the stiffness
 sigma2_k_pot=2*kb*T/maxbin^2*(cint(2,1)-cint(1,1))/2;
-
-
 
 %
 disp('...')

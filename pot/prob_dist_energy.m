@@ -1,4 +1,4 @@
-function [x_alpha, mrho, sigma2_rho, frequency]=prob_dist(x,P)
+function [x_alpha, mrho, sigma2_rho, frequency, logf, mlogf, sigma_logh,mU,  sigma2_U]=prob_dist_energy(x,P, T)
 
 %PROB_DIST(x, T, P) defines the probability distribution for a set of x
 %positions and P number of bins
@@ -11,6 +11,7 @@ function [x_alpha, mrho, sigma2_rho, frequency]=prob_dist(x,P)
 %sigma2_rho: standard deviation of the probability distribution
 %frequency: counts for each experiment
 
+kb=1.38064852e-23;
 
 %obtain number of experiments
 [~,Nexp]=size(x);
@@ -40,5 +41,20 @@ mrho=mean(frequency,2);
 
 %standard deviation squared of probability density distribution
 sigma2_rho=std(frequency,[],2);
+
+%log of the frequency
+logf=-log(frequency);
+
+%mean log of the frequency
+mlogf=mean(logf,2);
+
+%standard deviation of the log of the frequency
+sigma_logh=std(logf,[],2);
+
+%mean value of the potential energy
+mU=kb*T*(mlogf-min(mlogf));
+
+%standard deviation of the potential energy
+sigma2_U=kb*T*sigma_logh;
 
 end
