@@ -1,4 +1,4 @@
-function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_eq]=pot_lfit(x,T,varargin)
+function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_eq, U_0]=pot_lfit(x,T,varargin)
     %POT_LFIT   1D implementation of the POTENTIAL METHOD using linear fitting.
     %   POT_LFIT(X,T, P) generates a estimator of the stiffness k_pot
     %   for the potential method using linear fitting
@@ -57,6 +57,7 @@ w(ind)=[];
 sigma2_rho(ind)=[];
 mU(ind)=[];
 sigma2_U(ind)=[];
+mrho(ind)=[];
 
 %normalization to avoid "Equation is badly conditioned"
 maxbin=x_alpha(end);
@@ -80,7 +81,7 @@ rho0=exp(c.p1/maxbin^2*x_eq^2-c.p3);
 
 %0.68 corresponds to one standard deviation
 cint=confint(c,0.68); 
-
+U_0=c.p3;
 %standard deviation squared for the stiffness
 sigma2_k_pot=2*kb*T/maxbin^2*(cint(2,1)-cint(1,1))/2;
 
