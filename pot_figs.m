@@ -75,8 +75,8 @@ axes('Position',[(bx2+2*bx1+xwi) 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in m
 hold on;
 
 scatter(x_alpha_lf, mU_lf/(kB*T),60,'o')
-U_model_lf=-(log(rhomodel_lf)+U_0_lf);
-U_model_nl=-(log(rhomodel_nl)+U_0_lf);
+U_model_lf=-(log(rhomodel_lf));
+U_model_nl=-(log(rhomodel_nl));
 scatter(x_alpha_lf,U_model_lf,60,'o','markerfacecolor', [0.00,0.45,0.74],'markeredgecolor',[0.00,0.45,0.74])
 
 

@@ -80,15 +80,15 @@ x_eq=-c.p2/(2*c.p1)*maxbin;
 rho0=exp(c.p1/maxbin^2*x_eq^2-c.p3);
 
 %0.68 corresponds to one standard deviation
-cint=confint(c,0.68); 
+cint=confint(c,0.95); 
 U_0=c.p3;
 %standard deviation squared for the stiffness
 sigma2_k_pot=2*kb*T/maxbin^2*(cint(2,1)-cint(1,1))/2;
 
 %
-disp('...')
+%disp('...')
 
-disp('Potential analysis using linear fitting')
+%disp('Potential analysis using linear fitting')
 
-disp(['k_pot: ' num2str(k_pot*1e6) '+-' num2str(sigma2_k_pot*1e6) ' pN/um']);
+%disp(['k_pot: ' num2str(k_pot*1e6) '+-' num2str(sigma2_k_pot*1e6) ' pN/um']);
 

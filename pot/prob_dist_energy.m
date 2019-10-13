@@ -1,15 +1,19 @@
 function [x_alpha, mrho, sigma2_rho, frequency, logf, mlogf, sigma_logh,mU,  sigma2_U]=prob_dist_energy(x,P, T)
-
-%PROB_DIST(x, T, P) defines the probability distribution for a set of x
-%positions and P number of bins
-%INPUTS
-%x:positions
-%P: number of bins
+% PROB_DIST(x, T, P) defines the probability distribution for a set of x
+% positions and P number of bins
+%
+%
+%
+% INPUTS
+% x     :   positions
+% P     :   number of bins
+%
 %OUTPUTS
 %x_alpha: central position of the bins
 %mrho: probability distribution
 %sigma2_rho: standard deviation of the probability distribution
 %frequency: counts for each experiment
+
 
 kb=1.38064852e-23;
 

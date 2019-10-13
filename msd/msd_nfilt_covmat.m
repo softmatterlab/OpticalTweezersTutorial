@@ -24,8 +24,12 @@ end
 
 mmsd=mean(msd,2);
 
-Emsd=std(msd,[],2)+(1e-9)^2;
-        
+
+
+
+
+%Emsd=std(msd,[],2)+(1e-9)^2;
+Emsd=std(msd,[],2);        
 %Starting points for the fitting
 
 a0=mmsd(end); %amplitude
@@ -34,6 +38,7 @@ disp('a0')
 
 disp(a0)
 
+disp(Emsd(end))
 %find the characteristic time
 
 atau=a0*(1-exp(-1)); 
@@ -69,18 +74,33 @@ max_tau=tau_cut(end);
 max_mc=max(mmsd_cut);
 
 w=1./Emsd_cut.^2;
+ind=find(w==Inf);
 
+w(ind)=[];
+tau_cut(ind)=[];
+mmsd_cut(ind)=[];
 % using non-linear fitting
 
 %max_mc=1e-12;
 
 %max_tau=1e-6;
 
-ft=@(a,b,x)a*(1-exp(-x/b));
+ftmodelfun=@(b,x)(b(1))*(1-exp(-x/b(2)));
 
 indtau=ind0;
 
 c=fit(tau_cut(indtau:end)'/max_tau,mmsd_cut(indtau:end)/max_mc,fittype(ft),'Weights',w(indtau:end)*max_mc^2,'StartPoint',[a0/max_mc,tau0/max_tau],'Display','iter','Lower',[0,0],'Upper',[inf,Inf]);%,'Robust','LAR');
+
+modelfun = @(b,x)(b(1)+b(2)*exp(-b(3)*x));
+
+
+
+opts = statset('nlinfit');
+opts.RobustWgtFun = 'bisquare';
+beta0 = [2;2;2];
+[beta,R,J,CovB,MSE] = nlinfit(x,y,modelfun,beta0,opts);
+
+
 
 tau0=c.b*max_tau;
 
@@ -93,9 +113,10 @@ gamma_msd=k_msd*tau0;
 
 D_msd=kb*T/gamma_msd;
 
-cint=confint(c,0.68);
+cint=confint(c,0.95);
 
-Ek_msd=kb*T/a0^2*(cint(2,1)-cint(1,1))/2*max_mc;
+%Ek_msd=kb*T/a0^2*(cint(2,1)-cint(1,1))/2*max_mc;
+Ek_msd=kb*T/(a0)^2*(cint(2,1)-cint(1,1))*max_mc;
 
 Etau=(cint(2,2)-cint(1,2))/2*max_tau;
 
@@ -136,7 +157,7 @@ disp('MSD by non-linear fitting')
 
 disp(['tau0_msd: ' num2str(tau0) '+-' num2str(Etau)])
 
-disp(['k_msd: ' num2str(k_msd) '+-' num2str(Ek_msd)])
+disp(['k_msd: ' num2str(k_msd*1e6) '+-' num2str(Ek_msd*1e6)])
 
 disp(['D_msd: ' num2str(D_msd) '+-' num2str(ED_msd)])
 
