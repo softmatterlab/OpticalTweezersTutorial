@@ -34,7 +34,7 @@ mmsd=mean(msd,2);
 Emsd=std(msd,[],2);  
 
 errorbar(tau,mmsd, Emsd)
-hold on
+
 %%
 a0=mmsd(end); %amplitude
 
@@ -107,8 +107,6 @@ ED_msd=kb*T/(k_msd^2*tau0)*Ek_msd+kb*T/(k_msd*tau0^2)*Etau;
 
 Egamma_msd=Ek_msd*tau0+k_msd*Etau;
 
-msd_mod=a0*(1-exp(-tau/tau0));
-plot(tau, msd_mod)
 
 disp('...')
 
