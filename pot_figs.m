@@ -21,7 +21,7 @@ addpath pot
 kb=1.38064852e-23;
 
 %number of bins of the histogram, if not set default is 50
-P=100; 
+P=50; 
 
 %use a subsampled data set
 subs=1;
@@ -34,9 +34,12 @@ subs=1;
 
 %% plot figures
 
-col1=[0,0.6,0.8];
+col1=[232/255,193/255,95/255];
 
-col2=[0.9,0.4,0.2];
+
+col2=[33/255,132/255,218/255];
+
+colbar=[119/255,136/255,153/255];
 xwi = 400;    % width of the plot square
 bx1 = 80;     % extra space at the left
 bx2 = 20;     % extra space at the right
@@ -54,13 +57,13 @@ figure('Position',[10 20 Xpix Ypix]); % crea la figura
 axes( 'Position',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 
 
-bar(x_alpha_lf, mrho_lf)
+bar(x_alpha_lf, mrho_lf, 'EdgeColor', 'white', 'FaceColor', colbar, 'facealpha', 0.5, 'DisplayName', 'Experimental probability distribution')
 hold on 
 rhomodel_lf=rho0_lf*exp(-k_pot_lf/(2*kb*T)*(x_alpha_lf-x_eq_lf).^2);
 rhomodel_nl=rho0_nl*exp(-k_pot_nl/(2*kb*T)*(x_alpha_nl-x_eq_nl).^2);
 
-plot(x_alpha_lf, rhomodel_lf,'LineWidth',3,'Color',col2)
-plot(x_alpha_nl, rhomodel_nl,'LineWidth',3,'Color','green')
+plot(x_alpha_lf, rhomodel_lf,'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting');
+plot(x_alpha_nl, rhomodel_nl,'LineWidth',3,'Color',col1, 'DisplayName', 'Non-linear fitting')
 box on
 xticks((-0.5:0.1:0.5)*1e-7);
 xlim([x_alpha_lf(1) x_alpha_lf(end)]);
@@ -68,23 +71,24 @@ xlim([x_alpha_lf(1) x_alpha_lf(end)]);
 set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',15);
 xlabel('$x(\mu m)$','Interpreter','Latex', 'FontSize',20)
 ylabel('$\rho (\rm {counts})$','Interpreter','Latex', 'FontSize',20)
-  
+hold off
+legend
 
 
 axes('Position',[(bx2+2*bx1+xwi) 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 hold on;
 
-scatter(x_alpha_lf, mU_lf/(kB*T),60,'o')
+scatter(x_alpha_lf, -log(mrho_lf),60,'o', 'markerfacecolor', colbar, 'markeredgecolor', colbar , 'DisplayName', 'Experimental values of potential energy')
 U_model_lf=-(log(rhomodel_lf));
 U_model_nl=-(log(rhomodel_nl));
-scatter(x_alpha_lf,U_model_lf,60,'o','markerfacecolor', [0.00,0.45,0.74],'markeredgecolor',[0.00,0.45,0.74])
+%scatter(x_alpha_lf,U_model_lf,60,'o','markerfacecolor', colbar,'markeredgecolor',colbar)
 
 
 
 hold on
 
-plot(x_alpha_lf,U_model_lf, 'LineWidth',3,'Color',col2)
-plot(x_alpha_nl,U_model_nl, 'LineWidth',3,'Color','green')
+plot(x_alpha_lf,U_model_lf, 'LineWidth',3,'Color',col2,'DisplayName',  'Linear fitting')
+plot(x_alpha_nl,U_model_nl, 'LineWidth',3,'Color',col1, 'DisplayName', 'Non-linear fitting')
 box on
 
 xticks((-0.5:0.1:0.5)*1e-7);
@@ -93,4 +97,7 @@ set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',15);
 xlabel('$x(\mu m)$','Interpreter','Latex', 'FontSize',20)
 ylabel('$U(k_BT)$','Interpreter','Latex','FontSize',20)
 
-  
+
+hold off
+
+legend

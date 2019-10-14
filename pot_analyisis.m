@@ -9,7 +9,7 @@ addpath pot
 
 % Load data file
 
-load('Data_positions_Fig9_1P4_S.mat');
+load('Data_positions_Fig9_1P2_S.mat');
 
 
 %Boltzmann constant
