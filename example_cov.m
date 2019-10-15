@@ -1,16 +1,16 @@
 % Licensed under the terms of the GPL v3. See LICENSE for details.
-clear; close all; 
-
+clear all 
+close all
 addpath msd
 
-subs=20; %use a subsampled data set
+subs=1; %use a subsampled data set
 
 
 load(['Data_positions_Fig9_1P4_S.mat']);
 xx=x(1:subs:size(x,1),:);
 
 xx = xx - repmat(mean(xx),size(xx,1),1);
-maxlag=20;
+maxlag=500;
 dt=dt*subs;
 
 kb=1.38064852e-23;
@@ -67,11 +67,11 @@ end
 
 ind0=floor(ind/4);
 
-tau_cut=tau(1:indc);
+tau_cut=tau(ind0:indc);
 
-mmsd_cut=mmsd(1:indc);
+mmsd_cut=mmsd(ind0:indc);
 
-Emsd_cut=Emsd(1:indc);
+Emsd_cut=Emsd(ind0:indc);
 
 max_tau=tau_cut(end);
 
@@ -81,7 +81,7 @@ max_mc=max(mmsd_cut);
 guess = [a0/max_mc,tau0/max_tau];
 
 
-[params, chi2_min, C, sigma] = fit_cov(tau/max_tau, msd/max_mc,guess);
+[params, chi2_min, C, sigma] = fit_cov(tau_cut/max_tau, mmsd_cut/max_mc,guess);
 %%
 
 %%
@@ -120,4 +120,4 @@ disp(['k_msd: ' num2str(k_msd*1e6) '+-' num2str(Ek_msd*1e6)])
 
 disp(['D_msd: ' num2str(D_msd*1e12) '+-' num2str(ED_msd*1e12)])
 
-disp(['gamma_msd: ' num2str(gamma_msd*1e6) '+-' num2str(Egamma_msd*1e6)])
+disp(['gamma_msd: ' num2str(gamma_msd) '+-' num2str(Egamma_msd)])

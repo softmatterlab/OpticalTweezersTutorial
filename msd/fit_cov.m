@@ -14,22 +14,23 @@ for m = 1:M
     Y(:,m) = msd_exp(:,m)' - msd_mean';
 end
 C = Y * Y' / (M - 1.0);
-
-C=C(2:end, 2:end);
+%print('Matriz Cov')
+C
+C=C(1:end, 1:end);
 C = C / M;
 R = diag(1./diag(C), 0);
 %R=1e-19*inv(C);
 %chi2 = @(p, t, y, R) (y - fexp(t, p)')' * R * (y - fexp(t, p)');
 
 % Do the parameter fitting
-[params, chi2_min] = fminunc(@(par)(chiqu(par, tau(2:end), msd_mean(2:end), R)), guess)
+[params, chi2_min] = fminunc(@(par)(chiqu(par, tau(1:end), msd_mean(1:end), R)), guess)
 
-gradient = df(tau(2:end), params);
-fhessian = d2f(tau(2:end), params);
+gradient = df(tau(1:end), params);
+fhessian = d2f(tau(1:end), params);
 
 q = length(params);
 first_term = zeros(q, q);
-delta = f(tau(2:end), params) - msd_mean(2:end);
+delta = f(tau(1:end), params) - msd_mean(1:end);
 
 for a = 1:q
     for b = 1:q
