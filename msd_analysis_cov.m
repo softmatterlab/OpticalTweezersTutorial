@@ -11,15 +11,15 @@ addpath msd
 
 
 
-subs=10; %use a subsampled data set
+subs=1; %use a subsampled data set
 
 
     
-load(['Data_positions_Fig9_1P6_S.mat']);
+load(['Data_positions_Fig9_1P4_S.mat']);
 
 
     
-[k_msd, Ek_msd, D_msd, ED_msd, tau, mmsd, Emsd,indc]=msd_nfilt_covmat(x(1:subs:size(x,1),:),T,dt*subs,35);
+[k_msd, Ek_msd, D_msd, ED_msd, tau, mmsd, Emsd,indc]=msd_nfilt_covmat(x(1:subs:size(x,1),1:2),T,dt*subs,1000);
 
 
 disp('')
