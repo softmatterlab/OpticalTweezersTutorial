@@ -1,4 +1,4 @@
-function [x_alpha, mrho, sigma2_rho, frequency, logf, mlogf, sigma_logh,mU,  sigma2_U]=prob_dist_energy(x,P, T)
+function [x_alpha, mrho, sigma2_rho, frequencynor, logf, mlogf, sigma_logh,mU,  sigma2_U, mloghist, Eloghist]=prob_dist_energy(x,P, T)
 % PROB_DIST(x, T, P) defines the probability distribution for a set of x
 % positions and P number of bins
 %
@@ -38,16 +38,21 @@ for j=1:Nexp
 end
 
 % after normalization it becomes the probability density distribution
-frequency=frequency./(sum(frequency,1)*dx);
+frequencynor=frequency./(sum(frequency,1)*dx);
 
 %mean probability  density distribution
-mrho=mean(frequency,2);
+mrho=mean(frequencynor,2);
+
+%logaritm of the histogram 
+loghist=-log(frequency);
+mloghist=mean(loghist, 2);
+Eloghist=std(loghist,[], 2);
 
 %standard deviation squared of probability density distribution
-sigma2_rho=std(frequency,[],2);
+sigma2_rho=std(frequencynor,[],2);
 
 %log of the frequency
-logf=-log(frequency);
+logf=-log(frequencynor);
 
 %mean log of the frequency
 mlogf=mean(logf,2);

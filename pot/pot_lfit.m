@@ -35,36 +35,45 @@ if nargin>2
     P=varargin{1};
 end
 
-[x_alpha, mrho, sigma2_rho, ~,~, mlogh, ~,mU,  sigma2_U]=prob_dist_energy(x,P, T);
-
+%[x_alpha, mrho, sigma2_rho, ~,~, mlogh, ~,mU,  sigma2_U]=prob_dist_energy(x,P, T);
+[x_alpha, mrho, sigma2_rho, ~, ~, ~,~,mU,  sigma2_U, mloghist, Eloghist]=prob_dist_energy(x,P, T);
 %delete zeros to avoid Inf in weights
 sigma2_rho(sigma2_rho==0)=1;
 
-% weights for fitting
-w=1./sigma2_rho.^2;
 
-%in case any other Inf value arises
-w(isinf(w))=1;
 
 
 %delete values with Inf in mlogh
-ind=find(mlogh==Inf);
-mlogh(ind)=[];
+ind=find(isinf(mloghist));
+mloghist(ind)=[];
 %and all the corresponding values of that data point in 
 %%order to keep the same arra size for all variables
 x_alpha(ind)=[];
-w(ind)=[];
+
 sigma2_rho(ind)=[];
 mU(ind)=[];
 sigma2_U(ind)=[];
 mrho(ind)=[];
+
+
+% weights for fitting
+w=1./Eloghist.^2;
+
+%in case any other Inf value arises
+w(isinf(w))=1;
+try w(ind)=[];
+    w(ind)=[];
+catch 
+    warning('The value of the weight was already erased');
+    
+end
 
 %normalization to avoid "Equation is badly conditioned"
 maxbin=x_alpha(end);
 x_alpha=x_alpha/maxbin; 
 
 %Approximation to a quadratic function, Using linear fitting with weights
-c=fit(x_alpha',mlogh,'poly2','weights',w);
+c=fit(x_alpha',mloghist,'poly2','weights',w);
 
 
 %return to original variables after fit

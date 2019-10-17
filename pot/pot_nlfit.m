@@ -33,8 +33,7 @@ P=50;
 if nargin>2
     P=varargin{1};
 end
-
-[x_alpha, mrho, sigma2_rho, ~, ~, ~, ~,mU,  sigma2_U] = prob_dist_energy(x,P, T);
+[x_alpha, mrho, sigma2_rho, ~, ~, ~, ~,mU,  sigma2_U, ~, ~] = prob_dist_energy(x,P, T);
 
 %delete zeros to avoid Inf in weights
 sigma2_rho(sigma2_rho==0) = 1;
@@ -46,7 +45,7 @@ w=1./sigma2_rho.^2;
 w(isinf(w)) = 1;
 
 %normalization to avoid "Equation is badly conditioned"
-maxbin = x_alpha(end); 
+maxbin =max(abs(x_alpha)); 
 x_alpha = x_alpha/maxbin; 
 
 %%delete values of zero probability 
