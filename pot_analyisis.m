@@ -16,7 +16,7 @@ load('Data_positions_Fig9_1P6_S.mat');
 kb=1.38064852e-23;
 
 %number of bins of the histogram, if not set default is 50
-P=100; 
+P=50; 
 
 %use a subsampled data set
 subs=1;
