@@ -1,4 +1,4 @@
-function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_eq, U_0]=pot_lfit(x,T,varargin)
+function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_eq, U_0_exp]=pot_lfit(x,T,varargin)
     %POT_LFIT   1D implementation of the POTENTIAL METHOD using linear fitting.
     %   POT_LFIT(X,T, P) generates a estimator of the stiffness k_pot
     %   for the potential method using linear fitting
@@ -36,7 +36,9 @@ if nargin>2
 end
 
 %[x_alpha, mrho, sigma2_rho, ~,~, mlogh, ~,mU,  sigma2_U]=prob_dist_energy(x,P, T);
-[x_alpha, mrho, sigma2_rho, ~, ~, ~,~,mU,  sigma2_U, mloghist, Eloghist]=prob_dist_energy(x,P, T);
+%[x_alpha, mrho, sigma2_rho, ~, ~, ~,~,mU,  sigma2_U, mloghist, Eloghist]=prob_dist_energy(x,P, T);
+[x_alpha, mrho, sigma2_rho, ~, ~, mlogf, sigma_logh,mU,  sigma2_U, ~, ~]=prob_dist_energy(x,P, T);
+
 %delete zeros to avoid Inf in weights
 sigma2_rho(sigma2_rho==0)=1;
 
@@ -44,8 +46,8 @@ sigma2_rho(sigma2_rho==0)=1;
 
 
 %delete values with Inf in mlogh
-ind=find(isinf(mloghist));
-mloghist(ind)=[];
+ind=find(isinf(mlogf));
+mlogf(ind)=[];
 %and all the corresponding values of that data point in 
 %%order to keep the same arra size for all variables
 x_alpha(ind)=[];
@@ -57,7 +59,7 @@ mrho(ind)=[];
 
 
 % weights for fitting
-w=1./Eloghist.^2;
+w=1./sigma_logh.^2;
 
 %in case any other Inf value arises
 w(isinf(w))=1;
@@ -73,7 +75,7 @@ maxbin=x_alpha(end);
 x_alpha=x_alpha/maxbin; 
 
 %Approximation to a quadratic function, Using linear fitting with weights
-c=fit(x_alpha',mloghist,'poly2','weights',w);
+c=fit(x_alpha',mlogf,'poly2','weights',w);
 
 
 %return to original variables after fit
@@ -90,9 +92,11 @@ rho0=exp(c.p1/maxbin^2*x_eq^2-c.p3);
 
 %0.68 corresponds to one standard deviation
 cint=confint(c,0.95); 
-U_0=c.p3;
+U_0_exp=min(mlogf); %in kbT units
 %standard deviation squared for the stiffness
 sigma2_k_pot=2*kb*T/maxbin^2*(cint(2,1)-cint(1,1))/2;
+
+
 
 %
 %disp('...')

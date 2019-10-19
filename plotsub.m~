@@ -40,10 +40,10 @@ disp('Linear fitting')
 disp(sum(mrho_lf*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
 disp('Non-linear fitting')
 disp(sum(mrho_lf*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
-bar(x_alpha_lf*1e6, mrho_lf*1e-6, 'EdgeColor', 'white', 'FaceColor', colbar, 'facealpha', 0.8, 'HandleVisibility','off')
+bar(x_alpha_lf*1e6, mrho_lf*1e-6, 'EdgeColor', 'white', 'FaceColor', colbar, 'facealpha', 0.8, 'DisplayName', 'Experimental probability distribution')
 hold on 
 
-errorbar(x_alpha_lf*1e6,  mrho_lf*1e-6, 1e-6*abs(sigma2_rho_lf), 'Color',colbar, 'DisplayName', 'Experimental probability distribution');
+errorbar(x_alpha_lf*1e6,  mrho_lf*1e-6, 1e-6*abs(sigma2_rho_lf), 'Color','black');
 rhomodel_lf=rho0_lf*exp(-k_pot_lf/(2*kb*T)*(x_alpha_lf-x_eq_lf).^2);
 rhomodel_nl=rho0_nl*exp(-k_pot_nl/(2*kb*T)*(x_alpha_nl-x_eq_nl).^2);
 disp('Integral of the fitted probability distributions')
@@ -68,8 +68,8 @@ legend
 axes('Position',positionintefig2);  
 hold on;
 
-%scatter(x_alpha_lf*1e6, -log(mrho_lf)-U_0_exp,80,'o', 'markerfacecolor','colbar', 'markeredgecolor', colbar , 'DisplayName', 'Experimental values of potential energy')
-errorbar(x_alpha_lf*1e6,  -log(mrho_lf)-U_0_exp, -log(1e-6*abs(sigma2_rho_lf)), 'Color', colbar,  'DisplayName', 'Experimental values of potential energy');
+scatter(x_alpha_lf*1e6, -log(mrho_lf)-U_0_exp,80,'o', 'markerfacecolor', colbar, 'markeredgecolor', colbar , 'DisplayName', 'Experimental values of potential energy')
+errorbar(x_alpha_lf*1e6,  -log(mrho_lf)-U_0_exp, -log(1e-6*abs(sigma2_rho_lf)), 'Color','black', );
 
 U_model_lf=-(log(rhomodel_lf));
 U_model_nl=-(log(rhomodel_nl));

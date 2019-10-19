@@ -39,10 +39,10 @@ end
 
 % after normalization it becomes the probability density distribution
 frequencynor=frequency./(sum(frequency,1)*dx);
-
+disp(size(frequencynor))
 %mean probability  density distribution
 mrho=mean(frequencynor,2);
-
+disp(size(mrho));
 %logaritm of the histogram 
 loghist=-log(frequency);
 mloghist=mean(loghist, 2);
@@ -50,6 +50,7 @@ Eloghist=std(loghist,[], 2);
 
 %standard deviation squared of probability density distribution
 sigma2_rho=std(frequencynor,[],2);
+disp(size(sigma2_rho))
 
 %log of the frequency
 logf=-log(frequencynor);

@@ -9,11 +9,6 @@ r=1.03E-6;      % Particle radius [m]
 v=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
 gamma=pi*6*r*v; %[m*Pa*s]
 
-col1=[232/255,193/255,95/255];
-%blue color
-col2=[33/255,132/255,218/255];
-%gray color for experimental data
-colbar=[119/255,136/255,153/255];
 xwi = 400;    % width of the plot square
 bx1 = 80;     % extra space at the left
 bx2 = 20;     % extra space at the right

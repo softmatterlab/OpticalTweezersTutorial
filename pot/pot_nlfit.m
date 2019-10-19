@@ -1,4 +1,4 @@
-function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_eq, coefa]=pot_nlfit(x,T,varargin)
+function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_eq, coefa, U_0_exp]=pot_nlfit(x,T,varargin)
     %POT_NLFIT   1D implementation of the POTENTIAL METHOD using non-linear fitting.
     %   POT_NLFIT(X,T, P) generates a estimator of the stiffness k_pot
     %   for the potential method using non-linear fitting and fitting
@@ -33,8 +33,7 @@ P=50;
 if nargin>2
     P=varargin{1};
 end
-[x_alpha, mrho, sigma2_rho, ~, ~, ~, ~,mU,  sigma2_U, ~, ~] = prob_dist_energy(x,P, T);
-
+[x_alpha, mrho, sigma2_rho, ~, ~, mlogh, ~,mU,  sigma2_U, ~, ~] = prob_dist_energy(x,P, T);
 %delete zeros to avoid Inf in weights
 sigma2_rho(sigma2_rho==0) = 1;
 
@@ -56,6 +55,8 @@ mrho(ind)=[];
 x_alpha(ind)=[];
 w(ind)=[];
 sigma2_rho(ind)=[];
+%size(sigma2_rho)
+%size(mrho)
 mU(ind)=[];
 sigma2_U(ind)=[];
 
@@ -84,7 +85,7 @@ sigma2_k_pot=2*kb*T/maxbin^2*(cint(2,1)-cint(1,1))/2;
 
 %coeficiente de la exponencial
 coefa=c.a;
-
+U_0_exp=min(mlogh);
 %estimation for the normalization factor
 rho0=sqrt(c.a/pi)*1/maxbin;  
 
