@@ -15,7 +15,7 @@ subs=1; %use a subsampled data set
 
 
     
-load(['Data_positions_Fig9_1P4_S.mat']);
+load(['Data_positions_Fig9_1P2_S.mat']);
 
 
     
