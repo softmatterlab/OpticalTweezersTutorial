@@ -1,4 +1,4 @@
-function [x_alpha, mrho, sigma2_rho, frequencynor, logf, mlogf, sigma_logh,mU,  sigma2_U, mloghist, Eloghist]=prob_dist_energy(x,P, T)
+function [x_alpha, mrho, sigma2_rho, frequencynor, logf, mlogf, sigma_logh,mU,  sigma2_U, mloghist, Eloghist, U_0_exp]=prob_dist_energy(x,P, T)
 % PROB_DIST(x, T, P) defines the probability distribution for a set of x
 % positions and P number of bins
 %
@@ -66,5 +66,5 @@ mU=kb*T*(mlogf-min(mlogf));
 
 %standard deviation of the potential energy
 sigma2_U=kb*T*sigma_logh;
-
+U_0_exp=min(mlogf);
 end

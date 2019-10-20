@@ -39,7 +39,7 @@ kb=1.38064852e-23;
 
 
 %% plot figures
-%yellow color
+
 
 
 %creates the figure to do the subplots
