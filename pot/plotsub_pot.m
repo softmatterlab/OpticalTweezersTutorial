@@ -1,4 +1,4 @@
-function [k_pot_lf, k_pot_nl]=plotsub(filename, positioninthefig1, positionintefig2, title1, T, P, subssample)
+function [k_pot_lf, k_pot_nl]=plotsub_pot(filename, positioninthefig1, positionintefig2, title1, T, P, subssample)
 load(filename);
 disp(filename);
 kb=1.38e-23;

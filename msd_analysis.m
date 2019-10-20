@@ -21,7 +21,7 @@ load(['Data_positions_Fig9_1P6_S.mat']);
 
 
     
-[k_msd, Ek_msd, D_msd, ED_msd, tau, mmsd, Emsd,indc]=msd_nfilt_covmat(x(1:subs:size(x,1),:),T,dt*subs,25);
+[k_msd, Ek_msd, D_msd, ED_msd, tau, mmsd, Emsd,indc]=msd_nfilt(x(1:subs:size(x,1),:),T,dt*subs,25);
 
 
 disp('')
