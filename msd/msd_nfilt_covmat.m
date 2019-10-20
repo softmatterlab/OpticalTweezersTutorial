@@ -1,4 +1,4 @@
-function [k_msd, Ek_msd, D_msd, ED_msd, tau, mmsd, Emsd, indc]=msd_nlfit_v1(x,T,dt,maxlag)
+function [k_msd, Ek_msd, D_msd, ED_msd, tau, mmsd, Emsd, indc]=msd_nfilt_covmat(x,T,dt,maxlag)
 %function [k_msd, Ek_msd, D_msd, ED_msd, tau, mmsd, Emsd, indc]=msd_nlfit(Vx,T,dt,maxlag)
 % MSD_NLFIT   1D implementation of the MEAN SQUARE DISPLACEMENT ANALYSIS METHOD
 % USING NON LINEAR FITTING
@@ -19,13 +19,13 @@ for j=1:Nexp
     msd1(k)=mean((xx(k:end)-xx(1:end-k+1)).^2);    
     end
     
-    msd(:,j)=msd1';
+    msd(j,:)=msd1;
 end
 
-mmsd=mean(msd,2);
+mmsd=mean(msd,1);
 
-Emsd=std(msd,[],2)+(1e-9)^2;
-        
+%Emsd=std(msd,[],2)+(1e-9)^2;
+Emsd=std(msd,[],1);        
 %Starting points for the fitting
 
 a0=mmsd(end); %amplitude
@@ -34,6 +34,7 @@ disp('a0')
 
 disp(a0)
 
+disp(Emsd(end))
 %find the characteristic time
 
 atau=a0*(1-exp(-1)); 
@@ -61,6 +62,7 @@ ind0=floor(ind/4);
 tau_cut=tau(1:indc);
 
 mmsd_cut=mmsd(1:indc);
+msd_cut_exp=msd(:, 1:indc);
 
 Emsd_cut=Emsd(1:indc);
 
@@ -68,23 +70,32 @@ max_tau=tau_cut(end);
 
 max_mc=max(mmsd_cut);
 
-w=1./Emsd_cut.^2;
+%w=1./Emsd_cut.^2;
+%ind=find(w==Inf);
 
+%w(ind)=[];
+%tau_cut(ind)=[];
+%mmsd_cut(ind)=[];
 % using non-linear fitting
 
 %max_mc=1e-12;
 
 %max_tau=1e-6;
 
-ft=@(a,b,x)a*(1-exp(-x/b));
+%ftmodelfun=@(b,x)(b(1))*(1-exp(-x/b(2)));
 
 indtau=ind0;
 
-c=fit(tau_cut(indtau:end)'/max_tau,mmsd_cut(indtau:end)/max_mc,fittype(ft),'Weights',w(indtau:end)*max_mc^2,'StartPoint',[a0/max_mc,tau0/max_tau],'Display','iter','Lower',[0,0],'Upper',[inf,Inf]);%,'Robust','LAR');
+%c=fit(tau_cut(indtau:end)'/max_tau,mmsd_cut(indtau:end)/max_mc,fittype(ft),'Weights',w(indtau:end)*max_mc^2,'StartPoint',[a0/max_mc,tau0/max_tau],'Display','iter','Lower',[0,0],'Upper',[inf,Inf]);%,'Robust','LAR');
 
-tau0=c.b*max_tau;
+guess=[a0/max_mc,tau0/max_tau];
+[params, sigma, chi2_min] = wlsice(tau_cut(indtau:end)/max_tau, msd_cut_exp(:, indtau:end)/max_mc,guess);
+%[params, chi2_min, C, sigma] = fit_cov(tau_cut(indtau:end)'/max_tau, mmsd_cut(indtau:end)/max_mc,guess);
+%%
 
-a0=c.a*max_mc;
+tau0=params(2)*max_tau;
+
+a0=params(1)*max_mc;
 
 k_msd=2*kb*T/a0;
 
@@ -93,11 +104,12 @@ gamma_msd=k_msd*tau0;
 
 D_msd=kb*T/gamma_msd;
 
-cint=confint(c,0.68);
+%cint=confint(c,0.95);
 
-Ek_msd=kb*T/a0^2*(cint(2,1)-cint(1,1))/2*max_mc;
+%Ek_msd=kb*T/a0^2*(cint(2,1)-cint(1,1))/2*max_mc;
+Ek_msd=kb*T/(a0)^2*(sigma(1))*max_mc;
 
-Etau=(cint(2,2)-cint(1,2))/2*max_tau;
+Etau=(sigma(2))/2*max_tau;
 
 ED_msd=kb*T/(k_msd^2*tau0)*Ek_msd+kb*T/(k_msd*tau0^2)*Etau;
 
@@ -136,7 +148,7 @@ disp('MSD by non-linear fitting')
 
 disp(['tau0_msd: ' num2str(tau0) '+-' num2str(Etau)])
 
-disp(['k_msd: ' num2str(k_msd) '+-' num2str(Ek_msd)])
+disp(['k_msd: ' num2str(k_msd*1e6) '+-' num2str(Ek_msd*1e6)])
 
 disp(['D_msd: ' num2str(D_msd) '+-' num2str(ED_msd)])
 

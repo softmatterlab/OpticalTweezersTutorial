@@ -1,7 +1,8 @@
-function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_eq]=pot_nlfit(x,T,varargin)
+function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_eq,  U_0_exp]=pot_nlfit(x,T,varargin)
     %POT_NLFIT   1D implementation of the POTENTIAL METHOD using non-linear fitting.
     %   POT_NLFIT(X,T, P) generates a estimator of the stiffness k_pot
-    %   for the potential method using non-linear fitting. 
+    %   for the potential method using non-linear fitting and fitting
+    %   function ft=fittype('sqrt(a/pi)*exp(-a*(x-b)^2)')
     %
     %   Inputs
     %   x: time series of the position of the particle
@@ -20,7 +21,7 @@ function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_
     %   rho0: normalization factor
     %   x_eq: equilibrium position
 
-kb=1.38064852e-23;
+kb = 1.38064852e-23;
 
 %translate everithing to zero
 x = x - repmat(mean(x),size(x,1),1);
@@ -32,34 +33,36 @@ P=50;
 if nargin>2
     P=varargin{1};
 end
-
-[x_alpha, mrho, sigma2_rho, frequency]=prob_dist(x,P);
-
-
+[x_alpha, mrho, sigma2_rho, ~, ~, mlogh, sigma2_logh,mU,  sigma2_U, ~, ~, U_0_exp] = prob_dist_energy(x,P, T);
 %delete zeros to avoid Inf in weights
-sigma2_rho(sigma2_rho==0)=1;
+sigma2_rho(sigma2_rho==0) = 1;
 
 % weights for fitting
 w=1./sigma2_rho.^2;
 
 %in case any other Inf value arises
-w(isinf(w))=1;
-
+w(isinf(w)) = 1;
 
 %normalization to avoid "Equation is badly conditioned"
-maxbin=x_alpha(end); 
-x_alpha=x_alpha/maxbin; 
+maxbin =max(abs(x_alpha)); 
+x_alpha = x_alpha/maxbin; 
 
-%%delete values of zero probability and their correspondent values of x  and weights 
+%%delete values of zero probability 
 ind=find(mrho==Inf);
 mrho(ind)=[];
+%and all the corresponding values of that data point in 
+%%order to keep the same arra size for all variables
 x_alpha(ind)=[];
 w(ind)=[];
+sigma2_rho(ind)=[];
+%size(sigma2_rho)
+%size(mrho)
+mU(ind)=[];
+sigma2_U(ind)=[];
 
 % Guess for the initial conditions for the non-linear fitting
 a0=(max(mrho)*sqrt(pi))^2;
 b0=0;
-
 
 %Using non-linear fitting with weights
 ft=fittype('sqrt(a/pi)*exp(-a*(x-b)^2)');
@@ -72,35 +75,22 @@ x_alpha=x_alpha*maxbin;
 k_pot=2*kb*T*c.a/maxbin^2; 
 
 %equilibrium position
-x_eq=c.b*maxbin^2;
+x_eq=c.b*maxbin;
 
 %0.68 corresponds to one standard deviation
-cint=confint(c,0.68);  
+cint=confint(c,0.95);  
 
 %standard deviation squared for the stiffness
 sigma2_k_pot=2*kb*T/maxbin^2*(cint(2,1)-cint(1,1))/2;
 
-%log of the frequency
-logh=-log(frequency);
 
-%mean log of the frequency
-mlogh=mean(logh,2);
-
-%standard deviation of the log of the frequency
-Elogh=std(logh,[],2);
-
-%mean value of the potential energy
-mU=kb*T*(mlogh-min(mlogh));
-
-%standard deviation of the potential energy
-sigma2_U=kb*T*Elogh;
 
 %estimation for the normalization factor
 rho0=sqrt(c.a/pi)*1/maxbin;  
 
-disp('...')
+%disp('...')
 
-disp('Potential analysis using non linear fitting')
+%disp('Potential analysis using non linear fitting')
 
-disp(['k_pot: ' num2str(k_pot*1e6) '+-' num2str(sigma2_k_pot*1e6) ' pN/um']);
+%disp(['k_pot: ' num2str(k_pot*1e6) '+-' num2str(sigma2_k_pot*1e6) ' pN/um']);
 
