@@ -114,45 +114,45 @@ Etau=(sigma(2))/2*max_tau;
 ED_msd=kb*T/(k_msd^2*tau0)*Ek_msd+kb*T/(k_msd*tau0^2)*Etau;
 
 Egamma_msd=Ek_msd*tau0+k_msd*Etau;
-% plot
-figure(1)
-
-clf
-
-set(gcf,'Position',[150 300 800 600])
-
-axes('OuterPosition',[0 0 1 1])
-
-errorbar(tau(1:1:end),mmsd(1:1:end)*1e12,Emsd(1:1:end)*1e12,'ob','LineWidth',1)
-
-hold on
-
-plot(tau_cut(1:1:end),a0*(1-exp(-tau_cut(1:1:end)/tau0))*1e12,'b')
-
-plot([ntaus*tau0,ntaus*tau0],[0.8*min(mmsd),1.3*max(mmsd)]*1e12,'--k')
-
-axis([tau(1),tau(end),0.8*min(mmsd)*1e12,1.2*max(mmsd)*1e12])
-
-text(ntaus*tau0,0.05*max(mmsd)*1e12,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',16)
-
-set(gca,'FontSize',16)
-
-xlabel('$\tau$','Interpreter','latex')
-
-ylabel('$MSD_x(\mu \textrm{m}^2)$','Interpreter','latex')
-
-%   
-disp('...')
-
-disp('MSD by non-linear fitting')
-
-disp(['tau0_msd: ' num2str(tau0) '+-' num2str(Etau)])
-
-disp(['k_msd: ' num2str(k_msd*1e6) '+-' num2str(Ek_msd*1e6)])
-
-disp(['D_msd: ' num2str(D_msd) '+-' num2str(ED_msd)])
-
-disp(['gamma_msd: ' num2str(gamma_msd) '+-' num2str(Egamma_msd)])
+% % plot
+% figure(1)
+% 
+% clf
+% 
+% set(gcf,'Position',[150 300 800 600])
+% 
+% axes('OuterPosition',[0 0 1 1])
+% 
+% errorbar(tau(1:1:end),mmsd(1:1:end)*1e12,Emsd(1:1:end)*1e12,'ob','LineWidth',1)
+% 
+% hold on
+% 
+% plot(tau_cut(1:1:end),a0*(1-exp(-tau_cut(1:1:end)/tau0))*1e12,'b')
+% 
+% plot([ntaus*tau0,ntaus*tau0],[0.8*min(mmsd),1.3*max(mmsd)]*1e12,'--k')
+% 
+% axis([tau(1),tau(end),0.8*min(mmsd)*1e12,1.2*max(mmsd)*1e12])
+% 
+% text(ntaus*tau0,0.05*max(mmsd)*1e12,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',16)
+% 
+% set(gca,'FontSize',16)
+% 
+% xlabel('$\tau$','Interpreter','latex')
+% 
+% ylabel('$MSD_x(\mu \textrm{m}^2)$','Interpreter','latex')
+% 
+% %   
+% disp('...')
+% 
+% disp('MSD by non-linear fitting')
+% 
+% disp(['tau0_msd: ' num2str(tau0) '+-' num2str(Etau)])
+% 
+% disp(['k_msd: ' num2str(k_msd*1e6) '+-' num2str(Ek_msd*1e6)])
+% 
+% disp(['D_msd: ' num2str(D_msd) '+-' num2str(ED_msd)])
+% 
+% disp(['gamma_msd: ' num2str(gamma_msd) '+-' num2str(Egamma_msd)])
 
 
 

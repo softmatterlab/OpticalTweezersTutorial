@@ -28,11 +28,9 @@ P=50;
 
 %number of bins of the histogram, if not set default is 50
 %linear fit
-%[k_pot_lf, ~, x_alpha_lf, mrho_lf, sigma2_rho_lf,~,~, rho0_lf, x_eq_lf,U_0_exp]=pot_lfit(x(1:subssample:size(x,1),:),T,P);
 [k_pot_lf, sigma2_k_pot_lf, x_alpha_lf, mrho_lf, sigma2_rho_lf, mU_lf, sigma2_U_lf, rho0_lf, x_eq_lf, U_0_exp_lf]=pot_lfit(x,T,P);
 %non-linear fit`
-%[k_pot_nl, ~, x_alpha_nl, ~, ~, ~, ~, rho0_nl, x_eq_nl,~]=pot_nlfit(x(1:subssample:size(x,1),:),T,P);
-[k_pot_nl, sigma2_k_pot_nl, x_alpha_nl, mrho_nl, sigma2_rho_nl, mU_nl, sigma2_U_nl, rho0_nl, x_eq_nl,  U_0_exp_nl]=pot_nlfit(x,T,P)
+[k_pot_nl, sigma2_k_pot_nl, x_alpha_nl, mrho_nl, sigma2_rho_nl, mU_nl, sigma2_U_nl, rho0_nl, x_eq_nl,  U_0_exp_nl]=pot_nlfit(x,T,P);
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 disp('Check that the probability distribiution is normalized')
 disp('Integral of the experimental distribuitions')

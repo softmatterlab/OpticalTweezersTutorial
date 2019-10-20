@@ -35,8 +35,6 @@ if nargin>2
     P=varargin{1};
 end
 
-%[x_alpha, mrho, sigma2_rho, ~,~, mlogh, ~,mU,  sigma2_U]=prob_dist_energy(x,P, T);
-%[x_alpha, mrho, sigma2_rho, ~, ~, ~,~,mU,  sigma2_U, mloghist, Eloghist]=prob_dist_energy(x,P, T);
 [x_alpha, mrho, sigma2_rho, ~, ~, mlogf, sigma_logh,mU,  sigma2_U, ~, ~, U_0_exp]=prob_dist_energy(x,P, T);
 
 %delete zeros to avoid Inf in weights
