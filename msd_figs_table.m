@@ -1,4 +1,5 @@
-close all, clear all;
+close all;
+clear all;
 
 %%  ==============Parameter declaration============
 
@@ -19,17 +20,13 @@ ywi = 300;    % length riquadro con funzione
 by1 = 60;     % extra space below
 by2 = 30;     % extra space up
 
-Ypix = 2*by1+2*ywi+3*by2;  % larghezza figura in pixel
-%number of bins of the histogram, if not set default is 50
-P=50; 
+Ypix = 1*by1+1*ywi+1*by2;  % larghezza figura in pixel
 
-%use a subsampled data set
-subs=1;
 
 %%  =========Loading selected file============
 %load('Data_positions_Fig9_1P6_S.mat')
 
-addpath pot
+addpath msd
 
 
 %Boltzmann constant
@@ -47,14 +44,19 @@ figure('Position',[10 20 Xpix Ypix]);
 %first figure, probability distribution, exp I
 
 %%
-titleI='Experiment I, P=2.3mW';
-[k_pot_lf_I, k_pot_nl_I]=plotsub_pot('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, P, subs)
 
+%subs=10; %use a subsampled data set
+%exp I SUBS=20, maxlag=50 
+%exp II subs=17, maxlag=25
+%exp III subs=10, maxlag=25
+titleI='Experiment I, P=2.3mW';
+[k_msd_I]=plotsub_msd('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix,  titleI, T, 20, 50);
+%%
 titleII='Experiment II, P=6.0mW';
-[k_pot_lf_II, k_pot_nl_II]=plotsub_pot('Data_positions_Fig9_1P4_S.mat',[2*bx1+xwi+bx2 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [2*bx1+xwi+bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, P, subs)
+[k_msd_II]=plotsub_msd('Data_positions_Fig9_1P4_S.mat',[2*bx1+xwi+bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, 17, 70);
 
 
 titleIII='Experiment III, P=9.2mW';
-[k_pot_lf_III, k_pot_nl_III]=plotsub_pot('Data_positions_Fig9_1P6_S.mat',[3*bx1+2*xwi+2*bx2 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [3*bx1+2*xwi+2*bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, P, subs)
+[k_msd_III]=plotsub_msd('Data_positions_Fig9_1P6_S.mat',[3*bx1+2*xwi+2*bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, 10, 100);
 
 %2:3mW, 6:0mW, and 9:2mW
