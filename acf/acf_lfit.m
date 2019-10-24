@@ -1,4 +1,4 @@
-function [k_acf, Ek_acf, D_acf, ED_acf, tau, mc, Ec,indc, tau0_exp, c0_exp, acf, C]=acf_lfit(Vx,T,dt)
+function [k_acf, Ek_acf, D_acf, ED_acf, tau, mc, Ec,indc, tau0_exp, c0_exp]=acf_lfit(Vx,T,dt)
 %function [k_acf, Ek_acf, D_acf, ED_acf, tau, mc, Ec]=acf_lfit(Vx,T,dt)
 % ACF_LFIT   1D implementation of the AUTOCORRELATION ANALYSIS METHOD
 % USING LINEAR FITTING
@@ -51,11 +51,10 @@ max_mc=max(max(acf_cut))
 
 
 guess=[1,1];
-[params, sigma, chi2_min, C] = wlsice(tau_cut/tau0, log(abs(acf_cut))/log(abs(max_mc)), guess, 'acf_lf');
-params
-sigma
+[params, sigma, chi2_min, C] = wlsice(tau_cut/tau0, log(abs(acf_cut))/log(abs(max_mc)), guess, 1);
 
-tau0_exp=tau0/params(1)/log(abs(max_mc))
+
+tau0_exp=-tau0/params(1)/log(abs(max_mc))
 
 c0_exp=exp(params(2)*log(max_mc));
 
@@ -80,11 +79,11 @@ ED_acf=0;
 % axes('OuterPosition',[0 0 1 1])
 % 
 %
-errorbar(tau(1:20:6*indc),mc(1:20:6*indc)*1e12,Ec(1:20:6*indc)*1e12,'ob','LineWidth',1)
+%errorbar(tau(1:20:6*indc),mc(1:20:6*indc)*1e12,Ec(1:20:6*indc)*1e12,'ob','LineWidth',1)
 % 
- hold on
+ %hold on
 % 
- plot(tau(1:20:6*indc),c0_exp*exp(tau(1:20:6*indc)/tau0_exp)*1e12,'b')
+ %plot(tau(1:20:6*indc),c0_exp*exp(tau(1:20:6*indc)/tau0_exp)*1e12,'b')
 % 
 % xlabel('$\tau$','Interpreter','latex')
 % 

@@ -19,7 +19,7 @@ ywi = 300;    % length riquadro con funzione
 by1 = 60;     % extra space below
 by2 = 30;     % extra space up
 
-Ypix = 2*by1+2*ywi+3*by2;  % larghezza figura in pixel
+Ypix = 1*by1+1*ywi+1*by2;  % larghezza figura in pixel
 %number of bins of the histogram, if not set default is 50
 P=50; 
 
@@ -29,7 +29,7 @@ subs=1;
 %%  =========Loading selected file============
 %load('Data_positions_Fig9_1P6_S.mat')
 
-addpath pot
+addpath acf
 
 
 %Boltzmann constant
@@ -48,13 +48,13 @@ figure('Position',[10 20 Xpix Ypix]);
 
 %%
 titleI='Experiment I, P=2.3mW';
-[k_pot_lf_I, k_pot_nl_I]=plotsub_pot('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, P, subs)
+[k_pot_lf_I, k_pot_nl_I]=plotsub_acf('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, subs)
 
 titleII='Experiment II, P=6.0mW';
-[k_pot_lf_II, k_pot_nl_II]=plotsub_pot('Data_positions_Fig9_1P4_S.mat',[2*bx1+xwi+bx2 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [2*bx1+xwi+bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, P, subs)
+[k_pot_lf_II, k_pot_nl_II]=plotsub_acf('Data_positions_Fig9_1P4_S.mat',[2*bx1+xwi+bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs)
 
 
 titleIII='Experiment III, P=9.2mW';
-[k_pot_lf_III, k_pot_nl_III]=plotsub_pot('Data_positions_Fig9_1P6_S.mat',[3*bx1+2*xwi+2*bx2 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [3*bx1+2*xwi+2*bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, P, subs)
+[k_pot_lf_III, k_pot_nl_III]=plotsub_acf('Data_positions_Fig9_1P6_S.mat',[3*bx1+2*xwi+2*bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs)
 
 %2:3mW, 6:0mW, and 9:2mW

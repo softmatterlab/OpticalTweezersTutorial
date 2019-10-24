@@ -29,11 +29,11 @@ col1=[0,0.6,0.8;0.9,0.6,0.2;0.4,0.8,0.4];
 
 
 % Load data file
-for j=1:length(nps)
+for j=2:2:6%length(nps)
     
     p=nps(j);
-    
-    load(['Fig9_1P' num2str(p) '_S.mat'],'datafile','T');
+    %Data_positions_Fig9_1P2_S
+    load([' Data_positions_Fig9_1P' num2str(p) '_S.mat'],'datafile','T');
     
     load([nfile filesep datafile '_fit_pot_subs' num2str(subs)  '.mat']);
     
