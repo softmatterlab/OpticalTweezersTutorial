@@ -2,7 +2,7 @@ function [k_msd,sigma_k_msd, tau0, sigma2_tau0, D_msd, ED_msd, tau, mmsd, Emsd, 
 %function [k_msd, Ek_msd, D_msd, ED_msd, tau, mmsd, Emsd, indc]=msd_nlfit(Vx,T,dt,maxlag)
 % MSD_NLFIT   1D implementation of the MEAN SQUARE DISPLACEMENT ANALYSIS METHOD
 % USING NON LINEAR FITTING
-
+addpath /../wlsice/ 
 x = x - repmat(mean(x),size(x,1),1);
 
 kb=1.38064852e-23;
@@ -21,7 +21,7 @@ for j=1:Nexp
     
     msd(j,:)=msd1;
 end
-
+disp(size(msd));
 mmsd=mean(msd,1);
 
 %Emsd=std(msd,[],2)+(1e-9)^2;

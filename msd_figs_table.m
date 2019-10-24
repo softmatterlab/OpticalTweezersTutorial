@@ -27,6 +27,7 @@ Ypix = 1*by1+1*ywi+1*by2;  % larghezza figura in pixel
 %load('Data_positions_Fig9_1P6_S.mat')
 
 addpath msd
+addpath wlsice
 
 
 %Boltzmann constant
