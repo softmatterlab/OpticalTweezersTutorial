@@ -9,7 +9,7 @@ clear;
 
 addpath msd
 
-
+addpath wlsice
 
 subs=10; %use a subsampled data set
 %exp I SUBS=20, maxlag=50 

@@ -89,7 +89,8 @@ indtau=ind0;
 %c=fit(tau_cut(indtau:end)'/max_tau,mmsd_cut(indtau:end)/max_mc,fittype(ft),'Weights',w(indtau:end)*max_mc^2,'StartPoint',[a0/max_mc,tau0/max_tau],'Display','iter','Lower',[0,0],'Upper',[inf,Inf]);%,'Robust','LAR');
 
 guess=[a0/max_mc,tau0/max_tau];
-[params, sigma, chi2_min] = wlsice(tau_cut(indtau:end)/max_tau, msd_cut_exp(:, indtau:end)/max_mc,guess);
+%[params, sigma, chi2_min, C] = wlsice(time, trajectories, guess, opt)
+[params, sigma, chi2_min, C] = wlsice(tau_cut(indtau:end)/max_tau, msd_cut_exp(:, indtau:end)/max_mc,guess, 3);
 %[params, chi2_min, C, sigma] = fit_cov(tau_cut(indtau:end)'/max_tau, mmsd_cut(indtau:end)/max_mc,guess);
 %%
 

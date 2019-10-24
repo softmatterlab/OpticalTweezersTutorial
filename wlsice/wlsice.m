@@ -1,4 +1,4 @@
-function [params, sigma, chi2_min, C] = wlsice(time, trajectories, guess)
+function [params, sigma, chi2_min, C] = wlsice(time, trajectories, guess, opt)
 % Perform the correlated corrected weighted least squares fit on input data.
 % M is number of tranjectories, N number of sampling points,
 %trajectories=trajectories';
@@ -26,8 +26,15 @@ C = C / M;
 R = diag(1./diag(C), 0);              % works in matlab and octave
 
 % chi2-square function to be minimized:
-chi2 = @(p, t, y, R_) (y - f_acf_lf(t, p)')' * R_ * (y - f_acf_lf(t, p)');
-
+if opt==1
+    chi2 = @(p, t, y, R_) (y - f_acf_lf(t, p)')' * R_ * (y - f_acf_lf(t, p)');
+elseif opt==2
+    chi2 = @(p, t, y, R_) (y - f_acf_nl(t, p)')' * R_ * (y - f_acf_nl(t, p)');
+elseif opt==3
+    chi2 = @(p, t, y, R_) (y - f_msd(t, p)')' * R_ * (y - f_msd(t, p)');
+else 
+    error('the fitting funtion is not defined');
+end
 % Do the parameter fitting
 [params, chi2_min] = fminunc(@(par)(chi2(par, time(2:end), y_mean(2:end), R)), guess);
 
@@ -46,7 +53,17 @@ fhessian = d2f(time(2:end), params);
 
 q = length(params);
 first_term = zeros(q, q);
-delta = f_acf_lf(time(2:end), params) - y_mean(2:end);
+
+if opt==1
+    delta = f_acf_lf(time(2:end), params) - y_mean(2:end);
+elseif opt==2
+    delta = f_acf_nl(time(2:end), params) - y_mean(2:end);
+elseif opt==3
+    delta = f_msd(time(2:end), params) - y_mean(2:end);
+else 
+    error('the fitting funtion is not defined');
+end
+
 
 
 for a = 1:q
@@ -65,7 +82,7 @@ hessian = first_term + second_term;
 H_inv = inv(hessian);
 RCR = R * C * R;
 
-error = zeros(q, q);
+error1 = zeros(q, q);
 for a = 1:q
     for b = 1:q
         % Should we not be able to move it to up here? Like so:
@@ -73,10 +90,10 @@ for a = 1:q
         for c = 1:q
             for d = 1:q
                 dfRCRdf = gradient(c,:) * RCR * gradient(d,:)';
-                error(a,b) = error(a,b) + 4 * H_inv(a,c) * dfRCRdf * H_inv(d,b);
+                error1(a,b) = error1(a,b) + 4 * H_inv(a,c) * dfRCRdf * H_inv(d,b);
             end
         end
     end
 end
 
-sigma = sqrt(diag(error));
+sigma = sqrt(diag(error1));

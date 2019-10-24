@@ -58,7 +58,7 @@ w=1./Ec_cut.^2;
 
 %ft=fittype('a*exp(-x/b)');
 guess=[c0/max_mc,tau0/max_tau];
-[params, sigma, chi2_min, C] = wlsice(tau_cut/max_tau, acf_cut/max_mc, guess);
+[params, sigma, chi2_min, C] = wlsice(tau_cut/max_tau, acf_cut/max_mc, guess, 'acf_nl');
 
 
 %c=fit(tau_cut'/max_tau,mc_cut/max_mc,ft,'Weights',w*max_mc,'StartPoint',[c0/max_mc,tau0/max_tau]);

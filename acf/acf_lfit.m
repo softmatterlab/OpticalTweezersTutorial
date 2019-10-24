@@ -38,11 +38,11 @@ ind=find(dc(1:end-1).*dc(2:end)<0);
 
 tau0=tau(ind(1));
 
-ntaus=2;
+ntaus=1.5;
 
-indc=ntaus*ind; % consider only ntaus times the characteristic time in the fitting
-acf_cut=acf(:, 1:2:indc);
-tau_cut=tau(1:2:indc);
+indc=round(ntaus*ind); % consider only ntaus times the characteristic time in the fitting
+acf_cut=acf(:, 1:3:indc);
+tau_cut=tau(1:3:indc);
 max_tau=max(tau_cut);
 
 % using non-linear fitting
@@ -51,9 +51,11 @@ max_mc=max(max(acf_cut))
 
 
 guess=[1,1];
-[params, sigma, chi2_min, C] = wlsice(tau_cut/tau0, log(abs(acf_cut))/log(max_mc), guess)
+[params, sigma, chi2_min, C] = wlsice(tau_cut/tau0, log(abs(acf_cut))/log(abs(max_mc)), guess, 'acf_lf');
+params
+sigma
 
-tau0_exp=tau0/params(1)/log(max_mc)
+tau0_exp=tau0/params(1)/log(abs(max_mc))
 
 c0_exp=exp(params(2)*log(max_mc));
 
@@ -61,14 +63,11 @@ k_acf=kb*T/c0_exp;
 
 D_acf=kb*T/(k_acf*tau0);
 
-cint=[params(1)-sigma(1)/2 params(2)-sigma(2)/2; params(1)+sigma(1)/2 params(2)+sigma(2)/2];
 
-cint(:, 1)=cint(:,1);
-cint(:, 2)=cint(:,2);
 %Ek_acf=kb*T*exp(-params(2)*log(c0))*log(c0)*(sigma(2));
 Ek_acf=kb*T/exp(params(2))*sigma(2)/max_mc;
 
-ED_acf=kb*T/(k_acf^2*tau0)*Ek_acf+kb*T/(k_acf*tau0^2)*abs(1/cint(2,1)-1/cint(1,1))/2;
+%ED_acf=kb*T/(k_acf^2*tau0)*Ek_acf+kb*T/(k_acf*tau0^2)*abs(1/cint(2,1)-1/cint(1,1))/2;
 ED_acf=0;
 % % plot
 % figure(1)
@@ -92,9 +91,9 @@ errorbar(tau(1:20:6*indc),mc(1:20:6*indc)*1e12,Ec(1:20:6*indc)*1e12,'ob','LineWi
 % ylabel('$C_x(\mu \textrm{m}^2)$','Interpreter','latex')
 % 
 % %
-% disp('...')
+disp('...')
 % 
-% disp('Autocorrelation function analysis by non-linear fitting')
+ disp('Autocorrelation function analysis by linear fitting')
 % 
  disp(['k_acf: ' num2str(k_acf*1e6) '+-' num2str(Ek_acf*1e6)])
 % 
