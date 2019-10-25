@@ -31,6 +31,13 @@ P=50;
 [k_pot_lf, sigma2_k_pot_lf, x_alpha_lf, mrho_lf, sigma2_rho_lf, mU_lf, sigma2_U_lf, rho0_lf, x_eq_lf, U_0_exp_lf]=pot_lfit(x,T,P);
 %non-linear fit`
 [k_pot_nl, sigma2_k_pot_nl, x_alpha_nl, mrho_nl, sigma2_rho_nl, mU_nl, sigma2_U_nl, rho0_nl, x_eq_nl,  U_0_exp_nl]=pot_nlfit(x,T,P);
+
+subsample=1;
+
+%number of bins of the histogram, if not set default is 50
+%linear fit
+[k_eq,sigma2_k_eq]=eq1d(x(1:subsample:1000000,:),T,0e-9);
+
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 disp('Check that the probability distribiution is normalized')
 disp('Integral of the experimental distribuitions')
@@ -38,9 +45,9 @@ disp('Linear fitting')
 disp(sum(mrho_lf*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
 disp('Non-linear fitting')
 disp(sum(mrho_lf*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
-%bar(x_alpha_lf*1e6, mrho_lf*1e-6, 'EdgeColor', 'white', 'FaceColor', colbar, 'facealpha', 0.8, 'HandleVisibility','off')
 
-
+a0=(max(mrho_lf))^2;
+rhomodel_eq=rho0_lf*exp(-k_eq/(2*kb*T)*(x_alpha_lf).^2);
 rhomodel_lf=rho0_lf*exp(-k_pot_lf/(2*kb*T)*(x_alpha_lf-x_eq_lf).^2);
 rhomodel_nl=rho0_nl*exp(-k_pot_nl/(2*kb*T)*(x_alpha_nl-x_eq_nl).^2);
 disp('Integral of the fitted probability distributions')
@@ -48,11 +55,19 @@ disp('Linear fitting')
 disp(sum(rhomodel_lf*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
 disp('Non-linear fitting')
 disp(sum(rhomodel_nl*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
-plot(x_alpha_lf*1e6, rhomodel_lf*1e-6, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting');
-hold on 
+cyan=[0/255,128/255,128/255];
+scatter((x_alpha_lf)*1e6+0.0005, rhomodel_eq*1e-6,'SizeData',100,'MarkerEdgeColor','white', 'MarkerFaceColor',cyan,'MarkerFaceAlpha',0.5,'DisplayName',  'Equipotential');
+hold on
 
+plot(x_alpha_lf*1e6, rhomodel_lf*1e-6, 'LineWidth',4.5,'Color',col2, 'DisplayName',  'Linear fitting');
+
+cyan=[0/255,128/255,128/255];
 plot(x_alpha_nl*1e6, rhomodel_nl*1e-6,'--','LineWidth',3,'Color',col1, 'DisplayName', 'Non-linear fitting')
-errorbar(x_alpha_lf*1e6,  mrho_lf*1e-6, 1e-6*abs(sigma2_rho_lf),'o','MarkerSize',7 ,'LineWidth', 1.5,'Color',colbar, 'DisplayName', 'Experimental probability distribution');
+
+errorbar(x_alpha_lf*1e6,  mrho_lf*1e-6, 1e-6*abs(sigma2_rho_lf),'.','MarkerSize',7 ,'LineWidth', 1.5,'Color',colbar,'DisplayName', 'Experimental probability distribution');
+
+
+
 box on
 %xticks((-0.5:0.1:0.5)*1e-7);
 xlim([-0.06 0.06]);
@@ -77,16 +92,21 @@ U_model_lf=-(log(rhomodel_lf));
 U_model_nl=-(log(rhomodel_nl));
 
 
+U_model_eq=-(log(rhomodel_eq));
 
-
-plot(x_alpha_lf*1e6,U_model_lf-U_0_exp_lf, 'LineWidth',3,'Color',col2,'DisplayName',  'Linear fitting')
+scatter((x_alpha_lf)*1e6+0.0005,U_model_eq-U_0_exp_lf, 'SizeData',100,'MarkerEdgeColor','white','MarkerFaceColor',cyan,'MarkerFaceAlpha',0.5, 'DisplayName',  'Equipotential')
 hold on
+plot(x_alpha_lf*1e6,U_model_lf-U_0_exp_lf, 'LineWidth',4.5,'Color',col2,'DisplayName',  'Linear fitting')
+
 plot(x_alpha_nl*1e6,U_model_nl-U_0_exp_nl, '--', 'LineWidth',3,'Color',col1, 'DisplayName', 'Non-linear fitting')
+
+%plot(x_alpha_lf*1e6,U_model_eq-U_0_exp_lf,'-.', 'LineWidth',2,'Color','black','DisplayName',  'Equipotential')
+
 box on
 
 %xticks((-0.5:0.1:0.5)*1e-7);
 
-errorbar(x_alpha_lf*1e6,  -log(mrho_lf)-U_0_exp_nl, sigma2_U_lf/(kb*T), 'o','MarkerSize',7,'LineWidth', 1.5, 'Color', colbar,  'DisplayName', 'Experimental values of potential energy');
+errorbar(x_alpha_lf*1e6,  -log(mrho_lf)-U_0_exp_nl, sigma2_U_lf/(kb*T), '.','MarkerSize',7,'LineWidth', 1.5, 'Color', colbar,  'DisplayName', 'Experimental values of potential energy');
 
 xlim([-0.06 0.06]);
 %xlim([x_alpha_lf(1)*1e6 x_alpha_lf(end)*1e6]);
