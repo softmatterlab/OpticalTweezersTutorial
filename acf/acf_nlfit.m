@@ -1,4 +1,4 @@
-function [k_acf, Ek_acf, D_acf, ED_acf, tau, mc, Ec, indc, tau0_exp, c0_exp]=acf_nlfit(Vx,T,dt)
+function [k_acf, Ek_acf, D_acf, ED_acf, gamma_exp, sigma2_gamma_exp, tau, mc, Ec, indc, tau0_exp, c0_exp]=acf_nlfit(Vx,T,dt)
 %function [k_acf, Ek_acf, D_acf, ED_acf, tau, mc, Ec]=acf_nlfit(Vx,T,dt)
 % ACF_NLFIT   1D implementation of the AUTOCORRELATION ANALYSIS METHOD
 % USING NON LINEAR FITTING
@@ -70,16 +70,20 @@ c0_exp=params(1)*max_mc;
 %cint=[params(1)-sigma(1)/2 params(2)-sigma(2)/2; params(1)+sigma(1)/2 params(2)+sigma(2)/2];
 
 
-k_acf=kb*T/c0_exp
+k_acf=kb*T/c0_exp;
 
 D_acf=kb*T/(k_acf*tau0_exp);
 
 %cint=confint(c,0.95);
 
-Ek_acf=kb*T/c0_exp^2*(sigma(2))/2*max_mc
+Ek_acf=kb*T/c0_exp^2*(sigma(2))/2*max_mc;
 
 ED_acf=kb*T/(k_acf^2*tau0_exp)*Ek_acf+kb*T/(k_acf*tau0_exp^2)*(sigma(2))/2*max_tau;
+gamma_exp=kb*T/D_acf;
 
+
+sigma2_gamma_exp=kb*T*tau0/max_mc*(-params(2)*sigma(1)/params(1)^2+sigma(2)/params(1));
+end
 % plot
 %figure(1)
 %clf
@@ -95,14 +99,14 @@ ED_acf=kb*T/(k_acf^2*tau0_exp)*Ek_acf+kb*T/(k_acf*tau0_exp^2)*(sigma(2))/2*max_t
 %ylabel('$C_x(\mu \textrm{m}^2)$','Interpreter','latex')
 
 %   
-disp('...')
-
-disp('Autocorrelation function analysis by non-linear fitting')
-
-disp(['k_acf: ' num2str(k_acf*1e6) '+-' num2str(Ek_acf*1e6)])
-
-disp(['D_acf: ' num2str(D_acf) '+-' num2str(ED_acf)])
-
-disp(['gamma_acf:' num2str(kb*T/D_acf) '+-' num2str(kb*T/D_acf^2*ED_acf)])
-disp(['tau_0:' num2str(tau0_exp)]);
+% disp('...')
+% 
+% disp('Autocorrelation function analysis by non-linear fitting')
+% 
+% disp(['k_acf: ' num2str(k_acf*1e6) '+-' num2str(Ek_acf*1e6)])
+% 
+% disp(['D_acf: ' num2str(D_acf) '+-' num2str(ED_acf)])
+% 
+% disp(['gamma_acf:' num2str(kb*T/D_acf) '+-' num2str(kb*T/D_acf^2*ED_acf)])
+% disp(['tau_0:' num2str(tau0_exp)]);
 

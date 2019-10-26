@@ -1,4 +1,4 @@
-function [k_acf_lf, k_acf_nl]=plotsub_pot(filename, positioninthefig1, title1, T, subsample)
+function [k_acf_lf,Ek_acf_lf,D_acf_lf,ED_acf_lf,gamma_acf_lf, sigma2_gamma_acf_lf , k_acf_nl, Ek_acf_nl, D_acf_nl, ED_acf_nl,gamma_acf_nl, sigma2_gamma_acf_nl, tau0_exp_lf, tau0_exp_nl]=plotsub_pot(filename, positioninthefig1, title1, T, subsample)
 load(filename);
 disp(filename);
 kb=1.38e-23;
@@ -28,20 +28,22 @@ P=50;
 
 %number of bins of the histogram, if not set default is 50
 %linear fit
-[k_acf_lf, Ek_acf, D_acf, ED_acf, tau_lf, mc, Ec,indc, tau0_exp_lf, c0_exp_lf]=acf_lfit(x(1:subsample:size(x,1),:),T,dt*subsample);
+[k_acf_lf, Ek_acf_lf, D_acf_lf, ED_acf_lf,gamma_acf_lf, sigma2_gamma_acf_lf,tau_acf_lf, mc, Ec,indc, tau0_exp_lf, c0_exp_lf]=acf_lfit(x(1:subsample:size(x,1),:),T,dt*subsample);
+%[k_acf_lf, Ek_acf, D_acf, ED_acf, tau_lf, mc, Ec,indc, tau0_exp_lf, c0_exp_lf]=acf_lfit(x(1:subsample:size(x,1),:),T,dt*subsample);
 %non linear fit
-[k_acf_nl, Ek_acf, D_acf, ED_acf, tau_nl, mc, Ec, indc, tau0_exp_nl, c0_exp_nl]=acf_nlfit(x(1:subsample:size(x,1),:),T,dt*subsample);
+[k_acf_nl, Ek_acf_nl, D_acf_nl, ED_acf_nl,gamma_acf_nl, sigma2_gamma_acf_nl, tau_nl, mc, Ec, indc, tau0_exp_nl, c0_exp_nl]=acf_nlfit(x(1:subsample:size(x,1),:),T,dt*subsample);
 
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 %bar(x_alpha_lf*1e6, mrho_lf*1e-6, 'EdgeColor', 'white', 'FaceColor', colbar, 'facealpha', 0.8, 'HandleVisibility','off')
 
 
-errorbar(tau_lf(1:20:15*indc),mc(1:20:15*indc)*1e12,Ec(1:20:15*indc)*1e12,'o','MarkerSize',7 ,'LineWidth', 1.5,'Color',colbar, 'DisplayName', 'Experimental autocorrelation function');
-% 
-hold on
-plot(tau_lf(1:20:15*indc),c0_exp_lf*exp(-tau_lf(1:20:15*indc)/tau0_exp_lf)*1e12, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting')
-plot(tau_nl(1:20:15*indc),c0_exp_nl*exp(-tau_nl(1:20:15*indc)/tau0_exp_nl)*1e12, '--', 'LineWidth',3,'Color',col1, 'DisplayName',  'Non -linear fitting')
 
+
+plot(tau_acf_lf(1:20:15*indc),c0_exp_lf*exp(-tau_acf_lf(1:20:15*indc)/tau0_exp_lf)*1e12, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting')
+hold on
+plot(tau_nl(1:20:15*indc),c0_exp_nl*exp(-tau_nl(1:20:15*indc)/tau0_exp_nl)*1e12, '--', 'LineWidth',3,'Color',col1, 'DisplayName',  'Non -linear fitting')
+errorbar(tau_acf_lf(1:20:15*indc),mc(1:20:15*indc)*1e12,Ec(1:20:15*indc)*1e12,'.','MarkerSize',1 ,'LineWidth', 1.5,'Color',colbar, 'DisplayName', 'Experimental autocorrelation function');
+% 
 
 %plot(tau(1:20:6*indc),c0_exp*exp(tau(1:20:6*indc)/tau0_exp)*1e12,'b')
 % % 
