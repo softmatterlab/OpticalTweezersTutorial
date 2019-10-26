@@ -1,4 +1,4 @@
-function [k_pot_lf, k_pot_nl]=plotsub_pot(filename, positioninthefig1, positionintefig2, title1, T, P, subssample)
+function [k_pot_lf,sigma2_k_pot_lf, k_pot_nl,sigma2_k_pot_nl , k_eq, sigma2_k_eq]=plotsub_pot(filename, positioninthefig1, positionintefig2, title1, T, P, subssample)
 load(filename);
 disp(filename);
 kb=1.38e-23;
@@ -39,24 +39,24 @@ subsample=1;
 [k_eq,sigma2_k_eq]=eq1d(x(1:subsample:1000000,:),T,0e-9);
 
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
-disp('Check that the probability distribiution is normalized')
-disp('Integral of the experimental distribuitions')
-disp('Linear fitting')
-disp(sum(mrho_lf*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
-disp('Non-linear fitting')
-disp(sum(mrho_lf*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
+% disp('Check that the probability distribiution is normalized')
+% disp('Integral of the experimental distribuitions')
+% disp('Linear fitting')
+% disp(sum(mrho_lf*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
+% disp('Non-linear fitting')
+% disp(sum(mrho_lf*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
 
 a0=(max(mrho_lf))^2;
 rhomodel_eq=rho0_lf*exp(-k_eq/(2*kb*T)*(x_alpha_lf).^2);
 rhomodel_lf=rho0_lf*exp(-k_pot_lf/(2*kb*T)*(x_alpha_lf-x_eq_lf).^2);
 rhomodel_nl=rho0_nl*exp(-k_pot_nl/(2*kb*T)*(x_alpha_nl-x_eq_nl).^2);
-disp('Integral of the fitted probability distributions')
-disp('Linear fitting')
-disp(sum(rhomodel_lf*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
-disp('Non-linear fitting')
-disp(sum(rhomodel_nl*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
+% disp('Integral of the fitted probability distributions')
+% disp('Linear fitting')
+% disp(sum(rhomodel_lf*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
+% disp('Non-linear fitting')
+% disp(sum(rhomodel_nl*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
 cyan=[0/255,128/255,128/255];
-scatter((x_alpha_lf)*1e6+0.0005, rhomodel_eq*1e-6,'SizeData',100,'MarkerEdgeColor','white', 'MarkerFaceColor',cyan,'MarkerFaceAlpha',0.5,'DisplayName',  'Equipotential');
+scatter((x_alpha_lf)*1e6+0.0005, rhomodel_eq*1e-6,'SizeData',200,'MarkerEdgeColor','white', 'MarkerFaceColor',color2rgb('white_cyan'),'MarkerFaceAlpha',0.9,'DisplayName',  'Equipartition');
 hold on
 
 plot(x_alpha_lf*1e6, rhomodel_lf*1e-6, 'LineWidth',4.5,'Color',col2, 'DisplayName',  'Linear fitting');
@@ -94,7 +94,7 @@ U_model_nl=-(log(rhomodel_nl));
 
 U_model_eq=-(log(rhomodel_eq));
 
-scatter((x_alpha_lf)*1e6+0.0005,U_model_eq-U_0_exp_lf, 'SizeData',100,'MarkerEdgeColor','white','MarkerFaceColor',cyan,'MarkerFaceAlpha',0.5, 'DisplayName',  'Equipotential')
+scatter((x_alpha_lf)*1e6+0.0005,U_model_eq-U_0_exp_lf, 'SizeData',200,'MarkerEdgeColor','white','MarkerFaceColor',color2rgb('white_cyan'),'MarkerFaceAlpha',0.9, 'DisplayName',  'Equipartition')
 hold on
 plot(x_alpha_lf*1e6,U_model_lf-U_0_exp_lf, 'LineWidth',4.5,'Color',col2,'DisplayName',  'Linear fitting')
 

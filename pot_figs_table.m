@@ -48,13 +48,53 @@ figure('Position',[10 20 Xpix Ypix]);
 
 %%
 titleI='Experiment I, P=2.3mW';
-[k_pot_lf_I, k_pot_nl_I]=plotsub_pot('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, P, subs)
+[k_pot_lf_I,sigma2_k_pot_lf_I, k_pot_nl_I,sigma2_k_pot_nl_I , k_eq_I, sigma2_k_eq_I]=plotsub_pot('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, P, subs);
+disp('................')
+disp(titleI)
+disp('Potential analysis by linear fitting')
+disp(['k_lf: ' num2str(k_pot_lf_I*1e6) '+-' num2str(sigma2_k_pot_lf_I*1e6) 'pN/um'])
 
+disp('Potential analysis by non- linear fitting')
+disp(['k_nl: ' num2str( k_pot_nl_I*1e6) '+-' num2str(sigma2_k_pot_nl_I*1e6) 'pN/um'])
+
+disp('Potential analysis by equipartition')
+disp(['k_eq: ' num2str(k_eq_I*1e6) '+-' num2str(sigma2_k_eq_I*1e6) 'pN/um'])
+
+disp('................')
+
+%%
 titleII='Experiment II, P=6.0mW';
-[k_pot_lf_II, k_pot_nl_II]=plotsub_pot('Data_positions_Fig9_1P4_S.mat',[2*bx1+xwi+bx2 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [2*bx1+xwi+bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, P, subs)
+[k_pot_lf_II,sigma2_k_pot_lf_II, k_pot_nl_II,sigma2_k_pot_nl_II , k_eq_II, sigma2_k_eq_II]=plotsub_pot('Data_positions_Fig9_1P4_S.mat',[2*bx1+xwi+bx2 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [2*bx1+xwi+bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, P, subs);
+disp('................')
+disp(titleII)
+disp('Potential analysis by linear fitting')
+disp(['k_lf: ' num2str(k_pot_lf_II*1e6) '+-' num2str(sigma2_k_pot_lf_II*1e6) 'pN/um'])
 
+disp('Potential analysis by non- linear fitting')
+disp(['k_nl: ' num2str( k_pot_nl_II*1e6) '+-' num2str(sigma2_k_pot_nl_II*1e6) 'pN/um'])
 
+disp('Potential analysis by equipartition')
+disp(['k_eq: ' num2str(k_eq_II*1e6) '+-' num2str(sigma2_k_eq_II*1e6) 'pN/um'])
+
+disp('................')
+
+%%
 titleIII='Experiment III, P=9.2mW';
-[k_pot_lf_III, k_pot_nl_III]=plotsub_pot('Data_positions_Fig9_1P6_S.mat',[3*bx1+2*xwi+2*bx2 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [3*bx1+2*xwi+2*bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, P, subs)
+[k_pot_lf_III,sigma2_k_pot_lf_III, k_pot_nl_III,sigma2_k_pot_nl_III , k_eq_III, sigma2_k_eq_III]=plotsub_pot('Data_positions_Fig9_1P6_S.mat',[3*bx1+2*xwi+2*bx2 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [3*bx1+2*xwi+2*bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, P, subs);
+
+disp('................')
+disp(titleIII)
+disp('Potential analysis by linear fitting')
+disp(['k_lf: ' num2str(k_pot_lf_III*1e6) '+-' num2str(sigma2_k_pot_lf_III*1e6) 'pN/um'])
+
+disp('Potential analysis by non- linear fitting')
+disp(['k_nl: ' num2str( k_pot_nl_III*1e6) '+-' num2str(sigma2_k_pot_nl_III*1e6) 'pN/um'])
+
+disp('Potential analysis by equipartition')
+disp(['k_eq: ' num2str(k_eq_III*1e6) '+-' num2str(sigma2_k_eq_III*1e6) 'pN/um'])
+
+disp('................')
+
+
 
 %2:3mW, 6:0mW, and 9:2mW
