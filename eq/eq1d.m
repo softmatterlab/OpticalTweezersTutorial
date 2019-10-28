@@ -25,8 +25,8 @@ k_eq=mean(kexp);
 sigma2_k_eq=sqrt(var(kexp)+mean(sigma2_kexp2));
 
 %
-disp('...')
+%disp('...')
 
-disp('Equipartition analysis')
+%disp('Equipartition analysis')
 
-disp(['k_eq: ' num2str(k_eq) '+-' num2str(sigma2_k_eq)]);
+%disp(['k_eq: ' num2str(k_eq) '+-' num2str(sigma2_k_eq)]);
