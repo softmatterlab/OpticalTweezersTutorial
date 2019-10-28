@@ -1,8 +1,8 @@
-function [k_msd,sigma_k_msd, tau0, sigma2_tau0, D_msd, ED_msd, tau, mmsd, Emsd, indc]=msd_nfilt(x,T,dt,maxlag)
+function [k_msd,sigma_k_msd, tau0, sigma2_tau0, D_msd, ED_msd, tau, mmsd, Emsd, indc, gamma_msd, sigma2_gamma_msd]=msd_nfilt(x,T,dt,maxlag)
 %function [k_msd, Ek_msd, D_msd, ED_msd, tau, mmsd, Emsd, indc]=msd_nlfit(Vx,T,dt,maxlag)
 % MSD_NLFIT   1D implementation of the MEAN SQUARE DISPLACEMENT ANALYSIS METHOD
 % USING NON LINEAR FITTING
-addpath /../wlsice/ 
+addpath wlsice
 x = x - repmat(mean(x),size(x,1),1);
 
 kb=1.38064852e-23;
@@ -21,7 +21,7 @@ for j=1:Nexp
     
     msd(j,:)=msd1;
 end
-disp(size(msd));
+
 mmsd=mean(msd,1);
 
 %Emsd=std(msd,[],2)+(1e-9)^2;
@@ -30,11 +30,9 @@ Emsd=std(msd,[],1);
 
 a0=mmsd(end); %amplitude
 
-disp('a0')
 
-disp(a0)
 
-disp(Emsd(end))
+
 %find the characteristic time
 
 atau=a0*(1-exp(-1)); 
@@ -46,8 +44,7 @@ ind=find(dc(1:end-1).*dc(2:end)<0);
 indtau=ind(1);
 
 tau0=tau(indtau);
-disp('tau0')
-disp(tau0)
+
 
 ntaus=6;
 
@@ -115,10 +112,10 @@ Etau=(sigma(2))/2*max_tau;
 ED_msd=kb*T/(k_msd^2*tau0)*sigma_k_msd+kb*T/(k_msd*tau0^2)*Etau;
 
 sigma2_gamma_msd=sigma_k_msd*tau0+k_msd*Etau;
-disp('k_msd')
-disp([num2str(k_msd*1e6) '+-'  num2str(sigma_k_msd*1e6)])
-disp('tau0')
-disp([num2str(tau0) '+-'  num2str(sigma2_tau0)])
-disp('gamma')
-disp([num2str(gamma_msd) '+-'  num2str(sigma2_gamma_msd)])
+% disp('k_msd')
+% disp([num2str(k_msd*1e6) '+-'  num2str(sigma_k_msd*1e6)])
+% disp('tau0')
+% disp([num2str(tau0) '+-'  num2str(sigma2_tau0)])
+% disp('gamma')
+% disp([num2str(gamma_msd) '+-'  num2str(sigma2_gamma_msd)])
 
