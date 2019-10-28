@@ -68,7 +68,7 @@ ylim([0, 3.1*1e-4])
 % xlabel('$x(\mu m)$','Interpreter','Latex', 'FontSize',20)
 % ylabel('$\rho (\rm{\mu m^{-1}})$','Interpreter','Latex', 'FontSize',20)
 % hold off
-% title(title1)
+ title(title1)
 % legend
 % 
 % %second figure, Energy potential distribution, exp I

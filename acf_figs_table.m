@@ -83,7 +83,7 @@ disp(['k_acf: ' num2str(k_acf_lf_II*1e6) '+-' num2str(Ek_acf_lf_II*1e6) ' pN/um'
  
 disp(['D_acf: ' num2str(D_acf_lf_II*1e12) '+-' num2str(sigma2_D_acf_lf_II*1e12) ' um^2/s'])
  
-disp(['gamma_acf:' num2str(gamma_acf_lf_II*1e9) '+-'  num2str(sigma2_gamma_acf_lf_II*1e9) ' pN s/um ']);
+disp(['gamma_acf:' num2str(gamma_acf_lf_II*1e9) '+-'  num2str(sigma2_gamma_acf_lf_II*1e9) ' pN ms/um ']);
 disp(['tau_0:' num2str(tau0_exp_lf_II*1e3) ' ms']);
  
 disp('................')
