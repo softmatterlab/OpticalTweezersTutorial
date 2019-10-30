@@ -36,7 +36,7 @@ subsample=1;
 
 %number of bins of the histogram, if not set default is 50
 %linear fit
-[k_eq,sigma2_k_eq]=eq1d(x(1:subsample:1000000,:),T,0e-9);
+[k_eq,sigma2_k_eq]=eq1d(x(1:subsample:1000000,:),T);
 
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 % disp('Check that the probability distribiution is normalized')
@@ -59,25 +59,27 @@ cyan=[0/255,128/255,128/255];
 scatter((x_alpha_lf)*1e6+0.0005, rhomodel_eq*1e-6,'SizeData',200,'MarkerEdgeColor','white', 'MarkerFaceColor',color2rgb('white_cyan'),'MarkerFaceAlpha',0.9,'DisplayName',  'Equipartition');
 hold on
 
-plot(x_alpha_lf*1e6, rhomodel_lf*1e-6, 'LineWidth',4.5,'Color',col2, 'DisplayName',  'Linear fitting');
+plot(x_alpha_lf*1e6, rhomodel_lf*1e-6, 'LineWidth',4.5,'Color',col2, 'DisplayName',  'Linear fit');
 
 cyan=[0/255,128/255,128/255];
-plot(x_alpha_nl*1e6, rhomodel_nl*1e-6,'--','LineWidth',3,'Color',col1, 'DisplayName', 'Non-linear fitting')
+plot(x_alpha_nl*1e6, rhomodel_nl*1e-6,'--','LineWidth',3,'Color',color2rgb('deep_purple'), 'DisplayName', 'Non-linear fit')
 
-errorbar(x_alpha_lf*1e6,  mrho_lf*1e-6, 1e-6*abs(sigma2_rho_lf),'.','MarkerSize',7 ,'LineWidth', 1.5,'Color',colbar,'DisplayName', 'Experimental probability distribution');
+errorbar(x_alpha_lf*1e6,  mrho_lf*1e-6, 1e-6*abs(sigma2_rho_lf),'.','MarkerSize',7 ,'LineWidth', 1.5,'Color',colbar,'DisplayName', 'Experimental');
 
 
 
 box on
 %xticks((-0.5:0.1:0.5)*1e-7);
-xlim([-0.06 0.06]);
-ylim([0, 47.5])
-set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',15);
-xlabel('$x(\mu m)$','Interpreter','Latex', 'FontSize',20)
-ylabel('$\rho (\rm{\mu m^{-1}})$','Interpreter','Latex', 'FontSize',20)
+xlim([-0.070 0.070]);
+ylim([-1 50])
+set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5,'FontSize',25);
+xlabel(' x( µ m)','Interpreter','tex', 'FontSize',30,'FontName','Times New Roman');
+
+%xlabel('$x (µ m)$','Interpreter','tex', 'FontSize',30)
+%xlabel(['c_{O2} [',char(181),'mol/l]'],'Interpreter','tex')
+ylabel(['\rho (µ m^{-1})'],'Interpreter','tex', 'FontSize',30, 'FontName','Times New Roman')
 hold off
-title(title1)
-legend
+legend('FontSize',25)
 
 %second figure, Energy potential distribution, exp I
 axes('Position',positionintefig2);  
@@ -96,9 +98,9 @@ U_model_eq=-(log(rhomodel_eq));
 
 scatter((x_alpha_lf)*1e6+0.0005,U_model_eq-U_0_exp_lf, 'SizeData',200,'MarkerEdgeColor','white','MarkerFaceColor',color2rgb('white_cyan'),'MarkerFaceAlpha',0.9, 'DisplayName',  'Equipartition')
 hold on
-plot(x_alpha_lf*1e6,U_model_lf-U_0_exp_lf, 'LineWidth',4.5,'Color',col2,'DisplayName',  'Linear fitting')
+plot(x_alpha_lf*1e6,U_model_lf-U_0_exp_lf, 'LineWidth',4.5,'Color',col2,'DisplayName',  'Linear fit')
 
-plot(x_alpha_nl*1e6,U_model_nl-U_0_exp_nl, '--', 'LineWidth',3,'Color',col1, 'DisplayName', 'Non-linear fitting')
+plot(x_alpha_nl*1e6,U_model_nl-U_0_exp_nl, '--', 'LineWidth',3,'Color',color2rgb('deep_purple'), 'DisplayName', 'Non-linear fit')
 
 %plot(x_alpha_lf*1e6,U_model_eq-U_0_exp_lf,'-.', 'LineWidth',2,'Color','black','DisplayName',  'Equipotential')
 
@@ -108,14 +110,20 @@ box on
 
 errorbar(x_alpha_lf*1e6,  -log(mrho_lf)-U_0_exp_nl, sigma2_U_lf/(kb*T), '.','MarkerSize',7,'LineWidth', 1.5, 'Color', colbar,  'DisplayName', 'Experimental values of potential energy');
 
-xlim([-0.06 0.06]);
+xlim([-0.070 0.070]);
 %xlim([x_alpha_lf(1)*1e6 x_alpha_lf(end)*1e6]);
-set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',15);
-xlabel('$x(\mu m)$','Interpreter','Latex', 'FontSize',20)
-ylabel('$U(k_BT)$','Interpreter','Latex','FontSize',20)
-ylim([0, 10])
+set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5, 'FontSize',25);
+
+xlabel(' x( µ m)','FontSize',30,'FontName','Times New Roman');
+% 
+% 
+
+% 
+ylabel('$U(k_{\rm B} T)$','Interpreter','Latex','FontSize',30)
+ylim([-0.5, 10])
 
 hold off
-
-legend
+ set(gca,'DefaultTextFontname', 'Times')
+   set(gca,'DefaultAxesFontName','Times')
+   legend('FontSize',25)
 end

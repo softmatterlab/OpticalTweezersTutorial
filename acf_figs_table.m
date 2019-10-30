@@ -10,13 +10,13 @@ v=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
 gamma=pi*6*r*v; %[m*Pa*s]
 
 xwi = 400;    % width of the plot square
-bx1 = 80;     % extra space at the left
+bx1 = 90;     % extra space at the left
 bx2 = 20;     % extra space at the right
 
 Xpix = 3*xwi+3*bx1+3*bx2;  % total
 
 ywi = 300;    % length riquadro con funzione
-by1 = 60;     % extra space below
+by1 = 80;     % extra space below
 by2 = 30;     % extra space up
 
 Ypix = 1*by1+1*ywi+1*by2;  % larghezza figura in pixel

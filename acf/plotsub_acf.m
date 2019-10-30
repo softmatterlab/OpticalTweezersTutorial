@@ -41,7 +41,7 @@ axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli
 
 plot(tau_acf_lf(1:20:15*indc),c0_exp_lf*exp(-tau_acf_lf(1:20:15*indc)/tau0_exp_lf)*1e12, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting')
 hold on
-plot(tau_nl(1:20:15*indc),c0_exp_nl*exp(-tau_nl(1:20:15*indc)/tau0_exp_nl)*1e12, '--', 'LineWidth',3,'Color',col1, 'DisplayName',  'Non -linear fitting')
+plot(tau_nl(1:20:15*indc),c0_exp_nl*exp(-tau_nl(1:20:15*indc)/tau0_exp_nl)*1e12, '--', 'LineWidth',3,'Color',color2rgb('deep_purple'), 'DisplayName',  'Non -linear fitting')
 errorbar(tau_acf_lf(1:20:15*indc),mc(1:20:15*indc)*1e12,Ec(1:20:15*indc)*1e12,'.','MarkerSize',1 ,'LineWidth', 1.5,'Color',colbar, 'DisplayName', 'Experimental autocorrelation function');
 % 
 
@@ -60,15 +60,15 @@ errorbar(tau_acf_lf(1:20:15*indc),mc(1:20:15*indc)*1e12,Ec(1:20:15*indc)*1e12,'.
 % box on
 % %xticks((-0.5:0.1:0.5)*1e-7);
 ntaus=6;
-plot([tau0_exp_lf*ntaus,tau0_exp_lf*ntaus],[0,1],'--k', 'HandleVisibility','off')
-text(tau0_exp_lf*ntaus,0.1e-4,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',20)
+plot([tau0_exp_lf*ntaus,tau0_exp_lf*ntaus],[-0.5,1],'--k', 'HandleVisibility','off')
+text(tau0_exp_lf*ntaus*0.95,0.3e-4,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',30)
 xlim([0 0.009]);
-ylim([0, 3.1*1e-4])
+ylim([-0.1, 3.1]*1e-4)
 % set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',15);
 % xlabel('$x(\mu m)$','Interpreter','Latex', 'FontSize',20)
 % ylabel('$\rho (\rm{\mu m^{-1}})$','Interpreter','Latex', 'FontSize',20)
 % hold off
- title(title1)
+ 
 % legend
 % 
 % %second figure, Energy potential distribution, exp I
@@ -92,9 +92,9 @@ ylim([0, 3.1*1e-4])
 % 
 % xlim([-0.06 0.06]);
 % %xlim([x_alpha_lf(1)*1e6 x_alpha_lf(end)*1e6]);
- set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',15);
- xlabel('$\tau(\rm s)$','Interpreter','Latex', 'FontSize',20)
- ylabel('$C(\rm \mu m ^2)$','Interpreter','Latex','FontSize',20)
+ set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',25);
+ xlabel('$\tau(\rm s)$','Interpreter','Latex', 'FontSize',30)
+ ylabel('$C(  \mu  m ^2)$','Interpreter','Latex','FontSize',30, 'FontName', 'TimesNewRoman')
 % ylim([0, 10])
 % 
 % hold off

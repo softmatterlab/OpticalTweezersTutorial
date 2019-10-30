@@ -1,29 +1,75 @@
-clear all 
-close all
-%load data files
-load('Data_positions_Fig9_1P2_S.mat')
+% PSD analysis for Nexp
 
-xx = reshape(x,[size(x,1)*size(x,2),1]);
-N=length(xx);
-%some useful calculations from the positions
+% Initialization of the workspace
+clear;
 
-
-%physical constants
-kB=1.38e-23; % Boltzmann constant [m^2kg/s^2K]
-
-%definition of parameter
-
-eta=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
-k_th=14*1e-6;
-gamma=6*pi*eta*a;
+close all;
 
 addpath forma
 
 
-[k_forma1d, D_forma1d] = forma1d(xx, dt, gamma);
 
-disp(['FORMA 1D results:'])
-disp(['k* = ' num2str( k_forma1d ) ' N/m'])
-disp(['k*/k = ' num2str( k_forma1d/k )])
-disp(['D* = ' num2str( D_forma1d ) ' m^2/s'])
-disp(['D*/D = ' num2str( D_forma1d/D )])
+load('Data_positions_Fig9_1P2_S.mat')
+
+
+x = x - repmat(mean(x),size(x,1),1);
+
+gamma=6*pi*eta*a;
+
+kb=1.38064852e-23;
+
+D0=kb*T/gamma;
+
+subs=10; %use a subsampled data set
+
+[N,Nexp]=size(x);
+
+[fc_forma,D_forma,Efcsol,EDsol]=forma1d(x(1:subs:N,:),dt*subs);
+
+mD_forma=mean(D_forma);
+
+ED_forma=std(D_forma);
+
+gamma_forma=kb*T./D_forma;
+
+mgamma_forma=mean(gamma_forma);
+
+Egamma_forma=std(gamma_forma);
+
+k_forma=2*pi*gamma*fc_forma;
+
+mk_forma=mean(k_forma);
+
+Ek_forma=std(k_forma);
+
+% estimation of k using the estimated gamma
+k2_forma=2*pi*gamma_forma.*fc_forma;
+
+mk2_forma=mean(k2_forma);
+
+Ek2_forma=std(k2_forma);
+
+Eksol=2*pi*gamma_forma.*Efcsol;
+
+
+
+disp('...')
+
+disp('FORMA analysis')
+
+disp(['D: ' num2str(mD_forma) '+-' num2str(ED_forma) ' m^2/s'])
+
+disp(['D0: ' num2str(D0) ' m^2/s']);
+
+disp(['gamma: ' num2str(mgamma_forma) '+-' num2str(Egamma_forma) ' Ns/m'])
+
+disp(['gamma0: ' num2str(gamma) ' Ns/m'])
+
+disp(['k: ' num2str(mk_forma) '+-' num2str(Ek_forma) ' N/m'])
+
+disp(['k2: ' num2str(mk2_forma) '+-' num2str(Ek2_forma) ' N/m'])
+
+disp(['fc: ' num2str(mean(fc_forma)) ' Hz'])
+
+disp(['Esol:' num2str(Eksol)])
+

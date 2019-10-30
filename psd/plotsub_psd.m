@@ -16,8 +16,6 @@ nw=round(size(x(1:subs:end,:),1)/500);
 kb=1.38064852e-23;
 gamma=6*pi*eta*a;
 [fc_exp,D_exp,Efc_exp,ED_exp,f,XX,fw_mean,Pk,EPk,fcut]=psd_lfit(x(1:subs:end,:),dt*subs,nw,1/4);
-
-
 mgamma_psd=kb*T./D_exp;
 
 Egamma_psd=kb*T./D_exp^2*ED_exp;

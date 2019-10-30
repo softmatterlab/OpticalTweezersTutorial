@@ -6,7 +6,7 @@ function [fc_exp,D_exp,Efc_exp,ED_exp,f,XX,fw_mean,Pk,EPk,fcut]=psd_lfit(Xs,dt,N
 % Nb: Number of windows, for example Nb=500
 % pc: fraction of f_Niquist taken for the fitting. Usually 1/4 is a good value. 
 [N,Nexp]=size(Xs);
-
+kb=1.38e-23;
 Ts=N*dt;
 
 f=1/dt*(1:(N/2))/N;
@@ -102,6 +102,7 @@ sD=sqrt(u/((1+pi/2)*(xmax-xmin)));
 Efc_exp=sfc/sqrt(pi*fc_exp*Ts)*fc_exp;
 
 ED_exp=sqrt((1+pi/2)/(pi*fc_exp*Ts))*sD*D_exp;
+
 
 
 
