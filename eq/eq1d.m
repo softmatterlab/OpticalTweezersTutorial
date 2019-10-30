@@ -1,4 +1,4 @@
-function [k_eq, sigma2_k_eq]=eq1d_v1(x,T,deltax)
+function [k_eq, sigma2_k_eq]=eq1d(x,T)
 %function [mk, Ek]=eq1d(Vx,T,deltax)
 % deltax: error in the position detection
 % EQ1D   1D implementation of the EQUIPARTITION METHOD
@@ -6,7 +6,7 @@ function [k_eq, sigma2_k_eq]=eq1d_v1(x,T,deltax)
 kb=1.38064852e-23;
 
 [N,Nexp]=size(x);
-
+deltax=0;
 for j=1:Nexp
     
     xx=x(:,j);

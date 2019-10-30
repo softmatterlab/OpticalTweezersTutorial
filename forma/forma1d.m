@@ -1,24 +1,35 @@
-function [k, D] = forma1d(x, Dt, gamma)
+function [fcv, Dv, Efc, ED] = forma1d(Vx, dt)
 % FORMA1D   1D implementation of FORMA
 %
-% [k, D] = FORMA1D(x, Dt, gamma) calculates the values of the trap
-%           stiffness k and the particle diffusion coefficient D given a
-%           sequence of particle positions x sampled with sampling
-%           frequency 1/Dt and the friction coefficient gamma of the
-%           particle.
-%
-%   This code is provided with the article:
-%
-%   High-Performance Reconstruction of Microscopic Force Fields from
-%   Brownian Trajectories
-%   Laura Perez Garcia, Jaime DonLucas, Giorgio Volpe, Alejandro V. Arzola
-%   & Giovanni Volpe 
-%   2018
+% [fc, D] = FORMA1D(x, dt)
+% Efc and ED are useful if there is only one series of time.
 
-dx = diff(x); 
-x = x(1:end-1);
-f = gamma*dx/Dt;
+[N,Nexp]=size(Vx);
 
-k = -sum(x.*f)/sum(x.^2);
+for j=1:Nexp
+    
+    x=Vx(:,j);
+    
+    dx = diff(x)/dt;
+    
+    x = x(1:end-1);
+    
+    fc= -1/(2*pi)*sum(x.*dx)/sum(x.^2);
+    
+    eps=dx+2*pi*fc*x;
+    
+    D=dt/2*mean((eps).^2);
+    
+    ED(j)=D*sqrt(2/N);
+    
+    Efc(j)=1/(2*pi)*sqrt(2*D/(dt*sum(x.^2)));
+    
+    fcv(j)=fc;
+    
+    Dv(j)=D;
+    
 
-D = mean(Dt/(2*gamma^2)*(f+k*x).^2);
+    
+end
+
+
