@@ -38,7 +38,7 @@ gamma=kB*T/D;
 
 sigma_D=sqrt(beta_N^2/(4*(alpha_N-1)^2*(alpha_N-2)));
 sigma_gamma=kB*T/D^2*sigma_D;
-k=K_N*gamma/(2*pi);
+k=K_N*gamma;
 sigma_f_k_gamma=sqrt(psi_N*beta_N/(alpha_N-1));
 sigma_k=gamma*sigma_f_k_gamma+K_N*sigma_gamma;
 end

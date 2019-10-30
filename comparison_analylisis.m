@@ -11,22 +11,22 @@ load('Data_positions_Fig9_1P2_S.mat')
 
 
 
-
+x = x - repmat(mean(x),size(x,1),1);
 kB=1.38e-23; % Boltzmann constant [m^2kg/s^2K]
 T=300;  % Temperature [K]
 r=1.03E-6;      % Particle radius [m]
 v=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
 gamma=pi*6*r*v; %[m*Pa*s]
-dnn=5e2*(1:1e2:2000-1);
+dnn=1e3*(1:1e1:500-1);
 disp(length(dnn));
-for nj=length(dnn)
+for nj=1:length(dnn)
 
     
 disp(nj);
 xn =x(1:dnn(nj), :);
 N=size(xn);
 disp(N);
-    if 3==1
+
 
 %Potential
 [k_pot(nj), sigma_k_pot(nj), ~, ~, ~, ~, ~, ~, ~,~]=pot_lfit(xn,T,50);
@@ -50,7 +50,7 @@ sigma_k_psd(nj)=2*pi*gamma*sigma_fc_exp;
 maxlag=50;
 subs=20;
 [k_msd(nj),sigma_k_msd(nj),~, ~, D_msd(nj), ED_msd(nj), ~, ~, ~, ~, gamma_msd(nj), sigma2_gamma_msd(nj)]=msd_nfilt(xn(1:subs:size(xn,1),:),T,dt*subs,maxlag);
-    end
+    
 %especial data format for FORMA and bayesian  analysis
 xl=reshape(xn, [size(xn,1)*size(xn,2),1 ]);
 subs=10;
