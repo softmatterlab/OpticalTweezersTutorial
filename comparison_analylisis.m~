@@ -47,7 +47,7 @@ maxlag=20;
 %[k_forma(nj), sigma_k_forma(nj),D_forma(nj), sigma_D_forma(nj)] = forma1d(reshape(x, [size(x,1)*size(x,2),1 ]), dt, gamma);
 %BAYESIAN
 subs=10;
-[k_bay(nj), sigma_k_bay(nj), gamma_bay(nj), sigma_gamma_bay(nj), D_bay(nj), sigma_D_bay(nj)]= bayesian(x(1:subs:end), dt*subs,T, a);
+[k_bay(nj), sigma_k_bay, gamma_bay, sigma_gamma_bay, D_bay, sigma_D_bay]= bayesian(x(1:subs:end), dt*subs,T, a);
 end
 
 
