@@ -10,7 +10,7 @@ addpath bayesian
 load('Data_positions_Fig9_1P2_S.mat')
 
 
-
+x = x - repmat(mean(x),size(x,1),1);
 
 kB=1.38e-23; % Boltzmann constant [m^2kg/s^2K]
 T=300;  % Temperature [K]
