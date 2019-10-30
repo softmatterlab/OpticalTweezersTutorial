@@ -19,52 +19,54 @@ v=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
 gamma=pi*6*r*v; %[m*Pa*s]
 dnn=5e2*(1:1e2:2000-1);
 disp(length(dnn));
-for nj=length(dnn)
+
+for nj=1:length(dnn)
 
     
 disp(nj);
-xn =x(1:dnn(nj), :);
-N=size(xn);
-disp(N);
-    if 3==1
+xn =x(1:dnn(nj)-1, :);
 
-%Potential
-[k_pot(nj), sigma_k_pot(nj), ~, ~, ~, ~, ~, ~, ~,~]=pot_lfit(xn,T,50);
-%Equipartition
-[k_eq(nj), sigma_k_eq(nj)]=eq1d(xn,T);
-%autocorrelation function
-[k_acf(nj), sugma_acf(nj), D_acf(nj), sigam_D_acf(nj),gamma_exp(nj), sigma_gamma_exp(nj),~, ~, ~,~, ~, ~]=acf_lfit(xn,T,dt);
+dxn=diff(x(1:dnn(nj), :), 1, 1);
 
-%power spectral density
-nw=round(size(xn,1)/500); 
-[fc_exp,D_exp(nj),sigma_fc_exp,sigma_D_exp(nj),~,~,~,~,~,~]=psd_lfit(xn,dt,nw,1/4);
-gamma_psd(nj)=kB*T./D_exp(nj);
-
-sigma_gamma_psd(nj)=kB*T./D_exp(nj)^2*sigma_D_exp(nj);
-
-k_psd(nj)=2*pi*gamma*fc_exp;
-
-sigma_k_psd(nj)=2*pi*gamma*sigma_fc_exp;
-
-%mean square displacement
-maxlag=50;
-subs=20;
-[k_msd(nj),sigma_k_msd(nj),~, ~, D_msd(nj), ED_msd(nj), ~, ~, ~, ~, gamma_msd(nj), sigma2_gamma_msd(nj)]=msd_nfilt(xn(1:subs:size(xn,1),:),T,dt*subs,maxlag);
-    end
-%especial data format for FORMA and bayesian  analysis
-xl=reshape(xn, [size(xn,1)*size(xn,2),1 ]);
 subs=10;
-%FORMA
 
-[fc_forma,D_forv,Efc_forma,sigma_D_forma_v] = forma1d(xn(1:subs:end, :), dt*subs);
+[fc_forma,D_forv,Efc_forma,sigma_D_forma_v] = forma1d_v2(xn(1:subs:end, :), dxn(1:subs:end, :),dt*subs);
 D_forma(nj)=mean(D_forv);
 gamma_forma=kB*T./D_forma(nj);
+k_forma=gamma*fc_forma;
 kfor=gamma_forma.*mean(fc_forma);
 disp(kfor);
 k_forma(nj)=kfor;
 sigma_k_forma=gamma_forma.*Efc_forma;
+
+
+
+mD_forma=mean(D_forma);
+
+ED_forma=std(D_forma);
+
+gamma_forma=kb*T./D_forma;
+
+mgamma_forma=mean(gamma_forma);
+
+Egamma_forma=std(gamma_forma);
+
+k_forma=gamma*fc_forma;
+
+mk_forma=mean(k_forma);
+
+Ek_forma=std(k_forma);
+
+% estimation of k using the estimated gamma
+k2_forma=gamma_forma.*fc_forma;
+
+mk2_forma=mean(k2_forma);
+
+Ek2_forma=std(k2_forma);
+
+Eksol=2*pi*gamma_forma.*Efcsol;
 %BAYESIAN
-[k_bay(nj), sigma_k_bay(nj), gamma_bay(nj), sigma_gamma_bay(nj), D_bay(nj), sigma_D_bay(nj)]= bayesian(xl(1:subs:end), dt*subs,T, a);
+%[k_bay(nj), sigma_k_bay(nj), gamma_bay(nj), sigma_gamma_bay(nj), D_bay(nj), sigma_D_bay(nj)]= bayesian(xl(1:subs:end), dt*subs,T, a);
 
 end
 

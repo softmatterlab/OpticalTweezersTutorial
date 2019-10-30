@@ -1,14 +1,14 @@
-function [fcv, Dv, Efc, ED] = forma1d(Vx, dt)
+function [fcv, Dv, Efc, ED] = forma1d_v2(x, dx, dt)
 % FORMA1D   1D implementation of FORMA
 %
 % [fc, D] = FORMA1D(x, dt)
 % Efc and ED are useful if there is only one series of time.
 
-[N,Nexp]=size(Vx);
+[N,Nexp]=size(x);
 
 for j=1:Nexp
     
-    x=Vx(:,j);
+    x=x(:,j);
     
     dx = diff(x)/dt;
     

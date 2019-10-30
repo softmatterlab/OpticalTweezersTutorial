@@ -17,11 +17,17 @@ T=300;  % Temperature [K]
 r=1.03E-6;      % Particle radius [m]
 v=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
 gamma=pi*6*r*v; %[m*Pa*s]
-dnn=2e3*(1:1e1:5000);
-for nj=1:30%length(dnn)
-    nj
+dnn=5e2*(1:1e2:2000-1);
+disp(length(dnn));
+for nj=1:length(dnn)
+
+    
+disp(nj);
 xn =x(1:dnn(nj), :);
-N=length(xn);
+N=size(xn);
+disp(N);
+    if 3==1
+
 %Potential
 [k_pot(nj), sigma_k_pot(nj), ~, ~, ~, ~, ~, ~, ~,~]=pot_lfit(xn,T,50);
 %Equipartition
@@ -41,25 +47,39 @@ k_psd(nj)=2*pi*gamma*fc_exp;
 sigma_k_psd(nj)=2*pi*gamma*sigma_fc_exp;
 
 %mean square displacement
-maxlag=20;
-[k_msd(nj),sigma_k_msd(nj),~, ~, D_msd(nj), ED_msd(nj), ~, ~, ~, ~, gamma_msd(nj), sigma2_gamma_msd(nj)]=msd_nfilt(x,T,dt,maxlag);
-%FORMA
-%[k_forma(nj), sigma_k_forma(nj),D_forma(nj), sigma_D_forma(nj)] = forma1d(reshape(x, [size(x,1)*size(x,2),1 ]), dt, gamma);
-%BAYESIAN
+maxlag=50;
+subs=20;
+[k_msd(nj),sigma_k_msd(nj),~, ~, D_msd(nj), ED_msd(nj), ~, ~, ~, ~, gamma_msd(nj), sigma2_gamma_msd(nj)]=msd_nfilt(xn(1:subs:size(xn,1),:),T,dt*subs,maxlag);
+    end
+%especial data format for FORMA and bayesian  analysis
+xl=reshape(xn, [size(xn,1)*size(xn,2),1 ]);
 subs=10;
-[k_bay(nj), sigma_k_bay, gamma_bay, sigma_gamma_bay, D_bay, sigma_D_bay]= bayesian(x(1:subs:end), dt*subs,T, a);
+%FORMA
+
+[fc_forma,D_forma(nj),Efc_forma,sigma_D_forma(nj)] = forma1d(xn(1:su), dt*subs);
+gamma_forma=kB*T./D_forma(nj);
+kfor=gamma_forma.*fc_forma;
+disp(kfor);
+k_forma(nj)=kfor;
+sigma_k_forma=gamma_forma.*Efc_forma;
+%BAYESIAN
+[k_bay(nj), sigma_k_bay(nj), gamma_bay(nj), sigma_gamma_bay(nj), D_bay(nj), sigma_D_bay(nj)]= bayesian(xl(1:subs:end), dt*subs,T, a);
+
 end
 
 
-save('results_comparison.mat', 'k_pot', 'sigma_k_pot', 'k_eq', 'sigma_k_eq')
+%save('results_comparison.mat', 'k_pot', 'sigma_k_pot', 'k_eq', 'sigma_k_eq')
 %%
-load('results_comparison.mat')
-scatter(dnn(1:30), k_pot*1e6, 'DisplayName', 'Potential')
+close all
+%load('results_comparison.mat')
+% semilogx(dnn(1:30), k_pot*1e6, 'DisplayName', 'Potential', 'Color', 'red', 'LineWidth', 3)
+% hold on
+% semilogx(dnn(1:30), k_eq*1e6, 'DisplayName', 'Equipartition', 'Color', 'blue', 'LineWidth', 3)
+% semilogx(dnn(1:30), k_acf*1e6, 'DisplayName', 'ACF', 'Color', 'cyan', 'LineWidth', 3)
+% semilogx(dnn(1:30), k_psd*1e6, 'DisplayName', 'PSD', 'Color', 'yellow', 'LineWidth', 3)
+% semilogx(dnn(1:30), k_msd*1e6, 'DisplayName', 'MSD', 'Color', 'black', 'LineWidth', 3)
+
+semilogx(dnn, k_forma, 'DisplayName', 'FORMA', 'Color', 'magenta', 'LineWidth', 3)
 hold on
-scatter(dnn(1:30),k_eq*1e6, 'DisplayName', 'Equipartition')
-scatter(dnn(1:30),k_acf*1e6, 'DisplayName', 'Autocorrelation funtion')
-scatter(dnn(1:30),k_psd*1e6, 'DisplayName', 'PSD')
-scatter(dnn(1:30),k_msd*1e6,  'DisplayName', 'MSD')
-%scatter(dnn(1:30),k_forma*1e6,  'DisplayName', 'FORMA')
-scatter(dnn(1:30), k_bay*1e6,  'DisplayName', 'BAYES')
+semilogx(dnn, k_bay, 'DisplayName', 'BAYESIAN', 'Color', [0.1 0.5 0.7], 'LineWidth', 3)
 legend

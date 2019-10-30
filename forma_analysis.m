@@ -13,7 +13,8 @@ load('Data_positions_Fig9_1P2_S.mat')
 
 
 x = x - repmat(mean(x),size(x,1),1);
-
+xl=reshape(x, [size(x,1)*size(x,2),1 ]);
+subs=10;
 gamma=6*pi*eta*a;
 
 kb=1.38064852e-23;
@@ -24,7 +25,7 @@ subs=10; %use a subsampled data set
 
 [N,Nexp]=size(x);
 
-[fc_forma,D_forma,Efcsol,EDsol]=forma1d(x(1:subs:N,:),dt*subs);
+[fc_forma,D_forma,Efcsol,EDsol]=forma1d(xl(1:subs:end),dt*subs);
 
 mD_forma=mean(D_forma);
 
@@ -36,14 +37,14 @@ mgamma_forma=mean(gamma_forma);
 
 Egamma_forma=std(gamma_forma);
 
-k_forma=2*pi*gamma*fc_forma;
+k_forma=gamma*fc_forma;
 
 mk_forma=mean(k_forma);
 
 Ek_forma=std(k_forma);
 
 % estimation of k using the estimated gamma
-k2_forma=2*pi*gamma_forma.*fc_forma;
+k2_forma=gamma_forma.*fc_forma;
 
 mk2_forma=mean(k2_forma);
 
