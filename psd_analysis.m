@@ -29,7 +29,7 @@ subs=1; %use a subsampled data set
 
 nw=round(size(x(1:subs:end,:),1)/500); % number of windows
 
-[mfc_psd,mD_psd,Efc_psd,ED_psd,f,XX,fw_mean,Pk,EPk,fcut]=psd_lfit(x(1:subs:end,:),dt*subs,nw,1/4);
+[mfc_psd,mD_psd,Efc_psd,ED_psd,f,XX,fw_mean,Pk,EPk,fcut]=psd_lfit(x(1:subs:1e4,:),dt*subs,nw,1/4);
 
 %[mfc_psd,mD_psd,Efc_psd,ED_psd,f,XX,fw_mean,Pk,EPk,fcut]=psd_lfit(Vx(1:subs:end,:),dt*subs,nw,1/4);
 

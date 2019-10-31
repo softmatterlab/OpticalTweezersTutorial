@@ -17,7 +17,7 @@ T=300;  % Temperature [K]
 r=1.03E-6;      % Particle radius [m]
 v=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
 gamma=pi*6*r*v; %[m*Pa*s]
-dnn=5e3*(1:1e1:5e2);
+dnn=5e3*(1:1e1:100);
 disp(length(dnn));
 for nj=1:length(dnn)
 
@@ -42,7 +42,7 @@ subs=1;
 
 nw=round(size(xn(1:subs:end,:),1)/500); % number of windows
 
-[mfc_psd,D_psd(nj),Efc_psd,sigma_D_psd,f,XX,fw_mean,Pk,EPk,fcut]=psd_lfit(xl,dt*subs,nw,1/4);
+[mfc_psd,D_psd(nj),Efc_psd,sigma_D_psd,f,XX,fw_mean,Pk,EPk,fcut]=psd_lfit(reshape(xl, ,dt*subs,nw,1/4);
 
 mgamma_psd=kB*T./D_psd(nj);
 
