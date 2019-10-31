@@ -759,58 +759,39 @@ Ypix = by1+ywi+by2;  % larghezza figura in pixel
 figure('Position',[10 20 Xpix Ypix]); % crea la figura
 axes('Position',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 hold on;
-plot(t,x,'color', col3);  
+plot(t,x*1000,'color', col3);  
 
 
 
 box on
  xticks(0:1:10);
- ylim([-0.3 0.3]);
- yticks(-0.3:0.1:0.3);
+   ylim([-300 300]);
+   yticks(-300:100:300);
  set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25);
 %  xlim([-0.3 0.3001]);
 
 
 xlabel('$t(s)$','Interpreter','Latex','FontSize',30 );
-ylabel('$x(\mu \rm m)$','Interpreter','Latex','FontSize',30);
+ylabel('$x(\rm{nm})$','Interpreter','Latex','FontSize',30);
 
-axes('Position',[(2*bx1+xwi) 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
+axes('Position',[(2*bx1+xwi+bx2) 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 hold on;
 
 
- bar(b,a)
- hold on 
- plot(b,fnx,'LineWidth',3,'Color',col2)
- box on
- xticks(-0.3:0.1:0.3);
- xlim([-0.3 0.3001]);
- yticks(-0:1E4: 7.0001E4);
- ylim([-0 7E4]);
-
-set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25);
 
 
 
-xlabel('$x(\mu \rm m)$','Interpreter','Latex', 'FontSize',30)
-
-ylabel('$\rho (\rm {counts})$','Interpreter','Latex', 'FontSize',30)
-  
-axes('Position',[(3*bx1+2*xwi+bx2) 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
-hold on;
-      
+scatter(b(5:(end-2))*1000,ptx(5:(end-2)),60,'o')
 
 
-scatter(b(5:(end-2)),ptx(5:(end-2)),60,'o')
-
-
-scatter(b,ptx,60,'o','markerfacecolor', col3,'markeredgecolor',col3)
+scatter(b*1000,ptx,60,'o','markerfacecolor', col3,'markeredgecolor',col3)
 
 % set(gca,'xtick', 0.1)
 
 
 hold on
 % plot(b(5:(end-2)),cppx(5:(end-2)),'LineWidth',3,'Color',col2)
-plot(bl,cppx,'LineWidth',3,'Color',col2)
+plot(bl*1000,cppx,'LineWidth',3,'Color',col2)
 
 % 
 % xt = [-0.4];
@@ -823,26 +804,48 @@ plot(bl,cppx,'LineWidth',3,'Color',col2)
 box on
 %   xlim([-0.3 0.3001])
 %      set(gca,'XTick',[Min : 0.1 : Max]);
-xticks(-0.3:0.1:0.3);
- xlim([-0.3 0.3001]);
- yticks(-12:2:2);
-  ylim([-12 2 ]);
+ xticks(-300:100:300);
+  xlim([-300 300]);
+  yticks(-12:2:2);
+   ylim([-12 2 ]);
 
 
+xlabel('$x( \rm nm)$','Interpreter','Latex', 'FontSize',30)
 
+ylabel('$U(k_BT)$','Interpreter','Latex','FontSize',30)
 set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',25);
 
-xlabel('$x(\mu \rm m)$','Interpreter','Latex', 'FontSize',30)
+  
+axes('Position',[(3*bx1+2*xwi+bx2) 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
+hold on;
+      
+
+ bar(b*1000,a)
+ hold on 
+ plot(b*1000,fnx,'LineWidth',3,'Color',col2)
+ box on
+ xticks(-300:100:300);
+ xlim([-300 300]);
+ yticks(-0:1E4: 7.0001E4);
+ ylim([-0 7E4]);
+
+set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25);
+
+
+
+
+
+ylabel('$\rho (\rm {counts})$','Interpreter','Latex', 'FontSize',30)
+xlabel('$x( \rm nm)$','Interpreter','Latex', 'FontSize',30)
 
 % set(gca,'fontsize',25) 
 
-ylabel('$U(k_BT)$','Interpreter','Latex','FontSize',30)
 %  ylabel(y_string, 'FontName', 'Palatino')
 
  axes('Position',[(0) 0 Xpix 0]/Xpix + [0 0 0 Ypix]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 hold on
 
-xt = [bx1-110,bx1+xwi+bx1-70,2*bx1+2*xwi+bx1-70];
+xt = [bx1-110,bx1+xwi+bx1-70,2*bx1+2*xwi+bx1-35];
 yt = [ by1+ywi+20,by1+ywi+20,by1+ywi+20];
 str = {'\bf a','\bf b','\bf c'};
 text(xt,yt,str,'Interpreter','Latex','FontSize',34)

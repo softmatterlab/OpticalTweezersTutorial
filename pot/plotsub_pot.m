@@ -73,13 +73,13 @@ box on
 xlim([-0.070 0.070]);
 ylim([-1 50])
 set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5,'FontSize',25);
-xlabel(' x( Âµ m)','Interpreter','tex', 'FontSize',30,'FontName','Times New Roman');
+xlabel(' x( µ m)','Interpreter','tex', 'FontSize',30,'FontName','Times New Roman');
 
 %xlabel('$x (Âµ m)$','Interpreter','tex', 'FontSize',30)
 %xlabel(['c_{O2} [',char(181),'mol/l]'],'Interpreter','tex')
-ylabel(['\rho (Âµ m^{-1})'],'Interpreter','tex', 'FontSize',30, 'FontName','Times New Roman')
+ylabel(['\rho (µ m^{-1})'],'Interpreter','tex', 'FontSize',30, 'FontName','Times New Roman')
 hold off
-legend('FontSize',25)
+legend
 
 %second figure, Energy potential distribution, exp I
 axes('Position',positionintefig2);  
@@ -114,7 +114,7 @@ xlim([-0.070 0.070]);
 %xlim([x_alpha_lf(1)*1e6 x_alpha_lf(end)*1e6]);
 set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5, 'FontSize',25);
 
-xlabel(' x( Âµ m)','FontSize',30,'FontName','Times New Roman');
+xlabel(' x( µ m)','FontSize',30,'FontName','Times New Roman');
 % 
 % 
 
@@ -123,7 +123,6 @@ ylabel('$U(k_{\rm B} T)$','Interpreter','Latex','FontSize',30)
 ylim([-0.5, 10])
 
 hold off
- set(gca,'DefaultTextFontname', 'Times')
-   set(gca,'DefaultAxesFontName','Times')
-   legend('FontSize',25)
+ 
+   legend
 end
