@@ -152,9 +152,9 @@ by2 = 50;     % extra space up
  axes('Position',[(0) 0 Xpix 0]/Xpix + [0 0 0 Ypix]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 hold on
 
-xt = [bx1-90,bx1+xwi+bx1-60,2*bx1+2*xwi+bx1-30,bx1-90,bx1+xwi+bx1-60,2*bx1+2*xwi+bx1-30];
-yt = [ by1+ywi+20,by1+ywi+20,by1+ywi+20, ywi-2*by2+5, ywi-2*by2+5, ywi-2*by2+5];
-str = {'\bf a','\bf b','\bf c', '\bf d','\bf e','\bf f'};
+xt = [bx1-90,bx1+xwi+bx1-60,2*bx1+2*xwi+bx1-30,bx1-90];
+yt = [ by1+ywi+20,by1+ywi+20,by1+ywi+20, by1+ywi+20];
+str = {'\bf a','\bf b','\bf c', '\bf d'};
 text(xt,yt,str,'Interpreter','Latex','FontSize',34)
 
 hold off
