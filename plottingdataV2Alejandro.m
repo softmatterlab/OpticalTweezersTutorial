@@ -781,10 +781,10 @@ hold on;
 
 
 
-scatter(b(5:(end-2))*1000,ptx(5:(end-2)),60,'o')
+ scatter(b(5:(end-2))*1000,ptx(5:(end-2)),60,'o')
 
 
-scatter(b*1000,ptx,60,'o','markerfacecolor', col3,'markeredgecolor',col3)
+ scatter(b*1000,ptx,60,'o','markerfacecolor', col3,'markeredgecolor',col3)
 
 % set(gca,'xtick', 0.1)
 

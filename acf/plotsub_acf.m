@@ -41,6 +41,8 @@ col3=[0.00,0.45,0.74];
 
 %  errorbar(tau_acf_lf(1:20:15*indc),mc(1:20:15*indc)*1e12,Ec(1:20:15*indc)*1e12,'.','MarkerSize',1 ,'LineWidth', 1.5,'Color',colbar, 'DisplayName', 'Experimental autocorrelation function');
  scatter(tau_acf_lf(1:20:end_plot*indc),mc(1:20:end_plot*indc)*1e12,60,'o','markerfacecolor', col3,'markeredgecolor',col3);
+ 
+
  hold on
 
 plot(tau_acf_lf(1:20:end_plot*indc),c0_exp_lf*exp(-tau_acf_lf(1:20:end_plot*indc)/tau0_exp_lf)*1e12, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting')

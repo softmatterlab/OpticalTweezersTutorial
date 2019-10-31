@@ -104,6 +104,9 @@ U_model_nl=-(log(rhomodel_nl));
 U_model_eq=-(log(rhomodel_eq));
 
 scatter((x_alpha_lf)*1e9+0.0005,U_model_eq-U_0_exp_lf, 100,'o', 'DisplayName',  'Equipartition')
+
+
+
 hold on
 plot(x_alpha_lf*1e9,U_model_lf-U_0_exp_lf, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fit');
 
