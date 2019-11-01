@@ -39,20 +39,23 @@ col2=[1,0,0];
 col3=[0.00,0.45,0.74];
 
 %%This is not working anymore%%
-  errorbar(tau_acf_lf(1:20:end_plot*indc), mc(1:20:end_plot*indc)*1e12, Ec(1:20:end_plot*indc)*1e12,'.','MarkerSize',10,'LineWidth', 1.5, 'Color', colbar 'DisplayName', 'Experimental autocorrelation function');
+%errorbar(tau_acf_lf(1:20:end_plot*indc), mc(1:20:end_plot*indc)*1e12, Ec(1:20:end_plot*indc)*1e12,'.','MarkerSize',10,'LineWidth', 1.5, 'Color', colbar 'DisplayName', 'Experimental autocorrelation function');
 
+
+plot(tau_acf_lf(1:20:end_plot*indc),c0_exp_lf*exp(-tau_acf_lf(1:20:end_plot*indc)/tau0_exp_lf)*1e12, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting')
+hold on
+plot(tau_nl(1:20:end_plot*indc),c0_exp_nl*exp(-tau_nl(1:20:end_plot*indc)/tau0_exp_nl)*1e12, '--', 'LineWidth',3,'Color','k', 'DisplayName',  'Non -linear fitting')
+
+
+e=errorbar(tau_acf_lf(1:20:end_plot*indc),mc(1:20:end_plot*indc)*1e12,Ec(1:20:end_plot*indc)*1e12,'.','MarkerSize',20 ,'LineWidth', 1.5,'Color',colbar, 'DisplayName', 'Experimental autocorrelation function');
+e.Color = col3;
   %%This is working
   %  scatter(tau_acf_lf(1:20:end_plot*indc),mc(1:20:end_plot*indc)*1e12,60,'o','markerfacecolor', col3,'markeredgecolor',col3);
  
 
  
 
- hold on
-
-plot(tau_acf_lf(1:20:end_plot*indc),c0_exp_lf*exp(-tau_acf_lf(1:20:end_plot*indc)/tau0_exp_lf)*1e12, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting')
-
-plot(tau_nl(1:20:end_plot*indc),c0_exp_nl*exp(-tau_nl(1:20:end_plot*indc)/tau0_exp_nl)*1e12, '--', 'LineWidth',3,'Color','k', 'DisplayName',  'Non -linear fitting')
-
+ 
 %plot(tau(1:20:6*indc),c0_exp*exp(tau(1:20:6*indc)/tau0_exp)*1e12,'b')
 % % 
 % disp('Integral of the fitted probability distributions')
