@@ -108,10 +108,10 @@ scatter((x_alpha_lf)*1e9+0.0005,U_model_eq-U_0_exp_lf, 100,'o', 'DisplayName',  
 
 
 hold on
-plot(x_alpha_lf*1e9,U_model_lf-U_0_exp_lf, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fit');
+plot(x_alpha_lf*1e9,U_model_lf-U_0_exp_lf, 'LineWidth',3,'Color','k', 'DisplayName',  'Linear fit');
 
 
-plot(x_alpha_nl(4:end-2)*1e9,U_model_nl(4:end-2)-U_0_exp_nl, '--','LineWidth',3,'Color','k', 'DisplayName',  'Non -linear fitting')
+plot(x_alpha_nl(4:end-2)*1e9,U_model_nl(4:end-2)-U_0_exp_nl, '--','LineWidth',3,'Color','r', 'DisplayName',  'Non -linear fitting')
 
 %plot(x_alpha_lf*1e6,U_model_eq-U_0_exp_lf,'-.', 'LineWidth',2,'Color','black','DisplayName',  'Equipotential')
 
