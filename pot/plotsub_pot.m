@@ -60,7 +60,10 @@ rhomodel_nl=rho0_nl*exp(-k_pot_nl/(2*kb*T)*(x_alpha_nl-x_eq_nl).^2);
 % disp('Non-linear fitting')
 % disp(sum(rhomodel_nl*1e-6)*((x_alpha_lf(2)-x_alpha_lf(1))*1e6));
 cyan=[0/255,128/255,128/255];
-scatter((x_alpha_lf)*1e9+0.0005, rhomodel_eq*1e-6,100,'o','DisplayName', 'Equipartition');
+scatter((x_alpha_lf)*1e9+0.0005, rhomodel_eq*1e-6,150,'o','markeredgecolor','k','DisplayName', 'Equipartition');
+
+
+% scatter(tau_acf_lf(1:20:end_plot*indc),mc(1:20:end_plot*indc)*1e12,60,'o','markerfacecolor', col3,'markeredgecolor',col3);
 hold on
 
 plot(x_alpha_lf*1e9, rhomodel_lf*1e-6, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fit');
@@ -70,8 +73,8 @@ plot(x_alpha_lf*1e9, rhomodel_lf*1e-6, 'LineWidth',3,'Color',col2, 'DisplayName'
 cyan=[0/255,128/255,128/255];
 plot(x_alpha_nl(2:end-1)*1e9, rhomodel_nl(2:end-1)*1e-6,'--','LineWidth',3,'Color','k', 'DisplayName',  'Non -linear fitting')
 
-errorbar(x_alpha_lf*1e9,  mrho_lf*1e-6, 1e-6*abs(sigma2_rho_lf),'.','MarkerSize',10 ,'LineWidth', 1.5,'Color',colbar,'DisplayName', 'Experimental');
-
+e=errorbar(x_alpha_lf*1e9,  mrho_lf*1e-6, 1e-6*abs(sigma2_rho_lf),'.','MarkerSize',20 ,'LineWidth', 1.5,'Color',colbar,'DisplayName', 'Experimental');
+e.Color = col3;
 
 
 box on
@@ -103,7 +106,7 @@ U_model_nl=-(log(rhomodel_nl));
 
 U_model_eq=-(log(rhomodel_eq));
 
-scatter((x_alpha_lf)*1e9+0.0005,U_model_eq-U_0_exp_lf, 100,'o', 'DisplayName',  'Equipartition')
+scatter((x_alpha_lf)*1e9+0.0005,U_model_eq-U_0_exp_lf, 150,'o','markeredgecolor','k',e 'DisplayName',  'Equipartition')
 
 
 
@@ -119,8 +122,8 @@ box on
 
 %xticks((-0.5:0.1:0.5)*1e-7);
 
-errorbar(x_alpha_lf*1e9,  -log(mrho_lf)-U_0_exp_nl, sigma2_U_lf/(kb*T), '.','MarkerSize',10,'LineWidth', 1.5, 'Color', colbar,  'DisplayName', 'Experimental values of potential energy');
-
+e=errorbar(x_alpha_lf*1e9,  -log(mrho_lf)-U_0_exp_nl, sigma2_U_lf/(kb*T), '.','MarkerSize',20,'LineWidth', 1.5, 'Color', colbar,  'DisplayName', 'Experimental values of potential energy');
+e.Color = col3;
 xlim([-70 70]);
 %xlim([x_alpha_lf(1)*1e6 x_alpha_lf(end)*1e6]);
 set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5, 'FontSize',25);
