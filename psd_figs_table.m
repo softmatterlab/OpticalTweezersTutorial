@@ -3,7 +3,7 @@ close all, clear all;
 %%  ==============Parameter declaration============
 
 
-kb=1.38064852e-23; % Boltzmann constant [m^2kg/s^2K]
+kB=1.38064852e-23; % Boltzmann constant [m^2kg/s^2K]
 
 r=1.03E-6;      % Particle radius [m]
 
@@ -31,9 +31,6 @@ subs=3;
 
 addpath psd
 
-
-%Boltzmann constant
-kb=1.38064852e-23;
 
 
 

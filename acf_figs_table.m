@@ -48,7 +48,7 @@ figure('Position',[10 20 Xpix Ypix]);
 
 %%
 titleI='Experiment I, P=2.3mW';
-[k_acf_lf_I,Ek_acf_lf_I,D_acf_lf_I,sigma2_D_acf_lf_I,gamma_acf_lf_I, sigma2_gamma_acf_lf_I , k_acf_nl_I, Ek_acf_nl_I, D_acf_nl_I, sigma2_D_acf_nl_I,gamma_acf_nl_I, sigma2_gamma_acf_nl_I, tau0_exp_lf_I, tau0_exp_nl_I, Xpix, Ypix]=plotsub_acf('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, subs,0.82,3.21);
+[k_acf_lf_I,Ek_acf_lf_I,D_acf_lf_I,sigma2_D_acf_lf_I,gamma_acf_lf_I, sigma_gamma_acf_lf_I , k_acf_nl_I, Ek_acf_nl_I, D_acf_nl_I, sigma2_D_acf_nl_I,gamma_acf_nl_I, sigma2_gamma_acf_nl_I, tau0_exp_lf_I, tau0_exp_nl_I, Xpix, Ypix]=plotsub_acf('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, subs,0.82,3.21);
  disp('................')
  disp(titleI)
  disp('Autocorrelation function analysis by linear fitting')
@@ -57,7 +57,7 @@ disp(['k_acf: ' num2str(k_acf_lf_I*1e6) '+-' num2str(Ek_acf_lf_I*1e6) ' pN/um'])
  
 disp(['D_acf: ' num2str(D_acf_lf_I*1e12) '+-' num2str(sigma2_D_acf_lf_I*1e12) ' um^2/s'])
  
-disp(['gamma_acf:' num2str(gamma_acf_lf_I*1e9) '+-'  num2str(sigma2_gamma_acf_lf_I*1e9) ' pN s/um ']);
+disp(['gamma_acf:' num2str(gamma_acf_lf_I*1e9) '+-'  num2str(sigma_gamma_acf_lf_I*1e9) ' pN s/um ']);
 disp(['tau_0:' num2str(tau0_exp_lf_I*1e3) ' ms']);
  
 disp('................')
@@ -74,7 +74,7 @@ disp(['tau_0:' num2str(tau0_exp_nl_I*1e3) ' ms']);
 disp('................')
 %%
 titleII='Experiment II, P=6.0mW';
-[k_acf_lf_II,Ek_acf_lf_II,D_acf_lf_II,sigma2_D_acf_lf_II,gamma_acf_lf_II, sigma2_gamma_acf_lf_II , k_acf_nl_II, Ek_acf_nl_II, D_acf_nl_II, sigma2_D_acf_nl_II,gamma_acf_nl_II, sigma2_gamma_acf_nl_II, tau0_exp_lf_II, tau0_exp_nl_II]=plotsub_acf('Data_positions_Fig9_1P4_S.mat',[2*bx1+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs,1.1,8.2);
+[k_acf_lf_II,Ek_acf_lf_II,D_acf_lf_II,sigma2_D_acf_lf_II,gamma_acf_lf_II, sigma_gamma_acf_lf_II , k_acf_nl_II, Ek_acf_nl_II, D_acf_nl_II, sigma2_D_acf_nl_II,gamma_acf_nl_II, sigma2_gamma_acf_nl_II, tau0_exp_lf_II, tau0_exp_nl_II]=plotsub_acf('Data_positions_Fig9_1P4_S.mat',[2*bx1+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs,1.1,8.2);
 disp('................')
 disp(titleII)
 disp('Autocorrelation function analysis by linear fitting')
@@ -83,7 +83,7 @@ disp(['k_acf: ' num2str(k_acf_lf_II*1e6) '+-' num2str(Ek_acf_lf_II*1e6) ' pN/um'
  
 disp(['D_acf: ' num2str(D_acf_lf_II*1e12) '+-' num2str(sigma2_D_acf_lf_II*1e12) ' um^2/s'])
  
-disp(['gamma_acf:' num2str(gamma_acf_lf_II*1e9) '+-'  num2str(sigma2_gamma_acf_lf_II*1e9) ' pN ms/um ']);
+disp(['gamma_acf:' num2str(gamma_acf_lf_II*1e9) '+-'  num2str(sigma_gamma_acf_lf_II*1e9) ' pN ms/um ']);
 disp(['tau_0:' num2str(tau0_exp_lf_II*1e3) ' ms']);
  
 disp('................')
@@ -100,7 +100,7 @@ disp(['tau_0:' num2str(tau0_exp_nl_II*1e3) ' ms']);
 disp('................')
 %%
 titleIII='Experiment III, P=9.2mW';
-[k_acf_lf_III,Ek_acf_lf_III,D_acf_lf_III,sigma2_D_acf_lf_III,gamma_acf_lf_III, sigma2_gamma_acf_lf_III , k_acf_nl_III, Ek_acf_nl_III, D_acf_nl_III, sigma2_D_acf_nl_III,gamma_acf_nl_III, sigma2_gamma_acf_nl_III, tau0_exp_lf_III, tau0_exp_nl_III]=plotsub_acf('Data_positions_Fig9_1P6_S.mat',[3*bx1+2*xwi+bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs, 1.1,13);
+[k_acf_lf_III,Ek_acf_lf_III,D_acf_lf_III,sigma_D_acf_lf_III,gamma_acf_lf_III, sigma_gamma_acf_lf_III , k_acf_nl_III, Ek_acf_nl_III, D_acf_nl_III, sigma_D_acf_nl_III,gamma_acf_nl_III, sigma_gamma_acf_nl_III, tau0_exp_lf_III, tau0_exp_nl_III]=plotsub_acf('Data_positions_Fig9_1P6_S.mat',[3*bx1+2*xwi+bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs, 1.1,13);
 
 disp('................')
 disp(titleIII)
@@ -108,9 +108,9 @@ disp('Autocorrelation function analysis by linear fitting')
  
 disp(['k_acf: ' num2str(k_acf_lf_III*1e6) '+-' num2str(Ek_acf_lf_III*1e6) ' pN/um'])
  
-disp(['D_acf: ' num2str(D_acf_lf_III*1e12) '+-' num2str(sigma2_D_acf_lf_III*1e12) ' um^2/s'])
+disp(['D_acf: ' num2str(D_acf_lf_III*1e12) '+-' num2str(sigma_D_acf_lf_III*1e12) ' um^2/s'])
  
-disp(['gamma_acf:' num2str(gamma_acf_lf_III*1e9) '+-'  num2str(sigma2_gamma_acf_lf_III*1e9) ' pN s/um ']);
+disp(['gamma_acf:' num2str(gamma_acf_lf_III*1e9) '+-'  num2str(sigma_gamma_acf_lf_III*1e9) ' pN s/um ']);
 disp(['tau_0:' num2str(tau0_exp_lf_III*1e3) ' ms']);
  
 disp('................')
@@ -119,9 +119,9 @@ disp('Autocorrelation function analysis by non-linear fitting')
  
 disp(['k_acf: ' num2str(k_acf_nl_III*1e6) '+-' num2str(Ek_acf_nl_III*1e6) ' pN/um'])
  
-disp(['D_acf: ' num2str(D_acf_nl_III*1e12) '+-' num2str(sigma2_D_acf_nl_III*1e12) ' um^2/s'])
+disp(['D_acf: ' num2str(D_acf_nl_III*1e12) '+-' num2str(sigma_D_acf_nl_III*1e12) ' um^2/s'])
  
-disp(['gamma_acf:' num2str(gamma_acf_nl_III*1e9) '+-'  num2str(sigma2_gamma_acf_nl_III*1e9) ' pN ms/um ']);
+disp(['gamma_acf:' num2str(gamma_acf_nl_III*1e9) '+-'  num2str(sigma_gamma_acf_nl_III*1e9) ' pN ms/um ']);
 disp(['tau_0:' num2str(tau0_exp_nl_III*1e3) ' ms']);
  
 disp('................')

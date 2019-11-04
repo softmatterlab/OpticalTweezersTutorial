@@ -1,7 +1,7 @@
-function [k_msd,sigma2_k_msd ,  gamma_msd, sigma2_gamma_msd ,tau0]=plotsub_msd(filename, positioninthefig1, title1, T, subs, maxlag,partau0,ytau)
+function [k_msd,sigma2_k_msd ,  gamma_msd, sigma2_gamma_msd ,tau0]=plotsub_msd(filename, positioninthefig1, title1, T, subs, maxlag,partau0,ytau, subsp)
 load(filename);
 disp(filename);
-kb=1.38064852e-23;
+kB=1.38064852e-23;
 %blue color
 col1=[73/255,4/255,10/255];
 %yellow
@@ -56,11 +56,11 @@ colbar=[7/255, 79/255, 129/255];
 col3=[0.00,0.45,0.74];
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 
-msd_fit= 2*kb*T/k_msd*(1- exp(-tau/tau0));
+msd_fit= 2*kB*T/k_msd*(1- exp(-tau/tau0));
 plot(tau, msd_fit*1e18, '--','LineWidth',3,'Color','r', 'DisplayName',  'Non -linear fitting');
 hold on 
 ntaus=6;
-e=errorbar(tau(1:2:end),  mmsd(1:2:end)*1e18, Emsd(1:2:end)*1e18,'.','MarkerSize',20,'LineWidth', 1.5, 'Color', colbar, 'DisplayName', 'Experimental mean square displacement');
+e=errorbar(tau(1:subsp:end),  mmsd(1:subsp:end)*1e18, Emsd(1:subsp:end)*1e18,'.','MarkerSize',20,'LineWidth', 1.5, 'Color', colbar, 'DisplayName', 'Experimental mean square displacement');
 e.Color = col3;
 box on
 %xticks((-0.5:0.1:0.5)*1e-7);
