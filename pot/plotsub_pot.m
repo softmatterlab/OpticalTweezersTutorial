@@ -91,7 +91,7 @@ U_model_nl=-(log(rhomodel_nl));
  
 U_model_eq=-(log(rhomodel_eq));
 
-scatter((x_alpha_lf)*1e9+0.0005,U_model_eq-U_0_exp_lf, 150,'o','markeredgecolor','k',e 'DisplayName',  'Equipartition')
+scatter((x_alpha_lf)*1e9+0.0005,U_model_eq-U_0_exp_lf, 150,'o','markeredgecolor','k','DisplayName',  'Equipartition')
 
 
 
