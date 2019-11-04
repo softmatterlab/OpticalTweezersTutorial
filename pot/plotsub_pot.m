@@ -1,7 +1,7 @@
-function [k_pot_lf,sigma2_k_pot_lf, k_pot_nl,sigma2_k_pot_nl , k_eq, sigma2_k_eq]=plotsub_pot(filename, positioninthefig1, positionintefig2, title1, T, P, subssample)
-load(filename);
-disp(filename);
-kb=1.38e-23;
+function [k_pot_lf,sigma2_k_pot_lf, k_pot_nl,sigma2_k_pot_nl , k_eq, sigma2_k_eq]=plotsub_pot(filename, positioninthefig1, positionintefig2, title1, T, P, subsample)
+load(filename)
+disp(filename)
+kb=1.38064852e-23;
 
 %blue color
 col1=[73/255,4/255,10/255];
@@ -9,22 +9,11 @@ col1=[73/255,4/255,10/255];
 %yellow
 col2=[241/255,185/255,14/255];
 %gray color for experimental data
-	
 
-%colbar=[4/255,45/255,73/255];
 	colbar=[7/255, 79/255, 129/255];
-% xwi = 400;    % width of the plot square
-% bx1 = 80;     % extra space at the left
-% bx2 = 20;     % extra space at the right
-% 
-% Xpix = 3.5*xwi+3*bx1+3*bx2;  % total
-% 
-% ywi = 300;    % length riquadro con funzione
-% by1 = 60;     % extra space below
-% by2 = 30;     % extra space up
-% Ypix = 2*by1+2*ywi+3*by2;  % larghezza figura in pixel
 
-P=50;
+
+%P=50;
 
 %number of bins of the histogram, if not set default is 50
 %linear fit
@@ -32,7 +21,7 @@ P=50;
 %non-linear fit`
 [k_pot_nl, sigma2_k_pot_nl, x_alpha_nl, mrho_nl, sigma2_rho_nl, mU_nl, sigma2_U_nl, rho0_nl, x_eq_nl,  U_0_exp_nl]=pot_nlfit(x,T,P);
 
-subsample=1;
+
 
 %number of bins of the histogram, if not set default is 50
 %linear fit

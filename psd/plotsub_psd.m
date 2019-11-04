@@ -1,7 +1,7 @@
-function [k_psd, Ek_psd, mgamma_psd, Egamma_psd]=plotsub_msd(filename, positioninthefig1, title1, T, subs, maxlag)
+function [k_psd, sigma_k_psd, mgamma_psd, sigma_gamma_psd]=plotsub_msd(filename, positioninthefig1, title1, subs)
 load(filename);
 disp(filename);
-kb=1.38e-23;
+%
 
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 
@@ -14,20 +14,17 @@ addpath psd
 
 nw=round(size(x(1:subs:end,:),1)/500); 
 kb=1.38064852e-23;
-gamma=6*pi*eta*a;
-[fc_exp,D_exp,Efc_exp,ED_exp,f,XX,fw_mean,Pk,EPk,fcut]=psd_lfit(x(1:subs:end,:),dt*subs,nw,1/4);
-mgamma_psd=kb*T./D_exp;
+%gamma=6*pi*eta*a;
+[fc_psd,D_psd,sigma_fc_psd,sigma_D_psd,f,XX,fw_mean,Pk,~,fcut]=psd_lfit(x(1:subs:end,:),dt*subs,nw,1/4);
+mgamma_psd=kb*T./D_psd;
 
-Egamma_psd=kb*T./D_exp^2*ED_exp;
+sigma_gamma_psd=kb*T./D_psd^2*sigma_D_psd;
 
-k_psd=2*pi*gamma*fc_exp;
-
-Ek_psd=2*pi*gamma*Efc_exp;
 
 % estimation of k using the estimated gamma
-%mk2_psd=2*pi*mgamma_psd.*mfc_psd;
+k_psd=2*pi*mgamma_psd.*fc_psd;
 
-%Ek2_psd=2*pi*mgamma_psd.*Efc_psd+2*pi*mfc_psd*Egamma_psd;
+sigma_k_psd=2*pi*(mgamma_psd.*sigma_fc_psd+fc_psd*sigma_gamma_psd);
 
 loglog(f,XX*1e12,'.','MarkerSize',6,'Color',color2rgb('white_cyan'),'DisplayName', 'Experimental power spectral density')
 
@@ -35,7 +32,7 @@ hold on
 
 loglog(fw_mean,Pk*1e12,'Color',  color2rgb('deep_purple') ,'MarkerSize',10, 'MarkerEdgeColor',color2rgb('deep_purple'),'DisplayName','Mean of the experimental power spectral density', 'LineWidth', 3)
 
-loglog(f,D_exp/(2*pi^2)./(fc_exp^2+f.^2)*1e12,'--', 'MarkerFaceColor', 'magenta', 'MarkerEdgeColor', 'magenta','LineWidth',3, 'DisplayName', 'Linear fit')
+loglog(f,D_psd/(2*pi^2)./(fc_psd^2+f.^2)*1e12,'--', 'MarkerFaceColor', 'magenta', 'MarkerEdgeColor', 'magenta','LineWidth',3, 'DisplayName', 'Linear fit')
 
 loglog(fcut*ones(1,300),exp(linspace(log(0.8*min(XX)*1e12),log(1.1*max(XX)*1e12),300)),'.k','MarkerSize',2, 'HandleVisibility', 'off')
 text(3e3,5e-15,'$f_{cut}$','Interpreter','latex','FontSize',20)

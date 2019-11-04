@@ -38,11 +38,11 @@ ind=find(dc(1:end-1).*dc(2:end)<0);
 
 tau0=tau(ind(1));
 
-ntaus=1.5;
+ntaus=6;
 
 indc=round(ntaus*ind); % consider only ntaus times the characteristic time in the fitting
-acf_cut=acf(:, 1:3:indc);
-tau_cut=tau(1:3:indc);
+acf_cut=acf(:, 1:indc);
+tau_cut=tau(1:indc);
 max_tau=max(tau_cut);
 
 % using non-linear fitting

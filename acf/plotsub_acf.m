@@ -1,7 +1,7 @@
 function [k_acf_lf,Ek_acf_lf,D_acf_lf,ED_acf_lf,gamma_acf_lf, sigma2_gamma_acf_lf , k_acf_nl, Ek_acf_nl, D_acf_nl, ED_acf_nl,gamma_acf_nl, sigma2_gamma_acf_nl, tau0_exp_lf, tau0_exp_nl]=plotsub_pot(filename, positioninthefig1, title1, T, subsample)
 load(filename);
 disp(filename);
-kb=1.38e-23;
+kb=1.38064852e-23;
 
 %blue color
 col1=[73/255,4/255,10/255];

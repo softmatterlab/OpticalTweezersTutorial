@@ -4,7 +4,7 @@ s2=sum(xn(1:end-1).*xn(2:end));
 s1=sum(xn(1:end-1).^2);
 s3=sum(xn(2:end).^2);
 %physical constants
-kB=1.38e-23; % Boltzmann constant [m^2kg/s^2K]
+kB=1.38064852e-23; % Boltzmann constant [m^2kg/s^2K]
 
 %definition of parameter
 

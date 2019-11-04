@@ -3,7 +3,7 @@ close all, clear all;
 %%  ==============Parameter declaration============
 
 
-kB=1.38e-23; % Boltzmann constant [m^2kg/s^2K]
+kb=1.38064852e-23; % Boltzmann constant [m^2kg/s^2K]
 T=300;  % Temperature [K]
 r=1.03E-6;      % Particle radius [m]
 v=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
@@ -20,11 +20,10 @@ by1 = 80;     % extra space below
 by2 = 30;     % extra space up
 
 Ypix = 1*by1+1*ywi+1*by2;  % larghezza figura in pixel
-%number of bins of the histogram, if not set default is 50
-P=50; 
+%number of bins of the histogram, if not set default is 50 
 
 %use a subsampled data set
-subs=1;
+subs=3;
 
 %%  =========Loading selected file============
 %load('Data_positions_Fig9_1P6_S.mat')

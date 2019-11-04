@@ -25,7 +25,7 @@ function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_
 kb=1.38064852e-23;
 
 %translate everithing to zero
-x = x - repmat(mean(x),size(x,1),1);
+x = x - repmat(mean(x),size(x,1),1)
 
 %default number of bins
 P=50;
@@ -71,7 +71,7 @@ end
 %normalization to avoid "Equation is badly conditioned"
 maxbin=x_alpha(end);
 x_alpha=x_alpha/maxbin; 
-
+size(mlogf)
 %Approximation to a quadratic function, Using linear fitting with weights
 c=fit(x_alpha',mlogf,'poly2','weights',w);
 
