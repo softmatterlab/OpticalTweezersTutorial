@@ -38,7 +38,7 @@ plot(fw_mean,Pk*1e18,'Color', 'k'  ,'MarkerSize',10, 'MarkerEdgeColor','k','Disp
 plot(f,D_psd/(2*pi^2)./(fc_psd^2+f.^2)*1e18,'--', 'LineWidth',3,'Color','r', 'DisplayName', 'Linear fit')
 
 plot(fcut*ones(1,300),exp(linspace(log(0.8*min(XX)*1e18),log(1.1*max(XX)*1e21),300)),'--k','MarkerSize',2, 'HandleVisibility', 'off')
-text(1e3,1,'$f_{cut}$','Interpreter','latex','FontSize',20)
+text(2e3,1,'$f_{cut}$','Interpreter','latex','FontSize',20)
 
 xlabel('$f_k(\rm Hz)$','Interpreter','Latex',  'FontSize',30)
 ylim([1e-9 5e1])

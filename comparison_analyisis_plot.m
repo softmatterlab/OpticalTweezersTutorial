@@ -14,6 +14,10 @@ by1 = 100;     % extra between plots
 by2 = 150;     % extra below
 Ypix = 4*by1+4*ywi+by2;  % larghezza figura in pixel
 %number of bins of the histogram, if not set default is 50  1
+xt = [0,bx1+xwi+bx1-75,2*bx1+2*xwi+bx1-40];
+yt = [0,by1+ywi+20,by1+ywi+20];
+str = {'\bf a','\bf b','\bf c'};
+text(xt,yt,str,'Interpreter','Latex','FontSize',34)
 figure('Position',[10 20 Xpix Ypix]);
 positioninthefig1=[bx1 0 xwi 0]/Xpix + [0 3*by1+3*ywi+by2 0 ywi]/Ypix ;
 

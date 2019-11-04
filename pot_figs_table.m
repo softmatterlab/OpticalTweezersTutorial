@@ -24,7 +24,7 @@ Ypix = 2*by1+2*ywi+3*by2;  % larghezza figura in pixel
 nbins_pot=50; 
  
 %use a subsampled data set
-subs=3;
+subs=1;
  
 %%  =========Loading selected file============
 %load('Data_positions_Fig9_1P6_S.mat')
