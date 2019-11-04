@@ -33,7 +33,7 @@ elseif opt==2
 elseif opt==3
     chi2 = @(p, t, y, R_) (y - f_msd(t, p)')' * R_ * (y - f_msd(t, p)');
 else 
-    error('the fitting funtion is not defined');
+    error('the fitting function is not defined');
 end
 % Do the parameter fitting
 [params, chi2_min] = fminunc(@(par)(chi2(par, time(2:end), y_mean(2:end), R)), guess);
@@ -95,5 +95,5 @@ for a = 1:q
         end
     end
 end
-
+diag(error1)
 sigma = sqrt(diag(error1));

@@ -24,7 +24,7 @@ colbar=[7/255, 79/255, 129/255];
 % by2 = 30;     % extra space up
 % Ypix = 2*by1+2*ywi+3*by2;  % larghezza figura in pixel
 
-P=50;
+
 
 %number of bins of the histogram, if not set default is 50
 %linear fit

@@ -38,7 +38,7 @@ ind=find(dc(1:end-1).*dc(2:end)<0);
 
 tau0=tau(ind(1));
 
-ntaus=6;
+ntaus=3;
 
 indc=round(ntaus*ind); % consider only ntaus times the characteristic time in the fitting
 acf_cut=acf(:, 1:indc);
@@ -51,12 +51,13 @@ max_mc=max(max(acf_cut));
 
 
 guess=[1,1];
-[params, sigma, chi2_min, C] = wlsice(tau_cut/tau0, log(abs(acf_cut))/log(abs(max_mc)), guess, 1);
+[params, sigma, chi2_min, C] = wlsice(-tau_cut/tau0, log(abs(acf_cut))/log(abs(max_mc)), guess, 1);
 
+params
+sigma
+tau0_exp=tau0/params(1)/log(abs(max_mc));
 
-tau0_exp=-tau0/params(1)/log(abs(max_mc));
-
-c0_exp=exp(params(2)*log(max_mc));
+c0_exp=exp(params(2)*log(abs(max_mc)));
 
 k_acf=kb*T/c0_exp;
 
