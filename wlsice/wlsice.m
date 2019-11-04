@@ -95,5 +95,5 @@ for a = 1:q
         end
     end
 end
-diag(error1)
+
 sigma = sqrt(diag(error1));

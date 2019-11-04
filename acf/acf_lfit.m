@@ -3,13 +3,13 @@ function [k_acf, Ek_acf, D_acf, ED_acf,gamma_exp, sigma2_gamma_exp,tau, mc, Ec,i
 % ACF_LFIT   1D implementation of the AUTOCORRELATION ANALYSIS METHOD
 % USING LINEAR FITTING
 addpath wlsice
-
+ 
 Vx = Vx - repmat(mean(Vx),size(Vx,1),1);
-
+ 
 kb=1.38064852e-23;
-
+ 
 [N,Nexp]=size(Vx);
-
+ 
 tau=(0:N-1)*dt;
 acf=zeros(Nexp, N);
 for j=1:Nexp 
@@ -18,59 +18,58 @@ for j=1:Nexp
     c=c(N:end);
     acf(j,:)=c;
 end
-
+ 
 mc=mean(acf,1);
-
+ 
 Ec=std(acf,[],1);
-
+ 
 % first approximation to define the starting points and the significative
 % points in the fitting
-
+ 
 c0=mc(1); %amplitude
-
+ 
 ctau=c0*exp(-1); 
-
+ 
 dc=mc-ctau;
-
+ 
 %find the characteristic time
-
+ 
 ind=find(dc(1:end-1).*dc(2:end)<0);
-
+ 
 tau0=tau(ind(1));
-
-ntaus=3;
-
+ 
+ntaus=1.5;
+ 
 indc=round(ntaus*ind); % consider only ntaus times the characteristic time in the fitting
-acf_cut=acf(:, 1:indc);
-tau_cut=tau(1:indc);
+acf_cut=acf(:, 1:3:indc);
+tau_cut=tau(1:3:indc);
 max_tau=max(tau_cut);
-
+ 
 % using non-linear fitting
 max_mc=max(max(acf_cut));
-
-
-
+ 
+ 
+ 
 guess=[1,1];
-[params, sigma, chi2_min, C] = wlsice(-tau_cut/tau0, log(abs(acf_cut))/log(abs(max_mc)), guess, 1);
-
-params
-sigma
-tau0_exp=tau0/params(1)/log(abs(max_mc));
-
-c0_exp=exp(params(2)*log(abs(max_mc)));
-
+[params, sigma, chi2_min, C] = wlsice(tau_cut/tau0, log(abs(acf_cut))/log(abs(max_mc)), guess, 1);
+ 
+ 
+tau0_exp=-tau0/params(1)/log(abs(max_mc));
+ 
+c0_exp=exp(params(2)*log(max_mc));
+ 
 k_acf=kb*T/c0_exp;
-
+ 
 D_acf=kb*T/(k_acf*tau0_exp);
-
-
+ 
+ 
 %Ek_acf=kb*T*exp(-params(2)*log(c0))*log(c0)*(sigma(2));
 Ek_acf=kb*T/exp(params(2))*sigma(2)/max_mc;
-
+ 
 %ED_acf=kb*T/(k_acf^2*tau0)*Ek_acf+kb*T/(k_acf*tau0^2)*abs(1/cint(2,1)-1/cint(1,1))/2;
 ED_acf=log(abs(max_mc))*max_mc/tau0*(exp(params(2))*sigma(2)*params(1)+sigma(1)*exp(params(2)));
 gamma_exp=kb*T/D_acf;
-
+ 
 sigma2_gamma_exp=kb*T*tau0/(log(abs(max_mc))*max_mc)*(-exp(-params(2))*sigma(2)/params(1)-sigma(1)/params(1)^2*exp(-params(2)));
 % % plot
 % figure(1)
@@ -104,3 +103,4 @@ sigma2_gamma_exp=kb*T*tau0/(log(abs(max_mc))*max_mc)*(-exp(-params(2))*sigma(2)/
 % 
 % disp(['gamma_acf:' num2str(kb*T/D_acf) '+-' num2str(kb*T/D_acf^2*ED_acf)])
 end
+

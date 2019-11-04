@@ -3,27 +3,28 @@ close all, clear all;
 %%  ==============Parameter declaration============
 
 
-kb=1.38064852e-23; % Boltzmann constant [m^2kg/s^2K]
+kB=1.38e-23; % Boltzmann constant [m^2kg/s^2K]
 T=300;  % Temperature [K]
 r=1.03E-6;      % Particle radius [m]
 v=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
 gamma=pi*6*r*v; %[m*Pa*s]
 
 xwi = 400;    % width of the plot square
-bx1 = 90;     % extra space at the left
-bx2 = 20;     % extra space at the right
+bx1 = 120;     % extra space at the left
+bx2 = 30;     % extra space at the right
 
 Xpix = 3*xwi+3*bx1+3*bx2;  % total
 
 ywi = 300;    % length riquadro con funzione
-by1 = 80;     % extra space below
-by2 = 30;     % extra space up
+by1 = 110;     % extra space below
+by2 = 50;     % extra space up
 
 Ypix = 1*by1+1*ywi+1*by2;  % larghezza figura in pixel
-%number of bins of the histogram, if not set default is 50 
+%number of bins of the histogram, if not set default is 50
+P=50; 
 
 %use a subsampled data set
-subs=1;
+subs=3;
 
 %%  =========Loading selected file============
 %load('Data_positions_Fig9_1P6_S.mat')
@@ -47,7 +48,7 @@ figure('Position',[10 20 Xpix Ypix]);
 
 %%
 titleI='Experiment I, P=2.3mW';
-[k_acf_lf_I,Ek_acf_lf_I,D_acf_lf_I,sigma2_D_acf_lf_I,gamma_acf_lf_I, sigma2_gamma_acf_lf_I , k_acf_nl_I, Ek_acf_nl_I, D_acf_nl_I, sigma2_D_acf_nl_I,gamma_acf_nl_I, sigma2_gamma_acf_nl_I, tau0_exp_lf_I, tau0_exp_nl_I]=plotsub_acf('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, subs);
+[k_acf_lf_I,Ek_acf_lf_I,D_acf_lf_I,sigma2_D_acf_lf_I,gamma_acf_lf_I, sigma2_gamma_acf_lf_I , k_acf_nl_I, Ek_acf_nl_I, D_acf_nl_I, sigma2_D_acf_nl_I,gamma_acf_nl_I, sigma2_gamma_acf_nl_I, tau0_exp_lf_I, tau0_exp_nl_I, Xpix, Ypix]=plotsub_acf('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, subs,0.82,3.21);
  disp('................')
  disp(titleI)
  disp('Autocorrelation function analysis by linear fitting')
@@ -73,7 +74,7 @@ disp(['tau_0:' num2str(tau0_exp_nl_I*1e3) ' ms']);
 disp('................')
 %%
 titleII='Experiment II, P=6.0mW';
-[k_acf_lf_II,Ek_acf_lf_II,D_acf_lf_II,sigma2_D_acf_lf_II,gamma_acf_lf_II, sigma2_gamma_acf_lf_II , k_acf_nl_II, Ek_acf_nl_II, D_acf_nl_II, sigma2_D_acf_nl_II,gamma_acf_nl_II, sigma2_gamma_acf_nl_II, tau0_exp_lf_II, tau0_exp_nl_II]=plotsub_acf('Data_positions_Fig9_1P4_S.mat',[2*bx1+xwi+bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs);
+[k_acf_lf_II,Ek_acf_lf_II,D_acf_lf_II,sigma2_D_acf_lf_II,gamma_acf_lf_II, sigma2_gamma_acf_lf_II , k_acf_nl_II, Ek_acf_nl_II, D_acf_nl_II, sigma2_D_acf_nl_II,gamma_acf_nl_II, sigma2_gamma_acf_nl_II, tau0_exp_lf_II, tau0_exp_nl_II]=plotsub_acf('Data_positions_Fig9_1P4_S.mat',[2*bx1+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs,1.1,8.2);
 disp('................')
 disp(titleII)
 disp('Autocorrelation function analysis by linear fitting')
@@ -99,7 +100,7 @@ disp(['tau_0:' num2str(tau0_exp_nl_II*1e3) ' ms']);
 disp('................')
 %%
 titleIII='Experiment III, P=9.2mW';
-[k_acf_lf_III,Ek_acf_lf_III,D_acf_lf_III,sigma2_D_acf_lf_III,gamma_acf_lf_III, sigma2_gamma_acf_lf_III , k_acf_nl_III, Ek_acf_nl_III, D_acf_nl_III, sigma2_D_acf_nl_III,gamma_acf_nl_III, sigma2_gamma_acf_nl_III, tau0_exp_lf_III, tau0_exp_nl_III]=plotsub_acf('Data_positions_Fig9_1P6_S.mat',[3*bx1+2*xwi+2*bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs);
+[k_acf_lf_III,Ek_acf_lf_III,D_acf_lf_III,sigma2_D_acf_lf_III,gamma_acf_lf_III, sigma2_gamma_acf_lf_III , k_acf_nl_III, Ek_acf_nl_III, D_acf_nl_III, sigma2_D_acf_nl_III,gamma_acf_nl_III, sigma2_gamma_acf_nl_III, tau0_exp_lf_III, tau0_exp_nl_III]=plotsub_acf('Data_positions_Fig9_1P6_S.mat',[3*bx1+2*xwi+bx2 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs, 1.1,13);
 
 disp('................')
 disp(titleIII)
