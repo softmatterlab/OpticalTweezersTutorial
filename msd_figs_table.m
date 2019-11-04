@@ -18,7 +18,7 @@ Xpix = 3*xwi+3*bx1+3*bx2;  % total
 
 ywi = 300;    % length riquadro con funzione
 by1 = 110;     % extra space below
-by2 = 50;     % extra space up
+by2 = 20;     % extra space up
 
 Ypix = 1*by1+1*ywi+1*by2;  % larghezza figura in pixel
 
