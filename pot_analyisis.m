@@ -19,9 +19,11 @@ kb=1.38064852e-23;
 P=50; 
 
 %use a subsampled data set
-subs=1;
+subs=3;
 
 %linear fit
+disp('................')
+disp('Potential analysis linear fit')
 [k_pot_lf, sigma2_k_pot_lf, x_alpha_lf, mrho_lf, sigma2_rho_lf, mU_lf, sigma2_Ulf, rho0_lf, x_eq_lf, U_0_lf]=pot_lfit(x(1:subs:size(x,1),:),T,P);
 disp('lineal')
 disp(['k_pot: ' num2str(k_pot_lf*1e6) '+-' num2str(sigma2_k_pot_lf*1e6) ' pN/um']);

@@ -1,8 +1,9 @@
-function [k_pot_lf, k_pot_nl]=plotsub_eq(filename, positioninthefig1, positionintefig2, title1, T, P)
+function [k_pot_lf, k_pot_nl]=plotsub_eq(filename, positioninthefig1, title1, P)
 load(filename);
 disp(filename);
 addpath pot
 kb = 1.38064852e-23;
+positioninthefig1
 
 %translate everithing to zero
 x = x - repmat(mean(x),size(x,1),1);
@@ -13,7 +14,7 @@ P=50;
 %user defined number of bins
 
 
-[x_alpha, mrho, sigma2_rho, frequencynor, logf, mlogf, sigma_logh,mU,  sigma2_U, mloghist, Eloghist, U_0_exp]=prob_dist_energy(x,P, T)
+[x_alpha, mrho, sigma2_rho, frequencynor, logf, mlogf, sigma_logh,mU,  sigma2_U, mloghist, Eloghist, U_0_exp]=prob_dist_energy(x,P, T);
 
 %delete zeros to avoid Inf in weights
 sigma2_rho(sigma2_rho==0) = 1;
@@ -55,7 +56,7 @@ P=50;
 subsample=1;
 %number of bins of the histogram, if not set default is 50
 %linear fit
-[k_eq,sigma2_k_eq]=eq1d(x(1:subsample:1000000,:),T,0e-9);
+[k_eq,sigma2_k_eq]=eq1d(x(1:subsample:1000000,:),T);
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 
 rhomodel=a0*exp(-k_eq/(2*kb*T)*(x_alpha).^2);

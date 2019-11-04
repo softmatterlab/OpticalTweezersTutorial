@@ -1,15 +1,14 @@
 function [k_acf_lf,Ek_acf_lf,D_acf_lf,ED_acf_lf,gamma_acf_lf, sigma2_gamma_acf_lf , k_acf_nl, Ek_acf_nl, D_acf_nl, ED_acf_nl,gamma_acf_nl, sigma2_gamma_acf_nl, tau0_exp_lf, tau0_exp_nl,Xpix, Ypix]=plotsub_pot(filename, positioninthefig1, title1, T, subsample, partau0, end_plot)
 load(filename);
 disp(filename);
-kb=1.38e-23;
-
+kb=1.38064852e-23;
+ 
 %blue color
 col1=[73/255,4/255,10/255];
-	
+    
 %yellow
 col2=[241/255,185/255,14/255];
 %gray color for experimental data
-
 %colbar=[4/255,45/255,73/255];
 colbar=[7/255, 79/255, 129/255];
 % xwi = 400;    % width of the plot square
@@ -22,16 +21,16 @@ colbar=[7/255, 79/255, 129/255];
 % by1 = 60;     % extra space below
 % by2 = 30;     % extra space up
 % Ypix = 2*by1+2*ywi+3*by2;  % larghezza figura in pixel
-
+ 
 P=50;
-
+ 
 %number of bins of the histogram, if not set default is 50
 %linear fit
 [k_acf_lf, Ek_acf_lf, D_acf_lf, ED_acf_lf,gamma_acf_lf, sigma2_gamma_acf_lf,tau_acf_lf, mc, Ec,indc, tau0_exp_lf, c0_exp_lf]=acf_lfit(x(1:subsample:size(x,1),:),T,dt*subsample);
 %[k_acf_lf, Ek_acf, D_acf, ED_acf, tau_lf, mc, Ec,indc, tau0_exp_lf, c0_exp_lf]=acf_lfit(x(1:subsample:size(x,1),:),T,dt*subsample);
 %non linear fit
 [k_acf_nl, Ek_acf_nl, D_acf_nl, ED_acf_nl,gamma_acf_nl, sigma2_gamma_acf_nl, tau_nl, mc, Ec, indc, tau0_exp_nl, c0_exp_nl]=acf_nlfit(x(1:subsample:size(x,1),:),T,dt*subsample);
-
+ 
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 %bar(x_alpha_lf*1e6, mrho_lf*1e-6, 'EdgeColor', 'white', 'FaceColor', colbar, 'facealpha', 0.8, 'HandleVisibility','off')
 
@@ -88,7 +87,7 @@ ylim([-0.1, 3]*1e-4)
 % 
 % %scatter(x_alpha_lf*1e6, -log(mrho_lf)-U_0_exp,80,'o', 'markerfacecolor','colbar', 'markeredgecolor', colbar , 'DisplayName', 'Experimental values of potential energy')
 % %errorbar(x_alpha_lf*1e6,  -log(mrho_lf)-U_0_exp_nl, -log(1e-6*abs(sigma2_rho_lf)), 'Color', colbar,  'DisplayName', 'Experimental values of potential energy');
-
+ 
 % 
 % 
 % 

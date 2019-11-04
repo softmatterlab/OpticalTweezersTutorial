@@ -1,7 +1,7 @@
-function [k_psd, Ek_psd, mgamma_psd, Egamma_psd]=plotsub_msd(filename, positioninthefig1, title1, T, subs, maxlag)
+function [k_psd, sigma_k_psd, mgamma_psd, sigma_gamma_psd]=plotsub_msd(filename, positioninthefig1, title1, subs)
 load(filename);
 disp(filename);
-kb=1.38e-23;
+%
 
 col3=[0.00,0.45,0.74];
 
@@ -16,20 +16,17 @@ addpath psd
 
 nw=round(size(x(1:subs:end,:),1)/500); 
 kb=1.38064852e-23;
-gamma=6*pi*eta*a;
-[fc_exp,D_exp,Efc_exp,ED_exp,f,XX,fw_mean,Pk,EPk,fcut]=psd_lfit(x(1:subs:end,:),dt*subs,nw,1/4);
-mgamma_psd=kb*T./D_exp;
+%gamma=6*pi*eta*a;
+[fc_psd,D_psd,sigma_fc_psd,sigma_D_psd,f,XX,fw_mean,Pk,~,fcut]=psd_lfit(x(1:subs:end,:),dt*subs,nw,1/4);
+mgamma_psd=kb*T./D_psd;
 
-Egamma_psd=kb*T./D_exp^2*ED_exp;
+sigma_gamma_psd=kb*T./D_psd^2*sigma_D_psd;
 
-k_psd=2*pi*gamma*fc_exp;
-
-Ek_psd=2*pi*gamma*Efc_exp;
 
 % estimation of k using the estimated gamma
-%mk2_psd=2*pi*mgamma_psd.*mfc_psd;
+k_psd=2*pi*mgamma_psd.*fc_psd;
 
-%Ek2_psd=2*pi*mgamma_psd.*Efc_psd+2*pi*mfc_psd*Egamma_psd;
+sigma_k_psd=2*pi*(mgamma_psd.*sigma_fc_psd+fc_psd*sigma_gamma_psd);
 
 
 plot(f,XX*1e18,'.','MarkerSize',6,'Color',col3,'DisplayName', 'Experimental power spectral density')

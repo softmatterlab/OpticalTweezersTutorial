@@ -1,7 +1,7 @@
 % Auto correlation analysis for Nexp
 
 % Initialization of the workspace
-close all
+clear all
 
 clear;
 
@@ -11,26 +11,26 @@ addpath msd
 
 addpath wlsice
 
-subs=10; %use a subsampled data set
+subs=3; %use a subsampled data set
 %exp I SUBS=20, maxlag=50 
 %exp II subs-17, maxlag=25
 %exp III subs=10, maxlag=25
-maxlag=25;
+maxlag=300;
     
-load(['Data_positions_Fig9_1P6_S.mat']);
+load(['Data_positions_Fig9_1P2_S.mat']);
 
 
-    
-[k_msd, Ek_msd, D_msd, ED_msd, tau, mmsd, Emsd,indc]=msd_nfilt(x(1:subs:size(x,1),:),T,dt*subs,maxlag);
+[k_msd,sigma_k_msd, tau0, sigma2_tau0, D_msd, sigma_D_msd, tau, mmsd, sigma_msd, indc, gamma_msd, sigma2_gamma_msd] =msd_nfilt(x(1:subs:size(x,1),:),T, dt*subs,maxlag);   
+
 
 
 disp('')
 
 
-disp(['tau0_msd: ' num2str(tau) ])%'+-' num2str(Etau)])
+disp(['tau0_msd: ' num2str(tau0) ])%'+-' num2str(Etau)])
 
-disp(['k_msd: ' num2str(k_msd*1e6) '+-' num2str(Ek_msd*1e6)])
+disp(['k_msd: ' num2str(k_msd*1e6) '+-' num2str(sigma_k_msd*1e6)])
 
-disp(['D_msd: ' num2str(D_msd*1e12) '+-' num2str(ED_msd*1e12)])
+disp(['D_msd: ' num2str(D_msd*1e12) '+-' num2str(sigma_D_msd*1e12)])
 
 %disp(['gamma_msd: ' num2str(gamma_msd*1e6) '+-' num2str(Egamma_msd*1e6)])

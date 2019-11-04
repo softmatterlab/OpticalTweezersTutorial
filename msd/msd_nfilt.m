@@ -54,7 +54,7 @@ if indc>maxlag
     indc=maxlag;
 end
 
-ind0=floor(ind/4);
+ind0=floor(ind/3);
 
 tau_cut=tau(1:indc);
 

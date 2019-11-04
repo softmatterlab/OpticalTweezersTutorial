@@ -4,14 +4,14 @@ s2=sum(xn(1:end-1).*xn(2:end));
 s1=sum(xn(1:end-1).^2);
 s3=sum(xn(2:end).^2);
 %physical constants
-kB=1.38e-23; % Boltzmann constant [m^2kg/s^2K]
+kB=1.38064852e-23; % Boltzmann constant [m^2kg/s^2K]
 
 %definition of parameter
 
 eta=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
 k_th=14*1e-6;
-gamma_th=6*pi*eta*a
-D_th=kB*T/gamma_th
+gamma_th=6*pi*eta*a;
+D_th=kB*T/gamma_th;
 sigma2_D_th=(D_th/10).^2;
 sigma2_F_k_ex_th_gamma_th=(k_th/(10*gamma_th)).^2;
 
@@ -38,7 +38,7 @@ gamma=kB*T/D;
 
 sigma_D=sqrt(beta_N^2/(4*(alpha_N-1)^2*(alpha_N-2)));
 sigma_gamma=kB*T/D^2*sigma_D;
-k=K_N*gamma/(2*pi);
+k=K_N*gamma;
 sigma_f_k_gamma=sqrt(psi_N*beta_N/(alpha_N-1));
 sigma_k=gamma*sigma_f_k_gamma+K_N*sigma_gamma;
 end

@@ -1,8 +1,7 @@
 function [k_msd,sigma2_k_msd ,  gamma_msd, sigma2_gamma_msd ,tau0]=plotsub_msd(filename, positioninthefig1, title1, T, subs, maxlag,partau0,ytau)
 load(filename);
 disp(filename);
-kb=1.38e-23;
-
+kb=1.38064852e-23;
 %blue color
 col1=[73/255,4/255,10/255];
 %yellow
@@ -12,9 +11,6 @@ colbar=[7/255, 79/255, 129/255];
 
 
 [k_msd,sigma2_k_msd, tau0, sigma2_tau0, D_msd, ED_msd, tau, mmsd, Emsd, indc, gamma_msd, sigma2_gamma_msd]=msd_nfilt(x(1:subs:size(x,1),:),T,dt*subs,maxlag);
-
-%[k_msd, Ek_msd, D_msd, ED_msd, tau, mmsd, Emsd, indc]=msd_nfilt(x(1:subs:size(x,1),:),T,dt*subs,P)
-
 
 
 % % plot

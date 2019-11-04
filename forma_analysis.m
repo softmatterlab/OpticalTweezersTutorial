@@ -9,10 +9,13 @@ addpath forma
 
 
 
-load('Data_positions_Fig9_1P2_S.mat')
+load('Data_positions_Fig9_1P6_S.mat')
 
 
 x = x - repmat(mean(x),size(x,1),1);
+%in this case the whole time series is used as one experiment but it can be
+%done wioth many experiments
+xl=reshape(x, [size(x,1)*size(x,2),1 ]);
 
 gamma=6*pi*eta*a;
 
@@ -20,56 +23,33 @@ kb=1.38064852e-23;
 
 D0=kb*T/gamma;
 
-subs=10; %use a subsampled data set
+subs=3; %use a subsampled data set
 
 [N,Nexp]=size(x);
 
-[fc_forma,D_forma,Efcsol,EDsol]=forma1d(x(1:subs:N,:),dt*subs);
+[fc_forma,D_forma,sigma_fcforma,sigma_D_forma]=forma1d(xl(1:subs:end),dt*subs);
 
-mD_forma=mean(D_forma);
-
-ED_forma=std(D_forma);
 
 gamma_forma=kb*T./D_forma;
+sigma_gamma_forma=kb*T./D_forma^2*sigma_D_forma;
 
-mgamma_forma=mean(gamma_forma);
 
-Egamma_forma=std(gamma_forma);
-
-k_forma=2*pi*gamma*fc_forma;
-
-mk_forma=mean(k_forma);
-
-Ek_forma=std(k_forma);
-
-% estimation of k using the estimated gamma
-k2_forma=2*pi*gamma_forma.*fc_forma;
-
-mk2_forma=mean(k2_forma);
-
-Ek2_forma=std(k2_forma);
-
-Eksol=2*pi*gamma_forma.*Efcsol;
+k_forma=gamma_forma*fc_forma;
+sigma_k_forma=gamma_forma.*sigma_fcforma+fc_forma*sigma_gamma_forma;
 
 
 
-disp('...')
+
+disp('................')
 
 disp('FORMA analysis')
+disp(['k_forma: ' num2str(k_forma*1e6) '+-' num2str(sigma_k_forma*1e6) 'p Nu/m'])
 
-disp(['D: ' num2str(mD_forma) '+-' num2str(ED_forma) ' m^2/s'])
+disp(['D_forma: ' num2str(D_forma*1e12) '+-' num2str(sigma_D_forma*1e12) 'u m^2/s'])
 
-disp(['D0: ' num2str(D0) ' m^2/s']);
+disp(['gamma_forma: ' num2str(1e9*gamma_forma) '+-' num2str(1e9*sigma_gamma_forma) ' pNms/um'])
 
-disp(['gamma: ' num2str(mgamma_forma) '+-' num2str(Egamma_forma) ' Ns/m'])
 
-disp(['gamma0: ' num2str(gamma) ' Ns/m'])
+disp('................')
 
-disp(['k: ' num2str(mk_forma) '+-' num2str(Ek_forma) ' N/m'])
-
-disp(['k2: ' num2str(mk2_forma) '+-' num2str(Ek2_forma) ' N/m'])
-
-disp(['fc: ' num2str(mean(fc_forma)) ' Hz'])
-
-disp(['Esol:' num2str(Eksol)])
 
