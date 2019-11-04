@@ -1,8 +1,8 @@
 
 
 clear all
+load('results_averaged_Data_positions_Fig9_1P2_S.mat20191104T034638.mat')
 
-load('results_averaged_Data_positions_Fig9_1P2_S.mat20191103T212914.mat')
 xwi = 500;    % width of the plot square
 bx1 = 110;     % extra space at the left
 bx2 = 40;     % extra space at the right
@@ -61,7 +61,7 @@ ylabel('$\Delta k/k(\%)$', 'Interpreter', 'Latex', 'FontSize',25)
 legend('FontSize', 10)
 set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5, 'FontSize',25);
 %set(gca,'XTickLabel',[])
-ylim([0 5])
+ylim([-0.1 5])
 xlim([0 330000])
 hold off
 
@@ -109,7 +109,7 @@ legend('FontSize', 10)
 xlabel('$N_s$', 'Interpreter', 'Latex', 'FontSize',25)
 ylabel('$\Delta D/D(\%)$', 'Interpreter', 'Latex', 'FontSize',23)
 set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5, 'FontSize',25);
-ylim([0 4])
+ylim([-0.1 4])
 
 xlim([0 330000])
 hold off
