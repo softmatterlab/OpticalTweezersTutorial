@@ -42,12 +42,12 @@ col3=[0.00,0.45,0.74];
 %errorbar(tau_acf_lf(1:20:end_plot*indc), mc(1:20:end_plot*indc)*1e12, Ec(1:20:end_plot*indc)*1e12,'.','MarkerSize',10,'LineWidth', 1.5, 'Color', colbar 'DisplayName', 'Experimental autocorrelation function');
 
 
-e=errorbar(tau_acf_lf(1:20:end_plot*indc),mc(1:20:end_plot*indc)*1e12,Ec(1:20:end_plot*indc)*1e12,'.','MarkerSize',25 ,'LineWidth', 1.5,'Color',colbar, 'DisplayName', 'Experimental ACF');
+e=errorbar(tau_acf_lf(1:20:end_plot*indc),mc(1:20:end_plot*indc)*1e18,Ec(1:20:end_plot*indc)*1e18,'.','MarkerSize',25 ,'LineWidth', 1.5,'Color',colbar, 'DisplayName', 'Experimental ACF');
 e.Color = col3;
 hold on
-plot(tau_acf_lf(1:20:end_plot*indc),c0_exp_lf*exp(-tau_acf_lf(1:20:end_plot*indc)/tau0_exp_lf)*1e12, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting')
+plot(tau_acf_lf(1:20:end_plot*indc),c0_exp_lf*exp(-tau_acf_lf(1:20:end_plot*indc)/tau0_exp_lf)*1e18, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting')
 
-plot(tau_nl(1:20:end_plot*indc),c0_exp_nl*exp(-tau_nl(1:20:end_plot*indc)/tau0_exp_nl)*1e12, '--', 'LineWidth',3,'Color','k', 'DisplayName',  'Non -linear fitting')
+plot(tau_nl(1:20:end_plot*indc),c0_exp_nl*exp(-tau_nl(1:20:end_plot*indc)/tau0_exp_nl)*1e18, '--', 'LineWidth',3,'Color','k', 'DisplayName',  'Non -linear fitting')
 
 
   %%This is working
@@ -72,10 +72,10 @@ plot(tau_nl(1:20:end_plot*indc),c0_exp_nl*exp(-tau_nl(1:20:end_plot*indc)/tau0_e
  box on
 % %xticks((-0.5:0.1:0.5)*1e-7);
 ntaus=6;
-plot([tau0_exp_lf*ntaus,tau0_exp_lf*ntaus],[-0.5,1],'--k', 'HandleVisibility','off')
-text(tau0_exp_lf*ntaus*partau0,0.4e-4,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',30)
+plot([tau0_exp_lf*ntaus,tau0_exp_lf*ntaus],[-0.5,400],'--k', 'HandleVisibility','off')
+text(tau0_exp_lf*ntaus*partau0,0.4e2,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',30)
 xlim([-0.0002 0.009]);
-ylim([-0.1, 3]*1e-4)
+ylim([-0.1, 3]*1e2)
 % set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',15);
 % xlabel('$x(\mu m)$','Interpreter','Latex', 'FontSize',20)
 % ylabel('$\rho (\rm{\mu m^{-1}})$','Interpreter','Latex', 'FontSize',20)
@@ -104,16 +104,23 @@ ylim([-0.1, 3]*1e-4)
 % 
 % xlim([-0.06 0.06]);
 % %xlim([x_alpha_lf(1)*1e6 x_alpha_lf(end)*1e6]);
- set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',25);
+if aa==5
+set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',25);
+else 
+   set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',25,'Yticklabel',[]);
+    end
+ 
+ 
+ 
  xlabel('$\tau(\rm s)$','Interpreter','Latex', 'FontSize',30)
 
  
  %% abc
 xwi = 400;    % width of the plot square
-bx1 = 90;     % extra space at the left
+bx1 = 120;     % extra space at the left
 bx2 = 20;     % extra space at the right
 
-Xpix = 3*xwi+2*bx1+3*bx2;  % total
+Xpix = 3*xwi+bx1+3*bx2;  % total
 
 ywi = 300;    % length riquadro con funzione
 by1 = 110;     % extra space below
@@ -123,16 +130,16 @@ Ypix = 1*by1+1*ywi+1*by2;  % larghezza figura in pixel
 
 
  if aa==5
- ylabel('$C(  \mu  \rm {m^2})$','Interpreter','Latex','FontSize',30, 'FontName', 'TimesNewRoman')
+ ylabel('$C(    \rm {nm^2})$','Interpreter','Latex','FontSize',30, 'FontName', 'TimesNewRoman')
 %  legend ({'a','b','c'},'Box','off','Position',[2*bx1 Ypix/2+20 0 0])
-LL= legend ({'Experimental ACF','Non-linear fitting','Linear fitting'},'Box','off','Position',[0.15 0.6 0.1 0.2])
+LL= legend ({'Experimental ACF','Non-linear fitting','Linear fitting'},'Box','off','Position',[0.2 0.6 0.1 0.2])
 
 LL.FontSize = 18
  end
  axes('Position',[(0) 0 Xpix 0]/Xpix + [0 0 0 Ypix]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 hold on
 
-xt = [bx1-70,1.5*bx1+xwi-20,2*bx1+2*xwi];
+xt = [bx1-100,bx1+xwi+bx2,bx1+2*(xwi+bx2)];
 yt = [ by1+ywi+40,by1+ywi+40,by1+ywi+40];
 str = {'\bf a','\bf b','\bf c'};
 text(xt,yt,str,'Interpreter','Latex','FontSize',34)

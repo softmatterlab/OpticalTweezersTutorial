@@ -10,10 +10,10 @@ v=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
 gamma=pi*6*r*v; %[m*Pa*s]
 
 xwi = 400;    % width of the plot square
-bx1 = 90;     % extra space at the left
+bx1 = 120;     % extra space at the left
 bx2 = 20;     % extra space at the right
 
-Xpix = 3*xwi+2*bx1+3*bx2;  % total
+Xpix = 3*xwi+bx1+3*bx2;  % total
 
 ywi = 300;    % length riquadro con funzione
 by1 = 110;     % extra space below
@@ -74,7 +74,7 @@ disp(['tau_0:' num2str(tau0_exp_nl_I*1e3) ' ms']);
 disp('................')
 %%
 titleII='Experiment II, P=6.0mW';
-[k_acf_lf_II,Ek_acf_lf_II,D_acf_lf_II,sigma2_D_acf_lf_II,gamma_acf_lf_II, sigma2_gamma_acf_lf_II , k_acf_nl_II, Ek_acf_nl_II, D_acf_nl_II, sigma2_D_acf_nl_II,gamma_acf_nl_II, sigma2_gamma_acf_nl_II, tau0_exp_lf_II, tau0_exp_nl_II]=plotsub_acf('Data_positions_Fig9_1P4_S.mat',[1.5*bx1+bx2+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs,1.1,8.2,0);
+[k_acf_lf_II,Ek_acf_lf_II,D_acf_lf_II,sigma2_D_acf_lf_II,gamma_acf_lf_II, sigma2_gamma_acf_lf_II , k_acf_nl_II, Ek_acf_nl_II, D_acf_nl_II, sigma2_D_acf_nl_II,gamma_acf_nl_II, sigma2_gamma_acf_nl_II, tau0_exp_lf_II, tau0_exp_nl_II]=plotsub_acf('Data_positions_Fig9_1P4_S.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs,1.1,8.2,0);
 disp('................')
 disp(titleII)
 disp('Autocorrelation function analysis by linear fitting')
@@ -100,7 +100,7 @@ disp(['tau_0:' num2str(tau0_exp_nl_II*1e3) ' ms']);
 disp('................')
 %%
 titleIII='Experiment III, P=9.2mW';
-[k_acf_lf_III,Ek_acf_lf_III,D_acf_lf_III,sigma2_D_acf_lf_III,gamma_acf_lf_III, sigma2_gamma_acf_lf_III , k_acf_nl_III, Ek_acf_nl_III, D_acf_nl_III, sigma2_D_acf_nl_III,gamma_acf_nl_III, sigma2_gamma_acf_nl_III, tau0_exp_lf_III, tau0_exp_nl_III]=plotsub_acf('Data_positions_Fig9_1P6_S.mat',[2*bx1+2*bx2+2*xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs, 1.1,13,0);
+[k_acf_lf_III,Ek_acf_lf_III,D_acf_lf_III,sigma2_D_acf_lf_III,gamma_acf_lf_III, sigma2_gamma_acf_lf_III , k_acf_nl_III, Ek_acf_nl_III, D_acf_nl_III, sigma2_D_acf_nl_III,gamma_acf_nl_III, sigma2_gamma_acf_nl_III, tau0_exp_lf_III, tau0_exp_nl_III]=plotsub_acf('Data_positions_Fig9_1P6_S.mat',[bx1+2*bx2+2*xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs, 1.1,13,0);
 
 disp('................')
 disp(titleIII)

@@ -1,4 +1,4 @@
-function [k_pot_lf,sigma2_k_pot_lf, k_pot_nl,sigma2_k_pot_nl , k_eq, sigma2_k_eq]=plotsub_pot(filename, positioninthefig1, positionintefig2, title1, T, P, subssample)
+function [k_pot_lf,sigma2_k_pot_lf, k_pot_nl,sigma2_k_pot_nl , k_eq, sigma2_k_eq]=plotsub_pot(filename, positioninthefig1, positionintefig2, title1, T, P, subssample,aa)
 load(filename);
 disp(filename);
 kb=1.38e-23;
@@ -43,6 +43,7 @@ subsample=1;
 [k_eq,sigma2_k_eq]=eq1d(x(1:subsample:1000000,:),T);
 
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
+hold on
 % disp('Check that the probability distribiution is normalized')
 % disp('Integral of the experimental distribuitions')
 % disp('Linear fitting')
@@ -64,7 +65,7 @@ scatter((x_alpha_lf)*1e9+0.0005, rhomodel_eq*1e-6,150,'o','markeredgecolor','k',
 
 
 % scatter(tau_acf_lf(1:20:end_plot*indc),mc(1:20:end_plot*indc)*1e12,60,'o','markerfacecolor', col3,'markeredgecolor',col3);
-hold on
+
 
 plot(x_alpha_lf*1e9, rhomodel_lf*1e-6, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fit');
 
@@ -84,11 +85,13 @@ ylim([-1 50])
 set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5,'FontSize',25);
 xlabel('$x( \rm nm)$','Interpreter','Latex', 'FontSize',30)
 %xlabel('$x (µ m)$','Interpreter','tex', 'FontSize',30)
-%xlabel(['c_{O2} [',char(181),'mol/l]'],'Interpreter','tex')
+% %xlabel(['c_{O2} [',char(181),'mol/l]'],'Interpreter','tex')
+% 
+ if a==5
 ylabel('$\rho (\mu \rm m^{-1}$)','Interpreter','Latex', 'FontSize',30)
-
+ end
 % ylabel('$\rho (\rm {counts})$','Interpreter','Latex', 'FontSize',30)
-hold off
+ hold off
 % legend
 
 %second figure, Energy potential distribution, exp I
@@ -135,24 +138,26 @@ xlabel('$x( \rm nm)$','Interpreter','Latex', 'FontSize',30)
 % 
 
 % 
+if aa==5
 ylabel('$U(k_{\rm B} T)$','Interpreter','Latex','FontSize',30)
+end
 ylim([-0.5, 10])
 
 hold off
 
  set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',25);
  xlabel('$\tau(\rm s)$','Interpreter','Latex', 'FontSize',30)
- ylabel('$C(  \mu  \rm {m^2})$','Interpreter','Latex','FontSize',30, 'FontName', 'TimesNewRoman')
+
  
 xwi = 400;    % width of the plot square
 bx1 = 120;     % extra space at the left
-bx2 = 30;     % extra space at the right
+bx2 = 20;     % extra space at the right
 
  Xpix = 3*xwi+3*bx1+3*bx2;  % total
 
 ywi = 300;    % length riquadro con funzione
 by1 = 110;     % extra space below
-by2 = 50;     % extra space up
+by2 = 70;     % extra space up
 % 
  Ypix = 1*by1+1*ywi+1*by2;  % larghezza figura in pixel
  axes('Position',[(0) 0 Xpix 0]/Xpix + [0 0 0 Ypix]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
