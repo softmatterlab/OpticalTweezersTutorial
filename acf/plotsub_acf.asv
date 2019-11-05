@@ -1,4 +1,4 @@
-function [k_acf_lf,Ek_acf_lf,D_acf_lf,ED_acf_lf,gamma_acf_lf, sigma2_gamma_acf_lf , k_acf_nl, Ek_acf_nl, D_acf_nl, ED_acf_nl,gamma_acf_nl, sigma2_gamma_acf_nl, tau0_exp_lf, tau0_exp_nl,Xpix, Ypix]=plotsub_pot(filename, positioninthefig1, title1, T, subsample, partau0, end_plot)
+function [k_acf_lf,Ek_acf_lf,D_acf_lf,ED_acf_lf,gamma_acf_lf, sigma2_gamma_acf_lf , k_acf_nl, Ek_acf_nl, D_acf_nl, ED_acf_nl,gamma_acf_nl, sigma2_gamma_acf_nl, tau0_exp_lf, tau0_exp_nl,Xpix, Ypix]=plotsub_pot(filename, positioninthefig1, title1, T, subsample, partau0, end_plot,aa)
 load(filename);
 disp(filename);
 kb=1.38e-23;
@@ -38,19 +38,24 @@ axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli
 col2=[1,0,0];
 col3=[0.00,0.45,0.74];
 
+%%This is not working anymore%%
+%errorbar(tau_acf_lf(1:20:end_plot*indc), mc(1:20:end_plot*indc)*1e12, Ec(1:20:end_plot*indc)*1e12,'.','MarkerSize',10,'LineWidth', 1.5, 'Color', colbar 'DisplayName', 'Experimental autocorrelation function');
 
-  errorbar(tau_acf_lf(1:20:end_plot*indc),mc(1:20:end_plot*indc)*1e12,Ec(1:20:end_plot*indc)*1e12,'.','MarkerSize',10,'LineWidth', 1.5, 'Color', colbar 'DisplayName', 'Experimental autocorrelation function');
-%  scatter(tau_acf_lf(1:20:end_plot*indc),mc(1:20:end_plot*indc)*1e12,60,'o','markerfacecolor', col3,'markeredgecolor',col3);
- 
-%  errorbar(tau(1:2:end),  mmsd(1:2:end)*1e12, Emsd(1:2:end)*1e12,'.','MarkerSize',10,'LineWidth', 1.5, 'Color', colbar, 'DisplayName', 'Experimental mean square displacement');
- 
-
- hold on
 
 plot(tau_acf_lf(1:20:end_plot*indc),c0_exp_lf*exp(-tau_acf_lf(1:20:end_plot*indc)/tau0_exp_lf)*1e12, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting')
-
+hold on
 plot(tau_nl(1:20:end_plot*indc),c0_exp_nl*exp(-tau_nl(1:20:end_plot*indc)/tau0_exp_nl)*1e12, '--', 'LineWidth',3,'Color','k', 'DisplayName',  'Non -linear fitting')
 
+
+e=errorbar(tau_acf_lf(1:20:end_plot*indc),mc(1:20:end_plot*indc)*1e12,Ec(1:20:end_plot*indc)*1e12,'.','MarkerSize',20 ,'LineWidth', 1.5,'Color',colbar, 'DisplayName', 'Experimental autocorrelation function');
+e.Color = col3;
+  %%This is working
+  %  scatter(tau_acf_lf(1:20:end_plot*indc),mc(1:20:end_plot*indc)*1e12,60,'o','markerfacecolor', col3,'markeredgecolor',col3);
+ 
+
+ 
+
+ 
 %plot(tau(1:20:6*indc),c0_exp*exp(tau(1:20:6*indc)/tau0_exp)*1e12,'b')
 % % 
 % disp('Integral of the fitted probability distributions')
@@ -100,11 +105,15 @@ ylim([-0.1, 3]*1e-4)
 % %xlim([x_alpha_lf(1)*1e6 x_alpha_lf(end)*1e6]);
  set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',25);
  xlabel('$\tau(\rm s)$','Interpreter','Latex', 'FontSize',30)
+
+ if aa==5
  ylabel('$C(  \mu  \rm {m^2})$','Interpreter','Latex','FontSize',30, 'FontName', 'TimesNewRoman')
+ end
  
+ %% abc
 xwi = 400;    % width of the plot square
-bx1 = 120;     % extra space at the left
-bx2 = 30;     % extra space at the right
+bx1 = 90;     % extra space at the left
+bx2 = 20;     % extra space at the right
 
 Xpix = 3*xwi+3*bx1+3*bx2;  % total
 
@@ -128,9 +137,9 @@ axis off
 
 xlim([0 Xpix])
 ylim([0 Ypix])
-% ylim([0, 10])
-% 
-% hold off
+ylim([0, 10])
+
+hold off
 % 
 %  legend
 end
