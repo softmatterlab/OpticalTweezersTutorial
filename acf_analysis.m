@@ -17,7 +17,7 @@ load('Data_positions_Fig9_1P6_S.mat');
 
 kB=1.38064852e-23;
 
-subs=3; %use a subsampled data set
+subs=1; %use a subsampled data set
 %non linear fit
 
 [k_acf, sigma_k_acf, D_acf, sigma_D_acf, tau, mc, Ec, indc]=acf_lfit(x(1:subs:size(x,1),:),T,dt*subs);

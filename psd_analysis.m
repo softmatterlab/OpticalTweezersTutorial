@@ -22,7 +22,7 @@ kb=1.38064852e-23;
 
 D0=kb*T/gamma;
 
-subs=3; %use a subsampled data set
+subs=1; %use a subsampled data set
 
 nw=round(size(x(1:subs:end,:),1)/500); % number of windows
 %[fc_psd,D_psd,sigma_fc_psd,sigma_D_psd,f,XX,fw_mean,Pk,fcut,h]=psdfit_analytic(x(1:subs:end,:),dt*subs,nw,1/4);

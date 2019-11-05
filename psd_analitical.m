@@ -22,7 +22,7 @@ kb=1.38064852e-23;
 
 D0=kb*T/gamma;
 
-subs=3; %use a subsampled data set
+subs=1; %use a subsampled data set
 
 nw=round(size(x(1:subs:end,:),1)/500);
 %%ANALITICAL FIT

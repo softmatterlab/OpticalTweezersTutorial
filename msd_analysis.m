@@ -11,7 +11,7 @@ addpath msd
 
 addpath wlsice
 
-subs=3; %use a subsampled data set
+subs=1; %use a subsampled data set
 %exp I SUBS=20, maxlag=50 
 %exp II subs-17, maxlag=25
 %exp III subs=10, maxlag=25
@@ -24,8 +24,7 @@ kB=1.38064852e-23;
 
 gamma_msd=kB*T/D_msd;
 sigma_gamma_msd=kB*T/D_msd^2*sigma_D_msd;
-
-disp('')
+disp('................')
 
 
 disp(['tau0_msd: ' num2str(tau0) ])%'+-' num2str(Etau)])

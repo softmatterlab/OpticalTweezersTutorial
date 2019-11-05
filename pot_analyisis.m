@@ -19,7 +19,7 @@ kb=1.38064852e-23;
 P=50; 
 
 %use a subsampled data set
-subs=3;
+subs=1;
 
 %linear fit
 disp('................')

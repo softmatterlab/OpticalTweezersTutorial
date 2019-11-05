@@ -125,4 +125,3 @@ disp(['gamma_acf:' num2str(gamma_acf_nl_III*1e9) '+-'  num2str(sigma_gamma_acf_n
 disp(['tau_0:' num2str(tau0_exp_nl_III*1e3) ' ms']);
  
 disp('................')
-%2:3mW, 6:0mW, and 9:2mW

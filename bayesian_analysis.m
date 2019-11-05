@@ -8,8 +8,9 @@ addpath bayesian
 xx = reshape(x,[size(x,1)*size(x,2),1]);
 N=length(xx);
 %some useful calculations from the positions
-subs=3;
-[k_bay, sigma_k_bay, gamma_bay, sigma_gamma_bay, D_bay, sigma_D_bay]= bayesian(xx(1:subs:end),dt*subs,T, a);
+nsubs=3;
+subs=1;
+[k_bay, sigma_k_bay, gamma_bay, sigma_gamma_bay, D_bay, sigma_D_bay]= bayesian(xx(1:subs:end),dt*subs,T, a, nsubs);
 %[k_bay, sigma_k_bay, gamma_bay, sigma_gamma_bay, D_bay, sigma_D_bay]= bayesian([],dt,T, a);
 disp('................')
 
