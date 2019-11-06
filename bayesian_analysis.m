@@ -2,7 +2,7 @@
 clear all 
 close all
 %load data files
-load('Data_positions_Fig9_1P6_S.mat')
+load('Data_positions_Fig9_1P2_S.mat')
 x = x - repmat(mean(x),size(x,1),1);
 addpath bayesian
 xx = reshape(x,[size(x,1)*size(x,2),1]);

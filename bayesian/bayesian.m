@@ -1,9 +1,9 @@
 function [k, sigma_k, gamma, sigma_gamma, D, sigma_D]= bayesian(xn, dt,T, a, nsubs)
 dt=dt*nsubs;
-N=length(xn);
-s2=sum(xn(1:end-nsubs).*xn(1+nsubs:end));
-s1=sum(xn(1:end-nsubs).^2);
-s3=sum(xn(1+nsubs:end).^2);
+N=floor(length(xn)/nsubs);
+s2=sum(xn(1:nsubs:end-nsubs).*xn(1+nsubs:nsubs:end));
+s1=sum(xn(1:nsubs:end-nsubs).^2);
+s3=sum(xn(1+nsubs:nsubs:end).^2);
 %physical constants
 kB=1.38064852e-23; % Boltzmann constant [m^2kg/s^2K]
 
