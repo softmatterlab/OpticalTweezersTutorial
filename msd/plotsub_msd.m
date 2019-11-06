@@ -61,11 +61,13 @@ col3=[0.00,0.45,0.74];
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 
 msd_fit= 2*kb*T/k_msd*(1- exp(-tau/tau0));
-plot(tau, msd_fit*1e18, '--','LineWidth',3,'Color','r', 'DisplayName',  'Non -linear fitting');
-hold on 
+
+
 ntaus=6;
 e=errorbar(tau(1:2:end),  mmsd(1:2:end)*1e18, Emsd(1:2:end)*1e18,'.','MarkerSize',20,'LineWidth', 1.5, 'Color', colbar, 'DisplayName', 'Experimental MSD');
 e.Color = col3;
+hold on 
+plot(tau, msd_fit*1e18, '--','LineWidth',3,'Color','r', 'DisplayName',  'Non -linear fitting');
 box on
 %xticks((-0.5:0.1:0.5)*1e-7);
 xlim([0 0.009]);
@@ -91,13 +93,13 @@ xlabel('$\tau(\rm s)$','Interpreter','Latex', 'FontSize',30)
 
 plot([tau0*ntaus,tau0*ntaus],[0,6.5*1e2],'--k', 'HandleVisibility','off')
 % text(tau0*ntaus*partau0,0.05*max(mmsd)*1e12,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',30)
-text(tau0*ntaus*partau0,ytau*1E2,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',30)
+text(tau0*ntaus*partau0,1.2*ytau*1E2,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',30)
 
 
 
  if aa==5
      
-     LL= legend ({'Non-linear fitting','Experimental MSD'},'Box','off','Position',[0.18 0.25 0.1 0.2])
+     LL= legend ({'Experimental MSD','Non-linear fitting'},'Box','off','Position',[0.18 0.25 0.1 0.2])
 
 LL.FontSize = 18
  end

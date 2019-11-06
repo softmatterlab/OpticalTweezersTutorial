@@ -45,9 +45,9 @@ col3=[0.00,0.45,0.74];
 e=errorbar(tau_acf_lf(1:20:end_plot*indc)*1e3,mc(1:20:end_plot*indc)*1e18,Ec(1:20:end_plot*indc)*1e18,'.','MarkerSize',25 ,'LineWidth', 1.5,'Color',colbar, 'DisplayName', 'Experimental ACF');
 e.Color = col3;
 hold on
-plot(tau_acf_lf(1:20:end_plot*indc)*1e3,c0_exp_lf*exp(-tau_acf_lf(1:20:end_plot*indc)/tau0_exp_lf)*1e18, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting')
+plot(tau_acf_lf(1:20:end_plot*indc)*1e3,c0_exp_lf*exp(-tau_acf_lf(1:20:end_plot*indc)/tau0_exp_lf)*1e18, 'LineWidth',3,'Color','k', 'DisplayName',  'Linear fitting')
 
-plot(tau_nl(1:20:end_plot*indc)*1e3,c0_exp_nl*exp(-tau_nl(1:20:end_plot*indc)/tau0_exp_nl)*1e18, '--', 'LineWidth',3,'Color','k', 'DisplayName',  'Non -linear fitting')
+plot(tau_nl(1:20:end_plot*indc)*1e3,c0_exp_nl*exp(-tau_nl(1:20:end_plot*indc)/tau0_exp_nl)*1e18, '--', 'LineWidth',3,'Color','r', 'DisplayName',  'Non -linear fitting')
 
 
   %%This is working
@@ -132,7 +132,7 @@ Ypix = 1*by1+1*ywi+1*by2;  % larghezza figura in pixel
  if aa==5
  ylabel('$C(    \rm {nm^2})$','Interpreter','Latex','FontSize',30, 'FontName', 'TimesNewRoman')
 %  legend ({'a','b','c'},'Box','off','Position',[2*bx1 Ypix/2+20 0 0])
-LL= legend ({'Experimental ACF','Non-linear fitting','Linear fitting'},'Box','off','Position',[0.2 0.6 0.1 0.2])
+LL= legend ({'Experimental ACF','Linear fitting','Non-linear fitting'},'Box','off','Position',[0.2 0.6 0.1 0.2])
 
 LL.FontSize = 18
  end
