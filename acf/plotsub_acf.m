@@ -42,12 +42,12 @@ col3=[0.00,0.45,0.74];
 %errorbar(tau_acf_lf(1:20:end_plot*indc), mc(1:20:end_plot*indc)*1e12, Ec(1:20:end_plot*indc)*1e12,'.','MarkerSize',10,'LineWidth', 1.5, 'Color', colbar 'DisplayName', 'Experimental autocorrelation function');
 
 
-e=errorbar(tau_acf_lf(1:20:end_plot*indc),mc(1:20:end_plot*indc)*1e18,Ec(1:20:end_plot*indc)*1e18,'.','MarkerSize',25 ,'LineWidth', 1.5,'Color',colbar, 'DisplayName', 'Experimental ACF');
+e=errorbar(tau_acf_lf(1:20:end_plot*indc)*1e3,mc(1:20:end_plot*indc)*1e18,Ec(1:20:end_plot*indc)*1e18,'.','MarkerSize',25 ,'LineWidth', 1.5,'Color',colbar, 'DisplayName', 'Experimental ACF');
 e.Color = col3;
 hold on
-plot(tau_acf_lf(1:20:end_plot*indc),c0_exp_lf*exp(-tau_acf_lf(1:20:end_plot*indc)/tau0_exp_lf)*1e18, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting')
+plot(tau_acf_lf(1:20:end_plot*indc)*1e3,c0_exp_lf*exp(-tau_acf_lf(1:20:end_plot*indc)/tau0_exp_lf)*1e18, 'LineWidth',3,'Color',col2, 'DisplayName',  'Linear fitting')
 
-plot(tau_nl(1:20:end_plot*indc),c0_exp_nl*exp(-tau_nl(1:20:end_plot*indc)/tau0_exp_nl)*1e18, '--', 'LineWidth',3,'Color','k', 'DisplayName',  'Non -linear fitting')
+plot(tau_nl(1:20:end_plot*indc)*1e3,c0_exp_nl*exp(-tau_nl(1:20:end_plot*indc)/tau0_exp_nl)*1e18, '--', 'LineWidth',3,'Color','k', 'DisplayName',  'Non -linear fitting')
 
 
   %%This is working
@@ -72,9 +72,9 @@ plot(tau_nl(1:20:end_plot*indc),c0_exp_nl*exp(-tau_nl(1:20:end_plot*indc)/tau0_e
  box on
 % %xticks((-0.5:0.1:0.5)*1e-7);
 ntaus=6;
-plot([tau0_exp_lf*ntaus,tau0_exp_lf*ntaus],[-0.5,400],'--k', 'HandleVisibility','off')
-text(tau0_exp_lf*ntaus*partau0,0.4e2,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',30)
-xlim([-0.0002 0.009]);
+plot([tau0_exp_lf*ntaus,tau0_exp_lf*ntaus]*1e3,[-0.5,400],'--k', 'HandleVisibility','off')
+text(tau0_exp_lf*ntaus*partau0*1e3,0.4e2,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',30)
+xlim([-0.2 9]);
 ylim([-0.1, 3]*1e2)
 % set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',15);
 % xlabel('$x(\mu m)$','Interpreter','Latex', 'FontSize',20)
@@ -112,7 +112,7 @@ else
  
  
  
- xlabel('$\tau(\rm s)$','Interpreter','Latex', 'FontSize',30)
+ xlabel('$\tau(\rm ms)$','Interpreter','Latex', 'FontSize',30)
 
  
  %% abc
@@ -140,7 +140,7 @@ LL.FontSize = 18
 hold on
 
 xt = [bx1-100,bx1+xwi+bx2,bx1+2*(xwi+bx2)];
-yt = [ by1+ywi+40,by1+ywi+40,by1+ywi+40];
+yt = [ by1+ywi+30,by1+ywi+30,by1+ywi+30];
 str = {'\bf a','\bf b','\bf c'};
 text(xt,yt,str,'Interpreter','Latex','FontSize',34)
 
