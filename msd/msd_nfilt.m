@@ -100,7 +100,7 @@ k_msd=2*kb*T/a0;
 
 gamma_msd=k_msd*tau0;
 
-D_msd=kb*T/gamma_msd;
+D_msd=kb*T/gamma_msd
 
 %cint=confint(c,0.95);
 
