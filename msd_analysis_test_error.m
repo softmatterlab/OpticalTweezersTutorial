@@ -36,4 +36,42 @@ disp(['D_msd: ' num2str(D_msd*1e12) '+-' num2str(sigma_D_msd*1e12)])
 
 disp(['gamma_msd: ' num2str(gamma_msd*1e9) '+-' num2str(sigma_gamma_msd*1e9)])
 
+%%
+clear all
+
+clear;
+
+%close all;
+
+addpath msd
+
+addpath wlsice
+
+subs=1; %use a subsampled data set
+%exp I SUBS=20, maxlag=50 
+%exp II subs-17, maxlag=25
+%exp III subs=10, maxlag=25
+maxlag=300;
+  kB=1.38064852e-23;  
+load(['Data_positions_Fig9_1P6_S.mat']);
+
+Nexp=5
+
+
+maxn=floor(size(x, 1)/Nexp);
+for nne=0:Nexp-1
+
+xs=x(1+nne*maxn:(nne+1)*maxn, :);
+[k_msd_s(nne+1),sigma_k_msd_s(nne+1), tau0, sigma2_tau0, D_msd, sigma_D_msd, tau, mmsd, sigma_msd, indc, gamma_msd, sigma2_gamma_msd] =msd_nfilt(xs,T, dt*subs,maxlag);   
+
+
+end
+disp('................')
+
+
+%disp(['tau0_msd: ' num2str(tau0) ])%'+-' num2str(Etau)])
+
+disp(['k_msd: ' num2str(mean(k_msd_s)*1e6) '+-' num2str(mean(sigma_k_msd_s)*1e6)])
+
+%disp(['D_msd: ' num2str(D_msd*1e12) '+-' num2str(sigma_D_msd*1e12)])
 

@@ -26,7 +26,7 @@ subs=1; %use a subsampled data set
 
 nw=round(size(x(1:subs:end,:),1)/500); % number of windows
 %[fc_psd,D_psd,sigma_fc_psd,sigma_D_psd,f,XX,fw_mean,Pk,fcut,h]=psdfit_analytic(x(1:subs:end,:),dt*subs,nw,1/4);
-[fc_psd,D_psd,sigma_fc_psd,sigma_D_psd,f,XX,fw_mean,Pk,sigma_Pk,fcut]=psd_lfit(x(1:subs:floor(end/5),:),dt*subs,nw,1/4);
+[fc_psd,D_psd,sigma_fc_psd,sigma_D_psd,f,XX,fw_mean,Pk,sigma_Pk,fcut]=psd_lfit(x(1:subs:floor(end/10),:),dt*subs,nw,1/4);
 
 
 gamma_psd=kb*T./mean(D_psd);

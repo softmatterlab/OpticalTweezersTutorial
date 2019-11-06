@@ -64,7 +64,7 @@ w(isinf(w))=1;
 try w(ind)=[];
     w(ind)=[];
 catch 
-    warning('The value of the weight was already erased');
+   
     
 end
  

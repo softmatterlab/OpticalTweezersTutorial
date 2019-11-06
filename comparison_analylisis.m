@@ -21,25 +21,29 @@ v=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
 gamma=pi*6*r*v; %[m*Pa*s]
 Nexp=5;
 subs=1;
-dnn=floor((1e2:2.5*1e3:1e6)/Nexp);
+dnn=floor((1e2:5*5e2:1e6)/Nexp);
+disp(size(dnn));
+%dnn=1e6/Nexp;
 disp(length(dnn));
-maxn=dnn(end);
+disp(dnn(end))
+%%
 for nne=0:Nexp-1
-    1+nne*maxn
-    1+(nne+1)*maxn
+disp(nne);
+
     %first we create the Nexp different experiments
 xs=x(1+nne*maxn:1+(nne+1)*maxn, :);
 
+disp(size(xs));
 
 
 for Ns=1:length(dnn)
-%then we start to change the number of
-
+%then we start to change the number of points in the trajectory
+disp(Ns);
 
 
 xn =xs(1:dnn(Ns), :);
 N=size(xn);
-    
+disp(size(xn));  
 %Potential
 nbins_pot=50;
 try
@@ -73,25 +77,40 @@ end
 %power spectral density
 % number of windows
 nw_psd=500;
-nw=round(1*size(xn,1)/nw_psd); 
+nw=round(1*size(xn,1)/nw_psd);
 NFf=1/4;
 try
-    [mfc_psd,D_psd(Ns, nne+1),Efc_psd,sigma_D_psd(Ns, nne+1),f,XX,fw_mean,Pk,EPk,fcut]=psd_lfit(xn,dt*subs,nw,NFf);
     
-    gamma_psd(Ns, nne+1)=kB*T./D_psd(Ns, nne+1);
-    
-    sigma_gamma_psd(Ns, nne+1)=kB*T./D_psd(Ns)^2*sigma_D_psd;
-    
-    k_psd(Ns, nne+1)=2*pi*gamma*mfc_psd;
-    
-    sigma_k_psd=2*pi*gamma*Efc_psd;
-    
-    % estimation of k using the estimated gamma
-    k_psd_var(Ns, nne+1)=2*pi*gamma_psd(Ns, nne+1).*mfc_psd;
-    
-    sigma_k_psd_var(Ns, nne+1)=2*pi*gamma_psd.*Efc_psd+2*pi*mfc_psd*sigma_gamma_psd(Ns, nne+1);
-catch
-    k_psd_var(Ns, nne+1)=NaN;
+
+[fc_psd,D_psd(Ns, nne+1),sigma_fc_psd,sigma_D_psd(Ns, nne+1),f,XX,fw_mean,Pk,sigma_Pk,fcut]=psd_lfit(xn,dt*subs,nw,NFf);
+
+gamma_psd(Ns, nne+1)=kB*T/D_psd(Ns, nne+1);
+
+%sigma_gamma_psd(Ns, nne+1)=kb*T./D_psd^2sigma_D_psd(Ns, nne+1);
+
+
+
+% estimation of k using the estimated gamma
+k_psd(Ns, nne+1)=2*pi*gamma_psd(Ns, nne+1)*fc_psd;
+
+%sigma_k_psd=2*pi*gamma_psd(Ns, nne+1).*sigma_fc_psd+2*pi*fc_psd*sigma_gamma_psd;
+%     [mfc_psd(Ns, nne+1),D_psd(Ns, nne+1),Efc_psd,sigma_D_psd(Ns, nne+1),f,XX,fw_mean,Pk,EPk,fcut]=psd_lfit(xn,dt*subs,nw,NFf);
+%     
+%     gamma_psd(Ns, nne+1)=kB*T./mean(D_psd(Ns, nne+1));
+%     
+%     sigma_gamma_psd(Ns, nne+1)=kB*T./mean(D_psd(Ns, nne+1))^2*mean(sigma_D_psd(Ns, nne+1));
+%     
+%     k_psd(Ns, nne+1)=2*pi*gamma*mean(mfc_psd(Ns, nne+1));
+%     
+%     sigma_k_psd=2*pi*gamma*Efc_psd;
+%     
+%     % estimation of k using the estimated gamma
+%     k_psd_var(Ns, nne+1)=2*pi*gamma_psd(Ns, nne+1).*mean(mfc_psd(Ns, nne+1))
+%     
+%     sigma_k_psd_var(Ns, nne+1)=2*pi*gamma_psd.*Efc_psd+2*pi*mean(mfc_psd(Ns, nne+1))*sigma_gamma_psd(Ns, nne+1);
+catch ME
+    %rethrow(ME)
+    k_psd(Ns, nne+1)=NaN;
     sigma_k_psd(Ns, nne+1) =NaN;
     D_psd(Ns, nne+1)=NaN;
     sigma_D_psd(Ns, nne+1)=NaN;
@@ -137,88 +156,111 @@ end
 end
 %%
 %Average over experiments for each number of points in the trajectory
+kk_pot=mean(k_pot, 2);
+sigma_kk_pot=std(k_pot,[], 2);
+
+kk_eq=mean(k_eq, 2);
+sigma_kk_eq=std(k_eq,[], 2);
+
+kk_acf=mean(k_acf, 2);
+ sigma_kk_acf=std(k_acf,[], 2);
+
+ 
+kk_psd=mean(k_psd, 2);
+sigma_kk_psd=std(k_psd,[], 2);
 
 
-for Ns=1:length(dnn)
-    %stiffness
-kk_pot(Ns)=mean(k_pot(Ns, :));
-sigma_kk_pot(Ns)=std(k_pot(Ns, :));
-
-kk_eq(Ns)=mean(k_eq(Ns, :));
-sigma_kk_eq(Ns)=std(k_eq(Ns, :));
+kk_forma=mean(k_forma, 2);
+sigma_kk_forma=std(k_forma,[], 2);
 
 
-kk_acf(Ns)=mean(k_acf(Ns, :));
-sigma_kk_acf(Ns)=std(k_acf(Ns, :));
+kk_msd=mean(k_msd, 2);
+sigma_kk_msd=std(k_msd,[], 2);
 
 
-kk_psd(Ns)=mean(k_psd_var(Ns, :));
-sigma_kk_psd(Ns)=std(k_psd_var(Ns, :));
+% kk_bay(Ns)=mean(k_bay(Ns, :));
+% sigma_kk_bay(Ns)=std(k_bay(Ns, :));
+
+% for Ns=1:length(dnn)
+%     %stiffness
+% kk_pot(Ns)=mean(k_pot(Ns, :));
+% sigma_kk_pot(Ns)=std(k_pot(Ns, :));
+% 
+% kk_eq(Ns)=mean(k_eq(Ns, :));
+% sigma_kk_eq(Ns)=std(k_eq(Ns, :));
+% 
+% 
+% kk_acf(Ns)=mean(k_acf(Ns, :));
+% sigma_kk_acf(Ns)=std(k_acf(Ns, :));
+% 
+% 
+% kk_psd(Ns)=mean(k_psd(Ns, :));
+% sigma_kk_psd(Ns)=std(k_psd(Ns, :));
+% 
+% 
+% kk_forma(Ns)=mean(k_forma(Ns, :));
+% sigma_kk_forma(Ns)=std(k_forma(Ns, :));
+% 
+% 
+% kk_bay(Ns)=mean(k_bay(Ns, :));
+% sigma_kk_bay(Ns)=std(k_bay(Ns, :));
+% 
+% 
+% kk_msd(Ns)=mean(k_msd(Ns, :));
+% sigma_kk_msd(Ns)=std(k_msd(Ns, :));
+% %%Diffusion coeficcient
+% 
+% DD_msd(Ns)=mean(D_msd(Ns, :));
+% sigma_DD_msd(Ns)=std(D_msd(Ns, :));
+% 
+% 
+% 
+% DD_acf(Ns)=mean(D_acf(Ns, :));
+% sigma_DD_acf(Ns)=std(D_acf(Ns, :));
+% 
+% 
+% DD_psd(Ns)=mean(D_psd(Ns, :));
+% sigma_DD_psd(Ns)=std(D_psd(Ns, :));
+% 
+% 
+% DD_forma(Ns)=mean(D_forma(Ns, :));
+% sigma_DD_forma(Ns)=std(D_forma(Ns, :));
+% 
+% 
+% DD_bay(Ns)=mean(D_bay(Ns, :));
+% sigma_DD_bay(Ns)=std(D_bay(Ns, :));
+% 
+% DD_msd(Ns)=mean(D_msd(Ns, :));
+% sigma_DD_msd(Ns)=std(D_msd(Ns, :));
+% 
+% 
+% 
+% %Friction coefficent
+% 
+% %%Diffusion coeficcient
+% 
+% gg_msd(Ns)=mean(gamma_msd(Ns, :));
+% sigma_gg_msd(Ns)=std(gamma_msd(Ns, :));
+% 
+% 
+% 
+% gg_acf(Ns)=mean(gamma_acf(Ns, :));
+% sigma_gg_acf(Ns)=std(gamma_acf(Ns, :));
+% 
+% 
+% gg_psd(Ns)=mean(gamma_psd(Ns, :));
+% sigma_gg_psd(Ns)=std(gamma_psd(Ns, :));
+% 
+% 
+% gg_forma(Ns)=mean(gamma_forma(Ns, :));
+% sigma_gg_forma(Ns)=std(gamma_forma(Ns, :));
+% 
+% 
+% gg_bay(Ns)=mean(gamma_bay(Ns, :));
+% sigma_gg_bay(Ns)=std(gamma_bay(Ns, :));
 
 
-kk_forma(Ns)=mean(k_forma(Ns, :));
-sigma_kk_forma(Ns)=std(k_forma(Ns, :));
 
-
-kk_bay(Ns)=mean(k_bay(Ns, :));
-sigma_kk_bay(Ns)=std(k_bay(Ns, :));
-
-
-kk_msd(Ns)=mean(k_msd(Ns, :));
-sigma_kk_msd(Ns)=std(k_msd(Ns, :));
-%%Diffusion coeficcient
-
-DD_msd(Ns)=mean(D_msd(Ns, :));
-sigma_DD_msd(Ns)=std(D_msd(Ns, :));
-
-
-
-DD_acf(Ns)=mean(D_acf(Ns, :));
-sigma_DD_acf(Ns)=std(D_acf(Ns, :));
-
-
-DD_psd(Ns)=mean(D_psd(Ns, :));
-sigma_DD_psd(Ns)=std(D_psd(Ns, :));
-
-
-DD_forma(Ns)=mean(D_forma(Ns, :));
-sigma_DD_forma(Ns)=std(D_forma(Ns, :));
-
-
-DD_bay(Ns)=mean(D_bay(Ns, :));
-sigma_DD_bay(Ns)=std(D_bay(Ns, :));
-
-DD_msd(Ns)=mean(D_msd(Ns, :));
-sigma_DD_msd(Ns)=std(D_msd(Ns, :));
-
-
-
-%Friction coefficent
-
-%%Diffusion coeficcient
-
-gg_msd(Ns)=mean(gamma_msd(Ns, :));
-sigma_gg_msd(Ns)=std(gamma_msd(Ns, :));
-
-
-
-gg_acf(Ns)=mean(gamma_acf(Ns, :));
-sigma_gg_acf(Ns)=std(gamma_acf(Ns, :));
-
-
-gg_psd(Ns)=mean(gamma_psd(Ns, :));
-sigma_gg_psd(Ns)=std(gamma_psd(Ns, :));
-
-
-gg_forma(Ns)=mean(gamma_forma(Ns, :));
-sigma_gg_forma(Ns)=std(gamma_forma(Ns, :));
-
-
-gg_bay(Ns)=mean(gamma_bay(Ns, :));
-sigma_gg_bay(Ns)=std(gamma_bay(Ns, :));
-
-
-end
 save(['results_averaged_' , filename ,datestr(now, 'yyyymmddTHHMMSS'), '.mat'],'subs', 'dnn','nbins_pot' ,...
     'nw_psd','NFf', 'maxlag_msd' ,'kk_pot', 'sigma_kk_pot',...
     'kk_eq', 'sigma_kk_eq','kk_acf', 'sigma_kk_acf', 'kk_psd', 'sigma_kk_psd',...
@@ -228,7 +270,7 @@ save(['results_averaged_' , filename ,datestr(now, 'yyyymmddTHHMMSS'), '.mat'],'
     'gg_psd', 'sigma_gg_psd', 'gg_forma', 'sigma_gg_forma', 'gg_bay')
 %%
 
-%dnn=dnn(1:10);
+%dnn=dnn(1:50);
 figure(1)
 %load('results_comparison.mat')
 semilogx(dnn, kk_pot, 'DisplayName', 'Potential', 'Color', 'red', 'LineWidth', 3)
@@ -304,7 +346,7 @@ set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5, 'FontSize',25);
 hold off
 
 
-%figure(1)
+figure(5)
 %load('results_comparison.mat')
 
 semilogx(dnn, gg_acf, 'DisplayName', 'ACF', 'Color', 'cyan', 'LineWidth', 3)

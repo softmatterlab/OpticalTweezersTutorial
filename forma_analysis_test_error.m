@@ -23,13 +23,13 @@ kb=1.38064852e-23;
 
 D0=kb*T/gamma;
 
-subs=10; %use a subsampled data set
-nsubs=1;
+subs=1; %use a subsampled data set
+nsubs=3;
 [N,Nexp]=size(x);
 
 %[fc_forma,D_forma,sigma_fcforma,sigma_D_forma]=forma1d(xl(1:subs:end),dt*subs, nsubs);
 
-[fc_forma,D_forma,sigma_fcforma,sigma_D_forma]=forma1d(x(1:subs:end, :),dt*subs, nsubs);
+[fc_forma,D_forma,sigma_fcforma,sigma_D_forma]=forma1d(xl,dt*subs, nsubs);
 
 gamma_forma=kb*T./D_forma;
 sigma_gamma_forma=kb*T./D_forma.^2.*sigma_D_forma;
