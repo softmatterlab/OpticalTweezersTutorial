@@ -1,7 +1,8 @@
 
 close all
 clear all
-load('results_averaged_Data_positions_Fig9_1P2_S.mat20191104T034638.mat')
+load('results_averaged_Data_positions_Fig9_1P2_S.mat20191105T194148.mat')
+
 
 xwi = 500;    % width of the plot square
 bx1 = 110;     % extra space at the left
@@ -55,7 +56,7 @@ axes( 'Position',positioninthefig2);  % fa in modo di centrare il riquadro degli
 semilogx(dnn,100* sigma_kk_pot./kk_pot,'DisplayName', 'Potential', 'Color', 'red', 'LineWidth', 2)
 hold on
 semilogx(dnn, 100*sigma_kk_eq./kk_eq,'--', 'DisplayName', 'Equipartition', 'Color', 'blue', 'LineWidth', 2)
-semilogx(dnn, 100*sigma_kk_acf./kk_acf, 'DisplayName', 'ACF', 'Color', cyan, 'LineWidth', 2)
+semilogx(dnn, 100*sigma_kk_acf./kk_acf,'DisplayName', 'ACF', 'Color', cyan, 'LineWidth', 2)
 semilogx(dnn, 100*sigma_kk_psd./kk_psd, 'DisplayName', 'PSD', 'Color', yellow, 'LineWidth', 2)
 semilogx(dnn, sigma_kk_msd./kk_msd, 'DisplayName', 'MSD', 'Color', red_wine, 'LineWidth', 2)
 
@@ -69,7 +70,7 @@ set(ylab, 'Units', 'Normalized', 'Position', [-0.08, 0.5, 0]);
 
 set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5, 'FontSize',25);
 
-ylim([-0.1 3])
+ylim([2 20])
 xlim([100 330000])
 hold off
 set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25);
@@ -83,7 +84,7 @@ axes( 'Position',positioninthefig3);
 
 semilogx(dnn, DD_acf*1e12, 'DisplayName', 'ACF', 'Color', cyan, 'LineWidth', 2)
 hold on
-semilogx(dnn, DD_psd*1e12, 'DisplayName', 'PSD', 'Color', yellow, 'LineWidth', 2)
+semilogx(dnn, DD_psd*1e12, '-.','DisplayName', 'PSD', 'Color', yellow, 'LineWidth', 2)
 semilogx(dnn, DD_msd*1e12, 'DisplayName', 'MSD', 'Color', red_wine, 'LineWidth', 2)
 semilogx(dnn, DD_bay*1e12, 'DisplayName', 'BAYESIAN', 'Color', gray_blue, 'LineWidth', 2)
 semilogx(dnn, DD_forma*1e12, '--','DisplayName', 'FORMA', 'Color', 'magenta', 'LineWidth', 2)
@@ -95,7 +96,7 @@ legend('FontSize', 15, 'Interpreter', 'Latex', 'NumColumns',2)
 legend boxoff 
 ylab=ylabel('$D(\mu \rm m^2/s)$', 'Interpreter', 'Latex', 'FontSize',25)
 set(ylab, 'Units', 'Normalized', 'Position', [-0.08, 0.5, 0]);
-ylim([0.17 0.35])
+ylim([0.17 0.25])
 xlim([100 330000])
 
 yticks([0, 0.1 0.2, 0.3])
@@ -125,7 +126,7 @@ xlabel('$N_s$', 'Interpreter', 'Latex', 'FontSize',25)
 ylab=ylabel('$\Delta D/D(\%)$', 'Interpreter', 'Latex', 'FontSize',23)
 set(ylab, 'Units', 'Normalized', 'Position', [-0.08, 0.5, 0]);
 set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5, 'FontSize',25);
-ylim([-0.1 2])
+ylim([2 15])
 
 xlim([100 330000])
 hold off
