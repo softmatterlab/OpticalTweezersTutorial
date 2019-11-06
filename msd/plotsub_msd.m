@@ -1,4 +1,4 @@
-function [k_msd,sigma2_k_msd ,  gamma_msd, sigma2_gamma_msd ,tau0]=plotsub_msd(filename, positioninthefig1, title1, T, subs, maxlag,partau0,ytau,aa)
+function [k_msd,sigma_k_msd ,  gamma_msd, sigma_gamma_msd , D_msd , sigma_D_msd,tau0]=plotsub_msd(filename, positioninthefig1, title1, T, subs, maxlag,partau0,ytau,aa)
 load(filename);
 disp(filename);
 kB=1.38064852e-23;
@@ -10,7 +10,7 @@ col2=[241/255,185/255,14/255];
 colbar=[7/255, 79/255, 129/255];
 
 
-[k_msd,sigma2_k_msd, tau0, sigma2_tau0, D_msd, ED_msd, tau, mmsd, Emsd, indc, gamma_msd, sigma2_gamma_msd]=msd_nfilt(x(1:subs:size(x,1),:),T,dt*subs,maxlag);
+[k_msd,sigma_k_msd, tau0, sigma_tau0, D_msd, sigma_D_msd, tau, mmsd, Emsd, indc, gamma_msd, sigma_gamma_msd]=msd_nfilt(x(1:subs:size(x,1),:),T,dt*subs,maxlag);
 
 
 % % plot
@@ -56,7 +56,7 @@ colbar=[7/255, 79/255, 129/255];
 col3=[0.00,0.45,0.74];
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 
-msd_fit= 2*kb*T/k_msd*(1- exp(-tau/tau0));
+msd_fit= 2*kB*T/k_msd*(1- exp(-tau/tau0));
 
 
 ntaus=6;
@@ -89,7 +89,7 @@ xlabel('$\tau(\rm s)$','Interpreter','Latex', 'FontSize',30)
 
 plot([tau0*ntaus,tau0*ntaus],[0,6.5*1e2],'--k', 'HandleVisibility','off')
 % text(tau0*ntaus*partau0,0.05*max(mmsd)*1e12,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',30)
-text(tau0*ntaus*partau0,1.2*ytau*1E2,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',30)
+text(tau0*ntaus*partau0,1.2*ytau*1E2,[num2str(ntaus),'$\tau_{{\rm ot},x}$'],'Interpreter','latex','FontSize',30)
 
 
 

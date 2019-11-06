@@ -1,4 +1,4 @@
-function [k_pot_lf,sigma2_k_pot_lf, k_pot_nl,sigma2_k_pot_nl , k_eq, sigma2_k_eq]=plotsub_pot(filename, positioninthefig1, positionintefig2, title1, T, P, subssample,aa)
+function [k_pot_lf,sigma2_k_pot_lf, k_pot_nl,sigma2_k_pot_nl , k_eq, sigma2_k_eq]=plotsub_pot(filename, positioninthefig1, positionintefig2, title1, T, nbins_pot, subssample,aa)
 load(filename);
 disp(filename);
 kb=1.38e-23;
@@ -27,18 +27,18 @@ colbar=[7/255, 79/255, 129/255];
 % by2 = 30;     % extra space up
 % Ypix = 2*by1+2*ywi+3*by2;  % larghezza figura in pixel
 
-P=50;
+
 
 %number of bins of the histogram, if not set default is 50
 %linear fit
-[k_pot_lf, sigma2_k_pot_lf, x_alpha_lf, mrho_lf, sigma2_rho_lf, mU_lf, sigma2_U_lf, rho0_lf, x_eq_lf, U_0_exp_lf]=pot_lfit(x(1:subs:end,:),T,nbins_pot);
+[k_pot_lf, sigma2_k_pot_lf, x_alpha_lf, mrho_lf, sigma2_rho_lf, mU_lf, sigma2_U_lf, rho0_lf, x_eq_lf, U_0_exp_lf]=pot_lfit(x(1:subssample:end,:),T,nbins_pot);
 %non-linear fit`
-[k_pot_nl, sigma2_k_pot_nl, x_alpha_nl, mrho_nl, sigma2_rho_nl, mU_nl, sigma2_U_nl, rho0_nl, x_eq_nl,  U_0_exp_nl]=pot_nlfit(x(1:subs:end,:),T,nbins_pot);
+[k_pot_nl, sigma2_k_pot_nl, x_alpha_nl, mrho_nl, sigma2_rho_nl, mU_nl, sigma2_U_nl, rho0_nl, x_eq_nl,  U_0_exp_nl]=pot_nlfit(x(1:subssample:end,:),T,nbins_pot);
 
  
 %number of bins of the histogram, if not set default is 50
 %linear fit
-[k_eq,sigma2_k_eq]=eq1d(x(1:subs:end,:),T);
+[k_eq,sigma2_k_eq]=eq1d(x(1:subssample:end,:),T);
  
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 hold on

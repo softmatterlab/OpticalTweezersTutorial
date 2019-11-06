@@ -48,7 +48,7 @@ figure('Position',[10 20 Xpix Ypix]);
  
 %%
 titleI='Experiment I, P=2.3mW';
-[k_pot_lf_I,sigma2_k_pot_lf_I, k_pot_nl_I,sigma2_k_pot_nl_I , k_eq_I, sigma2_k_eq_I]=plotsub_pot('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1 0 xwi 0]/Xpix + [0 1.40*by1 0 ywi]/Ypix, titleI, T, P, subs,5);
+[k_pot_lf_I,sigma2_k_pot_lf_I, k_pot_nl_I,sigma2_k_pot_nl_I , k_eq_I, sigma2_k_eq_I]=plotsub_pot('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1 0 xwi 0]/Xpix + [0 1.40*by1 0 ywi]/Ypix, titleI, T, nbins_pot, subs,5);
 disp('................')
 disp(titleI)
 disp('Potential analysis by linear fitting')
@@ -64,7 +64,7 @@ disp('................')
  
 %%
 titleII='Experiment II, P=6.0mW';
-[k_pot_lf_II,sigma2_k_pot_lf_II, k_pot_nl_II,sigma2_k_pot_nl_II , k_eq_II, sigma2_k_eq_II]=plotsub_pot('Data_positions_Fig9_1P4_S.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1+bx2+xwi 0 xwi 0]/Xpix + [0 1.40*by1 0 ywi]/Ypix, titleII, T, P, subs,1);
+[k_pot_lf_II,sigma2_k_pot_lf_II, k_pot_nl_II,sigma2_k_pot_nl_II , k_eq_II, sigma2_k_eq_II]=plotsub_pot('Data_positions_Fig9_1P4_S.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1+bx2+xwi 0 xwi 0]/Xpix + [0 1.40*by1 0 ywi]/Ypix, titleII, T, nbins_pot, subs,1);
 disp('................')
 disp(titleII)
 disp('Potential analysis by linear fitting')
@@ -80,7 +80,7 @@ disp('................')
  
 %%
 titleIII='Experiment III, P=9.2mW';
-[k_pot_lf_III,sigma2_k_pot_lf_III, k_pot_nl_III,sigma2_k_pot_nl_III , k_eq_III, sigma2_k_eq_III]=plotsub_pot('Data_positions_Fig9_1P6_S.mat',[bx1+2*(xwi+bx2) 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1+2*(xwi+bx2) 0 xwi 0]/Xpix + [0 1.40*by1 0 ywi]/Ypix, titleIII, T, P, subs,1);
+[k_pot_lf_III,sigma2_k_pot_lf_III, k_pot_nl_III,sigma2_k_pot_nl_III , k_eq_III, sigma2_k_eq_III]=plotsub_pot('Data_positions_Fig9_1P6_S.mat',[bx1+2*(xwi+bx2) 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1+2*(xwi+bx2) 0 xwi 0]/Xpix + [0 1.40*by1 0 ywi]/Ypix, titleIII, T, nbins_pot, subs,1);
 
 disp('................')
 disp(titleIII)

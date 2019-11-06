@@ -1,4 +1,4 @@
-function [k_psd, Ek_psd, mgamma_psd, Egamma_psd]=plotsub_msd(filename, positioninthefig1, title1, T, subs, aa)
+function [k_psd, sigma_k_psd, gamma_psd, sigma_gamma_psd,D_psd, sigma_D_psd]=plotsub_msd(filename, positioninthefig1, title1, T, subs, aa)
 load(filename);
 disp(filename);
 %
@@ -19,15 +19,15 @@ nw=round(size(x(1:subs:end,:),1)/500);
 kb=1.38064852e-23;
 %gamma=6*pi*eta*a;
 [fc_psd,D_psd,sigma_fc_psd,sigma_D_psd,f,XX,fw_mean,Pk,~,fcut]=psd_lfit(x(1:subs:end,:),dt*subs,nw,1/4);
-mgamma_psd=kb*T./D_psd;
+gamma_psd=kb*T./D_psd;
 
 sigma_gamma_psd=kb*T./D_psd^2*sigma_D_psd;
 
 
 % estimation of k using the estimated gamma
-k_psd=2*pi*mgamma_psd.*fc_psd;
+k_psd=2*pi*gamma_psd.*fc_psd;
 
-sigma_k_psd=2*pi*(mgamma_psd.*sigma_fc_psd+fc_psd*sigma_gamma_psd);
+sigma_k_psd=2*pi*(gamma_psd.*sigma_fc_psd+fc_psd*sigma_gamma_psd);
 
 
 plot(f,XX*1e18,'.','MarkerSize',6,'Color',col3,'DisplayName', 'Experimental power spectral density')
@@ -37,10 +37,10 @@ hold on
 plot(fw_mean,Pk*1e18,'Color', col4  ,'MarkerSize',10, 'MarkerEdgeColor',col4,'DisplayName','Mean of the experimental power spectral density', 'LineWidth', 3)
 
 
-plot(f,D_exp/(2*pi^2)./(fc_exp^2+f.^2)*1e18,'--', 'LineWidth',3,'Color','k', 'DisplayName', 'Linear fit')
+plot(f,D_psd/(2*pi^2)./(fc_psd^2+f.^2)*1e18,'--', 'LineWidth',3,'Color','k', 'DisplayName', 'Linear fit')
 
 plot(fcut*ones(1,300),exp(linspace(log(0.8*min(XX)*1e18),log(1.1*max(XX)*1e21),300)),'--k','MarkerSize',2, 'HandleVisibility', 'off')
-text(2e3,1,'$f_{cut}$','Interpreter','latex','FontSize',20)
+text(2e3,1,'$f_{c,x}$','Interpreter','latex','FontSize',20)
 
 xlabel('$f_k(\rm Hz)$','Interpreter','Latex',  'FontSize',30)
 ylim([1e-9 5e1])
@@ -58,7 +58,7 @@ box on,
 
 if aa==5
     set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'xscale', 'log','yscale', 'log', 'XMinorTick', 'on','YMinorTick', 'on', 'TickLength',[0.02, 0.01]);
-    ylabel('$|\hat{x}|^2/T_s, \, P^{(ex)}_k(\rm nm^2/Hz)$','Interpreter','Latex', 'FontSize',30)
+    ylabel('$|\hat{x}|^2/T_s, \, P^{(\rm ex)}_k(\rm nm^2/Hz)$','Interpreter','Latex', 'FontSize',30)
     LL= legend ({'Experimental PSD','Mean of PSD','Linear fitting'},'Box','off','Position',[0.15 0.27 0.1 0.2])
     
     LL.FontSize = 18

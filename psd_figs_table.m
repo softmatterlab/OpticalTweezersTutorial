@@ -37,7 +37,7 @@ addpath psd
 
 %% plot figures
 
-
+T=293.15
 
 %creates the figure to do the subplots
 figure('Position',[10 20 Xpix Ypix]);
@@ -45,31 +45,35 @@ figure('Position',[10 20 Xpix Ypix]);
 
 %%
 titleI='Experiment I, P=2.3mW';
-[k_psd_I, Ek_psd_I, mgamma_psd_I, Egamma_psd_I]=plotsub_psd('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, subs,5);
+[k_psd_I, sigma_k_psd_I, gamma_psd_I, sigma_gamma_psd_I, D_psd_I, sigma_D_psd_I]=plotsub_psd('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, subs,5);
 disp('................')
 disp(titleI)
 disp('Power spectrum density analysis by linear fitting')
-disp(['k_lf: ' num2str(k_psd_I*1e6) '+-' num2str(Ek_psd_I*1e6) 'pN/um'])
-disp(['gamma_acf:' num2str(mgamma_psd_I*1e9) '+-'  num2str(Egamma_psd_I*1e9) ' pN ms/um ']);
+disp(['k_psd: ' num2str(k_psd_I*1e6) '+-' num2str(sigma_k_psd_I*1e6) 'pN/um'])
+disp(['gamma_psd:' num2str(gamma_psd_I*1e9) '+-'  num2str(sigma_gamma_psd_I*1e9) ' pN ms/um ']);
+disp(['D_psd: ' num2str(D_psd_I*1e12) '+-' num2str(sigma_D_psd_I*1e12) ' um^2/s'])
 
+disp('................')
 
 %%
 titleII='Experiment II, P=6.0mW';
-[k_psd_II, Ek_psd_II, mgamma_psd_II, Egamma_psd_II]=plotsub_psd('Data_positions_Fig9_1P4_S.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs,1);
+[k_psd_II, sigma_k_psd_II, gamma_psd_II, sigma_gamma_psd_II, D_psd_II, sigma_D_psd_II]=plotsub_psd('Data_positions_Fig9_1P4_S.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs,1);
 disp('................')
 disp(titleII)
 disp('Power spectrum density analysis by linear fitting')
-disp(['k_lf: ' num2str(k_psd_II*1e6) '+-' num2str(Ek_psd_II*1e6) 'pN/um'])
-disp(['gamma_acf:' num2str(mgamma_psd_II*1e9) '+-'  num2str(Egamma_psd_II*1e9) ' pN ms/um ']);
-
+disp(['k_psd: ' num2str(k_psd_II*1e6) '+-' num2str(sigma_k_psd_II*1e6) 'pN/um'])
+disp(['gamma_psd:' num2str(gamma_psd_II*1e9) '+-'  num2str(sigma_gamma_psd_II*1e9) ' pN ms/um ']);
+disp(['D_psd: ' num2str(D_psd_II*1e12) '+-' num2str(sigma_D_psd_II*1e12) ' um^2/s'])
+disp('................')
 %%
 titleIII='Experiment III, P=9.2mW';
-[k_psd_III, Ek_psd_III, mgamma_psd_III, Egamma_psd_III]=plotsub_psd('Data_positions_Fig9_1P6_S.mat',[bx1+2*bx2+2*xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs,1);
+[k_psd_III, sigma_k_psd_III, gamma_psd_III, sigma_gamma_psd_III,  D_psd_III, sigma_D_psd_III]=plotsub_psd('Data_positions_Fig9_1P6_S.mat',[bx1+2*bx2+2*xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs,1);
 
 
 disp('................')
 disp(titleIII)
 disp('Power spectrum density analysis by linear fitting')
-disp(['k_lf: ' num2str(k_psd_III*1e6) '+-' num2str(Ek_psd_III*1e6) 'pN/um'])
-disp(['gamma_acf:' num2str(mgamma_psd_III*1e9) '+-'  num2str(Egamma_psd_III*1e9) ' pN ms/um ']);
-
+disp(['k_psd: ' num2str(k_psd_III*1e6) '+-' num2str(sigma_k_psd_III*1e6) 'pN/um'])
+disp(['D_psd: ' num2str(D_psd_III*1e12) '+-' num2str(sigma_D_psd_III*1e12) ' um^2/s'])
+disp(['gamma_psd:' num2str(gamma_psd_III*1e9) '+-'  num2str(sigma_gamma_psd_III*1e9) ' pN ms/um ']);
+disp('................')

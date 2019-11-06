@@ -1,4 +1,4 @@
-function [k_acf, sigma_k_acf, D_acf, sigma_D_acf, gamma_acf, sigma_gamma_acf, tau, mc, Ec, indc, tau0_acf, sigma_tau0_acf, c0_exp]=acf_nlfit(Vx,T,dt)
+function [k_acf, sigma_k_acf, D_acf, sigma_D_acf, gamma_acf, sigma_gamma_acf, tau, mc, Ec, indc, tau0_gamma, c0_exp]=acf_nlfit(Vx,T,dt)
 %function [k_acf, Ek_acf, D_acf, ED_acf, tau, mc, Ec]=acf_nlfit(Vx,T,dt)
 % ACF_NLFIT   1D implementation of the AUTOCORRELATION ANALYSIS METHOD
 % USING NON LINEAR FITTING
@@ -37,7 +37,7 @@ ind=find(dc(1:end-1).*dc(2:end)<0);
 
 tau0=tau(ind(1));
 
-ntaus=2.5;
+ntaus=3;
 
 indc=ntaus*ind; % consider only ntaus times the characteristic time in the fitting
 
@@ -55,10 +55,10 @@ max_mc=max(mc_cut);
 
 
 guess=[c0_exp/max_mc,tau0/max_tau];
-[params, sigma, ~, ~] = wlsice(tau_cut/max_tau, abs(acf_cut/max_mc), guess, 2);
+[params, sigma, ~, ~] = wlsice(tau_cut/max_tau, acf_cut/max_mc, guess, 2);
 
-tau0_acf=params(2)*max_tau;
-sigma_tau0_acf=sigma(2)*max_tau;
+tau0_gamma=params(2)*max_tau;
+sigma_tau0_exp=sigma(2)*max_tau;
 
 c0_exp=params(1)*max_mc;
 sigma_c0_exp=sigma(1)*max_mc;
@@ -66,8 +66,8 @@ sigma_c0_exp=sigma(1)*max_mc;
 k_acf=(kb*T)/c0_exp;
 sigma_k_acf=(kb*T/(c0_exp^2))*sigma_c0_exp;
 
-gamma_acf=k_acf*tau0_acf;
-sigma_gamma_acf=k_acf*sigma_tau0_acf+sigma_k_acf*tau0_acf;
+gamma_acf=k_acf*tau0_gamma;
+sigma_gamma_acf=k_acf*sigma_tau0_exp+sigma_k_acf*tau0_gamma;
 
 D_acf=kb*T/gamma_acf;
 sigma_D_acf=(kb*T/(gamma_acf^2))*sigma_gamma_acf;
