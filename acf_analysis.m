@@ -20,9 +20,6 @@ kB=1.38064852e-23;
 subs=1; %use a subsampled data set
 %non linear fit
 
-[k_acf, sigma_k_acf, D_acf, sigma_D_acf, tau, mc, Ec, indc]=acf_lfit(x(1:subs:size(x,1),:),T,dt*subs);
-
-
 
 
 [k_acf_lf, sigma_k_acf_lf, D_acf_lf, sigma_D_acf_lf,gamma_acf_lf, sigma_gamma_acf_lf,tau_acf_lf, mc, Ec,indc, tau0_exp_lf, c0_exp_lf]=acf_lfit(x(1:subs:size(x,1),:),T,dt*subs);
