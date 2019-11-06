@@ -1,4 +1,4 @@
-function [k_msd,sigma2_k_msd ,  gamma_msd, sigma2_gamma_msd ,tau0]=plotsub_msd(filename, positioninthefig1, title1, T, subs, maxlag,partau0,ytau)
+function [k_msd,sigma2_k_msd ,  gamma_msd, sigma2_gamma_msd ,tau0]=plotsub_msd(filename, positioninthefig1, title1, T, subs, maxlag,partau0,ytau,aa)
 load(filename);
 disp(filename);
 kb=1.38e-23;
@@ -64,39 +64,66 @@ msd_fit= 2*kb*T/k_msd*(1- exp(-tau/tau0));
 plot(tau, msd_fit*1e18, '--','LineWidth',3,'Color','r', 'DisplayName',  'Non -linear fitting');
 hold on 
 ntaus=6;
-e=errorbar(tau(1:2:end),  mmsd(1:2:end)*1e18, Emsd(1:2:end)*1e18,'.','MarkerSize',20,'LineWidth', 1.5, 'Color', colbar, 'DisplayName', 'Experimental mean square displacement');
+e=errorbar(tau(1:2:end),  mmsd(1:2:end)*1e18, Emsd(1:2:end)*1e18,'.','MarkerSize',20,'LineWidth', 1.5, 'Color', colbar, 'DisplayName', 'Experimental MSD');
 e.Color = col3;
 box on
 %xticks((-0.5:0.1:0.5)*1e-7);
 xlim([0 0.009]);
 ylim([0, 6.5]*1e2)
-set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25);
-xlabel('$\tau(\rm s)$','Interpreter','Latex', 'FontSize',30)
+
+
+
+if aa==5
+set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',25);
 ylabel('$\rm MSD (\rm{nm^{2}})$','Interpreter','Latex', 'FontSize',30)
+else 
+   set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',25,'Yticklabel',[]);
+    end
+ 
+
+
+
+xlabel('$\tau(\rm s)$','Interpreter','Latex', 'FontSize',30)
+
+
+
+
+
 plot([tau0*ntaus,tau0*ntaus],[0,6.5*1e2],'--k', 'HandleVisibility','off')
 % text(tau0*ntaus*partau0,0.05*max(mmsd)*1e12,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',30)
 text(tau0*ntaus*partau0,ytau*1E2,[num2str(ntaus),'$\tau_0$'],'Interpreter','latex','FontSize',30)
 
+
+
+ if aa==5
+     
+     LL= legend ({'Non-linear fitting','Experimental MSD'},'Box','off','Position',[0.18 0.25 0.1 0.2])
+
+LL.FontSize = 18
+ end
 hold off
 % title(title1)
 % legend
-
 xwi = 400;    % width of the plot square
 bx1 = 120;     % extra space at the left
-bx2 = 30;     % extra space at the right
+bx2 = 20;     % extra space at the right
 
-Xpix = 3*xwi+3*bx1+3*bx2;  % total
+Xpix = 3*xwi+bx1+3*bx2;  % total
 
 ywi = 300;    % length riquadro con funzione
 by1 = 110;     % extra space below
-by2 = 50;     % extra space up
+by2 = 70;     % extra space up
 
 Ypix = 1*by1+1*ywi+1*by2;  % larghezza figura in pixel
  axes('Position',[(0) 0 Xpix 0]/Xpix + [0 0 0 Ypix]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 hold on
+% 
+% xt = [bx1-100,bx1+xwi+bx1-75,2*bx1+2*xwi+bx1-40];
+% yt = [ by1+ywi+20,by1+ywi+20,by1+ywi+20];
 
-xt = [bx1-100,bx1+xwi+bx1-75,2*bx1+2*xwi+bx1-40];
-yt = [ by1+ywi+20,by1+ywi+20,by1+ywi+20];
+
+xt = [bx1-100,bx1+xwi+bx2,bx1+2*(xwi+bx2)];
+yt = [ by1+ywi+30,by1+ywi+30,by1+ywi+30];
 str = {'\bf a','\bf b','\bf c'};
 text(xt,yt,str,'Interpreter','Latex','FontSize',34)
 
