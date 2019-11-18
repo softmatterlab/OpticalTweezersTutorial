@@ -45,7 +45,7 @@ kb=1.38064852e-23;
 %creates the figure to do the subplots
 figure('Position',[10 20 Xpix Ypix]);
 %first figure, probability distribution, exp I
-
+acf_tex=fopen('acf.txt', 'w')
 %%
 titleI='Experiment I, P=2.3mW';
 [k_acf_lf_I,sigma_k_acf_lf_I,D_acf_lf_I,sigma_D_acf_lf_I,gamma_acf_lf_I, sigma_gamma_acf_lf_I , k_acf_nl_I, sigma_k_acf_nl_I,...
@@ -62,6 +62,20 @@ disp(['D_acf: ' num2str(D_acf_lf_I*1e12) '+-' num2str(sigma_D_acf_lf_I*1e12) ' u
 disp(['gamma_acf:' num2str(gamma_acf_lf_I*1e9) '+-'  num2str(sigma_gamma_acf_lf_I*1e9) ' pN s/um ']);
 disp(['tau_0:' num2str(tau0_exp_lf_I*1e3)  '+-' num2str(sigma_tau0_exp_lf_I*1e3)  ' ms']);
  
+[v1, dv1, sig]=round_significance(k_acf_lf_I*1e6, sigma_k_acf_lf_I*1e6);
+fprintf(acf_tex,'%s\n',['\newcommand{\kappaACFExpILF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(D_acf_lf_I*1e12, sigma_D_acf_lf_I*1e12);
+fprintf(acf_tex,'%s\n',['\newcommand{\DACFExpILF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(gamma_acf_lf_I*1e9, sigma_gamma_acf_lf_I*1e9);
+fprintf(acf_tex,'%s\n',['\newcommand{\gammaACFExpILF}{' v1 '\pm' dv1 '}']);
+
+
+[v1, dv1, sig]=round_significance(tau0_exp_lf_I*1e3, sigma_tau0_exp_lf_I*1e3);
+fprintf(acf_tex,'%s\n',['\newcommand{\tauACFExpILF}{' v1 '\pm' dv1 '}']);
+
+
 disp('................')
 
 disp('Autocorrelation function analysis by non-linear fitting')
@@ -72,7 +86,19 @@ disp(['D_acf: ' num2str(D_acf_nl_I*1e12) '+-' num2str(sigma_D_acf_nl_I*1e12) ' u
  
 disp(['gamma_acf:' num2str(gamma_acf_nl_I*1e9) '+-'  num2str(sigma_gamma_acf_nl_I*1e9) ' pN ms/um ']);
 disp(['tau_0:' num2str(tau0_exp_nl_I*1e3) '+-' num2str(sigma_tau0_exp_nl_I*1e3)   ' ms']);
- 
+
+[v1, dv1, sig]=round_significance(k_acf_nl_I*1e6, sigma_k_acf_nl_I*1e6);
+fprintf(acf_tex,'%s\n',['\newcommand{\kappaACFExpINLF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(D_acf_nl_I*1e12, sigma_D_acf_nl_I*1e12);
+fprintf(acf_tex,'%s\n',['\newcommand{\DACFExpINLF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(gamma_acf_nl_I*1e9, sigma_gamma_acf_nl_I*1e9);
+fprintf(acf_tex,'%s\n',['\newcommand{\gammaACFExpINLF}{' v1 '\pm' dv1 '}']);
+
+
+[v1, dv1, sig]=round_significance(tau0_exp_nl_I*1e3, sigma_tau0_exp_nl_I*1e3);
+fprintf(acf_tex,'%s\n',['\newcommand{\tauACFExpINLF}{' v1 '\pm' dv1 '}']);
 disp('................')
 %%
 titleII='Experiment II, P=6.0mW';
@@ -90,7 +116,18 @@ disp(['D_acf: ' num2str(D_acf_lf_II*1e12) '+-' num2str(sigma_D_acf_lf_II*1e12) '
  
 disp(['gamma_acf:' num2str(gamma_acf_lf_II*1e9) '+-'  num2str(sigma_gamma_acf_lf_II*1e9) ' pN ms/um ']);
 disp(['tau_0:' num2str(tau0_exp_lf_II*1e3)  '+-' num2str(sigma_tau0_exp_lf_II*1e3)  ' ms']);
- 
+[v1, dv1, sig]=round_significance(k_acf_lf_II*1e6, sigma_k_acf_lf_II*1e6);
+fprintf(acf_tex,'%s\n',['\newcommand{\kappaACFExpIILF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(D_acf_lf_II*1e12, sigma_D_acf_lf_II*1e12);
+fprintf(acf_tex,'%s\n',['\newcommand{\DACFExpIILF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(gamma_acf_lf_II*1e9, sigma_gamma_acf_lf_II*1e9);
+fprintf(acf_tex,'%s\n',['\newcommand{\gammaACFExpIILF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(tau0_exp_lf_II*1e3, sigma_tau0_exp_lf_II*1e3);
+fprintf(acf_tex,'%s\n',['\newcommand{\tauACFExpIILF}{' v1 '\pm' dv1 '}']);
+
 disp('................')
 
 disp('Autocorrelation function analysis by non-linear fitting')
@@ -102,6 +139,17 @@ disp(['D_acf: ' num2str(D_acf_nl_II*1e12) '+-' num2str(sigma_D_acf_nl_II*1e12) '
 disp(['gamma_acf:' num2str(gamma_acf_nl_II*1e9) '+-'  num2str(sigma_gamma_acf_nl_II*1e9) ' pN ms/um ']);
 disp(['tau_0:' num2str(tau0_exp_nl_II*1e3)  '+-' num2str(sigma_tau0_exp_nl_II*1e3)  ' ms']);
  
+[v1, dv1, sig]=round_significance(k_acf_nl_II*1e6, sigma_k_acf_nl_II*1e6);
+fprintf(acf_tex,'%s\n',['\newcommand{\kappaACFExpIINLF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(D_acf_nl_II*1e12, sigma_D_acf_nl_II*1e12);
+fprintf(acf_tex,'%s\n',['\newcommand{\DACFExpIINLF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(gamma_acf_nl_II*1e9, sigma_gamma_acf_nl_II*1e9);
+fprintf(acf_tex,'%s\n',['\newcommand{\gammaACFExpIINLF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(tau0_exp_nl_II*1e3, sigma_tau0_exp_nl_II*1e3);
+fprintf(acf_tex,'%s\n',['\newcommand{\tauACFExpIINLF}{' v1 '\pm' dv1 '}']);
 disp('................')
 %%
 titleIII='Experiment III, P=9.2mW';
@@ -120,6 +168,19 @@ disp(['D_acf: ' num2str(D_acf_lf_III*1e12) '+-' num2str(sigma_D_acf_lf_III*1e12)
 disp(['gamma_acf:' num2str(gamma_acf_lf_III*1e9) '+-'  num2str(sigma_gamma_acf_lf_III*1e9) ' pN s/um ']);
 disp(['tau_0:' num2str(tau0_exp_lf_III*1e3)  '+-' num2str(sigma_tau0_exp_lf_III*1e3)  ' ms']);
  
+[v1, dv1, sig]=round_significance(k_acf_lf_III*1e6, sigma_k_acf_lf_III*1e6);
+fprintf(acf_tex,'%s\n',['\newcommand{\kappaACFExpIIILF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(D_acf_lf_III*1e12, sigma_D_acf_lf_III*1e12);
+fprintf(acf_tex,'%s\n',['\newcommand{\DACFExpIIILF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(gamma_acf_lf_III*1e9, sigma_gamma_acf_lf_III*1e9);
+fprintf(acf_tex,'%s\n',['\newcommand{\gammaACFExpIIILF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(tau0_exp_lf_III*1e3, sigma_tau0_exp_lf_III*1e3);
+fprintf(acf_tex,'%s\n',['\newcommand{\tauACFExpIIILF}{' v1 '\pm' dv1 '}']);
+disp('................')
+
 disp('................')
 
 disp('Autocorrelation function analysis by non-linear fitting')
@@ -131,4 +192,18 @@ disp(['D_acf: ' num2str(D_acf_nl_III*1e12) '+-' num2str(sigma_D_acf_nl_III*1e12)
 disp(['gamma_acf:' num2str(gamma_acf_nl_III*1e9) '+-'  num2str(sigma_gamma_acf_nl_III*1e9) ' pN ms/um ']);
 disp(['tau_0:' num2str(tau0_exp_nl_III*1e3)  '+-' num2str(sigma_tau0_exp_nl_III*1e3)  ' ms']);
  
+[v1, dv1, sig]=round_significance(k_acf_nl_III*1e6, sigma_k_acf_nl_III*1e6);
+fprintf(acf_tex,'%s\n',['\newcommand{\kappaACFExpIIINLF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(D_acf_nl_III*1e12, sigma_D_acf_nl_III*1e12);
+fprintf(acf_tex,'%s\n',['\newcommand{\DACFExpIIINLF}{' v1 '\pm' dv1 '}']);
+
+[v1, dv1, sig]=round_significance(gamma_acf_nl_III*1e9, sigma_gamma_acf_nl_III*1e9);
+fprintf(acf_tex,'%s\n',['\newcommand{\gammaACFExpIIINLF}{' v1 '\pm' dv1 '}']);
 disp('................')
+
+[v1, dv1, sig]=round_significance(tau0_exp_nl_III*1e3, sigma_tau0_exp_nl_III*1e3);
+fprintf(acf_tex,'%s\n',['\newcommand{\tauACFExpIIINLF}{' v1 '\pm' dv1 '}']);
+disp('................')
+
+fclose(acf_tex)

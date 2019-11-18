@@ -49,11 +49,20 @@ titleI='Experiment I, P=2.3mW';
 disp('................')
 disp(titleI)
 disp('Power spectrum density analysis by linear fitting')
-disp(['k_psd: ' num2str(k_psd_I*1e6) '+-' num2str(sigma_k_psd_I*1e6) 'pN/um'])
-disp(['gamma_psd:' num2str(gamma_psd_I*1e9) '+-'  num2str(sigma_gamma_psd_I*1e9) ' pN ms/um ']);
-disp(['D_psd: ' num2str(D_psd_I*1e12) '+-' num2str(sigma_D_psd_I*1e12) ' um^2/s'])
 
-disp('................')
+disp(['k_psd: ' num2str(k_psd_I*1e6) '+-' num2str(sigma_k_psd_I*1e6) 'pN/um'])
+[k1, dk1, sig]=round_significance(k_psd_I*1e6, sigma_k_psd_I*1e6);
+disp(['k_psd: ' k1 '\pm' dk1 ])
+
+disp(['gamma_psd:' num2str(gamma_psd_I*1e9) '+-'  num2str(sigma_gamma_psd_I*1e9) ' pN ms/um ']);
+[k1, dk1, sig]=round_significance(gamma_psd_I*1e9, sigma_gamma_psd_I*1e9);
+disp(['gamma_psd:' k1 '\pm' dk1])
+
+disp(['D_psd: ' num2str(D_psd_I*1e12) '+-' num2str(sigma_D_psd_I*1e12) ' um^2/s'])
+[k1, dk1, sig]=round_significance(D_psd_I*1e12, sigma_D_psd_I*1e12);
+disp(['D_psd: ' k1 '\pm' dk1])
+
+disp('................' )
 
 %%
 titleII='Experiment II, P=6.0mW';
@@ -62,8 +71,16 @@ disp('................')
 disp(titleII)
 disp('Power spectrum density analysis by linear fitting')
 disp(['k_psd: ' num2str(k_psd_II*1e6) '+-' num2str(sigma_k_psd_II*1e6) 'pN/um'])
+[k1, dk1, sig]=round_significance(k_psd_II*1e6, sigma_k_psd_II*1e6);
+disp(['k_psd: ' k1 '\pm' dk1 ])
+
 disp(['gamma_psd:' num2str(gamma_psd_II*1e9) '+-'  num2str(sigma_gamma_psd_II*1e9) ' pN ms/um ']);
+[k1, dk1, sig]=round_significance(gamma_psd_II*1e9, sigma_gamma_psd_II*1e9);
+disp(['gamma_psd:' k1 '\pm' dk1])
+
 disp(['D_psd: ' num2str(D_psd_II*1e12) '+-' num2str(sigma_D_psd_II*1e12) ' um^2/s'])
+[k1, dk1, sig]=round_significance(D_psd_II*1e12, sigma_D_psd_II*1e12);
+disp(['D_psd: ' k1 '\pm' dk1])
 disp('................')
 %%
 titleIII='Experiment III, P=9.2mW';
@@ -74,6 +91,14 @@ disp('................')
 disp(titleIII)
 disp('Power spectrum density analysis by linear fitting')
 disp(['k_psd: ' num2str(k_psd_III*1e6) '+-' num2str(sigma_k_psd_III*1e6) 'pN/um'])
-disp(['D_psd: ' num2str(D_psd_III*1e12) '+-' num2str(sigma_D_psd_III*1e12) ' um^2/s'])
+[k1, dk1, sig]=round_significance(k_psd_III*1e6, sigma_k_psd_III*1e6);
+disp(['k_psd: ' k1 '\pm' dk1 ])
+
 disp(['gamma_psd:' num2str(gamma_psd_III*1e9) '+-'  num2str(sigma_gamma_psd_III*1e9) ' pN ms/um ']);
+[k1, dk1, sig]=round_significance(gamma_psd_III*1e9, sigma_gamma_psd_III*1e9);
+disp(['gamma_psd:' k1 '\pm' dk1])
+
+disp(['D_psd: ' num2str(D_psd_III*1e12) '+-' num2str(sigma_D_psd_III*1e12) ' um^2/s'])
+[k1, dk1, sig]=round_significance(D_psd_III*1e12, sigma_D_psd_III*1e12);
+disp(['D_psd: ' k1 '\pm' dk1])
 disp('................')

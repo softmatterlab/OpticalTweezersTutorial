@@ -1,4 +1,4 @@
-function [k_msd,sigma_k_msd ,  gamma_msd, sigma_gamma_msd , D_msd , sigma_D_msd,tau0]=plotsub_msd(filename, positioninthefig1, title1, T, subs, maxlag,partau0,ytau,aa)
+function [k_msd,sigma_k_msd ,  gamma_msd, sigma_gamma_msd , D_msd , sigma_D_msd,tau0, sigma_tau0]=plotsub_msd(filename, positioninthefig1, title1, T, subs, maxlag,partau0,ytau,aa)
 load(filename);
 disp(filename);
 kB=1.38064852e-23;

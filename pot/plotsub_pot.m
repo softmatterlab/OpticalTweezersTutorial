@@ -38,7 +38,7 @@ colbar=[7/255, 79/255, 129/255];
  
 %number of bins of the histogram, if not set default is 50
 %linear fit
-[k_eq,sigma2_k_eq]=eq1d(x(1:subssample:end,:),T);
+[k_eq,sigma2_k_eq]=eq1d(x(1:subssample:end,:),T, 0);
  
 axes( 'Position',positioninthefig1);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 hold on
@@ -102,7 +102,7 @@ if aa==5
 end
 
 if aa==5
-    LL= legend({'Equipartition', 'Linear fiting','Non-linear fitting', 'Experimental'},'Box','off','Position',[0.2 0.73 0.1 0.2]);
+    LL= legend({'Experimental', 'Equipartition','Linear fitting', 'Non-linear fitting'},'Box','off','Position',[0.2 0.73 0.1 0.2]);
     LL.FontSize = 18;
     
 end

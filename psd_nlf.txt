@@ -1,0 +1,12 @@
+\newcommand{\kappaPSDExpINLF}{13.5\pm0.5}
+\newcommand{\gammaPSDExpINLF}{19.2\pm0.3}
+\newcommand{\DPSDExpINLF}{0.211\pm0.004}
+\newcommand{\fcPSDExpINLF}{112\pm2}
+\newcommand{\kappaPSDExpIINLF}{34.6\pm0.7}
+\newcommand{\gammaPSDExpIINLF}{19.2\pm0.3}
+\newcommand{\DPSDExpIINLF}{0.211\pm0.003}
+\newcommand{\fcPSDExpIINLF}{287\pm2}
+\newcommand{\kappaPSDExpIIINLF}{55\pm1}
+\newcommand{\gammaPSDExpIIINLF}{19.2\pm0.4}
+\newcommand{\DPSDExpIIINLF}{0.211\pm0.004}
+\newcommand{\fcPSDExpIIINLF}{460\pm2}

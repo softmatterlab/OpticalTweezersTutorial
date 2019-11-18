@@ -1,4 +1,4 @@
-function [k_acf, sigma_k_acf, D_acf, sigma_D_acf,gamma_acf, sigma_gamma_acf,tau, mc, Ec,indc, tau0_exp, c0_exp]=acf_lfit(Vx,T,dt)
+function [k_acf, sigma_k_acf, D_acf, sigma_D_acf,gamma_acf, sigma_gamma_acf,tau, mc, Ec,indc, tau0_exp,sigma_tau0_exp, c0_exp]=acf_lfit(Vx,T,dt)
 %function [k_acf, Ek_acf, D_acf, ED_acf, tau, mc, Ec]=acf_lfit(Vx,T,dt)
 % ACF_LFIT   1D implementation of the AUTOCORRELATION ANALYSIS METHOD
 % USING LINEAR FITTING

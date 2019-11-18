@@ -1,0 +1,12 @@
+\newcommand{\kappaMSDExpINLF}{13.62\pm0.04}
+\newcommand{\DMSDExpINLF}{0.216\pm0.001}
+\newcommand{\gammaMSDExpINLF}{18.7\pm0.1}
+\newcommand{\tauMSDExpINLF}{1.376\pm0.005}
+\newcommand{\kappaMSDExpIINLF}{34.95\pm0.09}
+\newcommand{\DMSDExpIINLF}{0.2141\pm0.0009}
+\newcommand{\gammaMSDExpIINLF}{18.91\pm0.08}
+\newcommand{\tauMSDExpIINLF}{1.3761\pm0.001}
+\newcommand{\kappaMSDExpIIINLF}{56.4\pm0.2}
+\newcommand{\DMSDExpIIINLF}{0.2129\pm0.0008}
+\newcommand{\gammaMSDExpIIINLF}{19.02\pm0.08}
+\newcommand{\tauMSDExpIIINLF}{0.3371\pm0.0004}

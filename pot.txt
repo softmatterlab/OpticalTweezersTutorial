@@ -1,0 +1,6 @@
+\newcommand{\kappapotentialExpILF}{13.6\pm0.2}
+\newcommand{\kappapotentialExpINLF}{13.6\pm0.2}
+\newcommand{\kappapotentialExpIILF}{34.5\pm0.2}
+\newcommand{\kappapotentialExpIINLF}{34.6\pm0.2}
+\newcommand{\kappapotentialExpIIILF}{56\pm0.4}
+\newcommand{\kappapotentialExpIIINLF}{56\pm0.4}

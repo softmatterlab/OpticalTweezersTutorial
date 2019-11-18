@@ -1,4 +1,4 @@
-function [k, sigma_k, gamma, sigma_gamma, D, sigma_D]= bayesian(xn, dt,T, a, nsubs)
+function [k, sigma_k, gamma, sigma_gamma, D, sigma_D]= bayesian(xn, dt,T, a, nsubs, k_th)
 dt=dt*nsubs;
 N=floor(length(xn)/nsubs);
 s2=sum(xn(1:nsubs:end-nsubs).*xn(1+nsubs:nsubs:end));
@@ -10,7 +10,7 @@ kB=1.38064852e-23; % Boltzmann constant [m^2kg/s^2K]
 %definition of parameter
 
 eta=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
-k_th=14*1e-6;
+%k_th=14*1e-6;
 gamma_th=6*pi*eta*a;
 D_th=kB*T/gamma_th;
 sigma2_D_th=(D_th/10).^2;

@@ -1,4 +1,4 @@
-function [k_acf_lf,sigma_k_acf_lf,D_acf_lf, sigma_D_acf_lf,gamma_acf_lf, sigma_gamma_acf_lf , k_acf_nl, sigma_k_acf_nl, D_acf_nl, sigma_D_acf_nl,gamma_acf_nl, sigma_gamma_acf_nl, tau0_exp_lf, tau0_exp_nl,Xpix, Ypix]=plotsub_pot(filename, positioninthefig1, title1, T, subsample, partau0, end_plot,aa)
+function [k_acf_lf,sigma_k_acf_lf,D_acf_lf, sigma_D_acf_lf,gamma_acf_lf, sigma_gamma_acf_lf , k_acf_nl, sigma_k_acf_nl, D_acf_nl, sigma_D_acf_nl,gamma_acf_nl, sigma_gamma_acf_nl, tau0_exp_lf,sigma_tau0_exp_lf, tau0_exp_nl, sigma_tau0_nl,Xpix, Ypix]=plotsub_pot(filename, positioninthefig1, title1, T, subsample, partau0, end_plot,aa)
 load(filename);
 disp(filename);
 
@@ -11,7 +11,7 @@ col3=[0.00,0.45,0.74];
 
 colbar=[7/255, 79/255, 129/255];
 
-[k_acf_lf, sigma_k_acf_lf, D_acf_lf, sigma_D_acf_lf,gamma_acf_lf, sigma_gamma_acf_lf,tau_acf_lf, mc, Ec,indc, tau0_exp_lf, c0_exp_lf]=acf_lfit(x(1:subsample:size(x,1),:),T,dt*subsample);
+[k_acf_lf, sigma_k_acf_lf, D_acf_lf, sigma_D_acf_lf,gamma_acf_lf, sigma_gamma_acf_lf,tau_acf_lf, mc, Ec,indc, tau0_exp_lf,sigma_tau0_exp_lf, c0_exp_lf]=acf_lfit(x(1:subsample:size(x,1),:),T,dt*subsample);
 
 [k_acf_nl, sigma_k_acf_nl, D_acf_nl, sigma_D_acf_nl,gamma_acf_nl, sigma_gamma_acf_nl, tau_nl, mc, Ec, indc, tau0_exp_nl, sigma_tau0_nl,c0_exp_nl]=acf_nlfit(x(1:subsample:size(x,1),:),T,dt*subsample);
  
