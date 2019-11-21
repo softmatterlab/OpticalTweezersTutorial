@@ -1,0 +1,5 @@
+These files are needed to run ActiveMicrorheologySinusoindalPerturbation.m and get the plots of Figure 3 on the manuscript.
+The file name "5mMdrive_k1e-06_freq_X.mat" indicated the frequency  X at which the sinusoidal perturbation was applied, for instance
+	"5mMdrive_k1e-06_freq_25.6" corresponds to 25.6 Hz
+The files contain the particle positions (x), the values of the applied sinusoidal force (fd), the corresponding time (t) and the sampling frequency (fs)
+

@@ -9,12 +9,12 @@ r=1.03E-6;      % Particle radius [m]
 v=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
 gamma=pi*6*r*v; %[m*Pa*s]
 
-xwi = 400;    % width of the plot square
+xwi = 406;    % width of the plot square
 bx1 = 120;     % extra space at the left
 bx2 = 20;     % extra space at the right
 
 Xpix = 3*xwi+bx1+3*bx2;  % total
-
+Xpix =1400;
 ywi = 300;    % length riquadro con funzione
 by1 = 110;     % extra space below
 by2 = 70;     % extra space up

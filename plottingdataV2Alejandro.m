@@ -744,10 +744,11 @@ col2=[1,0,0];
 col3=[0.00,0.45,0.74];
 
 bx1 = 120;     % bordo a sinistra
-xwi = 400;    % larghezza riquadro con funzione
-bx2 = 30;     % bordino a destra
+xwi = 340;    % larghezza riquadro con funzione
+bx2 = 20;     % bordino a destra
 
 Xpix = 3*bx1+3*xwi+2*bx2;  % larghezza figura in pixel
+Xpix=1400;
 
 by1 = 110;     % bordo in basso
 ywi = 300;    % altezza riquadro con funzione
@@ -774,7 +775,7 @@ box on
 xlabel('$t(s)$','Interpreter','Latex','FontSize',30 );
 ylabel('$x(\rm{nm})$','Interpreter','Latex','FontSize',30);
 
-axes('Position',[(2*bx1+xwi+bx2) 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
+axes('Position',[(bx1+xwi+bx2+100) 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 hold on;
 
 
@@ -804,7 +805,7 @@ plot(bl*1000,cppx,'LineWidth',3,'Color',col2)
 box on
 %   xlim([-0.3 0.3001])
 %      set(gca,'XTick',[Min : 0.1 : Max]);
- xticks(-300:100:300);
+ xticks(-300:150:300);
   xlim([-300 300]);
   yticks(-12:2:2);
    ylim([-12 2 ]);
@@ -816,7 +817,7 @@ ylabel('$U(k_BT)$','Interpreter','Latex','FontSize',30)
 set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',25);
 
   
-axes('Position',[(3*bx1+2*xwi+bx2) 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
+axes('Position',[(bx1+2*xwi+220) 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 hold on;
       
 
@@ -824,7 +825,7 @@ hold on;
  hold on 
  plot(b*1000,fnx,'LineWidth',3,'Color',col2)
  box on
- xticks(-300:100:300);
+ xticks(-300:150:300);
  xlim([-300 300]);
  yticks(-0:1E4: 7.0001E4);
  ylim([-0 7E4]);
@@ -845,7 +846,7 @@ xlabel('$x( \rm nm)$','Interpreter','Latex', 'FontSize',30)
  axes('Position',[(0) 0 Xpix 0]/Xpix + [0 0 0 Ypix]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 hold on
 
-xt = [bx1-110,bx1+xwi+bx1-70,2*bx1+2*xwi+bx1-35];
+xt = [bx1-110,bx1+xwi+bx1-100,2*bx1+2*xwi+bx1-95];
 yt = [ by1+ywi+20,by1+ywi+20,by1+ywi+20];
 str = {'\bf a','\bf b','\bf c'};
 text(xt,yt,str,'Interpreter','Latex','FontSize',34)
