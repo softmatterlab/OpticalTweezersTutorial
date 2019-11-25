@@ -35,14 +35,14 @@ t = Data(:,2); %time in seconds
 fs = 1/(t(2)-t(1)); %sampling frequency
 
 
-bx1 = 120;     % bordo a sinistra
-xwi = 400;    % larghezza riquadro con funzione
+bx1 = 150;     % bordo a sinistra
+xwi = 540;    % larghezza riquadro con funzione
 bx2 = 30;     % bordino a destra
 
 Xpix = 3*bx1+3*xwi+2*bx2;  % larghezza figura in pixel
-
+Xpix =1400;
 by1 = 110;     % bordo in basso
-ywi = 300;    % altezza riquadro con funzione
+ywi = 500;    % altezza riquadro con funzione
 by2 = 50;     % bordo in alto
 
 Ypix = by1+ywi+by2;  % larghezza figura in pixel
@@ -97,20 +97,88 @@ loglog(f,G1,'r o')
 hold on
 loglog(f,G2,'b s')
 xlabel('f [Hz]')
-ylabel('G�, G�� [Pa]')
-title('Storage (circles) and loss (squares) modulus')
+% ylabel('G�, G�� [Pa]')
+% % title('Storage (circles) and loss (squares) modulus')
 
 
 
+col3=[0.00,0.45,0.74];
+col4=[0.8500, 0.3250, 0.0980];
 
 figure('Position',[10 20 Xpix Ypix]); % crea la figura
 axes('Position',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
-loglog(f,spx11,'b')
+loglog(f,spx11*1e18,'color',col3)
+
+xlim([1e-2 1e3])
+ ylim([1e-4 1e5])
+ yticks([1e-4,1e0,1e5]);
 hold on
-xlabel('f [Hz]')
-ylabel('PSD [m^2 / Hz]')
-title('Equilibrium PSD of trapped particle')
+xlabel('$f \rm (Hz)$', 'Interpreter','Latex', 'FontSize',30)
+ylabel('$\rm PSD (\rm nm^2 / Hz)$', 'Interpreter','Latex', 'FontSize',30)
+% title('Equilibrium PSD of trapped particle')
+set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'TickLength',[0.02, 0.01]);
 
 %Smooth PSD using polynomial fit of degree D
 
-loglog(f,spx12,'k')
+loglog(f,spx12*1e18,'--', 'LineWidth',3,'Color','k')
+
+xticks([1e-1,1e0,1e1,1e2,1e3]);
+
+axes('Position',[2*bx1+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix); 
+loglog(f,G1,'r o')
+hold on
+loglog(f,G2,'s','Color',col3)
+
+xlim([2e-2 2e3]);
+ylim([5e-3 1e2]);
+
+xticks([1e-2,1e-1,1e0,1e1,1e2,1e3]);
+
+xlabel('$f \rm (Hz)$', 'Interpreter','Latex', 'FontSize',30)
+ylabel('$ G'' (f), G'''' (f)(\rm Pa)$', 'Interpreter','Latex', 'FontSize',30)
+
+set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'TickLength',[0.02, 0.01]);
+
+
+axes('Position',[bx1+100 0 280 0]/Xpix + [0 by1+80 0 130]/Ypix); 
+
+plot(t,x*1e9)
+xlim([0 1e1]);
+ylim([-2e2 2e2]);
+yticks([-2e2,0,2e2]);
+xlabel('$t (\rm s)$','Interpreter','Latex', 'FontSize',30)
+ylabel('$x (\rm nm)$','Interpreter','Latex', 'FontSize',30)
+set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',18,'TickLength',[0.02, 0.01]);
+
+
+
+axes('Position',[bx1+xwi+260 0 250 0]/Xpix + [0 by1+300 0 170]/Ypix); 
+
+loglog(f,G1,'r o')
+hold on
+loglog(f,G2,'s','Color',col3)
+ xlim([3e-2 1e2]);
+ ylim([2e-3 8e0]);
+ yticks([1e-2,1e-1,1e0]);
+xticks([1e-1,1e0,1e1]);
+xlabel('$f \rm (Hz)$', 'Interpreter','Latex', 'FontSize',30)
+ylabel('$ G'' (f), G'''' (f)(\rm Pa)$', 'Interpreter','Latex', 'FontSize',30)
+set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',18,'TickLength',[0.02, 0.01]);
+
+
+
+axes('Position',[(0) 0 Xpix 0]/Xpix + [0 0 0 Ypix]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
+hold on
+
+xt = [bx1-120,bx1+xwi+bx2];
+yt = [ by1+ywi+30,by1+ywi+30];
+str = {'\bf a','\bf b'};
+text(xt,yt,str,'Interpreter','Latex','FontSize',34)
+
+hold off
+
+
+axis off
+
+xlim([0 Xpix])
+ylim([0 Ypix])
