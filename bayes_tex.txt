@@ -1,9 +1,0 @@
-\newcommand{\kappaBayesExpI}{13.3\pm0.3}
-\newcommand{\DBayesExpI}{0.1875\pm0.0005}
-\newcommand{\gammaBayesExpI}{21.59\pm0.05}
-\newcommand{\kappaBayesExpII}{34.9\pm0.5}
-\newcommand{\DBayesExpII}{0.1817\pm0.0004}
-\newcommand{\gammaBayesExpII}{22.27\pm0.05}
-\newcommand{\kappaBayesExpIII}{59.6\pm0.7}
-\newcommand{\DBayesExpIII}{0.1686\pm0.0004}
-\newcommand{\gammaBayesExpIII}{24\pm0.06}

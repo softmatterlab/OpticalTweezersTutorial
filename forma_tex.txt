@@ -1,9 +1,0 @@
-\newcommand{\kappaFORMAExpI}{13.7\pm0.4}
-\newcommand{\DFORMAExpI}{0.186\pm0.003}
-\newcommand{\gammaFORMAExpI}{21.8\pm0.4}
-\newcommand{\kappaFORMAExpII}{35.8\pm0.7}
-\newcommand{\DFORMAExpII}{0.178\pm0.003}
-\newcommand{\gammaFORMAExpII}{22.7\pm0.3}
-\newcommand{\kappaFORMAExpIII}{58\pm1}
-\newcommand{\DFORMAExpIII}{0.172\pm0.003}
-\newcommand{\gammaFORMAExpIII}{23.6\pm0.5}

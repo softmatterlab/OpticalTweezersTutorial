@@ -1,3 +1,0 @@
-\newcommand{\kappaequiExpIdelta}{13.7\pm0.4}
-\newcommand{\kappaequiExpIIdelta}{35.2\pm0.7}
-\newcommand{\kappaequiExpIIIdelta}{57\pm1}
