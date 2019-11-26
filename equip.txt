@@ -1,0 +1,3 @@
+\newcommand{\kappaequiExpI}{13.6\pm0.4}
+\newcommand{\kappaequiExpII}{34.9\pm0.6}
+\newcommand{\kappaequiExpIII}{56\pm1}
