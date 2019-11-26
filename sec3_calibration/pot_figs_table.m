@@ -121,6 +121,7 @@ fprintf(equip_tex,'%s\n',['\newcommand{\kappaequiExpIII}{' k1 '\pm' dk1 '}']);
  
 disp('................')
  
- 
+fclose(equip_tex)
+fclose(pot_tex)
  
 %2:3mW, 6:0mW, and 9:2mW

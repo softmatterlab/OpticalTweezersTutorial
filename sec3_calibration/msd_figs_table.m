@@ -56,25 +56,27 @@ disp(titleI)
 disp('Autocorrelation function analysis by linear fitting')
  
 disp(['k_msd: ' num2str(k_msd_I*1e6) '+-' num2str(sigma_k_msd_I*1e6) ' pN/um'])
-[k, dk, sig]=round_significance(k_msd_I*1e6, sigma_k_msd_I*1e6);
-disp(['k_msd: ' k '\pm' dk]) 
+[v1, dv1, sig]=round_significance(k_msd_I*1e6, sigma_k_msd_I*1e6);
+fprintf(msd_tex,'%s\n',['\newcommand{\kappaMSDExpINLF}{' v1 '\pm' dv1 '}']);
 
 disp(['D_msd: ' num2str(D_msd_I*1e12) '+-' num2str(sigma_D_msd_I*1e12) ' um^2/s'])
-[k, dk, sig]=round_significance(D_msd_I*1e12, sigma_D_msd_I*1e12);
-disp(['D_msd: ' k '\pm' dk ]) 
+[v1, dv1, sig]=round_significance(D_msd_I*1e12, sigma_D_msd_I*1e12);
+fprintf(msd_tex,'%s\n',['\newcommand{\DMSDExpINLF}{' v1 '\pm' dv1 '}']);
 
 
 disp(['gamma_acf:' num2str(gamma_msd_I*1e9) '+-'  num2str(sigma_gamma_msd_I*1e9) ' pN s/um ']);
-[k, dk, sig]=round_significance(gamma_msd_I*1e9, sigma_gamma_msd_I*1e9);
-disp(['gamma_acf:' k '\pm' dk ]) 
+[v1, dv1, sig]=round_significance(gamma_msd_I*1e9, sigma_gamma_msd_I*1e9);
+fprintf(msd_tex,'%s\n',['\newcommand{\gammaMSDExpINLF}{' v1 '\pm' dv1 '}']);
 
 
 disp(['tau_0:' num2str(tau0_I*1e3) '+-'  num2str(sigma_tau0_I*1e3) ' ms']);
-[k, dk, sig]=round_significance(tau0_I*1e3, sigma_tau0_I*1e3);
-disp(['tau_0:' k '\pm' dk ]) 
+[v1, dv1, sig]=round_significance(tau0_I*1e3, sigma_tau0_I*1e3);
+fprintf(msd_tex,'%s\n',['\newcommand{\tauMSDExpINLF}{' v1 '\pm' dv1 '}']);
+
 
 
 disp('................')
+
 %%
 titleII='Experiment II, P=6.0mW';
 [k_msd_II,sigma_k_msd_II,  gamma_msd_II, sigma_gamma_msd_II,D_msd_II, sigma_D_msd_II, tau0_II, sigma_tau0_II]=plotsub_msd('Data_positions_Fig9_1P4_S.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, 17, 70,1.15,3,1);
@@ -84,22 +86,24 @@ disp(titleII)
 disp('Autocorrelation function analysis by linear fitting')
  
 disp(['k_msd: ' num2str(k_msd_II*1e6) '+-' num2str(sigma_k_msd_II*1e6) ' pN/um'])
-[k, dk, sig]=round_significance(k_msd_II*1e6, sigma_k_msd_II*1e6);
-disp(['k_msd: ' k '\pm' dk]) 
+[v1, dv1, sig]=round_significance(k_msd_II*1e6, sigma_k_msd_II*1e6);
+fprintf(msd_tex,'%s\n',['\newcommand{\kappaMSDExpIINLF}{' v1 '\pm' dv1 '}']);
 
 disp(['D_msd: ' num2str(D_msd_II*1e12) '+-' num2str(sigma_D_msd_II*1e12) ' um^2/s'])
-[k, dk, sig]=round_significance(D_msd_II*1e12, sigma_D_msd_II*1e12);
-disp(['D_msd: ' k '\pm' dk ]) 
+[v1, dv1, sig]=round_significance(D_msd_II*1e12, sigma_D_msd_II*1e12);
+fprintf(msd_tex,'%s\n',['\newcommand{\DMSDExpIINLF}{' v1 '\pm' dv1 '}']);
+
 
 
 disp(['gamma_acf:' num2str(gamma_msd_II*1e9) '+-'  num2str(sigma_gamma_msd_II*1e9) ' pN s/um ']);
-[k, dk, sig]=round_significance(gamma_msd_II*1e9, sigma_gamma_msd_II*1e9);
-disp(['gamma_acf:' k '\pm' dk]) 
+[v1, dv1, sig]=round_significance(gamma_msd_II*1e9, sigma_gamma_msd_II*1e9);
+fprintf(msd_tex,'%s\n',['\newcommand{\gammaMSDExpIINLF}{' v1 '\pm' dv1 '}']);
 
 
 disp(['tau_0:' num2str(tau0_II*1e3) '+-'  num2str(sigma_tau0_II*1e3) ' ms']);
-[k, dk, sig]=round_significance(tau0_II*1e3, sigma_tau0_II*1e3);
-disp(['tau_0:' k '\pm' dk ])
+[v1, dv1, sig]=round_significance(tau0_II*1e3, sigma_tau0_II*1e3);
+fprintf(msd_tex,'%s\n',['\newcommand{\tauMSDExpIINLF}{' v1 '\pm' dv1 '}']);
+
 disp('................')
 %%
 titleIII='Experiment III, P=9.2mW';
@@ -111,20 +115,22 @@ disp(titleIII)
 disp('Autocorrelation function analysis by linear fitting')
  
 disp(['k_msd: ' num2str(k_msd_III*1e6) '+-' num2str(sigma_k_msd_III*1e6) ' pN/um'])
-[k, dk, sig]=round_significance(k_msd_III*1e6, sigma_k_msd_III*1e6);
-disp(['k_msd: ' k '\pm' dk ]) 
+[v1, dv1, sig]=round_significance(k_msd_III*1e6, sigma_k_msd_III*1e6);
+fprintf(msd_tex,'%s\n',['\newcommand{\kappaMSDExpIIINLF}{' v1 '\pm' dv1 '}']);
 
 disp(['D_msd: ' num2str(D_msd_III*1e12) '+-' num2str(sigma_D_msd_III*1e12) ' um^2/s'])
-[k, dk, sig]=round_significance(D_msd_III*1e12, sigma_D_msd_III*1e12);
-disp(['D_msd: ' k '\pm' dk ]) 
+[v1, dv1, sig]=round_significance(D_msd_III*1e12, sigma_D_msd_III*1e12);
+fprintf(msd_tex,'%s\n',['\newcommand{\DMSDExpIIINLF}{' v1 '\pm' dv1 '}']);
 
 
 disp(['gamma_acf:' num2str(gamma_msd_III*1e9) '+-'  num2str(sigma_gamma_msd_III*1e9) ' pN s/um ']);
-[k, dk, sig]=round_significance(gamma_msd_III*1e9, sigma_gamma_msd_III*1e9);
-disp(['gamma_acf:' k '\pm' dk ]) 
+[v1, dv1, sig]=round_significance(gamma_msd_III*1e9, sigma_gamma_msd_III*1e9);
+fprintf(msd_tex,'%s\n',['\newcommand{\gammaMSDExpIIINLF}{' v1 '\pm' dv1 '}']);
 
 
 disp(['tau_0:' num2str(tau0_III*1e3) '+-'  num2str(sigma_tau0_III*1e3) ' ms']);
-[k, dk, sig]=round_significance(tau0_III*1e3, sigma_tau0_III*1e3);
-disp(['tau_0:' k '\pm' dk ])
+[v1, dv1, sig]=round_significance(tau0_III*1e3, sigma_tau0_III*1e3);
+fprintf(msd_tex,'%s\n',['\newcommand{\tauMSDExpIIINLF}{' v1 '\pm' dv1 '}']);
+
 disp('................')
+fclose(msd_tex)
