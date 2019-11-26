@@ -67,20 +67,17 @@ axes('Position',[2*bx1+xwi+50 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);
 % errorbar(F1,S1,ES1,'o','markeredgecolor','k', 'MarkerSize',12)
 errorbar(F1,S1,ES1,'.','MarkerSize',30, 'Color','r')
 hold on;
-errorbar(F2,S2,ES2,'^','MarkerSize',10, 'Color','m','MarkerFaceColor','m')
+errorbar(F2,S2,ES2,'^','MarkerSize',10, 'Color','r','MarkerFaceColor','r')
 hold on;
 errorbar(F3,S3,ES3,'.','MarkerSize',30, 'Color',col3)
 hold on;
-errorbar(F4,S4,ES4,'^','MarkerSize',10, 'Color','k','MarkerFaceColor','k')
+errorbar(F4,S4,ES4,'^','MarkerSize',10, 'Color',col3,'MarkerFaceColor',col3)
 
 
 xlabel('Force (pN)','Interpreter','Latex', 'FontSize',30);
 ylabel('Stiffness (pN/nm)','Interpreter','Latex', 'FontSize',30);
 set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'TickLength',[0.02, 0.01], 'XMinorTick','off');
 
-
-LL= legend ({'RBC1 UP','RBC1 DOWN','RBC2 UP','RBC2 DOWN'},'Interpreter','latex','Box','off','Position',[0.63 0.69 0.1 0.2])
-LL.FontSize = 18
 
 
 %% Program that reads the result files and make the plot of force - extension curve.
@@ -134,24 +131,26 @@ axes('Position',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centr
 
 
 
-plot(F1,E1,'r','linewidth',2)
+plot(F1,E1,'r')
 hold on;
-plot(F2,E2,'m','linewidth',2)
+plot(F2,E2,'m')
 hold on;
-plot(F3,E3,'Color',col3,'linewidth',2)
+plot(F3,E3,'b')
 hold on;
-plot(F4,E4,'k','linewidth',2)
-
+plot(F4,E4,'c')
+set(gca,'fontsize',14)
 ylabel('Force (pN)','Interpreter','Latex', 'FontSize',30);
 xlabel('Extension (nm)','Interpreter','Latex', 'FontSize',30);
  ylim([0 20])
 
  
 
-LL= legend ({'RBC1 UP','RBC1 DOWN','RBC2 UP','RBC2 DOWN'},'Interpreter','latex','Box','off','Position',[0.13 0.69 0.1 0.2])
+LL= legend ({'$\it {W}_{\rm F}$','$\it {W}_{\rm U}$'},'Interpreter','latex','Box','off','Position',[0.87 0.69 0.1 0.2])
 LL.FontSize = 18
 
 
+RBC1 UP
+RBC! DOWN
 
 set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'TickLength',[0.02, 0.01], 'XMinorTick','off');
 
