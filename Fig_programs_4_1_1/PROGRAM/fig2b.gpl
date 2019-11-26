@@ -1,0 +1,62 @@
+clear
+reset
+
+
+KBT=4.114
+
+set xra [1400/KBT:1480/KBT]
+set yra [0:0.3]
+
+set xtics 5
+set ytics 0.1
+
+set format y "%.1f"
+set format x "%.0f"
+
+set yla 'pdf'
+set xla 'W(k_BT)'
+
+set key top left Left reverse
+
+
+DG0=1.4368e+03/KBT
+DG0=348.66
+DDG0=(DG0)*0.003
+
+
+gaussf(x)=af/(sigmaf*sqrt(2.*pi))*exp(-(x-muf)**2./(2.*sigmaf**2))
+muf=1400/KBT
+sigmaf=100/KBT
+af=1.0
+fit gaussf(x) 'WFpdf.txt' via af, sigmaf, muf
+
+gaussu(x)=au/(sigmau*sqrt(2.*pi))*exp(-(x-muu)**2./(2.*sigmau**2))
+muu=1400/KBT
+sigmau=100/KBT
+au=1.0
+fit gaussu(x) 'WUpdf.txt' via au, sigmau, muu
+
+set style rect fc lt 2 fs solid 0.15 noborder
+set object 1 rect from DG0-DDG0,0 to DG0+DDG0,0.4 fc lt 1 lc rgb "black" back
+
+set arrow 1 from 1455/KBT,0.2 to DG0,0.2 lw 4 front
+set arrow 2 from DG0,0.00 to DG0,0.3 dt 2 lc rgb "black" lw 4 lt 2 front nohead
+set label at 1455/KBT+0.5,0.205  "{/Symbol D}G_0"
+
+#p 'WFpdf.txt' u 1:2 with boxes fill empty lw 4 lc rgb "web-blue"  t 'W_F', 'WUpdf.txt' u 1:2 with boxes fill empty  lw 4  lc rgb "light-red" t 'W_U', gaussf(x) w l lw 6 lc rgb "blue" t '', gaussu(x) w l lw 6 lc rgb "red" t ''
+
+p 'WFpdf.txt' u 1:2 with boxes fill empty lw 4 lc rgb "web-blue"  t 'W_F', 'WUpdf.txt' u 1:2 with boxes fill empty  lw 4  lc rgb "light-red" t 'W_U', 'Interp_WFpdf.txt' w l lw 6 lc rgb "blue" t '', 'Interp_Wupdf.txt' w l lw 6 lc rgb "red" t ''
+
+#'Interp_WFpdf.txt' w l lw 6 lc rgb "blue" t '', 'Interp_Wupdf.txt' w l lw 6 lc rgb "red" t ''
+
+
+
+
+set term post eps enhanced color  24
+set output 'fig2b_2.eps'
+
+rep
+
+
+unset output
+set term qt

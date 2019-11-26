@@ -8,11 +8,12 @@ kB=1.38064852e-23; % Boltzmann constant [m^2kg/s^2K]
 
 
 
-xwi = 400;    % width of the plot square
+xwi = 406;    % width of the plot square
 bx1 = 120;     % extra space at the left
 bx2 = 20;     % extra space at the right
 
 Xpix = 3*xwi+bx1+3*bx2;  % total
+Xpix=1400;
 
 ywi = 300;    % length riquadro con funzione
 by1 = 110;     % extra space below
