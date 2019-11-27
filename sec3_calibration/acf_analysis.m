@@ -26,6 +26,7 @@ subs=1; %use a subsampled data set
 
 [k_acf_nl, sigma_k_acf_nl, D_acf_nl, sigma_D_acf_nl,gamma_acf_nl, sigma_gamma_acf_nl, tau_nl, mc, Ec, indc, tau0_exp_nl, c0_exp_nl]=acf_nlfit(x(1:subs:size(x,1),:),T,dt*subs);
 
+
 disp('................')
 disp('Autocorrelation function analysis by linear fitting')
  

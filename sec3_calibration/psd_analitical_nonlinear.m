@@ -44,30 +44,25 @@ sigma_k_psd=2*pi*(gamma_psd*sigma_fcm_psd+fcm_psd*sigma_gamma_psd);
 disp('................')
 disp('PSD analitycal solution')
 
-disp(['D_psd: ' num2str(mean(Dm_psd)*1e12) '+-' num2str(sigma_Dm_psd*1e12) ' um^2/s'])
-
-disp(['gamma_psd: ' num2str(gamma_psd*1e9) '+-' num2str(sigma_gamma_psd*1e9) ' pNms/um'])
-
-disp(['k_psd: ' num2str(k_psd*1e6) '+-' num2str(sigma_k_psd*1e6) ' pN/um'])
 
 
 disp(['k_psd: ' num2str(k_psd*1e6) '+-' num2str(sigma_k_psd*1e6) 'pN/um'])
 [v1, dv1, sig]=round_significance(k_psd*1e6, sigma_k_psd*1e6);
-disp(['k_psd: ' v1 '\pm' dv1 ])
+
 fprintf(psd_nlf,'%s\n',['\newcommand{\kappaPSDExpINLF}{' v1 '\pm' dv1 '}']);
 
 disp(['gamma_psd:' num2str(gamma_psd*1e9) '+-'  num2str(sigma_gamma_psd*1e9) ' pN ms/um ']);
 [v1, dv1, sig]=round_significance(gamma_psd*1e9, sigma_gamma_psd*1e9);
-disp(['gamma_psd:' v1 '\pm' dv1])
+
 fprintf(psd_nlf,'%s\n',['\newcommand{\gammaPSDExpINLF}{' v1 '\pm' dv1 '}']);
 
 disp(['D_psd: ' num2str(mean(Dm_psd)*1e12) '+-' num2str(mean(Dm_psd)*1e12) ' um^2/s'])
 [v1, dv1, sig]=round_significance(mean(Dm_psd)*1e12, sigma_Dm_psd*1e12);
-disp(['D_psd: ' v1 '\pm' dv1])
+
 fprintf(psd_nlf,'%s\n',['\newcommand{\DPSDExpINLF}{' v1 '\pm' dv1 '}']);
 
 [v1, dv1, sig]=round_significance(fcm_psd, sigma_fcm_psd);
-disp(['D_psd: ' v1 '\pm' dv1])
+
 fprintf(psd_nlf,'%s\n',['\newcommand{\fcPSDExpINLF}{' v1 '\pm' dv1 '}']);
 
 
@@ -105,31 +100,25 @@ sigma_k_psd=2*pi*(gamma_psd*sigma_fcm_psd+fcm_psd*sigma_gamma_psd);
 disp('................')
 disp('PSD analitycal solution')
 
-disp(['D_psd: ' num2str(mean(Dm_psd)*1e12) '+-' num2str(sigma_Dm_psd*1e12) ' um^2/s'])
-
-disp(['gamma_psd: ' num2str(gamma_psd*1e9) '+-' num2str(sigma_gamma_psd*1e9) ' pNms/um'])
-
-disp(['k_psd: ' num2str(k_psd*1e6) '+-' num2str(sigma_k_psd*1e6) ' pN/um'])
-
 
 disp(['k_psd: ' num2str(k_psd*1e6) '+-' num2str(sigma_k_psd*1e6) 'pN/um'])
 [v1, dv1, sig]=round_significance(k_psd*1e6, sigma_k_psd*1e6);
-disp(['k_psd: ' v1 '\pm' dv1 ])
+
 fprintf(psd_nlf,'%s\n',['\newcommand{\kappaPSDExpIINLF}{' v1 '\pm' dv1 '}']);
 
 disp(['gamma_psd:' num2str(gamma_psd*1e9) '+-'  num2str(sigma_gamma_psd*1e9) ' pN ms/um ']);
 [v1, dv1, sig]=round_significance(gamma_psd*1e9, sigma_gamma_psd*1e9);
-disp(['gamma_psd:' v1 '\pm' dv1])
+
 fprintf(psd_nlf,'%s\n',['\newcommand{\gammaPSDExpIINLF}{' v1 '\pm' dv1 '}']);
 
 disp(['D_psd: ' num2str(mean(Dm_psd)*1e12) '+-' num2str(mean(Dm_psd)*1e12) ' um^2/s'])
 [v1, dv1, sig]=round_significance(mean(Dm_psd)*1e12, sigma_Dm_psd*1e12);
-disp(['D_psd: ' v1 '\pm' dv1])
+
 fprintf(psd_nlf,'%s\n',['\newcommand{\DPSDExpIINLF}{' v1 '\pm' dv1 '}']);
 
 
 [v1, dv1, sig]=round_significance(fcm_psd, sigma_fcm_psd);
-disp(['D_psd: ' v1 '\pm' dv1])
+
 fprintf(psd_nlf,'%s\n',['\newcommand{\fcPSDExpIINLF}{' v1 '\pm' dv1 '}']);
 
 %%
@@ -165,31 +154,26 @@ sigma_k_psd=2*pi*(gamma_psd*sigma_fcm_psd+fcm_psd*sigma_gamma_psd);
 disp('................')
 disp('PSD analitycal solution')
 
-disp(['D_psd: ' num2str(mean(Dm_psd)*1e12) '+-' num2str(sigma_Dm_psd*1e12) ' um^2/s'])
-
-disp(['gamma_psd: ' num2str(gamma_psd*1e9) '+-' num2str(sigma_gamma_psd*1e9) ' pNms/um'])
-
-disp(['k_psd: ' num2str(k_psd*1e6) '+-' num2str(sigma_k_psd*1e6) ' pN/um'])
 
 
 disp(['k_psd: ' num2str(k_psd*1e6) '+-' num2str(sigma_k_psd*1e6) 'pN/um'])
 [v1, dv1, sig]=round_significance(k_psd*1e6, sigma_k_psd*1e6);
-disp(['k_psd: ' v1 '\pm' dv1 ])
+
 fprintf(psd_nlf,'%s\n',['\newcommand{\kappaPSDExpIIINLF}{' v1 '\pm' dv1 '}']);
 
 disp(['gamma_psd:' num2str(gamma_psd*1e9) '+-'  num2str(sigma_gamma_psd*1e9) ' pN ms/um ']);
 [v1, dv1, sig]=round_significance(gamma_psd*1e9, sigma_gamma_psd*1e9);
-disp(['gamma_psd:' v1 '\pm' dv1])
+
 fprintf(psd_nlf,'%s\n',['\newcommand{\gammaPSDExpIIINLF}{' v1 '\pm' dv1 '}']);
 
 disp(['D_psd: ' num2str(mean(Dm_psd)*1e12) '+-' num2str(mean(Dm_psd)*1e12) ' um^2/s'])
 [v1, dv1, sig]=round_significance(mean(Dm_psd)*1e12, sigma_Dm_psd*1e12);
-disp(['D_psd: ' v1 '\pm' dv1])
+
 fprintf(psd_nlf,'%s\n',['\newcommand{\DPSDExpIIINLF}{' v1 '\pm' dv1 '}']);
 
 
 [v1, dv1, sig]=round_significance(fcm_psd, sigma_fcm_psd);
-disp(['D_psd: ' v1 '\pm' dv1])
+
 fprintf(psd_nlf,'%s\n',['\newcommand{\fcPSDExpIIINLF}{' v1 '\pm' dv1 '}']);
 
 
@@ -198,6 +182,6 @@ fprintf(psd_nlf,'%s\n',['\newcommand{\fcPSDExpIIINLF}{' v1 '\pm' dv1 '}']);
 
 
 
-fclose(psd_nlf)
+fclose(psd_nlf);
 
 

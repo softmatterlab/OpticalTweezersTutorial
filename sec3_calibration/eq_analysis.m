@@ -58,11 +58,3 @@ disp(['k_eq: ' num2str(k_eq_delta_III*1e6) '+-' num2str(sigma_k_eq_delta_III*1e6
 [v1, dv1, sig]=round_significance(k_eq_delta_III*1e6, sigma_k_eq_delta_III*1e6);
 fprintf(equipdx_tex,'%s\n',['\newcommand{\kappaequiExpIIIdelta}{' v1 '\pm' dv1 '}']);
 
-
-
-
-
-
-% \newcommand{\kappaequiExpIdelta}{13.66\pm0.37}
-% \newcommand{\kappaequiExpIIdelta}{35.24\pm0.66}
-% \newcommand{\kappaequiExpIIIdelta}{57.09\pm1.17}

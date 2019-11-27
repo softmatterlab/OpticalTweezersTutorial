@@ -7,14 +7,16 @@ close all;
 
 addpath forma
 
-forma_tex=fopen('forma_tex.txt', 'w')
-
+forma_tex=fopen('forma_tex.txt', 'w');
+%%
+%first experiment
+disp('first experiment')
 load('Data_positions_Fig9_1P2_S.mat')
 
 
 x = x - repmat(mean(x),size(x,1),1);
 %in this case the whole time series is used as one experiment but it can be
-%done wioth many experiments
+%done with many experiments
 xl=reshape(x, [size(x,1)*size(x,2),1 ]);
 
 gamma=6*pi*eta*a;
@@ -27,7 +29,7 @@ subs=1; %use a subsampled data set
 nsubs=3;
 [N,Nexp]=size(x);
 
-%[fc_forma,D_forma,sigma_fcforma,sigma_D_forma]=forma1d(xl(1:subs:end),dt*subs, nsubs);
+
 
 [fc_forma,D_forma,sigma_fcforma,sigma_D_forma]=forma1d(x(1:subs:end, 1),dt*subs, nsubs);
 
@@ -135,7 +137,9 @@ disp('................')
 
 % Initialization of the workspace
 
-
+%%
+%second experiment
+disp('second experiment')
 
 
 load('Data_positions_Fig9_1P4_S.mat')
@@ -259,12 +263,9 @@ disp('................')
 
 
 
-%%% PSD analysis for Nexp
-
-% Initialization of the workspace
-
-
-
+%%
+%third experiment
+disp('third experiment')
 
 load('Data_positions_Fig9_1P6_S.mat')
 
@@ -370,7 +371,7 @@ k_forma_l=gamma_forma_l.*fc_forma_l;
 sigma_k_forma_l=gamma_forma_l.*sigma_fcforma_l+fc_forma_l.*sigma_gamma_forma_l;
 
 
-fclose(forma_tex)
+
 
 
 
@@ -386,3 +387,5 @@ disp(['gamma_forma: ' num2str(1e9*gamma_forma_l) '+-' num2str(1e9*sigma_gamma_fo
 
 
 disp('................')
+
+fclose(forma_tex);
