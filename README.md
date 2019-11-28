@@ -1,5 +1,9 @@
 # tweezers_AOP_tutorial
-We provide the set of scripts and functions described in the AOP tutorial.
+This repository includes the analysis and plot codes for the the article **Optical Tweezers: A comprehennsive Tutorial  from Calibration to Applications** by *Jan Gieseler, Juan Ruben Gomez-Solano, Alessandro Magaz, ISAAC PÉREZ CASTILLO, LAURA PÉREZ GARCÍA,
+MARTA GIRONELLA-TORRENT, XAVIER VIADER-GODOY, FELIX
+RITORT, GIUSEPPE PESCE, ALEJANDRO V. ARZOLA, KAREN
+VOLKE-SEPULVEDA, AND GIOVANNI VOLPE*. Published in **Advances in Optics and Photonics**
+https://www.osapublishing.org/aop/home.cfm
 
 
 
