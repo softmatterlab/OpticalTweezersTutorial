@@ -1,10 +1,9 @@
 # tweezers_AOP_tutorial
-This repository includes the analysis and plot codes for the the article **Optical Tweezers: A comprehennsive Tutorial  from Calibration to Applications** by *Jan Gieseler, Juan Ruben Gomez-Solano, Alessandro Magaz, ISAAC PÉREZ CASTILLO, LAURA PÉREZ GARCÍA,
-MARTA GIRONELLA-TORRENT, XAVIER VIADER-GODOY, FELIX
-RITORT, GIUSEPPE PESCE, ALEJANDRO V. ARZOLA, KAREN
-VOLKE-SEPULVEDA, AND GIOVANNI VOLPE*. Published in **Advances in Optics and Photonics**
-https://www.osapublishing.org/aop/home.cfm
+This repository includes the analysis and plot codes for the the article **Optical Tweezers: A comprehennsive Tutorial  from Calibration to Applications** by *Jan Gieseler, Juan Ruben Gomez-Solano, Alessandro Magazù, Isaac Castillo, Laura Pérez García, Martha Gironella-Torrent, Xavier Viader-Godoy, Felix Ritort, Giusceppe Pesce, Alejandro V. Arzola, Karen Volke-Sepulveda and Giovanni Volpe*. 
 
+ The repository contains the corresponding folders to the subsections of the tutorial.
+  
+  
 
 
 | Method        | Input variables           | Output variables |
@@ -17,3 +16,6 @@ https://www.osapublishing.org/aop/home.cfm
 | PSD | ... |  ...|
 |FORMA  | ... |  ...|
 
+
+ 
+ 
