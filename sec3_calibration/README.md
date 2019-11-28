@@ -4,7 +4,7 @@
  
 **Potential and Equipartition Method**
 
-Run potential_analysis.m to obtain the values of the stiffness given by the potential method. This will call the functions, [prob_dist_energy.m](/pot/prob_dist_energy.m),  pot_lfit.m and pot_nlfit.m contained in the folder **pot**.
+Run potential_analysis.m to obtain the values of the stiffness given by the potential method. This will call the functions, [prob_dist_energy.m](pot/prob_dist_energy.m),  pot_lfit.m and pot_nlfit.m contained in the folder **pot**.
 Run eq_analysis.m to obtain the values of the stiffness given by the equipartition method. This will call the function eq1d.m contained in the folder **eq**.
 To obtain the corresponding figure of the fitting run pot_figs_table. 
 
