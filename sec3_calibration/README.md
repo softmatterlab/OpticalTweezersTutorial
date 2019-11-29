@@ -42,11 +42,7 @@ The functions [msd_nlfit.m](msd/msd_nlfit) will call function [wlsice.m](wlsice/
 
 
 
-​```sequence
-Alice->Bob: Hello Bob, how are you?
-Note right of Bob: Bob thinks
-Bob-->Alice: I am good thanks!
-​```
+
 
 | Method        | Input variables           | Output variables |
 | ------------- |-------------| -------------|
