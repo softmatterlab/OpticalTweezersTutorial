@@ -6,21 +6,30 @@
 
 Run [pot_analysis.m](pot_analysis.m) to obtain the values of the stiffness given by the potential method. This will call the functions, [prob_dist_energy.m](pot/prob_dist_energy.m), [pot_lfit.m](pot/pot_lfit.m)  and   [pot_nlfit.m](pot/pot_nlfit.m) contained in the folder **pot**.
 Run eq_analysis.m to obtain the values of the stiffness given by the equipartition method. This will call the function [eq1d.m](eq/eq1d.m) contained in the folder **eq**.
-To obtain the corresponding figure of the fitting run [pot_figs_table.m](pot_figs_table.m). 
+To obtain the corresponding figure of the fitting run [pot_figs_table.m](pot_figs_table.m), this will call function  [plotsub_pot.m](pot/plotsub_pot.m). 
 
 
 **Mean Square Displacement**
 
-Run [msd_analysis.m](msd_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analyisis method. This will call the functions, [msd_nlfit.m](msd/msd_nlfit) contained in the folder **msd**.
+Run [msd_analysis.m](msd_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [msd_nlfit.m](msd/msd_nlfit) contained in the folder **msd**.
 
 
-To obtain the corresponding figure of the fitting run [msd_figs_table.m](msd_figs_table.m). 
-
+To obtain the corresponding figure of the fitting run [msd_figs_table.m](msd_figs_table.m), this will call function  [plotsub_msd.m](msd/plotsub_msd.m).
 
 **Autocorrelation Function**
 
+Run [acf_analysis.m](acf_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [acf_nlfit.m](acf/acf_nlfit) and [acf_lfit.m](acf/acf_lfit) contained in the folder **acf**.
+
+
+To obtain the corresponding figure of the fitting run [acf_figs_table.m](msd_figs_table.m), this will call function  [plotsub_acf.m](acf/plotsub_acf.m).
+
+
 **Power Spectrum Density**
 
+Run [psd_analysis.m](psd_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [psd_nlfit.m](acf/acf_nlfit) and [acf_lfit.m](acf/acf_lfit) contained in the folder **acf**.
+
+
+To obtain the corresponding figure of the fitting run [acf_figs_table.m](msd_figs_table.m), this will call function  [plotsub_acf.m](acf/plotsub_acf.m).
 
 **FORMA**
 
@@ -28,7 +37,7 @@ To obtain the corresponding figure of the fitting run [msd_figs_table.m](msd_fig
   
 **WLSICE, non linear fit of correlated data**
 
-The functions [msd_nlfit.m](msd/msd_nlfit) will call function [wlsice.m](wlsice/wlsice.m) to perform a non-linear fitting considering the whole covariance matrix. 
+The functions [msd_nlfit.m](msd/msd_nlfit) will call function [wlsice.m](wlsice/wlsice.m) to perform a non-linear fitting considering the whole covariance matrix.  The target function that [wlsice.m](wlsice/wlsice.m) uses depends on the fitting method. This is especified by the 
 
 | Method        | Input variables           | Output variables |
 | ------------- |-------------| -------------|
