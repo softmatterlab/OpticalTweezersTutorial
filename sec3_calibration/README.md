@@ -1,7 +1,8 @@
 # Section 3: Calibration
  This folder contains the codes to implement the different calibration methods discussed in the text.
  
- 
+How to use the calibration section:
+
 **Potential and Equipartition Method**
 
 Run [pot_analysis.m](pot_analysis.m) to obtain the values of the stiffness given by the potential method. This will call the functions, [prob_dist_energy.m](pot/prob_dist_energy.m), [pot_lfit.m](pot/pot_lfit.m)  and   [pot_nlfit.m](pot/pot_nlfit.m) contained in the folder **[pot](pot/)**.
@@ -38,6 +39,14 @@ To obtain the corresponding figure of the fitting run [acf_figs_table.m](msd_fig
 **WLSICE, non linear fit of correlated data**
 
 The functions [msd_nlfit.m](msd/msd_nlfit) will call function [wlsice.m](wlsice/wlsice.m) to perform a non-linear fitting considering the whole covariance matrix.  The target function that [wlsice.m](wlsice/wlsice.m) uses depends on the fitting method. This is especified by the 
+
+
+
+​```sequence
+Alice->Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob-->Alice: I am good thanks!
+​```
 
 | Method        | Input variables           | Output variables |
 | ------------- |-------------| -------------|
