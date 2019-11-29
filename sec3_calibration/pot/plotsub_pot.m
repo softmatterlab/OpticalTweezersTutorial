@@ -1,7 +1,7 @@
 function [k_pot_lf,sigma2_k_pot_lf, k_pot_nl,sigma2_k_pot_nl , k_eq, sigma2_k_eq]=plotsub_pot(filename, positioninthefig1, positionintefig2, title1, T, nbins_pot, subssample,aa)
-%function [k_pot_lf,sigma2_k_pot_lf, k_pot_nl,sigma2_k_pot_nl , k_eq, sigma2_k_eq]=plotsub_pot(filename, positioninthefig1, positionintefig2, title1, T, nbins_pot, subssample,aa)
-%computes the potential and equipartition method analysis and plots the fit
-%it calls the functions pot_lfit, pot_nlfit and eq1d
+    %function [k_pot_lf,sigma2_k_pot_lf, k_pot_nl,sigma2_k_pot_nl , k_eq, sigma2_k_eq]=plotsub_pot(filename, positioninthefig1, positionintefig2, title1, T, nbins_pot, subssample,aa)
+    %computes the potential and equipartition method analysis and plots the fit
+    %it calls the functions pot_lfit, pot_nlfit and eq1d
 load(filename);
 disp(filename);
 kb=1.38064852e-23;

@@ -5,12 +5,12 @@ function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_
     %   c=fit(x_alpha',mlogh,'poly2','weights',w)  corresponding to 
     %   c(x) = p1*x^2 + p2*x + p3
     %
-    %   Inputs
+    %   INPUTS
     %   x: time series of the position of the particle
     %   T: temperature
     %   P: (optional) number of bins for the histogram, default is 50
     %
-    %   Outputs
+    %   OUTPUTS
     %   k_pot: estimated stiffness using  non-linear fitting for the potential
     %   analysis
     %   sigma2_k_pot: standard deviation squared of the stiffness
