@@ -11,6 +11,11 @@ To obtain the corresponding figure of the fitting run [pot_figs_table.m](pot_fig
 
 **Mean Square Displacement**
 
+Run [msd_analysis.m](msd_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analyisis method. This will call the functions, [msd_nlfit.m](msd/msd_nlfit) contained in the folder **msd**.
+
+
+To obtain the corresponding figure of the fitting run [msd_figs_table.m](msd_figs_table.m). 
+
 
 **Autocorrelation Function**
 
@@ -21,7 +26,9 @@ To obtain the corresponding figure of the fitting run [pot_figs_table.m](pot_fig
 
 **Bayesian**
   
+**WLSICE, non linear fit of correlated data**
 
+The functions [msd_nlfit.m](msd/msd_nlfit) will call function [wlsice.m](wlsice/wlsice.m) to perform a non-linear fitting considering the whole covariance matrix. 
 
 | Method        | Input variables           | Output variables |
 | ------------- |-------------| -------------|
