@@ -5,7 +5,8 @@ clear;
 
 close all;
 
-addpath psd
+addpath ../data/
+addpath ../statistics_func/
 
 
 
@@ -13,7 +14,7 @@ addpath psd
 
 
 
-load('Data_positions_Fig9_1P2_S.mat')
+load('Data_x_positions_Exp_I.mat')
 
 
 gamma=6*pi*eta*a;

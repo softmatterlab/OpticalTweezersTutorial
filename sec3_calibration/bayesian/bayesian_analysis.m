@@ -2,17 +2,19 @@
 clear all 
 close all
 %load data files
-bayes_tex=fopen('bayes_tex.txt', 'W');
+addpath ../data/
+addpath ../statistics_func/
 %%
 %first experiment
 disp('first experiment')
-load('Data_positions_Fig9_1P2_S.mat')
+load('Data_x_positions_Exp_I.mat')
+
  k_th=13*1e-6;
 
 
 
 x = x - repmat(mean(x),size(x,1),1);
-addpath bayesian
+
 xl = reshape(x,[size(x,1)*size(x,2),1]);
 N=length(xl);
 
@@ -32,13 +34,13 @@ g=1e9*gamma_bay_s;
 dg=1e9*sigma_gamma_bay_s;
 
 [v1, dv1, ~]=round_significance(k, dk);
-fprintf(bayes_tex,'%s\n',['\newcommand{\kappaBayesExpI}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, ~]=round_significance(D, dD);
-fprintf(bayes_tex,'%s\n',['\newcommand{\DBayesExpI}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, ~]=round_significance(g, dg);
-fprintf(bayes_tex,'%s\n',['\newcommand{\gammaBayesExpI}{' v1 '\pm' dv1 '}']);
+
 
 
 
@@ -97,12 +99,13 @@ disp('................')
 disp('second experiment')
 
 
-load('Data_positions_Fig9_1P4_S.mat')
+load('Data_x_positions_Exp_II.mat')
+
 k_th=35*1e-6;
 
 
 x = x - repmat(mean(x),size(x,1),1);
-addpath bayesian
+
 xl = reshape(x,[size(x,1)*size(x,2),1]);
 N=length(xl);
 
@@ -121,14 +124,12 @@ g=1e9*gamma_bay_s;
 dg=1e9*sigma_gamma_bay_s;
 
 [v1, dv1,~]=round_significance(k, dk);
-fprintf(bayes_tex,'%s\n',['\newcommand{\kappaBayesExpII}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1,~]=round_significance(D, dD);
-fprintf(bayes_tex,'%s\n',['\newcommand{\DBayesExpII}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, ~]=round_significance(g, dg);
-fprintf(bayes_tex,'%s\n',['\newcommand{\gammaBayesExpII}{' v1 '\pm' dv1 '}']);
-
 
 
 
@@ -181,11 +182,12 @@ disp('................')
 %%
 %third experiment
 disp('third experiment')
-load('Data_positions_Fig9_1P6_S.mat')
+load('Data_x_positions_Exp_III.mat')
+
 k_th=58*1e-6;
 
 x = x - repmat(mean(x),size(x,1),1);
-addpath bayesian
+
 xl = reshape(x,[size(x,1)*size(x,2),1]);
 N=length(xl);
 
@@ -204,14 +206,12 @@ g=1e9*gamma_bay_s;
 dg=1e9*sigma_gamma_bay_s;
 
 [v1, dv1,~]=round_significance(k, dk);
-fprintf(bayes_tex,'%s\n',['\newcommand{\kappaBayesExpIII}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, ~]=round_significance(D, dD);
-fprintf(bayes_tex,'%s\n',['\newcommand{\DBayesExpIII}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, ~]=round_significance(g, dg);
-fprintf(bayes_tex,'%s\n',['\newcommand{\gammaBayesExpIII}{' v1 '\pm' dv1 '}']);
-
 
 
 
@@ -262,4 +262,4 @@ disp(['gamma_bay:' num2str(gamma_bay_l*1e9) '+-'  num2str(sigma_gamma_bay_l*1e9)
 disp('................')
 
 
-fclose(bayes_tex);
+

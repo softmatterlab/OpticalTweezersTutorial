@@ -1,5 +1,6 @@
 close all, clear all;
-
+addpath ../data/
+addpath ../statistics_func/
 %%  ==============Parameter declaration============
 
 
@@ -45,7 +46,7 @@ figure('Position',[10 20 Xpix Ypix]);
 psd_tex=fopen('psd.txt', 'w');
 %%
 titleI='Experiment I, P=2.3mW';
-[k_psd_I, sigma_k_psd_I, gamma_psd_I, sigma_gamma_psd_I, D_psd_I, sigma_D_psd_I, fc_psd_I, sigma_fc_psd_I]=plotsub_psd('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, subs,5);
+[k_psd_I, sigma_k_psd_I, gamma_psd_I, sigma_gamma_psd_I, D_psd_I, sigma_D_psd_I, fc_psd_I, sigma_fc_psd_I]=plotsub_psd('Data_x_positions_Exp_I.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, subs,5);
 %[k_psd_I, sigma_k_psd_I, gamma_psd_I, sigma_gamma_psd_I, D_psd_I, sigma_D_psd_I]=plotsub_psd('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, subs,5);
 disp('................')
 disp(titleI)
@@ -73,7 +74,7 @@ disp('................' )
 %%
 titleII='Experiment II, P=6.0mW';
 %[k_psd_II, sigma_k_psd_II, gamma_psd_II, sigma_gamma_psd_II, D_psd_II, sigma_D_psd_II]=plotsub_psd('Data_positions_Fig9_1P4_S.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs,1);
-[k_psd_II, sigma_k_psd_II, gamma_psd_II, sigma_gamma_psd_II, D_psd_II, sigma_D_psd_II, fc_psd_II, sigma_fc_psd_II]=plotsub_psd('Data_positions_Fig9_1P4_S.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs,1);
+[k_psd_II, sigma_k_psd_II, gamma_psd_II, sigma_gamma_psd_II, D_psd_II, sigma_D_psd_II, fc_psd_II, sigma_fc_psd_II]=plotsub_psd('Data_x_positions_Exp_II.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs,1);
 
 disp('................')
 disp(titleII)
@@ -100,7 +101,7 @@ disp('................')
 %%
 titleIII='Experiment III, P=9.2mW';
 %[k_psd_III, sigma_k_psd_III, gamma_psd_III, sigma_gamma_psd_III,  D_psd_III, sigma_D_psd_III]=plotsub_psd('Data_positions_Fig9_1P6_S.mat',[bx1+2*bx2+2*xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs,1);
-[k_psd_III, sigma_k_psd_III, gamma_psd_III, sigma_gamma_psd_III,  D_psd_III, sigma_D_psd_III, fc_psd_III, sigma_fc_psd_III]=plotsub_psd('Data_positions_Fig9_1P6_S.mat',[bx1+2*bx2+2*xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs,1);
+[k_psd_III, sigma_k_psd_III, gamma_psd_III, sigma_gamma_psd_III,  D_psd_III, sigma_D_psd_III, fc_psd_III, sigma_fc_psd_III]=plotsub_psd('Data_x_positions_Exp_III.mat',[bx1+2*bx2+2*xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs,1);
 
 
 disp('................')

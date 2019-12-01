@@ -15,7 +15,7 @@ bx2 = 20;     % extra space at the right
 
 Xpix = 3*xwi+bx1+3*bx2;  % total
 
-ywi = 300;    % length riquadro con funzione
+ywi = 300;    % length of the plot  
 by1 = 75;     % extra space below
 by2 = 30;     % extra space up
 
@@ -29,8 +29,10 @@ subs=1;
 %%  =========Loading selected file============
 %load('Data_positions_Fig9_1P6_S.mat')
  
-addpath pot
-addpath eq
+
+addpath ../eq/
+addpath ../statistics_func/
+addpath ../data/
  
 %Boltzmann constant
 kb=1.38064852e-23;
@@ -45,58 +47,51 @@ kb=1.38064852e-23;
 %creates the figure to do the subplots
 figure('Position',[10 20 Xpix Ypix]);
 
-pot_tex=fopen('pot.txt', 'w')
-equip_tex=fopen('equip.txt', 'w')
+
 %%
 titleI='Experiment I, P=2.3mW';
-[k_pot_lf_I,sigma2_k_pot_lf_I, k_pot_nl_I,sigma2_k_pot_nl_I , k_eq_I, sigma2_k_eq_I]=plotsub_pot('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1 0 xwi 0]/Xpix + [0 1.40*by1 0 ywi]/Ypix, titleI, T, nbins_pot, subs,5);
+[k_pot_lf_I,sigma2_k_pot_lf_I, k_pot_nl_I,sigma2_k_pot_nl_I , k_eq_I, sigma2_k_eq_I]=plotsub_pot('Data_x_positions_Exp_I.mat', [bx1 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1 0 xwi 0]/Xpix + [0 1.40*by1 0 ywi]/Ypix, titleI, T, nbins_pot, subs,5);
 disp('................')
 disp(titleI)
 disp('Potential analysis by linear fitting')
 [k1, dk1, sig]=round_significance(k_pot_lf_I*1e6, sigma2_k_pot_lf_I*1e6);
 disp(['k_lf: ' num2str( k_pot_lf_I*1e6) '+-' num2str(sigma2_k_pot_lf_I*1e6) 'pN/um'])
-fprintf(pot_tex,'%s\n',['\newcommand{\kappapotentialExpILF}{' k1 '\pm' dk1 '}']);
 
 disp('Potential analysis by non- linear fitting')
 [k1, dk1, sig]=round_significance(k_pot_nl_I*1e6, sigma2_k_pot_nl_I*1e6);
 disp(['k_nl: ' num2str( k_pot_nl_I*1e6) '+-' num2str(sigma2_k_pot_nl_I*1e6) 'pN/um'])
-fprintf(pot_tex,'%s\n',['\newcommand{\kappapotentialExpINLF}{' k1 '\pm' dk1 '}']);
 
 disp('Potential analysis by equipartition')
 [k1, dk1, sig]=round_significance(k_eq_I*1e6, sigma2_k_eq_I*1e6);
 disp(['k_eq: ' num2str(k_eq_I*1e6) '+-' num2str(sigma2_k_eq_I*1e6) 'pN/um'])
-fprintf(equip_tex,'%s\n',['\newcommand{\kappaequiExpI}{' k1 '\pm' dk1 '}']);
 disp('................')
 
 
 
 %%
 titleII='Experiment II, P=6.0mW';
-[k_pot_lf_II,sigma2_k_pot_lf_II, k_pot_nl_II,sigma2_k_pot_nl_II , k_eq_II, sigma2_k_eq_II]=plotsub_pot('Data_positions_Fig9_1P4_S.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1+bx2+xwi 0 xwi 0]/Xpix + [0 1.40*by1 0 ywi]/Ypix, titleII, T, nbins_pot, subs,1);
+[k_pot_lf_II,sigma2_k_pot_lf_II, k_pot_nl_II,sigma2_k_pot_nl_II , k_eq_II, sigma2_k_eq_II]=plotsub_pot('Data_x_positions_Exp_II.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1+bx2+xwi 0 xwi 0]/Xpix + [0 1.40*by1 0 ywi]/Ypix, titleII, T, nbins_pot, subs,1);
 disp('................')
 disp(titleII)
 disp('Potential analysis by linear fitting')
 [k1, dk1, sig]=round_significance(k_pot_lf_II*1e6, sigma2_k_pot_lf_II*1e6);
 disp(['k_lf: ' num2str( k_pot_lf_II*1e6) '+-' num2str(sigma2_k_pot_lf_II*1e6) 'pN/um'])
-fprintf(pot_tex,'%s\n',['\newcommand{\kappapotentialExpIILF}{' k1 '\pm' dk1 '}']);
 
 
 disp('Potential analysis by non- linear fitting')
 [k1, dk1, sig]=round_significance(k_pot_nl_II*1e6, sigma2_k_pot_nl_II*1e6);
 disp(['k_nl: ' num2str( k_pot_nl_II*1e6) '+-' num2str(sigma2_k_pot_nl_II*1e6) 'pN/um'])
-fprintf(pot_tex,'%s\n',['\newcommand{\kappapotentialExpIINLF}{' k1 '\pm' dk1 '}']);
 
 disp('Potential analysis by equipartition')
 [k1, dk1, sig]=round_significance(k_eq_II*1e6, sigma2_k_eq_II*1e6);
 disp(['k_eq: ' num2str(k_eq_II*1e6) '+-' num2str(sigma2_k_eq_II*1e6) 'pN/um'])
 
-fprintf(equip_tex,'%s\n',['\newcommand{\kappaequiExpII}{' k1 '\pm' dk1 '}']);
 
 disp('................')
  
 %%
 titleIII='Experiment III, P=9.2mW';
-[k_pot_lf_III,sigma2_k_pot_lf_III, k_pot_nl_III,sigma2_k_pot_nl_III , k_eq_III, sigma2_k_eq_III]=plotsub_pot('Data_positions_Fig9_1P6_S.mat',[bx1+2*(xwi+bx2) 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1+2*(xwi+bx2) 0 xwi 0]/Xpix + [0 1.40*by1 0 ywi]/Ypix, titleIII, T, nbins_pot, subs,1);
+[k_pot_lf_III,sigma2_k_pot_lf_III, k_pot_nl_III,sigma2_k_pot_nl_III , k_eq_III, sigma2_k_eq_III]=plotsub_pot('Data_x_positions_Exp_III.mat',[bx1+2*(xwi+bx2) 0 xwi 0]/Xpix + [0 2*by1+ywi+by2 0 ywi]/Ypix, [bx1+2*(xwi+bx2) 0 xwi 0]/Xpix + [0 1.40*by1 0 ywi]/Ypix, titleIII, T, nbins_pot, subs,1);
 
 disp('................')
 disp(titleIII)
@@ -104,24 +99,19 @@ disp('Potential analysis by linear fitting')
 [k1, dk1, sig]=round_significance(k_pot_lf_III*1e6, sigma2_k_pot_lf_III*1e6);
 disp(['k_lf: ' num2str( k_pot_lf_III*1e6) '+-' num2str(sigma2_k_pot_lf_III*1e6) 'pN/um'])
 
-fprintf(pot_tex,'%s\n',['\newcommand{\kappapotentialExpIIILF}{' k1 '\pm' dk1 '}']);
 
 disp('Potential analysis by non- linear fitting')
 [k1, dk1, sig]=round_significance(k_pot_nl_III*1e6, sigma2_k_pot_nl_III*1e6);
 disp(['k_nl: ' num2str( k_pot_nl_III*1e6) '+-' num2str(sigma2_k_pot_nl_III*1e6) 'pN/um'])
 
-fprintf(pot_tex,'%s\n',['\newcommand{\kappapotentialExpIIINLF}{' k1 '\pm' dk1 '}']);
 
 
 disp('Potential analysis by equipartition')
 [k1, dk1, sig]=round_significance(k_eq_III*1e6, sigma2_k_eq_III*1e6);
 disp(['k_eq: ' num2str(k_eq_III*1e6) '+-' num2str(sigma2_k_eq_III*1e6) 'pN/um'])
 
-fprintf(equip_tex,'%s\n',['\newcommand{\kappaequiExpIII}{' k1 '\pm' dk1 '}']);
  
 disp('................')
- 
-fclose(equip_tex)
-fclose(pot_tex)
+
  
 %2:3mW, 6:0mW, and 9:2mW

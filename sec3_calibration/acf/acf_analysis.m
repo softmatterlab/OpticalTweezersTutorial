@@ -7,11 +7,12 @@ clear all;
 
 %close all;
 
-addpath acf
-addpath wlsice
+
+addpath ../data/
+addpath ../statistics_func/
 
     
-load('Data_positions_Fig9_1P6_S.mat');
+load('Data_x_positions_Exp_I.mat');
 
 
 

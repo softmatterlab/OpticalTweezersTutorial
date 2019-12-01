@@ -5,11 +5,11 @@ clear;
 
 close all;
 
-addpath pot
+addpath ../data/
 
 % Load data file
 
-load('Data_positions_Fig9_1P6_S.mat');
+load('Data_x_positions_Exp_III.mat');
 
 
 %Boltzmann constant

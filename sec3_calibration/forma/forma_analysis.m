@@ -5,13 +5,13 @@ clear;
 
 close all;
 
-addpath forma
+addpath ../data/
+addpath ../statistics_func/
 
-forma_tex=fopen('forma_tex.txt', 'w');
 %%
 %first experiment
 disp('first experiment')
-load('Data_positions_Fig9_1P2_S.mat')
+load('Data_x_positions_Exp_I.mat')
 
 
 x = x - repmat(mean(x),size(x,1),1);
@@ -93,13 +93,10 @@ g=1e9*mean(gamma_sforma);
 dg=1e9*std(gamma_sforma);
 
 [v1, dv1, sig]=round_significance(k, dk);
-fprintf(forma_tex,'%s\n',['\newcommand{\kappaFORMAExpI}{' v1 '\pm' dv1 '}']);
 
 [v1, dv1, sig]=round_significance(D, dD);
-fprintf(forma_tex,'%s\n',['\newcommand{\DFORMAExpI}{' v1 '\pm' dv1 '}']);
 
 [v1, dv1, sig]=round_significance(g, dg);
-fprintf(forma_tex,'%s\n',['\newcommand{\gammaFORMAExpI}{' v1 '\pm' dv1 '}']);
 
 
 
@@ -130,24 +127,17 @@ disp(['gamma_forma: ' num2str(1e9*gamma_forma_l) '+-' num2str(1e9*sigma_gamma_fo
 disp('................')
 
 
-
-
-
-% PSD analysis for Nexp
-
-% Initialization of the workspace
-
 %%
 %second experiment
 disp('second experiment')
 
 
-load('Data_positions_Fig9_1P4_S.mat')
+load('Data_x_positions_Exp_II.mat')
 
 
 x = x - repmat(mean(x),size(x,1),1);
 %in this case the whole time series is used as one experiment but it can be
-%done wioth many experiments
+%done with many experiments
 xl=reshape(x, [size(x,1)*size(x,2),1 ]);
 
 gamma=6*pi*eta*a;
@@ -224,13 +214,10 @@ g=1e9*mean(gamma_sforma);
 dg=1e9*std(gamma_sforma);
 
 [v1, dv1, sig]=round_significance(k, dk);
-fprintf(forma_tex,'%s\n',['\newcommand{\kappaFORMAExpII}{' v1 '\pm' dv1 '}']);
 
 [v1, dv1, sig]=round_significance(D, dD);
-fprintf(forma_tex,'%s\n',['\newcommand{\DFORMAExpII}{' v1 '\pm' dv1 '}']);
 
 [v1, dv1, sig]=round_significance(g, dg);
-fprintf(forma_tex,'%s\n',['\newcommand{\gammaFORMAExpII}{' v1 '\pm' dv1 '}']);
 
 
 
@@ -267,7 +254,7 @@ disp('................')
 %third experiment
 disp('third experiment')
 
-load('Data_positions_Fig9_1P6_S.mat')
+load('Data_x_positions_Exp_III.mat')
 
 
 x = x - repmat(mean(x),size(x,1),1);
@@ -349,13 +336,13 @@ g=1e9*mean(gamma_sforma);
 dg=1e9*std(gamma_sforma);
 
 [v1, dv1, sig]=round_significance(k, dk);
-fprintf(forma_tex,'%s\n',['\newcommand{\kappaFORMAExpIII}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(D, dD);
-fprintf(forma_tex,'%s\n',['\newcommand{\DFORMAExpIII}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(g, dg);
-fprintf(forma_tex,'%s\n',['\newcommand{\gammaFORMAExpIII}{' v1 '\pm' dv1 '}']);
+
 
 
 
@@ -373,9 +360,6 @@ sigma_k_forma_l=gamma_forma_l.*sigma_fcforma_l+fc_forma_l.*sigma_gamma_forma_l;
 
 
 
-
-
-
 disp('................')
 
 disp('FORMA analysis for all the experiments as a single experiment and using f.41')
@@ -388,4 +372,3 @@ disp(['gamma_forma: ' num2str(1e9*gamma_forma_l) '+-' num2str(1e9*sigma_gamma_fo
 
 disp('................')
 
-fclose(forma_tex);

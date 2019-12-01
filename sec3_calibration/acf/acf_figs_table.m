@@ -1,10 +1,11 @@
 close all;
 clear all;
-
+addpath ../statistics_func/
+addpath ../data/
 %%  ==============Parameter declaration============
 
 
-kB=1.38e-23; % Boltzmann constant [m^2kg/s^2K]
+kb=1.38064852e-23;; % Boltzmann constant [m^2kg/s^2K]
 T=300;  % Temperature [K]
 r=1.03E-6;      % Particle radius [m]
 v=0.00002414*10^(247.8/(-140+T));  % Water viscosity [Pa*s]
@@ -16,7 +17,7 @@ bx2 = 20;     % extra space at the right
 
 Xpix = 3*xwi+bx1+3*bx2;  % total
 Xpix =1400;
-ywi = 300;    % length riquadro con funzione
+ywi = 300;    % length plot square
 by1 = 110;     % extra space below
 by2 = 70;     % extra space up
 
@@ -27,10 +28,8 @@ P=50;
 %use a subsampled data set
 subs=1;
 
-%%  =========Loading selected file============
-%load('Data_positions_Fig9_1P6_S.mat')
+%%  =========Loading selected file===========
 
-addpath acf
 
 
 %Boltzmann constant
@@ -42,16 +41,15 @@ kb=1.38064852e-23;
 %% plot figures
 
 
-
 %creates the figure to do the subplots
 figure('Position',[10 20 Xpix Ypix]);
 %first figure, probability distribution, exp I
-acf_tex=fopen('acf.txt', 'w')
+
 %%
 titleI='Experiment I, P=2.3mW';
 [k_acf_lf_I,sigma_k_acf_lf_I,D_acf_lf_I,sigma_D_acf_lf_I,gamma_acf_lf_I, sigma_gamma_acf_lf_I , k_acf_nl_I, sigma_k_acf_nl_I,...
 D_acf_nl_I, sigma_D_acf_nl_I,gamma_acf_nl_I, sigma_gamma_acf_nl_I, tau0_exp_lf_I,sigma_tau0_exp_lf_I,  tau0_exp_nl_I, sigma_tau0_exp_nl_I, Xpix, Ypix]=...
-plotsub_acf('Data_positions_Fig9_1P2_S.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, subs,1.1,3.21,5);
+plotsub_acf('Data_x_positions_Exp_I.mat',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleI, T, subs,1.1,3.21,5);
  disp('................')
  disp(titleI)
  disp('Autocorrelation function analysis by linear fitting')
@@ -64,17 +62,17 @@ disp(['gamma_acf:' num2str(gamma_acf_lf_I*1e9) '+-'  num2str(sigma_gamma_acf_lf_
 disp(['tau_0:' num2str(tau0_exp_lf_I*1e3)  '+-' num2str(sigma_tau0_exp_lf_I*1e3)  ' ms']);
  
 [v1, dv1, sig]=round_significance(k_acf_lf_I*1e6, sigma_k_acf_lf_I*1e6);
-fprintf(acf_tex,'%s\n',['\newcommand{\kappaACFExpILF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(D_acf_lf_I*1e12, sigma_D_acf_lf_I*1e12);
-fprintf(acf_tex,'%s\n',['\newcommand{\DACFExpILF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(gamma_acf_lf_I*1e9, sigma_gamma_acf_lf_I*1e9);
-fprintf(acf_tex,'%s\n',['\newcommand{\gammaACFExpILF}{' v1 '\pm' dv1 '}']);
+
 
 
 [v1, dv1, sig]=round_significance(tau0_exp_lf_I*1e3, sigma_tau0_exp_lf_I*1e3);
-fprintf(acf_tex,'%s\n',['\newcommand{\tauACFExpILF}{' v1 '\pm' dv1 '}']);
+
 
 
 disp('................')
@@ -89,22 +87,22 @@ disp(['gamma_acf:' num2str(gamma_acf_nl_I*1e9) '+-'  num2str(sigma_gamma_acf_nl_
 disp(['tau_0:' num2str(tau0_exp_nl_I*1e3) '+-' num2str(sigma_tau0_exp_nl_I*1e3)   ' ms']);
 
 [v1, dv1, sig]=round_significance(k_acf_nl_I*1e6, sigma_k_acf_nl_I*1e6);
-fprintf(acf_tex,'%s\n',['\newcommand{\kappaACFExpINLF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(D_acf_nl_I*1e12, sigma_D_acf_nl_I*1e12);
-fprintf(acf_tex,'%s\n',['\newcommand{\DACFExpINLF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(gamma_acf_nl_I*1e9, sigma_gamma_acf_nl_I*1e9);
-fprintf(acf_tex,'%s\n',['\newcommand{\gammaACFExpINLF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(tau0_exp_nl_I*1e3, sigma_tau0_exp_nl_I*1e3);
-fprintf(acf_tex,'%s\n',['\newcommand{\tauACFExpINLF}{' v1 '\pm' dv1 '}']);
+
 disp('................')
 %%
 titleII='Experiment II, P=6.0mW';
 [k_acf_lf_II,sigma_k_acf_lf_II,D_acf_lf_II,sigma_D_acf_lf_II,gamma_acf_lf_II, sigma_gamma_acf_lf_II , k_acf_nl_II, sigma_k_acf_nl_II,...
  D_acf_nl_II, sigma_D_acf_nl_II,gamma_acf_nl_II, sigma_gamma_acf_nl_II, tau0_exp_lf_II, sigma_tau0_exp_lf_II , tau0_exp_nl_II,sigma_tau0_exp_nl_II ]=....
-plotsub_acf('Data_positions_Fig9_1P4_S.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs,1.1,8.2,0);
+plotsub_acf('Data_x_positions_Exp_I.mat',[bx1+bx2+xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleII, T, subs,1.1,8.2,0);
 
 disp('................')
 disp(titleII)
@@ -117,16 +115,16 @@ disp(['D_acf: ' num2str(D_acf_lf_II*1e12) '+-' num2str(sigma_D_acf_lf_II*1e12) '
 disp(['gamma_acf:' num2str(gamma_acf_lf_II*1e9) '+-'  num2str(sigma_gamma_acf_lf_II*1e9) ' pN ms/um ']);
 disp(['tau_0:' num2str(tau0_exp_lf_II*1e3)  '+-' num2str(sigma_tau0_exp_lf_II*1e3)  ' ms']);
 [v1, dv1, sig]=round_significance(k_acf_lf_II*1e6, sigma_k_acf_lf_II*1e6);
-fprintf(acf_tex,'%s\n',['\newcommand{\kappaACFExpIILF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(D_acf_lf_II*1e12, sigma_D_acf_lf_II*1e12);
-fprintf(acf_tex,'%s\n',['\newcommand{\DACFExpIILF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(gamma_acf_lf_II*1e9, sigma_gamma_acf_lf_II*1e9);
-fprintf(acf_tex,'%s\n',['\newcommand{\gammaACFExpIILF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(tau0_exp_lf_II*1e3, sigma_tau0_exp_lf_II*1e3);
-fprintf(acf_tex,'%s\n',['\newcommand{\tauACFExpIILF}{' v1 '\pm' dv1 '}']);
+
 
 disp('................')
 
@@ -140,22 +138,22 @@ disp(['gamma_acf:' num2str(gamma_acf_nl_II*1e9) '+-'  num2str(sigma_gamma_acf_nl
 disp(['tau_0:' num2str(tau0_exp_nl_II*1e3)  '+-' num2str(sigma_tau0_exp_nl_II*1e3)  ' ms']);
  
 [v1, dv1, sig]=round_significance(k_acf_nl_II*1e6, sigma_k_acf_nl_II*1e6);
-fprintf(acf_tex,'%s\n',['\newcommand{\kappaACFExpIINLF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(D_acf_nl_II*1e12, sigma_D_acf_nl_II*1e12);
-fprintf(acf_tex,'%s\n',['\newcommand{\DACFExpIINLF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(gamma_acf_nl_II*1e9, sigma_gamma_acf_nl_II*1e9);
-fprintf(acf_tex,'%s\n',['\newcommand{\gammaACFExpIINLF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(tau0_exp_nl_II*1e3, sigma_tau0_exp_nl_II*1e3);
-fprintf(acf_tex,'%s\n',['\newcommand{\tauACFExpIINLF}{' v1 '\pm' dv1 '}']);
+
 disp('................')
 %%
 titleIII='Experiment III, P=9.2mW';
 [k_acf_lf_III,sigma_k_acf_lf_III,D_acf_lf_III,sigma_D_acf_lf_III,gamma_acf_lf_III, sigma_gamma_acf_lf_III , k_acf_nl_III, sigma_k_acf_nl_III,...
  D_acf_nl_III, sigma_D_acf_nl_III,gamma_acf_nl_III, sigma_gamma_acf_nl_III, tau0_exp_lf_III, sigma_tau0_exp_lf_III , tau0_exp_nl_III,sigma_tau0_exp_nl_III]=...
-plotsub_acf('Data_positions_Fig9_1P6_S.mat',[bx1+2*bx2+2*xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs, 1.1,13,0);
+plotsub_acf('Data_x_positions_Exp_I.mat',[bx1+2*bx2+2*xwi 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix, titleIII, T, subs, 1.1,13,0);
 
 disp('................')
 disp(titleIII)
@@ -169,16 +167,16 @@ disp(['gamma_acf:' num2str(gamma_acf_lf_III*1e9) '+-'  num2str(sigma_gamma_acf_l
 disp(['tau_0:' num2str(tau0_exp_lf_III*1e3)  '+-' num2str(sigma_tau0_exp_lf_III*1e3)  ' ms']);
  
 [v1, dv1, sig]=round_significance(k_acf_lf_III*1e6, sigma_k_acf_lf_III*1e6);
-fprintf(acf_tex,'%s\n',['\newcommand{\kappaACFExpIIILF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(D_acf_lf_III*1e12, sigma_D_acf_lf_III*1e12);
-fprintf(acf_tex,'%s\n',['\newcommand{\DACFExpIIILF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(gamma_acf_lf_III*1e9, sigma_gamma_acf_lf_III*1e9);
-fprintf(acf_tex,'%s\n',['\newcommand{\gammaACFExpIIILF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(tau0_exp_lf_III*1e3, sigma_tau0_exp_lf_III*1e3);
-fprintf(acf_tex,'%s\n',['\newcommand{\tauACFExpIIILF}{' v1 '\pm' dv1 '}']);
+
 disp('................')
 
 disp('................')
@@ -193,17 +191,15 @@ disp(['gamma_acf:' num2str(gamma_acf_nl_III*1e9) '+-'  num2str(sigma_gamma_acf_n
 disp(['tau_0:' num2str(tau0_exp_nl_III*1e3)  '+-' num2str(sigma_tau0_exp_nl_III*1e3)  ' ms']);
  
 [v1, dv1, sig]=round_significance(k_acf_nl_III*1e6, sigma_k_acf_nl_III*1e6);
-fprintf(acf_tex,'%s\n',['\newcommand{\kappaACFExpIIINLF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(D_acf_nl_III*1e12, sigma_D_acf_nl_III*1e12);
-fprintf(acf_tex,'%s\n',['\newcommand{\DACFExpIIINLF}{' v1 '\pm' dv1 '}']);
+
 
 [v1, dv1, sig]=round_significance(gamma_acf_nl_III*1e9, sigma_gamma_acf_nl_III*1e9);
-fprintf(acf_tex,'%s\n',['\newcommand{\gammaACFExpIIINLF}{' v1 '\pm' dv1 '}']);
+
 disp('................')
 
 [v1, dv1, sig]=round_significance(tau0_exp_nl_III*1e3, sigma_tau0_exp_nl_III*1e3);
-fprintf(acf_tex,'%s\n',['\newcommand{\tauACFExpIIINLF}{' v1 '\pm' dv1 '}']);
-disp('................')
 
-fclose(acf_tex)
+
