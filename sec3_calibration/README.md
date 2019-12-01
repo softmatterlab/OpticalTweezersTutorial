@@ -10,7 +10,7 @@ Run [pot_analysis.m](pot/pot_analysis.m) to obtain the values of the stiffness g
 
 Run eq_analysis.m to obtain the values of the stiffness given by the equipartition method. This will call the function [eq1d.m](eq/eq1d.m) contained in the folder **[eq](eq/)**.
 
-To obtain the corresponding figure of the fitting run [pot_figs_table.m](pot/pot_figs_table.m), this will call function  [plotsub_pot.m](pot/plotsub_pot.m). 
+To obtain the corresponding figure of the fitting run [pot_figs_table.m](pot/pot_figs_table.m), this will call function  [plotsub_pot.m](pot/plotsub_pot.m) which will show the fit of each experiment in a subplot. 
 
 
 **Mean Square Displacement**
@@ -18,14 +18,14 @@ To obtain the corresponding figure of the fitting run [pot_figs_table.m](pot/pot
 Run [msd_analysis.m](msd/msd_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [msd_nlfit.m](msd/msd_nlfit.m) contained in the folder **[msd](msd/)**.
 
 
-To obtain the corresponding figure of the fitting run [msd_figs_table.m](msd/msd_figs_table.m), this will call function  [plotsub_msd.m](msd/plotsub_msd.m).
+To obtain the corresponding figure of the fitting run [msd_figs_table.m](msd/msd_figs_table.m), this will call function  [plotsub_msd.m](msd/plotsub_msd.m) which will show the fit of each experiment in a subplot. 
 
 **Autocorrelation Function**
 
 Run [acf_analysis.m](acf/acf_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [acf_nlfit.m](acf/acf_nlfit) and [acf_lfit.m](acf/acf_lfit) contained in the folder  **[acf](acf/)**.
 
 
-To obtain the corresponding figure of the fitting run [acf_figs_table.m](acf/acf_figs_table.m), this will call function  [plotsub_acf.m](acf/plotsub_acf.m).
+To obtain the corresponding figure of the fitting run [acf_figs_table.m](acf/acf_figs_table.m), this will call function  [plotsub_acf.m](acf/plotsub_acf.m) which will show the fit of each experiment in a subplot. 
 
 
 **Power Spectrum Density**
@@ -33,7 +33,7 @@ To obtain the corresponding figure of the fitting run [acf_figs_table.m](acf/acf
 Run [psd_analysis.m](psd/psd_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [psd_nlfit.m](psd/psd_nlfit) and [psd_lfit.m](psd/psd_lfit) contained in the folder  **[psd](psd/)**.
 
 
-To obtain the corresponding figure of the fitting run [psd_figs_table.m](psd/psd_figs_table.m), this will call function  [plotsub_psd.m](psd/plotsub_psd.m).
+To obtain the corresponding figure of the fitting run [psd_figs_table.m](psd/psd_figs_table.m), this will call function  [plotsub_psd.m](psd/plotsub_psd.m) which will show the fit of each experiment in a subplot. 
 
 **FORMA**
 
