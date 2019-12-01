@@ -10,7 +10,7 @@ col2=[241/255,185/255,14/255];
 colbar=[7/255, 79/255, 129/255];
 
 
-[k_msd,sigma_k_msd, tau0, sigma_tau0, D_msd, sigma_D_msd, tau, mmsd, Emsd, indc, gamma_msd, sigma_gamma_msd]=msd_nfilt(x(1:subs:size(x,1),:),T,dt*subs,maxlag);
+[k_msd,sigma_k_msd, tau0, sigma_tau0, D_msd, sigma_D_msd, tau, mmsd, Emsd, indc, gamma_msd, sigma_gamma_msd]=msd_nlfit(x(1:subs:size(x,1),:),T,dt*subs,maxlag);
 
 
 % % plot

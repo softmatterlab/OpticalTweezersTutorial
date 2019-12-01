@@ -18,7 +18,7 @@ maxlag=300;
 load(['Data_positions_Fig9_1P2_S.mat']);
 
 kB=1.38064852e-23;
-[k_msd,sigma_k_msd, tau0, sigma2_tau0, D_msd, sigma_D_msd, tau, mmsd, sigma_msd, indc, gamma_msd, sigma2_gamma_msd] =msd_nfilt(x(1:subs:size(x,1),:),T, dt*subs,maxlag);   
+[k_msd,sigma_k_msd, tau0, sigma2_tau0, D_msd, sigma_D_msd, tau, mmsd, sigma_msd, indc, gamma_msd, sigma2_gamma_msd] =msd_nlfit(x(1:subs:size(x,1),:),T, dt*subs,maxlag);   
 
 gamma_msd=kB*T/D_msd;
 sigma_gamma_msd=kB*T/D_msd^2*sigma_D_msd;
