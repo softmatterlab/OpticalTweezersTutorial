@@ -12,6 +12,7 @@ Run eq_analysis.m to obtain the values of the stiffness given by the equipartiti
 
 To obtain the corresponding figure of the fitting run [pot_figs_table.m](pot/pot_figs_table.m), this will call function  [plotsub_pot.m](pot/plotsub_pot.m) which will show the fit of each experiment in a subplot. 
 
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec3_calibration/figures/POT.jpg "Fit for potential and equipartition method")
 
 **Mean Square Displacement**
 
@@ -26,6 +27,9 @@ Run [acf_analysis.m](acf/acf_analysis.m) to obtain the values of the stiffness a
 
 
 To obtain the corresponding figure of the fitting run [acf_figs_table.m](acf/acf_figs_table.m), this will call function  [plotsub_acf.m](acf/plotsub_acf.m) which will show the fit of each experiment in a subplot. 
+Inline-style: 
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec3_calibration/figures/ACF.jpg "Fit for autocorrelation function method")
+
 
 
 **Power Spectrum Density**
