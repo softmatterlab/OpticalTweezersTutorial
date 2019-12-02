@@ -37,7 +37,7 @@ Inline-style:
 
 **Power Spectrum Density**
 
-Run [psd_analysis.m](psd/psd_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [psd_nlfit.m](psd/psd_nlfit) and [psd_lfit.m](psd/psd_lfit) contained in the folder  **[psd](psd/)**.
+Run [psd_analysis.m](psd/psd_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [psd_nlfit.m](psd/psd_nlfit.m) and [psd_lfit.m](psd/psd_lfit.m) contained in the folder  **[psd](psd/)**.
 
 
 To obtain the corresponding figure of the fitting run [psd_figs_table.m](psd/psd_figs_table.m), this will call function  [plotsub_psd.m](psd/plotsub_psd.m) which will show the fit of each experiment in a subplot. 
@@ -45,10 +45,14 @@ To obtain the corresponding figure of the fitting run [psd_figs_table.m](psd/psd
 
 **FORMA**
 
-Run [psd_analysis.m](psd/psd_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [psd_nlfit.m](psd/psd_nlfit) and [psd_lfit.m](psd/psd_lfit) contained in the folder  **[psd](psd/)**.
+Run [forma_analysis.m](forma/forma_analysis.m) to obtain the values of the stiffness and difussion coeficient given by FORMA.  This will call the functions, [forma1d.m](forma/forma1d.m) containded in the folder  **[forma](forma/)**.
+
+
 **Bayesian**
   
-Run [psd_analysis.m](psd/psd_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [psd_nlfit.m](psd/psd_nlfit) and [psd_lfit.m](psd/psd_lfit) contained in the folder  **[psd](psd/)**.  
+Run [bayesian_analysis.m](bayesian/bayesian_analysis.m) to obtain the values of the stiffness and difussion coeficient given by Bayesian analysis.  This will call the functions, [bayesian1d.m](bayesian/bayesian1d.m) containded in the folder  **[bayesian](bayesian/)**.
+
+
 **WLSICE, non linear fit of correlated data**
 
 The functions [msd_nlfit.m](msd/msd_nlfit) will call function [wlsice.m](wlsice/wlsice.m) to perform a non-linear fitting considering the whole covariance matrix.  The target function that [wlsice.m](wlsice/wlsice.m) uses depends on the fitting method. This is especified by the 
