@@ -12,7 +12,7 @@ Run eq_analysis.m to obtain the values of the stiffness given by the equipartiti
 
 To obtain the corresponding figure of the fitting run [pot_figs_table.m](pot/pot_figs_table.m), this will call function  [plotsub_pot.m](pot/plotsub_pot.m) which will show the fit of each experiment in a subplot. 
 
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec3_calibration/figures/POT.jpg "Fit for potential and equipartition method")
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec3_calibration/figures/POT.jpg "Fit for Potential and Equipartition method")
 
 **Mean Square Displacement**
 
@@ -21,6 +21,9 @@ Run [msd_analysis.m](msd/msd_analysis.m) to obtain the values of the stiffness a
 
 To obtain the corresponding figure of the fitting run [msd_figs_table.m](msd/msd_figs_table.m), this will call function  [plotsub_msd.m](msd/plotsub_msd.m) which will show the fit of each experiment in a subplot. 
 
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec3_calibration/figures/MSD.jpg "Fit for Mean Square Displacement")
+
+
 **Autocorrelation Function**
 
 Run [acf_analysis.m](acf/acf_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [acf_nlfit.m](acf/acf_nlfit) and [acf_lfit.m](acf/acf_lfit) contained in the folder  **[acf](acf/)**.
@@ -28,7 +31,7 @@ Run [acf_analysis.m](acf/acf_analysis.m) to obtain the values of the stiffness a
 
 To obtain the corresponding figure of the fitting run [acf_figs_table.m](acf/acf_figs_table.m), this will call function  [plotsub_acf.m](acf/plotsub_acf.m) which will show the fit of each experiment in a subplot. 
 Inline-style: 
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec3_calibration/figures/ACF.jpg "Fit for autocorrelation function method")
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec3_calibration/figures/ACF.jpg "Fit for Autocorrelation Function")
 
 
 
@@ -38,6 +41,7 @@ Run [psd_analysis.m](psd/psd_analysis.m) to obtain the values of the stiffness a
 
 
 To obtain the corresponding figure of the fitting run [psd_figs_table.m](psd/psd_figs_table.m), this will call function  [plotsub_psd.m](psd/plotsub_psd.m) which will show the fit of each experiment in a subplot. 
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec3_calibration/figures/PSD.jpg "Fit for Power Spectrum Density method")
 
 **FORMA**
 
