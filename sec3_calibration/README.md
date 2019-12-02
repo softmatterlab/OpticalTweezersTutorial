@@ -55,7 +55,16 @@ Run [bayesian_analysis.m](bayesian/bayesian_analysis.m) to obtain the values of 
 
 **WLSICE, non linear fit of correlated data**
 
-The functions [msd_nlfit.m](msd/msd_nlfit) will call function [wlsice.m](wlsice/wlsice.m) to perform a non-linear fitting considering the whole covariance matrix.  The target function that [wlsice.m](wlsice/wlsice.m) uses depends on the fitting method. This is especified by the 
+The functions [msd_nlfit.m](msd/msd_nlfit.m), [acf_nlfit.m](acf/acf_nlfit.m) and [acf_lfit.m](acf/acf_lfit.m) will call function [wlsice.m](statistics_func/wlsice.m) to perform a non-linear fitting considering the whole covariance matrix.  The target function that [wlsice.m](statistics_func/wlsice.m) uses depends on the fitting method. This is especified by the last input of  [wlsice.m](statistics_func/wlsice.m) function (*opt*).
+
+opt=1 : ACF, linear fit
+
+opt=2 : ACF, non-linear fit
+
+opt=3 :  MSD, non-linear fit
+
+More information about wlsice method can be found here:
+https://rdcu.be/bX6CS
 
 
 
