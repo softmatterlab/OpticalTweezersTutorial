@@ -26,7 +26,7 @@ To obtain the corresponding figure of the fitting run [msd_figs_table.m](msd/msd
 
 **Autocorrelation Function**
 
-Run [acf_analysis.m](acf/acf_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [acf_nlfit.m](acf/acf_nlfit) and [acf_lfit.m](acf/acf_lfit) contained in the folder  **[acf](acf/)**.
+Run [acf_analysis.m](acf/acf_analysis.m) to obtain the values of the stiffness and difussion coeficient given by the mean square displacement analysis method. This will call the functions, [acf_nlfit.m](acf/acf_nlfit.m) and [acf_lfit.m](acf/acf_lfit.m) contained in the folder  **[acf](acf/)**.
 
 
 To obtain the corresponding figure of the fitting run [acf_figs_table.m](acf/acf_figs_table.m), this will call function  [plotsub_acf.m](acf/plotsub_acf.m) which will show the fit of each experiment in a subplot. 
