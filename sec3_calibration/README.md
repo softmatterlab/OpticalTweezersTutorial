@@ -63,7 +63,8 @@ opt=2 : ACF, non-linear fit
 
 opt=3 :  MSD, non-linear fit
 
-
+More information about wlsice method can be found here:
+https://rdcu.be/bX6CS
 
 
 
