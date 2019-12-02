@@ -1,4 +1,4 @@
-
+ 
 clear all 
 close all
 %load data files
@@ -22,7 +22,7 @@ nsubs=3;
 subs=1;
 
 
-[k_bay_s, sigma_k_bay_s, gamma_bay_s, sigma_gamma_bay_s, D_bay_s, sigma_D_bay_s]= bayesian(x(:, 1),dt*subs,T, a, nsubs, k_th);
+[k_bay_s, sigma_k_bay_s, gamma_bay_s, sigma_gamma_bay_s, D_bay_s, sigma_D_bay_s]= bayesian1d(x(:, 1),dt*subs,T, a, nsubs, k_th);
 
 disp('................')
 
@@ -61,7 +61,7 @@ disp('................')
 Nexp=5;
 for jj=1:Nexp
     
-[k_bay_ss(jj), sigma_k_bay_ss(jj), gamma_bay_ss(jj), sigma_gamma_bay_ss(jj), D_bay_ss(jj), sigma_D_bay_ss(jj)]= bayesian(x(:, jj),dt*subs,T, a, nsubs, k_th);
+[k_bay_ss(jj), sigma_k_bay_ss(jj), gamma_bay_ss(jj), sigma_gamma_bay_ss(jj), D_bay_ss(jj), sigma_D_bay_ss(jj)]= bayesian1d(x(:, jj),dt*subs,T, a, nsubs, k_th);
 
 
 end
@@ -79,7 +79,7 @@ disp(['gamma_bay:' num2str(mean(gamma_bay_ss)*1e9) '+-'  num2str(std(gamma_bay_s
 disp('................')
 
 
-[k_bay_l, sigma_k_bay_l, gamma_bay_l, sigma_gamma_bay_l, D_bay_l, sigma_D_bay_l]= bayesian(xl(1:subs:end),dt*subs,T, a, nsubs, k_th);
+[k_bay_l, sigma_k_bay_l, gamma_bay_l, sigma_gamma_bay_l, D_bay_l, sigma_D_bay_l]= bayesian1d(xl(1:subs:end),dt*subs,T, a, nsubs, k_th);
 
 disp('................')
 
@@ -113,7 +113,7 @@ nsubs=3;
 subs=1;
 
 
-[k_bay_s, sigma_k_bay_s, gamma_bay_s, sigma_gamma_bay_s, D_bay_s, sigma_D_bay_s]= bayesian(x(:, 1),dt*subs,T, a, nsubs, k_th);
+[k_bay_s, sigma_k_bay_s, gamma_bay_s, sigma_gamma_bay_s, D_bay_s, sigma_D_bay_s]= bayesian1d(x(:, 1),dt*subs,T, a, nsubs, k_th);
 disp('................')
 
 k=k_bay_s*1e6;
@@ -149,7 +149,7 @@ disp('................')
 Nexp=5;
 for jj=1:Nexp
     
-[k_bay_ss(jj), sigma_k_bay_ss(jj), gamma_bay_ss(jj), sigma_gamma_bay_ss(jj), D_bay_ss(jj), sigma_D_bay_ss(jj)]= bayesian(x(:, jj),dt*subs,T, a, nsubs, k_th);
+[k_bay_ss(jj), sigma_k_bay_ss(jj), gamma_bay_ss(jj), sigma_gamma_bay_ss(jj), D_bay_ss(jj), sigma_D_bay_ss(jj)]= bayesian1d(x(:, jj),dt*subs,T, a, nsubs, k_th);
 end
 
 disp('................')
@@ -165,7 +165,7 @@ disp(['gamma_bay:' num2str(mean(gamma_bay_ss)*1e9) '+-'  num2str(std(gamma_bay_s
 disp('................')
 
 
-[k_bay_l, sigma_k_bay_l, gamma_bay_l, sigma_gamma_bay_l, D_bay_l, sigma_D_bay_l]= bayesian(xl(1:subs:end),dt*subs,T, a, nsubs, k_th);
+[k_bay_l, sigma_k_bay_l, gamma_bay_l, sigma_gamma_bay_l, D_bay_l, sigma_D_bay_l]= bayesian1d(xl(1:subs:end),dt*subs,T, a, nsubs, k_th);
 disp('................')
 
 disp('Bayesian Inference analysis using all the experiments as a big experiment ')
@@ -195,7 +195,7 @@ nsubs=3;
 subs=1;
 
 
-[k_bay_s, sigma_k_bay_s, gamma_bay_s, sigma_gamma_bay_s, D_bay_s, sigma_D_bay_s]= bayesian(x(:, 1),dt*subs,T, a, nsubs, k_th);
+[k_bay_s, sigma_k_bay_s, gamma_bay_s, sigma_gamma_bay_s, D_bay_s, sigma_D_bay_s]= bayesian1d(x(:, 1),dt*subs,T, a, nsubs, k_th);
 disp('................')
 
 k=k_bay_s*1e6;
@@ -231,7 +231,7 @@ disp('................')
 Nexp=5;
 for jj=1:Nexp
     
-[k_bay_ss(jj), sigma_k_bay_ss(jj), gamma_bay_ss(jj), sigma_gamma_bay_ss(jj), D_bay_ss(jj), sigma_D_bay_ss(jj)]= bayesian(x(:, jj),dt*subs,T, a, nsubs, k_th);
+[k_bay_ss(jj), sigma_k_bay_ss(jj), gamma_bay_ss(jj), sigma_gamma_bay_ss(jj), D_bay_ss(jj), sigma_D_bay_ss(jj)]= bayesian1d(x(:, jj),dt*subs,T, a, nsubs, k_th);
 
 end
 
@@ -248,7 +248,7 @@ disp(['gamma_bay:' num2str(mean(gamma_bay_ss)*1e9) '+-'  num2str(std(gamma_bay_s
 disp('................')
 
 
-[k_bay_l, sigma_k_bay_l, gamma_bay_l, sigma_gamma_bay_l, D_bay_l, sigma_D_bay_l]= bayesian(xl(1:subs:end),dt*subs,T, a, nsubs, k_th);
+[k_bay_l, sigma_k_bay_l, gamma_bay_l, sigma_gamma_bay_l, D_bay_l, sigma_D_bay_l]= bayesian1d(xl(1:subs:end),dt*subs,T, a, nsubs, k_th);
 disp('................')
 
 disp('Bayesian Inference analysis using all the experiments as a big experiment ')

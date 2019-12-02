@@ -1,4 +1,4 @@
-function [k, sigma_k, gamma, sigma_gamma, D, sigma_D]= bayesian(xn, dt,T, a, nsubs, k_th)
+function [k, sigma_k, gamma, sigma_gamma, D, sigma_D]= bayesian1d(xn, dt,T, a, nsubs, k_th)
 dt=dt*nsubs;
 N=floor(length(xn)/nsubs);
 s2=sum(xn(1:nsubs:end-nsubs).*xn(1+nsubs:nsubs:end));
