@@ -32,7 +32,7 @@ Inset: Expanded view at intermediate frequencies.
 
 **Active microrheology**
 
-Run [Determination_of_Storage_and_Loss_Moduli_2ndimage.m](Determination_of_Storage_and_Loss_Moduli_2ndimage.m) to obtain (a)Power spectral density of the particle position, driven
+Run [Active_Microrheology_Sinusoidal_Perturbation_3rdimage.m](Active_Microrheology_Sinusoidal_Perturbation_3rdimage.m) to obtain (a)Power spectral density of the particle position, driven
 at different frequencies by a sinusoidal motion of the optical trap. The peaks are located at
 the imposed frequencies fd. Inset: exemplary time evolution of the perturbative force at
 fd = 1 Hz (thick solid line) and resulting particle position (thin solid line) (b) Numerical
