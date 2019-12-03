@@ -9,7 +9,7 @@ Run [work_distributions](PROGRAM/work_distributions_xavier.m) to obtain Force ex
 
 
 
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec3_calibration/figures/POT.jpg "Fit for Potential and Equipartition method")
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_1_single_molecule_mechanics_xavier/FIGURES/free_enerygy_hairpin.jpg "Fit for Potential and Equipartition method")
 
 
 ***
