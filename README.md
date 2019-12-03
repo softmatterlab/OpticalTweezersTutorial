@@ -3,4 +3,4 @@ This repository includes the analysis and plot codes for the the article **Optic
 
  The repository contains the corresponding folders to the subsections of the tutorial.
  
- In folder (sec3_calibration)[sec3_calibration/]
+ In folder **[sec3_calibration](sec3_calibration/)** we include the codes to implement the different calibration techniques discussed in the text.
