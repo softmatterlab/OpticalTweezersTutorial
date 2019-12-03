@@ -6,7 +6,7 @@ How to use the Microrheology section:
 
 **Determination of Zero Shear Viscosities**
 
-Run [Determination_of_Zero_Shear_Viscosities_1stimage](Determination_of_Zero_Shear_Viscosities_1stimage) to obtain Trajectories of particle of distinct
+Run [Determination_of_Zero_Shear_Viscosities_1stimage.m](Determination_of_Zero_Shear_Viscosities_1stimage.m) to obtain (a)Trajectories of particle of distinct
 diameter trapped in different fluids. From top to bottom: water (2R = 2.73 um), PNP
 (2R = 3.25 um) and aqueous miceller solution of CPyCl/NaSal at 4 mM (2R = 3.25 um).
 (b) Autocorrelation function of the particle position x trapped in the three different cases:
@@ -15,7 +15,18 @@ fit. Inset: semilog representration of the position autocorrelation function for
 cases, normalized by their corresponding variances.
 
 ![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_3_microrheology_ruben/figures/1_Zero_shear_visc.jpg 
-"Fit for Potential and Equipartition method")
+"Zero Shear viscosities")
+
+**Determination of storage and loss moduli**
+
+Run [Determination_of_Storage_and_Loss_Moduli_2ndimage.m](Determination_of_Storage_and_Loss_Moduli_2ndimage.m) to obtain (a) Power spectral density of
+equilibrium fluctuations of x for a particle trapped by optical tweezers in wormlike miceller
+solution of CPyCl/NaSal at 5 mM. Inset: time evolution of x over 10 s. (b) Storage (red circles) and
+loss (blue squares) modulus of the wormlike micellar solution determined by Passive Microrheology.
+Inset: Expanded view at intermediate frequencies.
+
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_3_microrheology_ruben/figures/2_Storage_and_loss.jpg 
+"Storeage and loss")
 
 
 
