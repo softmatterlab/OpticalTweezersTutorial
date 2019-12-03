@@ -4,12 +4,12 @@ function [k_pot, sigma2_k_pot, x_alpha, mrho, sigma2_rho, mU, sigma2_U, rho0, x_
     %   for the potential method using non-linear fitting and fitting
     %   function ft=fittype('sqrt(a/pi)*exp(-a*(x-b)^2)')
     %
-    %   Inputs
+    %   INPUTS
     %   x: time series of the position of the particle
     %   T: temperature
     %   P: (optional) number of bins for the histogram, default is 50
     %
-    %   Outputs
+    %   OUTPUTS
     %   k_pot: estimated stiffness using  non-linear fitting for the potential
     %   analysis
     %   sigma2_k_pot: standard deviation squared of the stiffness
