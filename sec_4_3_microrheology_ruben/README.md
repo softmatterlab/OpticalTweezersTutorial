@@ -30,6 +30,21 @@ Inset: Expanded view at intermediate frequencies.
 
 
 
+**Active microrheology**
+
+Run [Determination_of_Storage_and_Loss_Moduli_2ndimage.m](Determination_of_Storage_and_Loss_Moduli_2ndimage.m) to obtain (a)Power spectral density of the particle position, driven
+at different frequencies by a sinusoidal motion of the optical trap. The peaks are located at
+the imposed frequencies fd. Inset: exemplary time evolution of the perturbative force at
+fd = 1 Hz (thick solid line) and resulting particle position (thin solid line) (b) Numerical
+values of the storage (red circles) and loss (blue saures) modulus obtained by means of Equations (18) and (23).
+The dotted and dashed lines depict the corresponding curves shown in  the previous figure obtained
+by Passive Microrheology
+
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_3_microrheology_ruben/figures/3_Active_mic_sinusoidal.jpg 
+"Storeage and loss")
+
+
+
 
 
 
