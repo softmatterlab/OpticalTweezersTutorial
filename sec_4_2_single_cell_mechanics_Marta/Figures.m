@@ -174,5 +174,5 @@ hold off
 
 axis off
 
-xlim([0 Xpix])
+([0 Xpix])
 ylim([0 Ypix])
