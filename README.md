@@ -2,7 +2,7 @@ Optical Tweezers: A comprehensive Tutorial from Calibration to Applications
 ---
 
 
-By *Jan Gieseler, Juan Ruben Gomez-Solano, Alessandro Magazù, Isaac Castillo, [Laura Pérez García](http://softmatterlab.org/people/laura-perez-garcia/), Martha Gironella-Torrent, Xavier Viader-Godoy, Felix Ritort, Giusceppe Pesce, Alejandro V. Arzola, Karen Volke-Sepulveda and [Giovanni Volpe](http://softmatterlab.org/people/giovanni-volpe/)*.
+By *Jan Gieseler, Juan Ruben Gomez-Solano, [Alessandro Magazù] (http://softmatterlab.org/people/alessandro-magazzu/), Isaac Castillo, [Laura Pérez García](http://softmatterlab.org/people/laura-perez-garcia/), Martha Gironella-Torrent, Xavier Viader-Godoy, Felix Ritort, Giusceppe Pesce, Alejandro V. Arzola, Karen Volke-Sepulveda and [Giovanni Volpe](http://softmatterlab.org/people/giovanni-volpe/)*.
 
 
 
