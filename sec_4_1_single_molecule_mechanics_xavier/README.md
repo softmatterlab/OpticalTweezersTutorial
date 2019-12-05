@@ -1,15 +1,19 @@
 # Section 4.1: Single molecule mechanics
- This folder contains the codes to analize the expeirments of  a single cell pulling experiment discussed in the text.
+ This folder contains the codes to analize the expeirments of  a single molecule pulling experiment discussed in the text.
  
 How to use the Single molecule mechanics section:
 
-**Force extension curves and stiffness**
+**Free energy of formation of a DNA hairpin**
 
-Run [work_distributions](PROGRAM/work_distributions_xavier.m) to obtain Force extension curves and stiffness
+Run [work_distributions](PROGRAM/work_distributions_xavier.m) in folder **[PROGRAMS](PROGRAMS/)** to obtain  (A) Several pulling trajectories of the hairpin. In red are plotted the unfolding cycles and in blue the folding ones. The black dots indicate the initial (0; fmin) and final (1; fmax) points considering for computing the work, WFU. (B) Probability density distributions of the work, computed as in equation (6). The point atwhich the probabilities cross is the equilibrium difference of free energy of the hairpin. The red and blue lines shown are the interpolations of the bars.
 
+The files contained in **[RAW_DATA](../RAW_DATA/)** '' folder  u,f for the unfolding(stretching) and
+folding(releasing) trajectories. They contain 4 columns:
+$1=counter $2=trap distance(nm) $3=time (s) $4=force(pN)
+The files have been sorted in order to have the trap distance order toward
+increasing values.
 
-
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_1_single_molecule_mechanics_xavier/FIGURES/free_enerygy_hairpin.jpg "Fit for Potential and Equipartition method")
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_1_single_molecule_mechanics_xavier/FIGURES/free_enerygy_hairpin.jpg "Force extension curves and stiffness")
 
 
 ***
