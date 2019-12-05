@@ -2,11 +2,7 @@
 
 clear all;close all;clc;
 
-%path='/Users/lauraperezgarcia/Documents/GitHub/tweezers_AOP_tutorial/Marta/Results'; %where Stiffness result files are located
-
-
-path='Results'; %where Stiffness result files are located
-
+path='../Results/'; %where Stiffness result files are located
 
 
 fid1=fopen(char(strcat(path,'/RBC1_Stiffness_U.txt')),'r');
@@ -53,8 +49,8 @@ bx1 = 100;     % bordo a sinistra
 xwi = 560;    % larghezza riquadro con funzione
 bx2 = 30;     % bordino a destra
 
-Xpix = 3*bx1+3*xwi+2*bx2;  % larghezza figura in pixel
-Xpix =1400;
+  
+Xpix =1400; % larghezza figura in pixel
 by1 = 110;     % bordo in basso
 ywi = 500;    % altezza riquadro con funzione
 by2 = 50;     % bordo in alto
@@ -78,8 +74,8 @@ hold on;
 errorbar(F4,S4,ES4,'^','MarkerSize',10, 'Color','k','MarkerFaceColor','k')
 
 
-xlabel('Force (pN)','Interpreter','Latex', 'FontSize',30);
-ylabel('Stiffness (pN/nm)','Interpreter','Latex', 'FontSize',30);
+xlabel('$\rm Force (pN)$','Interpreter','Latex', 'FontSize',30);
+ylabel('$\rm Stiffness (pN/nm)$','Interpreter','Latex', 'FontSize',30);
 set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'TickLength',[0.02, 0.01], 'XMinorTick','off');
 
 
@@ -92,7 +88,7 @@ LL.FontSize = 18
 
 % clear all;close all;clc;
 
-path='Results'; %where individual trajectory files are located
+path='../Results/'; %where individual trajectory files are located
 
 
 fid1=fopen(char(strcat(path,'/RBC1_2T_U.txt')),'r');
@@ -146,8 +142,8 @@ plot(F3,E3,'Color',col3,'linewidth',2)
 hold on;
 plot(F4,E4,'k','linewidth',2)
 
-ylabel('Force (pN)','Interpreter','Latex', 'FontSize',30);
-xlabel('Extension (nm)','Interpreter','Latex', 'FontSize',30);
+ylabel('$\rm Force (pN)$','Interpreter','Latex', 'FontSize',30);
+xlabel('$\rm Extension (nm)$','Interpreter','Latex', 'FontSize',30);
  ylim([0 20])
 
  
@@ -174,5 +170,5 @@ hold off
 
 axis off
 
-([0 Xpix])
+xlim([0 Xpix])
 ylim([0 Ypix])

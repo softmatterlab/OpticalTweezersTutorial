@@ -2,7 +2,7 @@
 
 clear all;close all;clc;
 
-path='Results'; %where Stiffness result files are located
+path='/../Results/'; %where Stiffness result files are located
 
 
 fid1=fopen(char(strcat(path,'/RBC1_Stiffness_U.txt')),'r');
