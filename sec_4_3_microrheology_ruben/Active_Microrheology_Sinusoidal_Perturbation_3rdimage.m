@@ -84,7 +84,7 @@ xlabel('$f \rm (Hz)$', 'Interpreter','Latex', 'FontSize',30)
 ylabel('$\rm PSD (nm^2/Hz)$', 'Interpreter','Latex', 'FontSize',30)
 
 xlim([1e-2 1e2])
- ylim([1e-2 1e7])
+ylim([1e-2 1e7])
 
 set(gca,'TickLabelInterpreter','Latex', 'linewidth',1.5,'FontSize',25, 'TickLength',[0.02, 0.01]);
 hold off

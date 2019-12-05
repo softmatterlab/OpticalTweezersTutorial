@@ -1,7 +1,7 @@
 %COMPUTE velocity autocorrelation  of particle trapped by optical tweezers
 %simple fluid and determine viscosity from decay time
 
-% Files Water.txt, PNP.txt and CPyCl4mM.txt are needed to run PosAutocorrelationFunction.m and get the plots and fits 
+% Files Water.txt, PNP.txt and CPyCl4mM.txt are needed to run Determination_of_Zero_Shear_Viscosities_1stimage.m and get the plots and fits 
 % of Figure 2(a) and (b) on the manuscript. The first column of these files contains the particle position (a), while the 
 % second has the correspondinf times. A .mat version of these data is also given with the same information.
 
