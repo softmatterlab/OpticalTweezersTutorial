@@ -19,6 +19,12 @@ cases, normalized by their corresponding variances.
 
 **Determination of storage and loss moduli**
 
+These files are needed to run ActiveMicrorheologySinusoindalPerturbation.m and get the plots of Figure 3 on the manuscript.
+The file name "5mMdrive_k1e-06_freq_X.mat" indicated the frequency  X at which the sinusoidal perturbation was applied, for instance
+	"5mMdrive_k1e-06_freq_25.6" corresponds to 25.6 Hz
+The files contain the particle positions (x), the values of the applied sinusoidal force (fd), the corresponding time (t) and the sampling frequency (fs)
+
+
 Run [Determination_of_Storage_and_Loss_Moduli_2ndimage.m](Determination_of_Storage_and_Loss_Moduli_2ndimage.m) to obtain (a) Power spectral density of
 equilibrium fluctuations of x for a particle trapped by optical tweezers in wormlike miceller
 solution of CPyCl/NaSal at 5 mM. Inset: time evolution of x over 10 s. (b) Storage (red circles) and
