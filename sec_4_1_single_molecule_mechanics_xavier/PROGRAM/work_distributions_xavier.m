@@ -261,8 +261,8 @@ axes('Position',[2*bx1+xwi+50 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);
 histogram(Wf,'DisplayStyle', 'bar', 'Binwidth',1.0,'Normalization', 'pdf','LineWidth',2, 'FaceColor', 'w' ,'EdgeColor',col3)
 hold on
 histogram(Wu,'DisplayStyle', 'bar', 'Binwidth',1.0,'Normalization', 'pdf','LineWidth',2, 'FaceColor', 'w' ,'EdgeColor','r')
-%plot(W,Pf, 'Color',col3,'LineWidth',5)
-%plot(W,Pu, '-r','LineWidth',5)
+plot(W,Pf, 'Color',col3,'LineWidth',5)
+plot(W,Pu, '-r','LineWidth',5)
 plot([Weq,Weq],[0,0.3],'--k', 'LineWidth',3)
 txt = '$\Delta G_{\rm FU}$'; 
  
