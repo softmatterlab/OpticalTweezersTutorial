@@ -14,9 +14,6 @@ $1=counter $2=trap distance(nm) $3=time (s) $4=force(pN)
 The files have been sorted in order to have the trap distance order toward
 increasing values.
 
-a<sup>1
- 
- uuu
 
 ![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_1_single_molecule_mechanics_xavier/FIGURES/free_enerygy_hairpin.jpg "Force extension curves and stiffness")
 
