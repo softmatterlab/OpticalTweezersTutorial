@@ -261,15 +261,16 @@ axes('Position',[2*bx1+xwi+50 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);
 histogram(Wf,'DisplayStyle', 'bar', 'Binwidth',1.0,'Normalization', 'pdf','LineWidth',2, 'FaceColor', 'w' ,'EdgeColor',col3)
 hold on
 histogram(Wu,'DisplayStyle', 'bar', 'Binwidth',1.0,'Normalization', 'pdf','LineWidth',2, 'FaceColor', 'w' ,'EdgeColor','r')
-plot(W,Pf, 'Color',col3,'LineWidth',5)
-plot(W,Pu, '-r','LineWidth',5)
+ plot(W,Pf, 'Color',col3,'LineWidth',5)
+ plot(W,Pu, '-r','LineWidth',5)
 plot([Weq,Weq],[0,0.3],'--k', 'LineWidth',3)
 txt = '$\Delta G_{\rm FU}$'; 
  
 text(345,0.27,txt,'Interpreter','latex','FontSize',30)
-xlabel('$W(\rm k_BT)$','Interpreter','latex','FontSize',30);
+xlabel('$W_{\rm FU}(k_{\rm B}T)$','Interpreter','latex','FontSize',30);
 xlim([341,358])
-ylabel('$\rm{pdf}(\it W)$','Interpreter','latex','FontSize',30);
+yticks([0 1e-1,2e-1,3e-1]);
+ylabel('$\rm{PDF(n.u.)}$','Interpreter','latex','FontSize',30);
 % legend('P_{F}', 'P_{U}','Interpreter','latex','FontSize',30);
 
 
