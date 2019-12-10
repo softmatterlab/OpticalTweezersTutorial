@@ -5,12 +5,12 @@ clear all; close all
 %clc
 
 %Adding path to functions
-addpath('Functions')
+addpath('functions/')
 
 %path to data
-dirpath='../RAW_DATA/';
+dirpath='../data/';
 %output path
-outpath='../RESULTS/';
+outpath='results/';
 
 %The files contained in dirpath folder are u,f for the unfolding(stretching) and
 %folding(releasing) trajectories. They contain 4 columns:
