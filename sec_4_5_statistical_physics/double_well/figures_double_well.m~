@@ -35,7 +35,23 @@ save('MapafuerzasDoblePozo.mat')
 %send Dx, Dy 
 %%
 % 
+
+xwi = 400;    % width of the plot square
+bx1 = 140;     % extra space at the left
+bx2 = 20;     % extra space at the right
+
+Xpix = 3*xwi+bx1+3*bx2;  % total
+
+ywi = 300;    % length of the plot  
+by1 = 75;     % extra space below
+by2 = 30;     % extra space up
+
+Ypix = 2*by1+2*ywi+3*by2;
+
+figure('Position',[10 20 Xpix Ypix]);
+
 clear all
+
 
 addpath 'general'
 
@@ -127,23 +143,11 @@ save('PerfilPotencialFuerzaDoblePozo.mat','X0','Y0','poty0',...
 %%
 
 clear all
-xwi = 400;    % width of the plot square
-bx1 = 140;     % extra space at the left
-bx2 = 20;     % extra space at the right
 
-Xpix = 3*xwi+bx1+3*bx2;  % total
-
-ywi = 300;    % length of the plot  
-by1 = 75;     % extra space below
-by2 = 30;     % extra space up
-
-Ypix = 2*by1+2*ywi+3*by2;
-
-figure('Position',[10 20 Xpix Ypix]);
 load('PerfilPotencialFuerzaDoblePozo.mat')
 load('MapafuerzasDoblePozo.mat')
 addpath 'general'
-
+figure(1)
 set(gcf,'Position',[600 300 600 900])
 axes('Position',[0.16 0.7 1-0.17 0.5-0.18])
 imagesc(gxv*1e6,gyv*1e6,Nd);
