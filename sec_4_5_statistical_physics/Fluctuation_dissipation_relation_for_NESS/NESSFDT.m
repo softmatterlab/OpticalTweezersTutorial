@@ -20,7 +20,7 @@ clear all
 close all
 set(0, 'defaultFigureRenderer', 'painters')
 %read data
-Filepath = 'F:\Document\GitHub\tweezers_AOP_tutorial\Ruben\';
+Filepath = 'data/';
 Filename = 'trajNESS_data';
 Extension = '.txt';
 
@@ -34,7 +34,7 @@ gamma = 6*pi*eta*r; %friction coefficient
 D = kB*T0/gamma ; %diffusion coefficient
 Dth = D/a^2; %(polar) angular diffusion coefficient along the circle
 
-filname = [Filename Extension]; 
+filname = [Filepath Filename Extension]; 
 
 %Read data
 Data = dlmread(filname,'',1,0);
