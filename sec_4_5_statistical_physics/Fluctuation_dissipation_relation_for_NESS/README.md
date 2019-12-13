@@ -32,8 +32,8 @@ simple fluid and determine viscosity from decay time. The files used for this sc
 
 
 
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_5_statistical_physics/double_well/figures/double_well.jpg
-"Double- well potential")
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/tree/merge_26nov_ales_lau/sec_4_5_statistical_physics/Fluctuation_dissipation_relation_for_NESS/figures/fluctuation_dissipation_NESS.jpg
+"Fluctuation dissipation NESS")
 
 
 
