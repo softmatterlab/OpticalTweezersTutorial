@@ -15,7 +15,7 @@ of ρ<sub>NESS</sub>(θ) to the right relative to the minimum of U(θ). Inset: c
 distribution ρ<sub>NESS</sub>(θ) and the equilibrium one ρ<sub>eq</sub> (θ) (F = 0, sharp peak). (c) Correlation function between the observable Q(θ) = sin θ and the variable V (θ) = sin θ. (d) NESS correlation functions
 involved in the integral form of the generalized FDT (47): C(0) - C(t) (dotted-dashed line), B(t )
 (dashed line) and C(0) - C(t ) - B(t ) (solid line). Inset: estimate of the response function R(t ) by
-means of the time derivative of [C(0) 􀀀C(t )]=(kBT ) (dotted-dashed line), and taking into account the
+means of the time derivative of [C(0) -C(t )]/(kBT ) (dotted-dashed line), and taking into account the
 corrective term, [C(0) -C(t ) - B(t )]/(k<sub>B</sub>T ) (solid line).
 
 
