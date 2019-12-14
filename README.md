@@ -14,8 +14,11 @@ By *Jan Gieseler, Juan Ruben Gomez-Solano, [Alessandro Magazù](http://softmatte
  
  In folder **[sec_4_2_single_cell_mechanics](sec_4_2_single_cell_mechanics_Marta/)** we include the material correspondent with Section 4.2 Single-cell mechanichs of the text,. We show how to analyze the data from a single cell pulling experiment.
  
- 
-  In folder **[sec_4_3_microrheology](sec_4_3_microrheology_ruben/)**  we include the material correspondent with Section 4.3 Microrheology of the text.
+In folder **[sec_4_3_microrheology](sec_4_3_microrheology_ruben/)**  we include the material correspondent with Section 4.3 Microrheology of the text.
   First we show how to obtain the zero shear viscosities from the autocorrelation function of the time series position of a trapped particle.
   Then we show how to obtain the Storage and loss moduli using passive and active microrheology.
  
+In folder **[sec_4_4_Colloidal_interactions](sec_4_4_Colloidal_interactions/)** we include the material of Section 4.4 Colloidal Interactions.
+
+In folder **[sec_4_5_statistical_physics](sec_4_5_statistical_physics/)** we include the material of Section 4.5 Statistical Physics. In subfolder **[double_well](sec_4_5_statistical_physics/double_well) it is included the material to study Kramers’ transitions and stochastic resonance in a double well potential. 
+ In subfolder **[Fluctuation_dissipation_relation_for_NESS](sec_4_5_statistical_physics/Fluctuation_dissipation_relation_for_NESS) we show the  analysis of the subsection Fluctuation-dissipation relation for non-equilibrium steady states. 
