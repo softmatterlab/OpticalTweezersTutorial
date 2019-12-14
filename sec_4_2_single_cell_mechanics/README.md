@@ -19,13 +19,19 @@ Run [CelullarMechanics.m](Programs/CelullarMechanics.m)  to obtain separated tra
 The program will ask the following parameters:
 
 Number of columns: 16
+
 Y force: 5
+
 YA dist: 12
+
 YB dist: 14
+
 MaxForce: 20
+
 MinForce:0
 
-**Stiffnes: WE STILL NEED THIS ONE**
+**Trap stiffness value in pN/nm : WE STILL NEED THIS ONE**
+
 Intervals of Stiffness:6
 
 After that run [Figure_force_extension_stiffnes.m](Figure_force_extension_stiffnes.m) to obtain the plot of the previous results.
