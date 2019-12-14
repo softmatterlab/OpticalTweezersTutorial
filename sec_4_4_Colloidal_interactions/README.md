@@ -23,10 +23,7 @@ RuRun [Fig26.m](Drift_analysis/Drift_velocities/Fig26.m) to obtain(a) Experiment
 "Storeage and loss")
 
 
-Run
-
-
-
+Run [Fig26.m](Drift_analysis/Drift_velocities/Fig26.m) to obtain
 Parallel vk (second row) and perpendicular v? (third row), driftvelocities, respectively, to the direction connecting the centers of the two colloids for (b, f)T = 456  2mK, (c, g) 200  2mK, (d, h) 163  2mK and (e, i) 108  2mK. In the secondand third row, the symbols with errorbars represent the experimental data, and the thick,coloured lines represent the corresponding simulation results. The shaded areas representthe error of the numerical estimates due to the uncertainties in the fit parameters.
 
 **[ActiveMicrorheologyData](ActiveMicrorheologyData/)**.
