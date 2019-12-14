@@ -18,7 +18,7 @@ simple fluid and determine viscosity from decay time. The files used for this sc
 
 
 
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_3_microrheology_ruben/figures/1_Zero_shear_visc.jpg 
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_3_microrheology/figures/1_Zero_shear_visc.jpg 
 "Zero Shear viscosities")
 
 **Determination of storage and loss moduli**
@@ -35,7 +35,7 @@ A file containing the coordinates of the trapped article and the corresponding t
 
 
 
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_3_microrheology_ruben/figures/2_Storage_and_loss.jpg 
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_3_microrheology/figures/2_Storage_and_loss.jpg 
 "Storeage and loss")
 
 
@@ -52,7 +52,7 @@ perturbative force at a single frequency and the corresponding time, is needed, 
 
 The file name **"5mMdrive_k1e-06_freq_X.mat"** indicated the frequency  **X** at which the sinusoidal perturbation was applied, for instance "5mMdrive_k1e-06_freq_25.6" corresponds to 25.6 Hz
 The files contain the particle positions (x), the values of the applied sinusoidal force (fd), the corresponding time (t) and the sampling frequency (fs). These set of files are contained in folder **[ActiveMicrorheologyData](ActiveMicrorheologyData/)**.
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_3_microrheology_ruben/figures/3_Active_mic_sinusoidal.jpg 
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_3_microrheology/figures/3_Active_mic_sinusoidal.jpg 
 "Storeage and loss")
 
 
