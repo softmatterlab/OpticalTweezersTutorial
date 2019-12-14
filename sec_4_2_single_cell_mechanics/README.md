@@ -1,7 +1,7 @@
 # Section 4.2: Single cell mechanics
  This folder contains the codes to analize the expeirments of  a single molecule pulling experiment discussed in the text.
  
-How to use the Single molecule mechanics section:
+How to use the Single  cell mechanics section:
 
 **Force extension and stiffness**
 
