@@ -3,7 +3,7 @@
  
 How to use the Single molecule mechanics section:
 
-**Free energy of formation of a DNA hairpin**
+**Force extension and stiffness**
 
 Run [CelullarMechanics.m](Programs/CelullarMechanics.m)  to obtain separated trajectories and stiffness of the cell from pulling protocol. Given a txt file, the program ask to select the number of columns of the file, the columns of Y force, 
  trap A Y distance, trap B Y distance, value of trap stiffness, maximum force, minimum force and number of 
