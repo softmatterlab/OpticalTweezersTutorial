@@ -11,7 +11,7 @@ Run Time evolution of the probability density distribution of the inter-particle
 
 
 
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_3_microrheology_ruben/figures/1_Zero_shear_visc.jpg 
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_4_Colloidal_interactions/figures/Fig24.jpg
 "Zero Shear viscosities")
 
 **Drift analysis**
@@ -20,7 +20,7 @@ Runmmmmmmm
 (a) Experimental values of the normalized parallel Dk=D0 (circles) and perpendicularD?=D0 (triangles) diffusion constants as functions of r=d. The parallel and perpendiculardirections refer to the line connecting the centers of the two colloids, and D0 is the bulkdiffusion constant (Eq. (35)) calculated from experimental data. The various colors referto data taken at T = 456  2mK (blue), 273  2mK (light blue), 200  2mK (green),163  2mK (yellow), 127  2mK (orange), and 108  2mK (red). The solid lines representthe theoretical predictions accounting for the effect of the hydrodynamic interaction betweenthe colloids [193]. Errors bars represent the standard deviation of the experimental values.The nature of the deviations observed in Dk at short and long distances is discussedin the main text.
 
 
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_3_microrheology_ruben/figures/2_Storage_and_loss.jpg 
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_4_Colloidal_interactions/figures/Fig25.jpg 
 "Storeage and loss")
 
 
@@ -31,7 +31,7 @@ Run
 Parallel vk (second row) and perpendicular v? (third row), driftvelocities, respectively, to the direction connecting the centers of the two colloids for (b, f)T = 456  2mK, (c, g) 200  2mK, (d, h) 163  2mK and (e, i) 108  2mK. In the secondand third row, the symbols with errorbars represent the experimental data, and the thick,coloured lines represent the corresponding simulation results. The shaded areas representthe error of the numerical estimates due to the uncertainties in the fit parameters.
 
 **[ActiveMicrorheologyData](ActiveMicrorheologyData/)**.
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_3_microrheology_ruben/figures/3_Active_mic_sinusoidal.jpg 
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_4_Colloidal_interactions/figures/Fig26.jpg
 "Storeage and loss")
 
 
