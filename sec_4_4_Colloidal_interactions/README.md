@@ -39,7 +39,7 @@ to data taken at ΔT = 456 ±  2mK (blue), 273 ±  2mK (light blue), 200 ±  2mK
 163 ±  2mK (yellow), 127 ±  2mK (orange), and 108 ±  2mK (red). The solid lines represent
 the theoretical predictions accounting for the effect of the hydrodynamic interaction between
 the colloids. Error bars represent the standard deviation of the experimental values.
-The nature of the deviations observed in D∥ at short and long distances is discussed
+The nature of the deviations observed in Dk at short and long distances is discussed
 in the main text.
 
 
