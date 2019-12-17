@@ -6,13 +6,13 @@ close all
 clear all
 figure(1)
 load('data1_vacuum.mat')
-
 subplot(1,4,1);
 loglog(pressure, gamma_tot/(2*pi), 'LineWidth', 2);
 hold on
 loglog(pressure, gamma_tot_2_bath/(2*pi),'--', 'LineWidth', 2)
 xlabel('pressure (mBar)')
 ylabel('damping rate $\gamma/(2\pi)$ (Hz)')
+title('fig36')
 hold off
 
 
@@ -62,7 +62,9 @@ loglog(frequency/1000, Lorentz,'--', 'LineWidth', 2, 'Color', 'black')
 plot([x0 x0],[ymin ymax])
 xlabel('$Frequency f (kHz)$', 'Interpreter', 'Latex')
 ylabel('$Normalized PSD\n \hat{S}_{vv}(f)/g (bit^2/Hz^2)$', 'Interpreter', 'Latex')
+title('fig30')
 hold off
+
 
 clear all
 figure(3)
@@ -83,5 +85,5 @@ plot([XV25000 XV25000],[1e-2 1e3])
 plot([XV45000 XV45000],[1e-2 1e3])
 plot([XV50000 XV50000],[1e-2 1e3])
 ylabel('PSD')
-
+title('fig37')
 xlabel('frequency[Hz]')
