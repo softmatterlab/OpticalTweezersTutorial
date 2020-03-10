@@ -23,7 +23,7 @@ close all
 set(0, 'defaultFigureRenderer', 'painters')
 
 %read data
- Filepath = 'F:\Document\Github backup\tweezers_AOP_tutorial1\Fig21_22_23_28 (Ruben)\';
+ Filepath = ''
 Filename = 'trajNESS_data';
 Extension = '.txt';
 
