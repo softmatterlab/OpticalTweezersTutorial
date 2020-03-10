@@ -1,0 +1,102 @@
+%
+% Program that computes the free energy of formation of a DNA hairpin.
+% 
+clear
+%clc
+
+%Adding path to functions
+addpath('/home/xavi/Documents/ssDNA/Review/PROGRAM/Functions/')
+
+%path to data
+dirpath='/home/xavi/Documents/ssDNA/Review/DATA/Alineats/';
+%The files contained in dirpath folder are u,f for the unfolding(stretching) and
+%folding(releasing) trajectories. They contain 4 columns:
+%$1=counter $2=trap distance(nm) $3=time (s) $4=force(pN)
+%The files have been sorted in order to have the trap distance order toward
+%increasing values.
+
+%number of files
+nfiles=96;
+
+%limits for integrating fdx
+l0=-140;
+lf=-50;
+
+%we prepare the vectors for the work computed for each trajectory
+Wu=zeros(1,nfiles);
+Wf=zeros(1,nfiles);
+%also declare fmax and fmin for each trajectory
+fmaxu=zeros(1,nfiles);
+fminu=zeros(1,nfiles);
+fmaxf=zeros(1,nfiles);
+fminf=zeros(1,nfiles);
+%We also compute the effective stiffness of the unfolding branch 
+keff=zeros(1,nfiles);
+
+for i=1:nfiles
+    unfoldfile= char(strcat(dirpath,{'u'},num2str(i),{'.txt'}));
+    foldfile= char(strcat(dirpath,{'f'},num2str(i),{'.txt'}));
+    
+    datau=importdata(unfoldfile);
+    dataf=importdata(foldfile);
+    %importing force and extension
+
+    xu = datau(:,2);
+    fu = datau(:,4);
+    %finding indices fullfilling the conditions for integrating
+    indexu=find(xu>l0 & xu<lf);
+    xuint=xu(indexu);
+    fuint=fu(indexu);
+    fmaxu(i)=fuint(length(indexu));
+    fminu(i)=fuint(1);
+    
+    xf = dataf(:,2);
+    ff = dataf(:,4);
+    %finding indices fullfilling the conditions for integrating
+    indexf=find(xf>l0 & xf<lf);
+    xfint=xf(indexf);
+    ffint=ff(indexf);
+    fmaxf(i)=ffint(length(indexf));
+    fminf(i)=ffint(1);
+    
+    %to compute the stiffnes we do a linear fit of the first 200points
+    LinFit=[];
+    
+    
+    %we compute the work for each trajectory and add it to the vector of
+    %works
+    Wu(i)=trapz(xuint,fuint);
+    Wf(i)=trapz(xfint,ffint);
+end
+    
+%%
+% We compute the work histogram for the data analyzed in the previous step
+%
+
+%we create the vector of each work distribution. The bining is created by
+%using the Rice's rule.
+
+[yyu,xu] = hist(Wu, fix(2*length(Wu)^(1/3)) ); 
+[yyf,xf] = hist(Wf, fix(2*length(Wf)^(1/3)) ); 
+%normalization: probability distribution functions (pdf)
+yu = yyu/trapz(xu,yyu);
+yf = yyf/trapz(xf,yyf);
+
+%We adjust the bining so both pdf's have the same bining
+W = [min([min(xu),min(xf)]) : 0.5 : max([max(xu),max(xf)]) ]';
+
+%interpolation
+Pu = interp1(xu,yu,W);
+Pf = interp1(xf,yf,W);
+
+%We find the point at which the distributions coincide
+Weq=W(find(abs(Pu-Pf) == min(abs(Pu-Pf))));
+
+
+%%
+%Finally we subtract the contributions of the handles and bead, the
+%released single-stranded DNA and the hairpin orientation in order to get
+%the free-energy of formation of the DNA hairpin
+
+
+
