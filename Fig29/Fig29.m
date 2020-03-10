@@ -17,7 +17,7 @@ clear all
 close all
 
 %read data
-Filepath = 'F:\Document\Github backup\tweezers_AOP_tutorial1\Fig29\';
+Filepath = 'Fig29/';
 Filename = 'StochThermoTrajectory_data';
 Extension = '.txt';
 
