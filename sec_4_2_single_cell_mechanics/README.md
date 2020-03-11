@@ -30,7 +30,7 @@ MaxForce: 20
 
 MinForce:0
 
-**Trap stiffness value in pN/nm : WE STILL NEED THIS ONE**
+Trap stiffness value in pN/nm : 0.06
 
 Intervals of Stiffness:6
 
