@@ -15,7 +15,7 @@ The files have been sorted in order to have the trap distance order toward
 increasing values.
 
 
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/tree/bring_ales_last/sec_4_1_single_molecule_mechanics/work_distributions.jpg "Force extension curves and stiffness")
+![alt text]("https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/bring_ales_last/sec_4_1_single_molecule_mechanics/work_distributions.jpg")
 
 
 ***
