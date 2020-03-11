@@ -1,6 +1,1 @@
 #Y force(pN)	Err force(pN)	Stiffness(pN/nm)	Err Stiffness(pN/nm)
-#Y force(pN)	Err force(pN)	Stiffness(pN/nm)	Err Stiffness(pN/nm)
-#Y force(pN)	Err force(pN)	Stiffness(pN/nm)	Err Stiffness(pN/nm)
-#Y force(pN)	Err force(pN)	Stiffness(pN/nm)	Err Stiffness(pN/nm)
-#Y force(pN)	Err force(pN)	Stiffness(pN/nm)	Err Stiffness(pN/nm)
-#Y force(pN)	Err force(pN)	Stiffness(pN/nm)	Err Stiffness(pN/nm)
