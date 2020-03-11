@@ -5,12 +5,12 @@ clear all; close all
 %clc
 
 %Adding path to functions
-addpath('F:\Document\Github backup\tweezers_AOP_tutorial1\Fig16 (Xavier)\Fig_programs_4_1_1\PROGRAM\Functions/')
+addpath('Functions/')
 
 %path to data
-dirpath='F:\Document\Github backup\tweezers_AOP_tutorial1\Fig16 (Xavier)\Fig_programs_4_1_1\RAW_DATA/';
+dirpath='../RAW_DATA/';
 %output path
-outpath='F:\Document\Github backup\tweezers_AOP_tutorial1\Fig16 (Xavier)\Fig_programs_4_1_1\RESULTS/';
+outpath='../RESULTS/';
 
 %The files contained in dirpath folder are u,f for the unfolding(stretching) and
 %folding(releasing) trajectories. They contain 4 columns:
@@ -145,58 +145,58 @@ G0=Weq-Weff-WssDNA+Worient
 %Ploting of Figure 1
 %Here we plot  the force distance curves of the unfolding and refolding
 %trajectories numbered in plottingfiles
-figure(1)
-plottingfiles=[1 25 50 75 96]
-for k=1:length(plottingfiles)
-    i=plottingfiles(k);
-    unfoldfile= char(strcat(dirpath,{'u'},num2str(i),{'.txt'}));
-    foldfile= char(strcat(dirpath,{'f'},num2str(i),{'.txt'}));
-    
-    datau=importdata(unfoldfile);
-    dataf=importdata(foldfile);
-    %importing force and extension
-    xu = datau(:,2);
-    fu = datau(:,4);
-    xf = dataf(:,2);
-    ff = dataf(:,4);
-    if k==1
-        plot(xu,fu,  'r')
-        hold on
-        plot(xf,ff,  'b')
-    else
-        plot(xu,fu,  'r')
-        plot(xf,ff,  'b')
-    end
-end
-xlabel('\lambda(nm)');
-ylabel('f(pN)')
-xlim([-180,-40])
-pointsx=[l0,lf];
-pointsy=[mean(fminu),mean(fmaxf)];
-plot(pointsx,pointsy,'o', 'MarkerSize', 15, 'MarkerFaceColor', 'k');
-txt1 = '\leftarrow (\lambda_0,f_{min})'; 
-text(l0+5,mean(fminu),txt1,'FontSize',14)
-txt2 = '(\lambda_1,f_{max}) \rightarrow '; 
-text(lf-37,mean(fmaxf),txt2,'FontSize',14)
-hold off
+% figure(1)
+% plottingfiles=[1 25 50 75 96]
+% for k=1:length(plottingfiles)
+%     i=plottingfiles(k);
+%     unfoldfile= char(strcat(dirpath,{'u'},num2str(i),{'.txt'}));
+%     foldfile= char(strcat(dirpath,{'f'},num2str(i),{'.txt'}));
+%     
+%     datau=importdata(unfoldfile);
+%     dataf=importdata(foldfile);
+%     %importing force and extension
+%     xu = datau(:,2);
+%     fu = datau(:,4);
+%     xf = dataf(:,2);
+%     ff = dataf(:,4);
+%     if k==1
+%         plot(xu,fu,  'r')
+%         hold on
+%         plot(xf,ff,  'b')
+%     else
+%         plot(xu,fu,  'r')
+%         plot(xf,ff,  'b')
+%     end
+% end
+% xlabel('\lambda(nm)');
+% ylabel('f(pN)')
+% xlim([-180,-40])
+% pointsx=[l0,lf];
+% pointsy=[mean(fminu),mean(fmaxf)];
+% plot(pointsx,pointsy,'o', 'MarkerSize', 15, 'MarkerFaceColor', 'k');
+% txt1 = '\leftarrow (\lambda_0,f_{min})'; 
+% text(l0+5,mean(fminu),txt1,'FontSize',14)
+% txt2 = '(\lambda_1,f_{max}) \rightarrow '; 
+% text(lf-37,mean(fmaxf),txt2,'FontSize',14)
+% hold off
 %%
-figure(2)
-%Ploting of Figure 2
-%Here we plot the histogram and the probability distribution functions in
-%order to obtain figure 2.
-histogram(Wf,'DisplayStyle', 'bar', 'Binwidth',1.0,'Normalization', 'pdf','LineWidth',2, 'FaceColor', 'w' ,'EdgeColor','b')
-hold on
-histogram(Wu,'DisplayStyle', 'bar', 'Binwidth',1.0,'Normalization', 'pdf','LineWidth',2, 'FaceColor', 'w' ,'EdgeColor','r')
-plot(W,Pf, '-b','LineWidth',5)
-plot(W,Pu, '-r','LineWidth',5)
-plot([Weq,Weq],[0,0.3],'--k', 'LineWidth',3)
-txt = '\DeltaG_{FU} \rightarrow '; 
-text(346,0.27,txt,'FontSize',14)
-xlabel('W(k_BT)');
-xlim([341,358])
-ylabel('P_{U} , P_{F} ');
-legend('P_{F}', 'P_{U}');
-hold off
+% figure(2)
+% %Ploting of Figure 2
+% %Here we plot the histogram and the probability distribution functions in
+% %order to obtain figure 2.
+% histogram(Wf,'DisplayStyle', 'bar', 'Binwidth',1.0,'Normalization', 'pdf','LineWidth',2, 'FaceColor', 'w' ,'EdgeColor','b')
+% hold on
+% histogram(Wu,'DisplayStyle', 'bar', 'Binwidth',1.0,'Normalization', 'pdf','LineWidth',2, 'FaceColor', 'w' ,'EdgeColor','r')
+% plot(W,Pf, '-b','LineWidth',5)
+% plot(W,Pu, '-r','LineWidth',5)
+% plot([Weq,Weq],[0,0.3],'--k', 'LineWidth',3)
+% txt = '\DeltaG_{FU} \rightarrow '; 
+% text(346,0.27,txt,'FontSize',14)
+% xlabel('W(k_BT)');
+% xlim([341,358])
+% ylabel('P_{U} , P_{F} ');
+% legend('P_{F}', 'P_{U}');
+% hold off
 %% 
 
 
