@@ -2,7 +2,7 @@
 
 clear all;close all;clc;
 
-path='F:\Document\GitHub\tweezers_AOP_tutorial\Marta\Results'; %where Stiffness result files are located
+path='Results'; %where Stiffness result files are located
 
 
 fid1=fopen(char(strcat(path,'/RBC1_Stiffness_U.txt')),'r');
@@ -30,18 +30,18 @@ EF4=data4{2};
 S4=data4{3};
 ES4=data4{4};
 
-figure(1)
-set(gcf,'name','Stiffness')
-errorbar(F1,S1,ES1,'or')
-hold on;
-errorbar(F2,S2,ES2,'xr')
-hold on;
-errorbar(F3,S3,ES3,'ob')
-hold on;
-errorbar(F4,S4,ES4,'xb')
-set(gca,'fontsize',14)
-xlabel('$f_{\rm trap}$(pN)','fontsize', 18);
-ylabel('Stiffness (pN/nm)','fontsize', 18);
+% figure(1)
+% set(gcf,'name','Stiffness')
+% errorbar(F1,S1,ES1,'or')
+% hold on;
+% errorbar(F2,S2,ES2,'xr')
+% hold on;
+% errorbar(F3,S3,ES3,'ob')
+% hold on;
+% errorbar(F4,S4,ES4,'xb')
+% set(gca,'fontsize',14)
+% xlabel('$f_{\rm trap}$(pN)','fontsize', 18);
+% ylabel('Stiffness (pN/nm)','fontsize', 18);
 
 
  
@@ -88,7 +88,7 @@ LL.FontSize = 18
 
 % clear all;close all;clc;
 
-path='F:\Document\GitHub\tweezers_AOP_tutorial\Marta\Results'; %where individual trajectory files are located
+path='Results'; %where individual trajectory files are located
 
 
 fid1=fopen(char(strcat(path,'/RBC1_2T_U.txt')),'r');
