@@ -2,7 +2,7 @@
 
 clear all;close all;clc;
 
-path='Results'; %where Stiffness result files are located
+path='results'; %where Stiffness result files are located
 
 
 fid1=fopen(char(strcat(path,'/RBC1_Stiffness_U.txt')),'r');
@@ -88,7 +88,7 @@ LL.FontSize = 18
 
 % clear all;close all;clc;
 
-path='Results'; %where individual trajectory files are located
+path='results'; %where individual trajectory files are located
 
 
 fid1=fopen(char(strcat(path,'/RBC1_2T_U.txt')),'r');
