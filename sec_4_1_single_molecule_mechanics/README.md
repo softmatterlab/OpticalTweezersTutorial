@@ -5,7 +5,7 @@ How to use the Single molecule mechanics section:
 
 **Free energy of formation of a DNA hairpin**
 
-Run [work_distributions](program/work_distributions_Fig19.m) in folder **[program](program/)** to obtain  (A) Several pulling trajectories of the hairpin. In red are plotted the unfolding cycles and in blue the folding ones. The black dots indicate the initial ( L<sub>0</sub> ; f<sub>min</sub>) and final L<sub>1</sub> 
+Run [work_distributions](program/work_distributions_Fig16.m) in folder **[program](program/)** to obtain  (A) Several pulling trajectories of the hairpin. In red are plotted the unfolding cycles and in blue the folding ones. The black dots indicate the initial ( L<sub>0</sub> ; f<sub>min</sub>) and final L<sub>1</sub> 
  ; f<sub>max</sub>) points considering for computing the work, WFU. (B) Probability density distributions of the work, computed as in equation (6). The point at which the probabilities cross is the equilibrium difference of free energy of the hairpin. The red and blue lines shown are the interpolations of the bars.
 
 The files contained in **[data](data/)** '' folder  u,f for the unfolding(stretching) and
