@@ -5,8 +5,8 @@ How to use the Single molecule mechanics section:
 
 **Free energy of formation of a DNA hairpin**
 
-Run [work_distributions](work_distributions/work_distributions.m) in folder **[work_distributions](work_distributions/)** to obtain  (A) Several pulling trajectories of the hairpin. In red are plotted the unfolding cycles and in blue the folding ones. The black dots indicate the initial ( λ<sub>0</sub> ; f<sub>min</sub>) and final λ<sub>1</sub> 
- ; f<sub>max</sub>) points considering for computing the work, WFU. (B) Probability density distributions of the work, computed as in equation (6). The point atwhich the probabilities cross is the equilibrium difference of free energy of the hairpin. The red and blue lines shown are the interpolations of the bars.
+Run [work_distributions](program/work_distributions_Fig19.m) in folder **[program](program/)** to obtain  (A) Several pulling trajectories of the hairpin. In red are plotted the unfolding cycles and in blue the folding ones. The black dots indicate the initial ( L<sub>0</sub> ; f<sub>min</sub>) and final L<sub>1</sub> 
+ ; f<sub>max</sub>) points considering for computing the work, WFU. (B) Probability density distributions of the work, computed as in equation (6). The point at which the probabilities cross is the equilibrium difference of free energy of the hairpin. The red and blue lines shown are the interpolations of the bars.
 
 The files contained in **[data](data/)** '' folder  u,f for the unfolding(stretching) and
 folding(releasing) trajectories. They contain 4 columns:
@@ -15,7 +15,7 @@ The files have been sorted in order to have the trap distance order toward
 increasing values.
 
 
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_1_single_molecule_mechanics/figures/free_enerygy_hairpin.jpg "Force extension curves and stiffness")
+![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/tree/bring_ales_last/sec_4_1_single_molecule_mechanics/work_distributions.jpg "Force extension curves and stiffness")
 
 
 ***
