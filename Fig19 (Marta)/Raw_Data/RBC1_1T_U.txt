@@ -1,0 +1,4 @@
+#Y dist(nm)	Y force(pN)
+0.000000	-0.550700
+#Y dist(nm)	Y force(pN)
+0.000000	-0.550700
