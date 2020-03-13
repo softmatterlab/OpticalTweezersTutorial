@@ -10,38 +10,39 @@
 % correspond to the mean Y force and the second one to the Stiffness value.
 
 clear all;close all;clc;
+%path='../data'
+%file=fopen(RBC1)
+%[file,path] = uigetfile;
+%cd (path);
+Ncol=16; %input('Please introduce the number of columns :','s');
 
-[file,path] = uigetfile;
-cd (path);
-Ncol=input('Please introduce the number of columns :','s');
-
-NColF='%f\t';
-for m=1:str2num(Ncol)-2
-    NColF=char(strcat(NColF,'%f\t'));
-end
+ NColF='%f\t';
+ for m=1:str2num(Ncol)-2
+     NColF=char(strcat(NColF,'%f\t'));
+ end
 
 NColF=char(strcat(NColF,' %f\n'));
-FC=input('Column of Y force :','s');
-ADC=input('Column of trap A Y distance :','s');
-BDC=input('Column of trap B Y distance :','s');
-fid=fopen(file,'r');
+FC=5;%input('Column of Y force :','s');
+ADC=12;%input('Column of trap A Y distance :','s');
+BDC=14;%input('Column of trap B Y distance :','s');
+fid=fopen('RBC1.txt','r');
 data = textscan(fid,NColF, 'CommentStyle', '#');
 
-F=data{str2num(FC)};
+F=5;%data{str2num(FC)};
 F=-F; %Just in case you have it in negative values as example data
-AD=data{str2num(ADC)};
-BD=data{str2num(BDC)};
+AD=12;%data{str2num(ADC)};
+BD=14;%data{str2num(BDC)};
 D=(AD+BD)/2; % The distance that the trap is moved is an average of the displacement of both lasers (double trap)
-kkt=input('Trap stiffness value in pN/nm :','s');
-kt=str2num(kkt); %pN/nm trap stiffness
+%kkt=input('Trap stiffness value in pN/nm :','s');
+kt=0.06;%str2num(kkt); %pN/nm trap stiffness
 E=D-F/kt;
 
 SS=0; %Artificial status. We assume that we start at minimum forces and we move to higher forces
 Ntraj=0;
-MaF=input('Maximum force :','s');
-MiF=input('Minimum force :','s'); % You have to reach the minimum force each cycle. Check it!
-MaxF=str2num(MaF);
-MinF=str2num(MiF);
+%MaF=input('Maximum force :','s');
+%MiF=input('Minimum force :','s'); % You have to reach the minimum force each cycle. Check it!
+MaxF=20%str2num(MaF);
+MinF=0%str2num(MiF);
 for i=1:length(F)
     if (SS==0) 
         Ntraj=Ntraj+1;

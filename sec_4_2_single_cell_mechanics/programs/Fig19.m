@@ -136,7 +136,7 @@ axes('Position',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centr
 
 plot(F1,E1,'r','linewidth',2)
 hold on;
-plot(F2,E2,'m','linewidth',2)
+plot(F2, E2,'m','linewidth',2)
 hold on;
 plot(F3,E3,'Color',col3,'linewidth',2)
 hold on;

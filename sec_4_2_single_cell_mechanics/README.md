@@ -26,11 +26,13 @@ YA dist: 12
 
 YB dist: 14
 
+Trap stiffness value in pN/nm : 0.06
+
 MaxForce: 20
 
 MinForce:0
 
-Trap stiffness value in pN/nm : 0.06
+
 
 Intervals of Stiffness:6
 
