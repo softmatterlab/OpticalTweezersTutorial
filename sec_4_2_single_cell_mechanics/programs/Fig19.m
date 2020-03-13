@@ -133,14 +133,17 @@ E4=data4{2};
 axes('Position',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
 
 
-
-plot(F1,E1,'r','linewidth',2)
+[F1, ord1]=sort(F1)
+plot(F1,E1(ord1),'r','linewidth',2)
 hold on;
-plot(F2, E2,'m','linewidth',2)
+[F2, ord2]=sort(F2)
+plot(F2, E2(ord2),'m','linewidth',2)
 hold on;
-plot(F3,E3,'Color',col3,'linewidth',2)
+[F3, ord3]=sort(F3)
+plot(F3,E3(ord3),'Color',col3,'linewidth',2)
 hold on;
-plot(F4,E4,'k','linewidth',2)
+[F4, ord4]=sort(F4)
+plot(F4,E4(ord4),'k','linewidth',2)
 
 ylabel('$f_{\rm trap}$(pN)','Interpreter','Latex', 'FontSize',30);
 xlabel('$\Delta x_{\rm cell}$(nm)','Interpreter','Latex', 'FontSize',30);
