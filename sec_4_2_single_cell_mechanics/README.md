@@ -14,7 +14,7 @@ Run [CelullarMechanics.m](programs/CelullarMechanics.m)  to obtain separated tra
  All the trajeectories will be forced to start to (0,0) in order to correct any drift. 
  The second file named 'filename_Stiffness.txt' (ex: RBC1_Stiffness.txt) where first column will
  correspond to the mean Y force and the second one to the Stiffness value.
-Practically after running  [CelullarMechanics.m](programs/CelullarMechanics.m) a folder explorer window will open for you to select the file to analyze, go to folder [data](data/) and select [RBC1.txt](data/RBC1.txt) and  [RBC2.txt](data/RBC1.txt), one at a time. After selecting the data file enter the following parameters:
+Practically after running  [CelullarMechanics.m](programs/CelullarMechanics.m) an explorer window will open for you to select the file to analyze, go to folder [data](data/) and select [RBC1.txt](data/RBC1.txt) and  [RBC2.txt](data/RBC1.txt), one at a time. After selecting the data file enter the following parameters:
 Number of columns: 16
 Y force: 5
 YA dist: 12
@@ -24,7 +24,7 @@ MaxForce: 20
 MinForce:0
 Intervals of Stiffness:6
 
-After the analysisrun [force_extension_stiffnes.m](programs/force_extension_stiffnes_Fig19.m) to obtain the plot of the previous results.
+After the analysis run [force_extension_stiffnes.m](programs/force_extension_stiffnes_Fig19.m) to obtain the plot of the previous results.
 
 ![alt text](cellular_mechanics.jpg "Force extension curves and stiffness")
 
