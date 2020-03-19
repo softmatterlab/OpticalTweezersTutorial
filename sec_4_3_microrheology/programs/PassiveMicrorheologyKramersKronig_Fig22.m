@@ -16,7 +16,7 @@ close all
 NFFT = 2^17; %number of points to compute PSD
 
 %read files
-Filepath = 'PassiveMicrorheologyData/';
+Filepath = '../data/PassiveMicrorheologyData/';
 Filename = 'CPyCl5mM';
 Extension = '.txt';
 
@@ -48,13 +48,6 @@ by2 = 50;     % bordo in alto
 Ypix = by1+ywi+by2;  % larghezza figura in pixel
 
 
-
-% figure (1)
-% plot(t,x)
-% xlabel('t [seconds]')
-% ylabel('x [meters]')
-% title('Stochastic trajectory of trapped particle')
-
 %Determine trapstifness by equipartition theorem
 k=kB*T0/var(x) 
 
@@ -78,14 +71,8 @@ coeffx=polyfit(logf,logsx,D);
 spx1=exp(polyval(coeffx,(logf),D));
 spx(3:end)=spx1;
 
-% figure(2)
-% loglog(f(3:end),spx(3:end),'k')
-% hold on
-% loglog(f(3:end),spxn,'k')
-
 
 f = f(3:end);
-% spx11 = spx(3:end);
 
 
 %Compute imaginary (chi2) and real (chi1) parts of linear response function of x
@@ -99,15 +86,6 @@ G1 = chi1./(chi1.^2+chi2.^2)/6/pi/r - k/6/pi/r;
 G2 = chi2./(chi1.^2+chi2.^2)/6/pi/r;
 
 
-% figure(3)
-% loglog(f,G1,'r o')
-% hold on
-% loglog(f,G2,'b s')
-% xlabel('f [Hz]')
-% % ylabel('G�, G�� [Pa]')
-% % % title('Storage (circles) and loss (squares) modulus')
-
-
 
 col3=[0.00,0.45,0.74];
 col4=[0.8500, 0.3250, 0.0980];
@@ -117,8 +95,6 @@ axes('Position',[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix);  % fa in modo di centr
 
 
 loglog(f,spxn*1e18,'color',col3)
-% hold on
-% loglog(f,spx1*1e18,'color', 'r','linewidth',1.5)
 
 xlim([1e-2 1e3])
  ylim([1e-4 1e5])
@@ -126,14 +102,12 @@ xlim([1e-2 1e3])
 hold on
 xlabel('$f \rm (Hz)$', 'Interpreter','Latex', 'FontSize',30)
 ylabel('PSD (nm$^2$ Hz$^{-1}$)', 'Interpreter','Latex', 'FontSize',30)
-% title('Equilibrium PSD of trapped particle')
+
 set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'TickLength',[0.02, 0.01]);
 
 %Smooth PSD using polynomial fit of degree D
 
 loglog(f,spx1*1e18,'--', 'LineWidth',3,'Color','k')
-% hold on
-% loglog(f,spxn,'k')
 
 xticks([1e-1,1e0,1e1,1e2,1e3]);
 
