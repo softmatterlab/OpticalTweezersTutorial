@@ -27,7 +27,7 @@ Intervals of Stiffness:6
 
 This analysis will create a set of **txt** files in folder [results](results/) that program [force_extension_stiffnes.m](programs/force_extension_stiffness_Fig19.m) will use to obtain the plot of the previous, plotting stiffness respect to force.
 
-![alt text](cellular_mechanics.jpg "Force extension curves and stiffness")
+![alt text](figures/cellular_mechanics.jpg "Force extension curves and stiffness")
 
 
 ***
