@@ -20,12 +20,12 @@ bx2 = 20;     % extra space at the right
 
 Xpix = 2*xwi+2*bx1+2*bx2;  % total
 Xpix=1400;
-ywi = 150;    % length riquadro con funzione
+ywi = 150;    
 YYWi=3*ywi;
 by1 = 95;     % extra space below
 by2 = 50;     % extra space up
 
-Ypix = 1*by1+1*YYWi+1*by2;  % larghezza figura in pixel
+Ypix = 1*by1+1*YYWi+1*by2;  % 
 %number of bins of the histogram, if not set default is 50
 figure('Position',[10 20 Xpix Ypix]);
 
@@ -35,7 +35,7 @@ figure('Position',[10 20 Xpix Ypix]);
 
 
 Extension='.txt';
-Filepath = 'PassiveMicrorheologyData/';
+Filepath = '../data/PassiveMicrorheologyData/';
 Filename{1}=['Water'];
 Filename{2}= ['PNP'];
 Filename{3}=['CPyCl4mM'];
@@ -83,15 +83,10 @@ set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5, 'FontSize',25,'Xticklab
 end 
 end
 
-%  
-%  LL= legend ('$\rm PNP$','Interpreter','latex','Box','off','Position',[0.87 0.38 0.1 0.2])
-%  LL.FontSize = 18
-%  
-%  LL= legend ('$\rm CPyCl4mM$','Interpreter','latex','Box','off','Position',[0.97 0.28 0.1 0.2])
-%  LL.FontSize = 18
+
 xlabel('$t\rm (s)$', 'Interpreter','Latex', 'FontSize',30)
 set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'TickLength',[0.02, 0.01]);
-%title('Stochastic trajectory of trapped particle')
+
 %%
 positionintefig2=[2*bx1+xwi+bx2 0 xwi 0]/Xpix + [0 by1 0 YYWi]/Ypix;
 axes( 'Position',positionintefig2);
@@ -117,8 +112,6 @@ xxcorr=xx(aa:end); %take possitive values of time for autocorrelation function
 
 plot(t(1:floor(aa/kk)),xxcorr(1:floor(aa/kk))/1e-18,SS{jj},  'MarkerSize',8, 'Color', color{jj},'MarkerFaceColor', color{jj})
 hold on
-%title('Stochastic trajectory of trapped particle')
-
 %Compute trap stiffness
 varx = var(x); %variance of particle position
 k = kB*T0/varx %trap stiffness from equipartition 
@@ -135,7 +128,7 @@ coeff = polyfit(tt(1:10),logxxcorr(1:10),1)
 eta = k/6/pi/R/(-coeff(1))  %viscosity in Pa*s
 xxcorrfit = exp(coeff(2))*exp(coeff(1)*t(1:floor(aa/kk)));
 
-%figure(2)
+
 plot(t(1:floor(aa/kk)),xxcorrfit/1e-18,'--', 'LineWidth',2,'Color','k','HandleVisibility','off')
 
 xlim([0 0.75])
@@ -143,7 +136,6 @@ end
 
 xlabel('$t\rm (s)$', 'Interpreter','Latex', 'FontSize',30)
 ylabel('$\langle x(t)x(0)\rangle(\rm nm ^2)$','Interpreter','Latex', 'FontSize',30);
-%set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5, 'FontSize',25,'Xticklabel',[]);
 set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'TickLength',[0.02, 0.01]);
 %%
 
@@ -166,11 +158,10 @@ kk=100; %take only the kk-nth part of total time interval of autocorrelation fun
 
 xxcorr=xx(aa:end); %take possitive values of time for autocorrelation function 
 
-%figure(2)
+
 
 semilogy(t(1:floor(aa/kk)),xxcorr(1:floor(aa/kk))/xxcorr(1),SS{jj},  'MarkerSize',8, 'Color', color{jj},'MarkerFaceColor', color{jj})
 hold on
-%title('Stochastic trajectory of trapped particle')
 
 %Compute trap stiffness
 varx = var(x); %variance of particle position
@@ -188,8 +179,6 @@ logxxcorr = log(xxcorr(1:floor(floor(aa/kk)/10)));
 eta = k/6/pi/R/(-coeff(1));  %viscosity in Pa*s
 xxcorrfit = exp(coeff(2))*exp(coeff(1)*t(1:floor(aa/kk)));
 
-%figure(2)
-
 
  if jj == 1
       coeff = polyfit(tt(1:10),logxxcorr(1:10),1);
@@ -204,15 +193,13 @@ semilogy(t(1:floor(aa/kk)),xxcorrfit/xxcorrfit(1),'--', 'LineWidth',2,'Color','k
 xlim([0 0.4])
 ylim([3e-2 1])
 end
-%legend
+
 xlabel('$t\rm (s)$', 'Interpreter','Latex', 'FontSize',30)
 ylabel('$\kappa \langle x(t)x(0)\rangle/ k_{\rm B} T$','Interpreter','Latex', 'FontSize',30);
 set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',18,'TickLength',[0.02, 0.01]);
-%set(gca,'TickLabelInterpreter','tex', 'linewidth',1.5, 'FontSize',25,'Xticklabel',[]);
 
 
-
-axes('Position',[(0) 0 Xpix 0]/Xpix + [0 0 0 Ypix]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
+axes('Position',[(0) 0 Xpix 0]/Xpix + [0 0 0 Ypix]/Ypix);  
 hold on
 
 xt = [bx1-105,bx1+xwi+bx2+20];
