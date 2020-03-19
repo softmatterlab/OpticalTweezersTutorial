@@ -15,7 +15,7 @@ The files have been sorted in order to have the trap distance order toward
 increasing values.
 
 
-![alt text](work_distributions.jpg)
+![alt text](figures/work_distributions.jpg)
 
 
 ***
