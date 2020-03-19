@@ -37,7 +37,7 @@ k = 1e-6; %trap stiffness (previously measure ny equipartition in thermal equili
 %was applied, they must be specified in the file name
 FF = [0.05 0.1 0.2 0.4 0.8 1.0 1.6 3.2 6.4 12.8 25.6];
 
-Filnam ='ActiveMicrorheologyData/5mMdrive_k1e-06_freq_'
+Filnam ='../data/ActiveMicrorheologyData/5mMdrive_k1e-06_freq_'
 positionintefig1=[bx1 0 xwi 0]/Xpix + [0 by1 0 ywi]/Ypix;
 axes( 'Position',positionintefig1);
 for i = 1:length(FF)
@@ -117,7 +117,7 @@ set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'TickLengt
 
 %we add the data of the passive case
 NFFT = 2^17;
-Filepath = 'PassiveMicrorheologyData/';
+Filepath = '../data/PassiveMicrorheologyData/';
 Filename = 'CPyCl5mM';
 Extension = '.txt';
 
@@ -157,8 +157,6 @@ spx1=exp(polyval(coeffx,(logf),D));
 spx(3:end)=spx1;
 
 
-%loglog(f,spx,'k')
-
 
 %Compute imaginary (chi2) and real (chi1) parts of linear response function of x
 %to perturbative force
@@ -182,7 +180,7 @@ xticks([1e-1,1e0,1e1]);
 set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'TickLength',[0.02, 0.01]);
 
 
-axes('Position',[(0) 0 Xpix 0]/Xpix + [0 0 0 Ypix]/Ypix);  % fa in modo di centrare il riquadro degli assi nella posizione voluta
+axes('Position',[(0) 0 Xpix 0]/Xpix + [0 0 0 Ypix]/Ypix);  
 hold on
 
 xt = [bx1-100, bx1+xwi+bx2+20];
