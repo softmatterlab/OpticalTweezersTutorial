@@ -1,13 +1,13 @@
 %% INITIALIZATION
 clear all; close all; clc;
-set(0, 'defaultFigureRenderer', 'painters')
+
 
 TempeK=300;
 radius=1.03e-6;%+0.5*0.05e-6;
 eta=0.003;
 
 calc_2D = true;
-%calc_2D = false;sc
+%calc_2D = false;
 
 
 bw = 0.02; % um
@@ -154,7 +154,7 @@ ywi_ff = ywi.*ywi_norm;
 
 % all in a row
 
-dyt = 45;
+dyt = 40;
 dyb = 100;
 dym=50;
 dxl = 80;
@@ -254,13 +254,18 @@ yb = 100;
 
 
 
+% XpixTot_2 = xl + sum(xm_2) + xr + 4*xwi;
+% 
+% 
+% YpixTot = yb + yt + ywi;
+
 for i=1:numfig
     
 %      ah_2{i} = axes('Position',[xl+(i-1)*xwi+sum(xm_2(1:(i-1))) 0 xwi 0 ]/XpixTot_2 + [0 yb 0 ywi]/YpixTot);
     
      
      
-    ah_2{i} = axes('Position',[dxl+(xwi-1.2*dxm)*(i-1) 0 (xwi-5*dxm) 0]/Xpix+...
+    ah_2{i} = axes('Position',[dxl+(xwi+2*dxm)*(i-1) 0 (xwi-2*dxm) 0]/Xpix+...
             [0 dyb-30 0 ywi-2*dxm]/Ypix);
      
     xlim([2.0 2.7]);
@@ -368,8 +373,7 @@ drawnow;
 
 
 Oldpos=get(ffh, 'position');
-% newpos=[Oldpos(1),Oldpos(2),1400,Oldpos(4)/Oldpos(3)*1400];
- newpos=[300,-400,1400,Oldpos(4)/Oldpos(3)*1400];
+newpos=[Oldpos(1),Oldpos(2),1400,Oldpos(4)/Oldpos(3)*1400];
 set(ffh, 'position', newpos)
 
 
@@ -390,7 +394,7 @@ for ik=1:(numel(ik_list)-1)
         'HorizontalAlignment','left','VerticalAlignment','baseline')
     
      text((dxl+sum(xwi_ff(1:(ik-1)))+(ik-1)*(dxm+6))/Xpix,...
-        (dyb+ywi-35)/Ypix,stringalettera{ik+4},'Interpreter','Latex','fontsize',fs,...
+        (dyb+ywi-30)/Ypix,stringalettera{ik+4},'Interpreter','Latex','fontsize',fs,...
         'HorizontalAlignment','left','VerticalAlignment','baseline')
     
 %     end
@@ -402,3 +406,169 @@ hold off
 axis off
 
 
+%% Bottom figure
+% 
+% name_fig{1} = 'h3_xi10_NL.fig';
+% name_fig{2} = 'h10_xi24_NL.fig';
+% name_fig{3} = 'h11_xi28_NL.fig';
+% name_fig{4} = 'h13_xi34_NL.fig';
+% 
+% letter{1} = 'a';
+% letter{2} = 'b';
+% letter{3} = 'c';
+% letter{4} = 'd';
+% 
+% numfig=numel(name_fig);
+% 
+% for i=1:numfig
+%     
+%     hf{i} = open(name_fig{i});
+%     
+% end
+% 
+% 
+% 
+% % figure
+% 
+% xl = 120;
+% xm = [1 1 1]*20;
+% xm_2 = [1 1 1]*60;
+% xr = 10;
+% 
+% yt = 10;
+% yb = 10;
+% 
+% xwi = 250;
+% ywi = 200;
+% 
+% 
+% 
+% %% on a different scale
+% 
+% XpixTot_2 = xl + sum(xm_2) + xr + 4*xwi;
+% 
+% YpixTot = yb + yt + ywi;
+% 
+% 
+%   hftot_2 = figure('Position',[10 10 XpixTot_2 YpixTot] );
+% 
+% for i=1:numfig
+%     
+%     ah_2{i} = axes('Position',[xl+(i-1)*xwi+sum(xm_2(1:(i-1))) 0 xwi 0 ]/XpixTot_2 + [0 yb 0 ywi]/YpixTot);
+%     
+%     xlim([2.0 2.7]);
+%     axis on; box on;
+%     
+%     if i==1
+%         ylabel('$P(r)$($\mu$m$^{-1}$)','Interpreter','Latex','fontsize',16);
+%     end
+%     xlabel('$r$($\mu$m)','Interpreter','Latex','fontsize',16);
+%     
+%     kid0 = get(hf{i},'Children');
+%     kid1 = get(kid0,'Children');
+%     
+%     for j=1:numel(kid1)
+%         copyobj(kid1(end-j+1),ah_2{i});
+%     end
+%     
+%     hold on
+%     plot([2.0 2.7],[0 0],'k')
+%     hold off
+%     
+%     if i==1 
+%         ylim([0 0.20]);
+%         %
+%         yti1{i} = 0:0.02:0.20;
+%         %
+%         for j=1:numel(yti1{i})
+%             if mod(j-1,5)==0
+%                 ytilab1{i,j} = num2str(yti1{i}(j)*50,'%2.0f');
+%             else
+%                 ytilab1{i,j} = '';
+%             end
+%         end
+%     end
+%     if i==2 
+%         ylim([0 0.20]);
+%         %
+%         yti1{i} = 0:0.02:0.20;
+%         %
+%         for j=1:numel(yti1{i})
+%             if mod(j-1,5)==0
+%                 ytilab1{i,j} = num2str(yti1{i}(j)*50,'%2.0f');
+%             else
+%                 ytilab1{i,j} = '';
+%             end
+%         end
+%     end
+%     if i==3 
+%         ylim([0 0.20]);
+%         %
+%         yti1{i} = 0:0.02:0.20;
+%         %
+%         for j=1:numel(yti1{i})
+%             if mod(j-1,5)==0
+%                 ytilab1{i,j} = num2str(yti1{i}(j)*50,'%2.0f');
+%             else
+%                 ytilab1{i,j} = '';
+%             end
+%         end
+%     end
+%     if i==4 
+%         ylim([0 0.60]);
+%         %
+%         yti1{i} = 0:0.05:0.60;
+%         %
+%         for j=1:numel(yti1{i})
+%             if mod(j-1,4)==0
+%                 ytilab1{i,j} = num2str(yti1{i}(j)*50,'%2.0f');
+%             else
+%                 ytilab1{i,j} = '';
+%             end
+%         end
+%     end
+%     
+%   
+%     set(gca,'YTick',yti1{i});
+%     set(gca,'YTickLabel',{ytilab1{i,:}});
+%     set(gca,'fontsize',10);
+%     
+%     
+%     
+%     %set(gca,'Tickdir','out');
+%     
+%     y_range=get(gca,'Ylim');
+%     text( 2.03, y_range(2)-(y_range(2)-y_range(1))/ywi*40,['{\bf ' letter{i} '}'],'Interpreter','Latex','fontsize',24,...
+%         'HorizontalAlignment','left','VerticalAlignment','baseline');
+%     
+%     drawnow
+% 
+% end
+% 
+% 
+% 
+% 
+% set(hftot_2,'Position',[10 10 600 YpixTot/XpixTot_2*600]);
+% 
+% 
+% 
+% %% Combined figure
+% % 
+% % 
+% % xwi = 540;    % width of the plot square
+% % bx1 = 140;     % extra space at the left
+% % bx2 = 20;     % extra space at the right
+% % 
+% % 
+% % Xpix=1400;   % total width 
+% % ywi = 150;    % length frame with function
+% % YYWi=3*ywi;
+% % by1 = 95;     % extra space below
+% % by2 = 50;     % extra space up
+% % 
+% % Ypix = 1*by1+1*YYWi+1*by2;  % width in pixel
+% % 
+% % figure('Position',[10 20 Xpix 2*Ypix]); % generate te figure
+% % axes('Position',[bx1 0 xwi 0]/Xpix + [0 by1+ywi 0 ywi]/Ypix);  
+% % 
+% 
