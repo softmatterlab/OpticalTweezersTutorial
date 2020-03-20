@@ -18,12 +18,6 @@ ta=1.5;
 dirtif = ['.' filesep 'tif_xi_list_mod' filesep];
 dirtif = ['.' filesep];
 
-% filepath_expe = ['..' filesep 'Traj16' filesep];
-% sottodir_expe='Analysis';
-% if ~exist([filepath_expe sottodir_expe filesep],'dir')
-%     return
-% end
-
 
 trapdist = 2.38e-6;
 eta    = 0.0019;
@@ -170,11 +164,7 @@ filepath=['..' filesep 'LR_d' num2str(trapdist*1e+9) filesep];
 
 str_title = 'SIM';
 
-% sottodir='Analysis';
-% if ~exist([filepath sottodir filesep],'dir')
-%     error('Directory does not exist!!!')
-%     return
-% end
+
 
 str_label = {};
 
@@ -252,7 +242,7 @@ xwi = xwi0; %120;
 
 totXpix = sum(xs)+2*xwi;
 
-% totXpix=1400;
+
 totYpix = sum(ys([1 3]))+numrow*ywi+(numrow-1)*ys(2);
 
 
@@ -267,16 +257,8 @@ totYpix1 = 820
 hf_drift = figure('Position',[10 10 totXpix1 totYpix1]);
 
 
-
-%
 s0 = double('a');
-% for i=1:numrow
-%     lettere3{i,1} = char(s0+(i-1)*3);
-%     lettere3{i,2} = char(s0+(i-1)*3+1);
-%     lettere3{i,3} = char(s0+(i-1)*3+2);
-%     lettere2{i,1} = char(s0+(i-1)*2);
-%     lettere2{i,2} = char(s0+(i-1)*2+1);
-% end
+
 letfs = 18;
 letfs = 18;
 let_x0 = -50;
@@ -306,11 +288,7 @@ for i=[1 3 4 6]
             
             end           
         
-        
-    % % % %     x_range_driftpara = [2.05 2.65];
-    % % % %     y_range_driftpara = [-0.8 0.8]*1.0;
-    % % % %     xlim(x_range_driftpara);
-    % % % %     ylim(y_range_driftpara);
+
     x_range_driftpara_tiff = [1 xwi_tif];
     y_range_driftpara_tiff = [1 ywi_tif];
     xlim(x_range_driftpara_tiff);
@@ -319,10 +297,7 @@ for i=[1 3 4 6]
         'dri_para_' num2str(i) '_tif_new.tif']);
     image(ima)
     axis off; box off; grid off;
-    %axis on; box on;
-    
-%     ah_dri_ax{i,1} = axes('Position',[xs(1) 0 xwi 0]/totXpix1 + [0 ys(1)+(numrow-i)*(ys(2)+ywi) 0 ywi]/totYpix1);
-    
+  
     
     if i ==1
     ah_dri_ax{i,1} = axes('Position',[xs(1) 0 xwi 0]/totXpix1 + [0 ys(1)+3*(ys(2)+ywi) 0 ywi]/totYpix1);
@@ -381,12 +356,7 @@ for i=[1 3 4 6]
     xlim(x_range_driftpara);
     ylim(y_range_driftpara);
     axis off; box off; grid off;
-    %axis on; box on;
-    
-%     ah_dri_shade{i,2} = axes('Position',[xs(1)+xs(2)+xwi 0 xwi 0]/totXpix1 + [0 ys(1)+(numrow-i)*(ys(2)+ywi) 0 ywi]/totYpix1,'ydir','reverse');
-    
-    
-    
+
     
      if i ==1
      ah_dri_shade{i,2} = axes('Position',[xs(1)+xs(2)+xwi 0 xwi 0]/totXpix1 + [0 ys(1)+3*(ys(2)+ywi) 0 ywi]/totYpix1,'ydir','reverse');
@@ -405,14 +375,8 @@ for i=[1 3 4 6]
     ah_dri_shade{i,2} = axes('Position',[xs(1)+xs(2)+xwi 0 xwi 0]/totXpix1 + [0 ys(1) 0 ywi]/totYpix1,'ydir','reverse');
             
             end           
-    
-    
-    
-    
-    % % % %     x_range_driftperp = [2.05 2.65];
-    % % % %     y_range_driftperp = [-0.8 0.8]*1.0;
-    % % % %     xlim(x_range_driftperp);
-    % % % %     ylim(y_range_driftperp);
+
+
     x_range_driftperp_tiff = [1 xwi_tif];
     y_range_driftperp_tiff = [1 ywi_tif];
     xlim(x_range_driftperp_tiff);
@@ -420,13 +384,7 @@ for i=[1 3 4 6]
     ima = imread([dirtif 'dri_perp_' num2str(i) '_tif_new.tif']);
     image(ima)
     axis off; box off; grid off;
-    %axis on; box on;
-    
-%     ah_dri_ax{i,2} = axes('Position',[xs(1)+xs(2)+xwi 0 xwi 0]/totXpix1 + [0 ys(1)+(numrow-i)*(ys(2)+ywi) 0 ywi]/totYpix1);
-    
-    
-    
-    
+  
     
      if i ==1
      ah_dri_ax{i,2} = axes('Position',[xs(1)+xs(2)+xwi 0 xwi 0]/totXpix1 + [0 ys(1)+3*(ys(2)+ywi) 0 ywi]/totYpix1);
@@ -451,18 +409,8 @@ for i=[1 3 4 6]
     xlim([0 xwi])
     ylim([0 ywi])
     axis off
-    
-   
-    
-    
-    
-    
-    
-%     ah_dri{i,2} = axes('Position',[xs(1)+xs(2)+xwi 0 xwi 0]/totXpix1 + [0 ys(1)+(numrow-i)*(ys(2)+ywi) 0 ywi]/totYpix1);
-    
-    
-    
-    
+  
+  
     
      if i ==1
      ah_dri{i,2} = axes('Position',[xs(1)+xs(2)+xwi 0 xwi 0]/totXpix1 + [0 ys(1)+3*(ys(2)+ywi) 0 ywi]/totYpix1);
@@ -645,15 +593,7 @@ for n = [1  3 4 6] %numel(k_list)
     options_drift_line={'Color',colo{mod(n-1,num_col)+1},'Linestyle','-','Linewidth',2};
     %    %
     options_diffu_line={'Color',colo{mod(n-1,num_col)+1},'Linestyle','-','Linewidth',2};
-    %     options_diffu_para_expe={0.008,'o','Color',colo{mod(n-1,num_col)+1},'MarkerFaceColor',colo_light{mod(n-1,num_col)+1}};
-    %     options_drift_para_expe={0.008,'o','Color',colo{mod(n-1,num_col)+1},'MarkerFaceColor',colo_light{mod(n-1,num_col)+1}};
-    %     options_diffu_perp_expe={0.008,'v','Color',colo{mod(n-1,num_col)+1},'MarkerFaceColor',colo_light{mod(n-1,num_col)+1}};
-    %     options_drift_perp_expe={0.008,'v','Color',colo{mod(n-1,num_col)+1},'MarkerFaceColor',colo_light{mod(n-1,num_col)+1}};
-    %
-%     options_diffu_para_expe={0.008,'o','Color','k','MarkerFaceColor',colo_light{mod(n-1,num_col)+1},'MarkerSize',3,'Linewidth',3};
-%     options_drift_para_expe={0.008,'o','Color','k','MarkerFaceColor',colo_light{mod(n-1,num_col)+1},'MarkerSize',3,'Linewidth',3};
-%     options_diffu_perp_expe={0.008,'o','Color','k','MarkerFaceColor',colo_light{mod(n-1,num_col)+1},'MarkerSize',3,'Linewidth',3};
-%     options_drift_perp_expe={0.008,'o','Color','k','MarkerFaceColor',colo_light{mod(n-1,num_col)+1},'MarkerSize',3,'Linewidth',3};
+  
     
     arrowproperties = {'StemWidth',stwdth,'HeadWidth',hdwdth,'HeadLength',hdlgth,'HeadNode',hdnd,'color',[1 1 1]*0.5,'EdgeColor','none'};
     
@@ -661,14 +601,7 @@ for n = [1  3 4 6] %numel(k_list)
     %%% update summary figure %%%%%%%%%%%%%%%%%%%%%%% DRIFT SUMMARY
     figure(hf_drift);
     
-    %     set(gcf,'CurrentAxes',ah_dri_shade{n,1}); % parallel
-    %     hold on;
-    %     % simulation, shade
-    %     fill(rbins_tot([igood_tot0 igood_tot0(end:-1:1)]),...
-    %         [smooth(dripar_mean_tot(igood_tot0)+dripar_err_tot(igood_tot0)); ...
-    %         smooth(dripar_mean_tot(igood_tot0(end:-1:1))-dripar_err_tot(igood_tot0(end:-1:1)))]',...
-    %         colo_light{mod(n-1,num_col)+1},'Edgecolor','none');
-    %     hold off
+
     
     set(gcf,'CurrentAxes',ah_dri{n,1}); % parallel
    
@@ -739,20 +672,11 @@ for n = [1  3 4 6] %numel(k_list)
         'HorizontalAlignment','left','VerticalAlignment','baseline')
      end
     hold off
-%     text(let_x0,let_y0,['{\bf ' lettere{n,1} '}'],...
-%         'Interpreter','latex','fontsize',letfs,...
-%         'HorizontalAlignment','left','VerticalAlignment','baseline')
+
     drawnow
     %
     
-    %     set(gcf,'CurrentAxes',ah_dri_shade{n,2}); % perpendicular
-    %     hold on;
-    %     % simulation, shade
-    %     fill(rbins_tot([igood_tot0 igood_tot0(end:-1:1)]),...
-    %         [smooth(driperp_mean_tot(igood_tot0)+driperp_err_tot(igood_tot0)); ...
-    %         smooth(driperp_mean_tot(igood_tot0(end:-1:1))-driperp_err_tot(igood_tot0(end:-1:1)))]',...
-    %         colo_light{mod(n-1,num_col)+1},'Edgecolor','none');
-    %     hold off
+  
     
     set(gcf,'CurrentAxes',ah_dri{n,2}); % perpendicular
     hold on;
@@ -767,19 +691,12 @@ for n = [1  3 4 6] %numel(k_list)
         itiny = intersect(itiny0,itiny1);
         plot(rbins_tot(itiny),driperp_mean_highlight(itiny),options_drift_line{:});
     end
-    %
-%     myerrorbar(B_expe{ik}(ifull),driperp_av_expe{ik}(ifull),driperp_std_expe{ik}(ifull),options_drift_perp_expe{:});
+
     %
      errorbar(B_expe{ik}(ifull)',driperp_av_expe{ik}(ifull)',driperp_std_expe{ik}(ifull)', 'v','Color','k','MarkerFaceColor',colo_light{mod(n-1,num_col)+1}, 'MarkerSize',5 ,'LineWidth', 1);
     hold off;
     
     drawnow;
-    
-    
-    
-    
-    
-    
     
     
     % axes
@@ -829,10 +746,7 @@ for n = [1  3 4 6] %numel(k_list)
         'HorizontalAlignment','left','VerticalAlignment','baseline')
     end
     hold off
-%     text(let_x0,let_y0,['{\bf ' lettere31{n,2} '}'],...
-%         'Interpreter','latex','fontsize',letfs,...
-%         'HorizontalAlignment','left','VerticalAlignment','baseline')
-    
+
    
     drawnow
     
@@ -862,5 +776,6 @@ xlim([0 totXpix1])
 ylim([0 totYpix1])
 
 % set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'XMinorTick','off','Tickdir','in','TickLength',[0.02, 0.01]);
-saveas(gcf,'Fig26.eps','epsc')
-saveas(gcf,'Fig26.fig')
+% saveas(gcf,'Fig26.jpg','jpeg')
+% saveas(gcf,'Fig26.eps','epsc')
+% saveas(gcf,'Fig26.fig')

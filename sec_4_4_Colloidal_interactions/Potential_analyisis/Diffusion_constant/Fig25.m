@@ -287,11 +287,7 @@ for n = 1:numel(k_list)
     
     Dperp_theo(find(Dperp_theo==0)) = 0.401*D1;
     
-%     sottodir_comparison=['Comp_LR_d' num2str(trapdist*1e+6)];
-%     if ~exist([filepath_expe sottodir_comparison filesep],'dir')
-%         mkdir([filepath_expe sottodir_comparison filesep]);
-%     end
-    
+
     
     rbins_tot = reshape([rbins; rbins1],1,2*numel(rbins));
     dripar_mean_tot = reshape([dripar_mean; dripar_mean1],1,2*numel(rbins));
@@ -386,9 +382,7 @@ for n = 1:numel(k_list)
     ifaded = setdiff(intersect(i_highstat_expe,i_out_expe),i0);
     ifaint = i_lowstat_expe;
     
-%     plot(B_expe{ik}(ifull)/Dcoll_um,diffupar_av_expe{ik}(ifull)/2/D1+(n-1)*we_shift*vshift_diffu,options_para_expe{:});
-%     plot(B_expe{ik}(ifaded)/Dcoll_um,diffupar_av_expe{ik}(ifaded)/2/D1+(n-1)*we_shift*vshift_diffu,options_para_expe{:});
-%     
+     
     
     
     errorbar(B_expe{ik}(ifull)/Dcoll_um,diffupar_av_expe{ik}(ifull)/2/D1+(n-1)*we_shift*vshift_diffu,...
@@ -464,8 +458,6 @@ for n = 1:numel(k_list)
     ifaded = setdiff(intersect(i_highstat_expe,i_out_expe),i0);
     ifaint = i_lowstat_expe;
     
-%     plot(B_expe{ik}(ifull)/Dcoll_um,diffuperp_av_expe{ik}(ifull)/2/D1+(n-1)*we_shift*vshift_diffu,options_perp_expe{:});
-%     plot(B_expe{ik}(ifaded)/Dcoll_um,diffuperp_av_expe{ik}(ifaded)/2/D1+(n-1)*we_shift*vshift_diffu,options_perp_expe{:});
     
     errorbar(B_expe{ik}(ifull)/Dcoll_um,diffuperp_av_expe{ik}(ifull)/2/D1+(n-1)*we_shift*vshift_diffu,...
         num_stdev*diffuperp_std_expe{ik}(ifull)/2/D1,options_perp_expe{:});
@@ -516,8 +508,7 @@ text(1.49+x_shift,0.30,'$D_{\parallel}$','Interpreter','Latex','fontsize',fst,..
 
 hold off;
 
-%set(gca,'TickDir','out');
-% set(gca,'fontsize',10);
+
 
  set(gca,'TickLabelInterpreter','latex', 'linewidth',1.5,'FontSize',25,'XMinorTick','off','Tickdir','in');
 drawnow;
@@ -540,20 +531,14 @@ xc2D = 4.05*xwi/5;
 ycU = 8.7*ywi/10;
 ycD = 1.3*ywi/10;
 
-% plot(xc1U+ra*cos(thcirc),ycU+ra*sin(thcirc),'k','LineWidth',2);
-% plot(xc2U+ra*cos(thcirc),ycU+ra*sin(thcirc),'k','LineWidth',2);
-% plot(xc1D+ra*cos(thcirc),ycD+ra*sin(thcirc),'k','LineWidth',2);
-% plot(xc2D+ra*cos(thcirc),ycD+ra*sin(thcirc),'k','LineWidth',2);
+
 
 fill(xc1U+ra*cos(thcirc),ycU+ra*sin(thcirc),[0 0 0]+0.9,'LineWidth',2);
 fill(xc2U+ra*cos(thcirc),ycU+ra*sin(thcirc),[0 0 0]+0.9,'LineWidth',2);
 fill(xc1D+ra*cos(thcirc),ycD+ra*sin(thcirc),[0 0 0]+0.9,'LineWidth',2);
 fill(xc2D+ra*cos(thcirc),ycD+ra*sin(thcirc),[0 0 0]+0.9,'LineWidth',2);
 
-% plot([xc1U xc2U xc1D xc2D],[ycU ycU ycD ycD],'.k');
 
-% plot([xc1U xc2U],[0 0]+ycU,'k');
-% plot([xc1D xc2D],[0 0]+ycD,'k');
 
 sw1 = 0.7;
 hw1 = 3;
@@ -565,10 +550,7 @@ la = 8;
 di = 4;
 
 arrowproperties2d = {'StemWidth',sw1,'HeadWidth',hw1,'HeadLength',hl1,'HeadNode',hn1};
-% arrow2d(xc1U,ycU-ra-di,xc1U,ycU-ra-di+la,'color',[0 0 0]+0.5,arrowproperties2d{:});
-% arrow2d(xc2U,ycU+ra+di,xc2U,ycU+ra+di-la,'color',[0 0 0]+0.5,arrowproperties2d{:});
-% arrow2d(xc1D-ra-di,ycD,xc1D-ra-di+la,ycD,'color',[0 0 0]+0.5,arrowproperties2d{:});
-% arrow2d(xc2D+ra+di,ycD,xc2D+ra+di-la,ycD,'color',[0 0 0]+0.5,arrowproperties2d{:});
+
 
 arrow2d(xc1U,ycU-ra-di,xc1U,ycU-ra-di-la,'color',[0 0 0]+0.5,arrowproperties2d{:});
 arrow2d(xc2U,ycU+ra+di,xc2U,ycU+ra+di+la,'color',[0 0 0]+0.5,arrowproperties2d{:});
@@ -596,24 +578,14 @@ Ypix_new = Xpix_new*totYpix/totXpix;
 drawnow
 
 
-saveas(hf_diffu,['diffu_norm' string_kind '_numstd' num2str(num_stdev)],'fig');
+%saveas(hf_diffu,['diffu_norm' string_kind '_numstd' num2str(num_stdev)],'fig');
 
 
 
 
-% % figure(hf_diffu);
-% % fm = 6;
-% % axes('Position',[260 0 fm*16 0]/totXpix+[0 60 0 fm*13]/totYpix);
-% % 
-% % if exist('inset_640_520.png','file')
-% %     im = imread('inset_640_520.png');
-% %     image(im)
-% % end
-% % axis off
-% % drawnow
 
 return
 
 
-saveas(gcf,'Fig25.eps','epsc')
-saveas(gcf,'Fig25.fig')
+
+
