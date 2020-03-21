@@ -1,9 +1,0 @@
-Files Water.txt, PNP.txt and CPyCl4mM.txt are needed to run PosAutocorrelationFunction.m and get the plots and fits 
-of Figure 2(a) and (b) on the manuscript. The first column of these files contains the particle position (a), while the 
-second has the correspondinf times. A .mat version of these data is also given with the same information.
-
-
-File CPyCl5mM.txt is needed to run PassiveMicrorheologyKramersKronig and get the plots of Figs. 2(c) and (d).
-This file contains the particle position (first column) and the corresponding time (second column).
-
-
