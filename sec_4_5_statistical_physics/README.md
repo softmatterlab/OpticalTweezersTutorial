@@ -7,7 +7,7 @@ This folder contains the codes to analyze the data obtained from the double well
 
 **Kramers transitions and stochastic resonance**
 
-Run [figures_double_well.m](double_well/figures_double_well.m)  to obtain (a) Trajectory of a brownian bead in a bistable optical potential. A particle
+Run [double_well_Fig27.m](double_well/programs/double_well_Fig27.m) in subfolder [double_well/programs/](double_well/programs/) to obtain (a) Trajectory of a brownian bead in a bistable optical potential. A particle
 with radius rp = 0.48 um in an aqueous solution at temperature T = 22C is subjected to the bistable
 potential generated with two optical tweezers with orthogonal polarizations separated by a distance
 d = 0.8 um along x- direction, whereas the separation between the equilibrium points, A and B, in
