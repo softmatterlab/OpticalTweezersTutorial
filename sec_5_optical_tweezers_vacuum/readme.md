@@ -37,7 +37,20 @@ gases from the filament of the RGA. Reproduced from Ref. [467].
 
 ![alt text](/sec_5_optical_tweezers_vacuum/gas_composition/figures/pressure.jpg "Gas composition")
 ***
+ 
+ 
+ **Particle loading**
+ 
+Run [particle_loading_Fig40.m](particle_loading/programs/particle_loading_Fig40.m) Particle loading with a nebulizer. The particle is loaded by spraying a solution
+of nanoparticles through a nozzle which is placed above the focus. (a) Positioning of the
+nozzle in the vacuum chamber. (b) Nozzle to funnel the falling particles towards the focus
+of the trapping laser. (c) Histogram of brightness observed with a camera from the side.
+The inset shows the brightness over a wider range. Reproduced from J. Gieseler, “Dynamics of optically levitated nanoparticles in high vacuum,” Ph.D. thesis, Universitat Politècnica de
+Catalunya (2014). (a,b) and
+adapted from F. Ricci, “Levitodynamics toward force nano-sensors in vacuum,” Ph.D. thesis, Universitat Politècnica de Catalunya
+(2019).
 
+![alt text](particle_loading/figures/particle_loading.jpg "Particle loading")
 
  
 This repository includes the analysis and plot codes for the the article **Optical Tweezers: A comprehennsive Tutorial  from Calibration to Applications** by *Jan Gieseler, Juan Ruben Gomez-Solano, [Alessandro Magazù](http://softmatterlab.org/people/alessandro-magazzu/),  Isaac Pérez Castillo [Laura Pérez García](http://softmatterlab.org/people/laura-perez-garcia/), Martha Gironella-Torrent, Xavier Viader-Godoy, Felix Ritort, Giusceppe Pesce, Alejandro V. Arzola, Karen Volke-Sepulveda and [Giovanni Volpe](http://softmatterlab.org/people/giovanni-volpe/)*. 
