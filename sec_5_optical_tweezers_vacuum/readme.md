@@ -4,21 +4,25 @@ This folder contains the codes to analyze the data obtained from the experiments
 
 
 
-**Mass Calibration**
+**From overdamped to underdamped**
 
 
-(a) Quadrature component
-of particle oscillation in response to a driving voltage, demodulated in a bandwidth of 7 Hz.
-The high-voltage (HV) discharge is turned on at t = 0. The oscillation amplitude changes in
-discrete steps while the high voltage is on. (b) Preparation of charge state. The high voltage
-is turned off at t = 0, while the particle carries a net charge of 1e. The charge stays constant
-over the remainder of the measurement. 
+Run [overdamped_to_uderdamped_Fig35.m](overdamped_to_underdamped/programs/overdamped_to_uderdamped_Fig35.m)
+We plot the measured PSD for the z-axis
+motion, normalized to the damping rate 
+γ_0/(2π), at three different pressures for a levitated
+particle (radius a = 68 nm, laser power P≋150mW) that is overdamped (blue line),
+critically damped (orange line), and underdamped (green line). The dashed black lines are
+least-square fits to equation (164) (1000 mbar) or equation (163) (60 and 2.5 mbar). The
+colored vertical solid lines indicate the roll-off frequencies 
+Ω_c/2π. For the time traces at
+60 and 2.5 mbar, the spectra contain leakage signals from the other oscillation axes above
+100 kHz. Data from E. Hebestreit, “Thermal properties of levitated nanoparticles,” Ph.D. thesis, ETH Zurich (2017).
+
+![alt text](/sec_5_optical_tweezers_vacuum/overdamped_to_underdamped/figures/Fig35.jpg 
+"overdamped to underdamped ")
 
 
-
-
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_5_optical_tweezers_vacuum_jan/figures/quadrature_charge_state.jpg 
-"Quadrature and charge state ")
 
 
 
