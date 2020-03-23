@@ -24,10 +24,18 @@ colored vertical solid lines indicate the roll-off frequencies
 
 
 
+**Gas composition**
 
+Run [composition_gas_Fig39.m](sec_5_optical_tweezers_vacuum/gas_composition/programs/Fig39.m)Gas composition in a vaccum chamber. Gas composition in the vacuum chamber
+at pressures below 10􀀀3 mbar plotted over time. The solid lines show the partial pressures of
+different gas species measured with a residual gas analyzer (RGA). The sum of all the partial
+pressures yields the total pressure at the RGA (dashed line). Due to the configuration of the
+vacuum system and the reduced pumping speed at the RGA, the pressure at the RGA deviates
+from the pressure in the main vacuum chamber (dash-dot line). The initial rise in partial
+pressures after turning on the RGA is attributed to the warm-up process and desorption of
+gases from the filament of the RGA. Reproduced from Ref. [467].
 
-
-
+![alt text](/sec_5_optical_tweezers_vacuum/gas_composition/figures/pressure.jpg "Gas composition")
 ***
 
 
