@@ -31,7 +31,7 @@ The data file is contained in tyhe following link: https://drive.google.com/open
 
 
 
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_5_statistical_physics/double_well/figures/double_well.jpg
+![alt text](sec_4_5_statistical_physics/double_well/figures/double_well.jpg
 "Double- well potential")
 
 **Fluctuation-dissipation relation for non-equilibrium steady states**
@@ -49,8 +49,9 @@ corrective term, [C(0) -C(t ) - B(t )]/(k<sub>B</sub>T ) (solid line).
 
 The data file is contained in the data file [trajNESS_data.txt](Fluctuation_dissipation_relation_for_NESS/data/trajNESS_data.txt).
 
+![alt text](/sec_4_5_statistical_physics/Fluctuation_dissipation_relation_for_NESS/figures/fluctuation_dissipation_NESS.jpg "Fluctuation-dissipation")
 
-%%Stochastic thermodynamics%%
+**Stochastic thermodynamics**
 
 This program computes the work (Work), the heat (Heat), the
 variation of the potential energy (Energy) and the total entropy production (totEntropy), 
@@ -67,8 +68,7 @@ and standars deviations. Finally, the integral fluctuation theorem is
 checked for the total entropy production at different measurement times
 tau.
 
-
-![alt text](sec_4_5_statistical_physics/first_law_stochastic_thermodynamics/figures/stochastic_thermodynamics.jpg.jpg
+![alt text](/sec_4_5_statistical_physics/first_law_stochastic_thermodynamics/figures/stochastic_thermodynamics.jpg
 "Stochastic thermodynamics")
 
 
