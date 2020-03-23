@@ -31,7 +31,7 @@ The data file is contained in tyhe following link: https://drive.google.com/open
 
 
 
-![alt text](sec_4_5_statistical_physics/double_well/figures/double_well.jpg
+![alt text](/sec_4_5_statistical_physics/double_well/figures/double_well.jpg
 "Double- well potential")
 
 **Fluctuation-dissipation relation for non-equilibrium steady states**
@@ -52,6 +52,24 @@ The data file is contained in the data file [trajNESS_data.txt](Fluctuation_diss
 ![alt text](/sec_4_5_statistical_physics/Fluctuation_dissipation_relation_for_NESS/figures/fluctuation_dissipation_NESS.jpg "Fluctuation-dissipation")
 
 **Stochastic thermodynamics**
+
+
+Run [stochastic_thermodynamics_Fig29.m](first_law_stochastic_thermodynamics/programs/stochastic_thermodynamics_Fig29.m)  in subfolder [first_law_stochastic_thermodynamics/programs/](first_law_stochastic_thermodynamics/programs/)  (a) Upper panel: Portion of the
+trajectory x(t) (blue solid line) of a colloidal bead (2a = 2:73 um), dragged by moving
+an optical tweezers (k = 1:15 pN μm^-1, v = 0:520 μms^-1) through water (T = 295K).
+The dashed line represents the time evolution of the minimum of the trapping potential:
+λ (t) = vt + λ(0). Lower panel: time evolution of λ(t) - x(t). (b) Dependence of the mean
+work <W_τ (ο)>, mean heat dissipated into the aqueous medium  <Q_τ (□)>, and mean variation
+of potential energy <ΔU_τ (◇)>,as a function of the measurement time τ. The solid line
+represents the values given by equation (135). (c) Dependence of the standard deviation
+of the work (ο), of the heat dissipated into the aqueous medium (□), and of the variation
+of potential energy (◇) as a function of τ. The solid line represents the values given by the
+square roots of equation (136). (d) Distribution of the work (in units of kBT) for different
+values of the measurement time τ. From inner to outer curves: τ= 0:034 s, 0:069 s, 0:103 s,
+0:138 s, 0:172 s, and 0:207 s. (e) Distribution of the dissipated heat (in units of kBT) for
+different values τ. Same color code as in (d). Inset: verification of the integral fluctuation
+theorem (141) for the total entropy production. (f) Distribution of the variation of potential
+energy (in units of kBT) for different values τ. Same color code as in (d).
 
 This program computes the work (Work), the heat (Heat), the
 variation of the potential energy (Energy) and the total entropy production (totEntropy), 
