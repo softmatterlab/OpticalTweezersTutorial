@@ -50,8 +50,26 @@ corrective term, [C(0) -C(t ) - B(t )]/(k<sub>B</sub>T ) (solid line).
 The data file is contained in the data file [trajNESS_data.txt](Fluctuation_dissipation_relation_for_NESS/data/trajNESS_data.txt).
 
 
-![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_5_statistical_physics/Fluctuation_dissipation_relation_for_NESS/figures/fluctuation_dissipation_NESS.jpg
-"Fluctuation dissipation NESS")
+%%Stochastic thermodynamics%%
+
+This program computes the work (Work), the heat (Heat), the
+variation of the potential energy (Energy) and the total entropy production (totEntropy), 
+measured over a time interval of duration tau, for a spherical particle (radius r) driven 
+in water (viscosity gamma, temperature T0) by an optical trap (stiffness k) moving in  
+a straightline at constant velocity v. The stochastic thermodynamics quantities are determined  
+from the time (t) evolution of the particle position (x) and
+the time evolution of the position of the optical trap (xtrap). 
+To this end, first the numerical values of k and v are determined from x and xtrap,
+respectively, and then they are used as input parameters within the formalism of Stochastic
+Thermodynamics. The probability density functions of the stochastic
+thermodynamic quantities are also computed, as well as their mean values
+and standars deviations. Finally, the integral fluctuation theorem is
+checked for the total entropy production at different measurement times
+tau.
+
+
+![alt text](sec_4_5_statistical_physics/first_law_stochastic_thermodynamics/figures/stochastic_thermodynamics.jpg.jpg
+"Stochastic thermodynamics")
 
 
 
