@@ -27,7 +27,7 @@ colored vertical solid lines indicate the roll-off frequencies
 **Gas composition**
 
 Run [composition_gas_Fig39.m](gas_composition/programs/composition_gas_Fig39.m)Gas composition in a vaccum chamber. Gas composition in the vacuum chamber
-at pressures below 10􀀀3 mbar plotted over time. The solid lines show the partial pressures of
+at pressures below 10^3 mbar plotted over time. The solid lines show the partial pressures of
 different gas species measured with a residual gas analyzer (RGA). The sum of all the partial
 pressures yields the total pressure at the RGA (dashed line). Due to the configuration of the
 vacuum system and the reduced pumping speed at the RGA, the pressure at the RGA deviates
@@ -51,6 +51,52 @@ adapted from F. Ricci, “Levitodynamics toward force nano-sensors in vacuum,”
 (2019).
 
 ![alt text](particle_loading/figures/particle_loading.jpg "Particle loading")
+
+**Detector calibration**
+
+Run [detector_calibration_Fig42.m)](detector_calibration/programs/detector_calibration_Fig42.m) to obtain Sideband thermometry. (a-b) Motional sideband asymmetry measured with
+heterodyne measurement. The frequency difference  f is measured relative to the (absolute)
+local oscillator shift of 1MHz. The grey solid lines show the measurement noise floor,
+limited by technical laser noise. The vertical dashed lines indicate the integration bandwidth
+(see equation 188). (c) Mean occupation number as a function of feedback gain. The red
+diamonds are obtained by integrating the red sideband of the heterodyne spectrum. The
+black circles show the mean occupation number extracted according to equation (189). The
+black solid line corresponds to a parameter-free model (see also section 5.7.1). Figures
+adapted from F. Tebbenjohanns, M. Frimmer, V. Jain, D.Windey, and L. Novotny, “Motional sideband asymmetry of a nanoparticle
+optically levitated in free space,” arXiv preprint arXiv:1908.05079 (2019).].
+![alt text](detector_calibration/figures/detector_calibration.jpg "Detector calibration")
+
+
+**Sideband thermometry**
+
+Run [sideband_thermometry_Fig43.m](sideband_thermometry/programs/sideband_thermometry_Fig42.m) (a-b) Motional sideband asymmetry measured with
+heterodyne measurement. The frequency difference  f is measured relative to the (absolute)
+local oscillator shift of 1MHz. The grey solid lines show the measurement noise floor,
+limited by technical laser noise. The vertical dashed lines indicate the integration bandwidth
+(see equation 188). (c) Mean occupation number as a function of feedback gain. The red
+diamonds are obtained by integrating the red sideband of the heterodyne spectrum. The
+black circles show the mean occupation number extracted according to equation (189). The
+black solid line corresponds to a parameter-free model (see also section 5.7.1). Figures
+adapted from F. Tebbenjohanns, M. Frimmer, V. Jain, D.Windey, and L. Novotny, “Motional sideband asymmetry of a nanoparticle
+optically levitated in free space,” arXiv preprint arXiv:1908.05079 (2019).
+
+![alt text](sideband_thermometry/figures/sideband_thermometry.jpg "sideband thermometry")
+
+**Charge calibration**
+
+Run [charge_calibration_Fig44.m](charge_calibration/programs/charge_calibration_Fig44.m) to obtain (a) Power spectral density of the motion along the optical
+axis of a charge-carrying particle at a pressure of 1:9 mbar in the presence of a drive tone
+fd = w_d/2π applied to the capacitor. The solid line is a Lorentzian function fit to the
+data. (b) Quadrature component of particle oscillation in response to a driving voltage,
+demodulated in a bandwidth of 7 Hz. The high-voltage discharge is turned on at t = 0. The
+oscillation amplitude changes in discrete steps while the high voltage is on. (c) Preparation
+of charge state. The high voltage is turned off at t = 0, while the particle carries a net charge
+of 1e. The charge stays constant over the remainder of the measurement. Figure adapted
+from M. Frimmer, K. Luszcz, S. Ferreiro, V. Jain, E. Hebestreit, and L. Novotny, “Controlling the net charge on a
+nanoparticle optically levitated in vacuum,” Phys. Rev. A 95, 061801 (2017).
+
+![alt text](charge_calibration/figures/PSD_quadrature.jpg "charge calibration")
+
 
  
 This repository includes the analysis and plot codes for the the article **Optical Tweezers: A comprehennsive Tutorial  from Calibration to Applications** by *Jan Gieseler, Juan Ruben Gomez-Solano, [Alessandro Magazù](http://softmatterlab.org/people/alessandro-magazzu/),  Isaac Pérez Castillo [Laura Pérez García](http://softmatterlab.org/people/laura-perez-garcia/), Martha Gironella-Torrent, Xavier Viader-Godoy, Felix Ritort, Giusceppe Pesce, Alejandro V. Arzola, Karen Volke-Sepulveda and [Giovanni Volpe](http://softmatterlab.org/people/giovanni-volpe/)*. 
