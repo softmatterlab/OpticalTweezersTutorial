@@ -98,6 +98,22 @@ nanoparticle optically levitated in vacuum,” Phys. Rev. A 95, 061801 (2017).
 ![alt text](charge_calibration/figures/PSD_quadrature.jpg "charge calibration")
 
 
+**Mass calibration**
+
+Run [mass_calibration_Fig45.m](mass_calibration/programs/mass_calibration_Fig45.m) Power spectral density Sv(w) of a thermally and harmonically
+driven resonator at P = 50 mbar. The broad peak centered at 
+Ω_0/2π = 125 kHz corresponds
+to the thermally driven state. We fit it with a Lorentzian function (orange) to extract S^th
+_vv (ω_d)
+together with G/(2π) = 31.8 kHz and the corresponding uncertainties. The narrowband
+peak at ! = 135 kHz, also shown in detail in the inset, depicts the electrical excitation from
+which we retrieve S^th
+_vv (ω_d). Gray data points at the bottom of the plot is the measurement
+which we retrieve Sd
+noise, which is ∼ 40 dB below the particle’s signal. Figure adapted fromF. Ricci, “Levitodynamics toward force nano-sensors in vacuum,” Ph.D. thesis, Universitat Politècnica de Catalunya (2019).
+
+![alt text](mass_calibration/figures/mass_calibration.jpg "mass_calibration")
+
  
 This repository includes the analysis and plot codes for the the article **Optical Tweezers: A comprehennsive Tutorial  from Calibration to Applications** by *Jan Gieseler, Juan Ruben Gomez-Solano, [Alessandro Magazù](http://softmatterlab.org/people/alessandro-magazzu/),  Isaac Pérez Castillo [Laura Pérez García](http://softmatterlab.org/people/laura-perez-garcia/), Martha Gironella-Torrent, Xavier Viader-Godoy, Felix Ritort, Giusceppe Pesce, Alejandro V. Arzola, Karen Volke-Sepulveda and [Giovanni Volpe](http://softmatterlab.org/people/giovanni-volpe/)*. 
  
