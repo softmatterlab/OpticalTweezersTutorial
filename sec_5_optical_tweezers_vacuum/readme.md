@@ -129,5 +129,29 @@ temperature. Adapted from E. Hebestreit, R. Reimann, M. Frimmer, and L. Novotny,
 
 ![alt text](particle_heating/figures/particle_heating_Fig46.jpg " Particle heating")
 
+
+**Feedback cooling**
+
+Run [feedback_cooling_Fig47.m](feedback_cooling/programs/feedback_cooling_Fig47.m) (a) Single-sided power spectral densities S^ol_
+yy of the motion
+of the nanoparticle measured by the out-of-loop detector for different feedback damping
+rates 
+fb. The solid lines are Lorentzian fits to the data. The black data points denote the
+measured shotnoise level on the out-of-loop detector. (b) Mode temperature Ty derived
+from the out-of-loop signal as a function of feedback gain 
+fb. The black circles denote
+the measured values at a pressure of 1.4 x10^-8 mbar. Photon shot noise is shown as black
+data points. In contrast to (a), for a large feedback gain the measured signal drops below
+the noise floor. (c) Power spectral densities measured by the in-loop detector for the same
+settings as in (a). (d) Steady state under parametric PLL feedback cooling. Mean occupation
+number along the three principal axes (x; y; z) as a function of gas pressure measured under
+constant feedback cooling. At low enough pressures, photon recoil becomes the main source
+of heating and therefore the occupation number remains constant. Adapted from F. Tebbenjohanns, M. Frimmer, A. Militaru, V. Jain, and L. Novotny, “Cold damping of an optically levitated
+nanoparticle to microkelvin temperatures,” Phys. Rev. Lett. 122, 223601 (2019).
+(a-b) and from V. Jain, J. Gieseler, C. Moritz, C. Dellago, R. Quidant, and L. Novotny, “Direct measurement of photon recoil from
+a levitated nanoparticle,” Phys. Rev. Lett. 116, 243601 (2016).
+
+![alt text](feedback_cooling/figures/feedback_cooling.jpg "Feedback cooling")
+
 This repository includes the analysis and plot codes for the the article **Optical Tweezers: A comprehennsive Tutorial  from Calibration to Applications** by *Jan Gieseler, Juan Ruben Gomez-Solano, [Alessandro Magazù](http://softmatterlab.org/people/alessandro-magazzu/),  Isaac Pérez Castillo [Laura Pérez García](http://softmatterlab.org/people/laura-perez-garcia/), Martha Gironella-Torrent, Xavier Viader-Godoy, Felix Ritort, Giusceppe Pesce, Alejandro V. Arzola, Karen Volke-Sepulveda and [Giovanni Volpe](http://softmatterlab.org/people/giovanni-volpe/)*. 
  
