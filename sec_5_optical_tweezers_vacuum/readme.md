@@ -114,6 +114,20 @@ noise, which is ∼ 40 dB below the particle’s signal. Figure adapted fromF. R
 
 ![alt text](mass_calibration/figures/mass_calibration.jpg "mass_calibration")
 
- 
+**Particle heating**
+
+Run [particle_heating_fig_46.m](particle_heating/programs/particle_heating_fig_46.m)(a) Heating rates as a function of pressure extracted from
+relaxation measurements without additional heating of the internal temperature (blue) and
+with heating by a CO2 laser intensity of 0:47 Wm􀀀2 (orange). The dashed lines are linear
+fits to the data points. Error bars are smaller than the marker size. (b) Heating rates at
+different intensities of the CO2 laser measured at a pressure of 1  10􀀀5 mbar. The error bars
+indicate the standard deviation of the measurements. (c) Calculated temperature dependence
+of oscillation frequency. When the particle is heated with the CO2 laser, its oscillation
+frequency increases due to changes in the particle’s material properties. This leads to a
+nearly linear relation between relative frequency change and increase of the internal particle
+temperature. Adapted from E. Hebestreit, R. Reimann, M. Frimmer, and L. Novotny, “Measuring the internal temperature of a levitated nanoparticle in high vacuum,” Phys. Rev. A 97, 043803 (2018).
+
+![alt text](particle_heating/figures/particle_heating_Fig46.jpg " Particle heating")
+
 This repository includes the analysis and plot codes for the the article **Optical Tweezers: A comprehennsive Tutorial  from Calibration to Applications** by *Jan Gieseler, Juan Ruben Gomez-Solano, [Alessandro Magazù](http://softmatterlab.org/people/alessandro-magazzu/),  Isaac Pérez Castillo [Laura Pérez García](http://softmatterlab.org/people/laura-perez-garcia/), Martha Gironella-Torrent, Xavier Viader-Godoy, Felix Ritort, Giusceppe Pesce, Alejandro V. Arzola, Karen Volke-Sepulveda and [Giovanni Volpe](http://softmatterlab.org/people/giovanni-volpe/)*. 
  
