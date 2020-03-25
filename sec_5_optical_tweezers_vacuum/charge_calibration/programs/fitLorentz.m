@@ -1,4 +1,4 @@
-function [estimates, sse, model] = fitLorentzErik(xdata, ydata, start_point)
+function [estimates, sse, model] = fitLorentz(xdata, ydata, start_point)
 % Call fminsearch with a starting point.
 
 % start_point = rand(1, 2);

@@ -131,7 +131,7 @@ for j=0:19
     %M = csvread([filenm,num2str(j),'.tt']);
     m = (csvread([filenm,'.tt']))';    % read in data
     %cd ..
-    [PSDm, absFFTout, FFTm, fm]=MartinFFTnormalized(m, fsample);
+    [PSDm, absFFTout, FFTm, fm]=FFTnormalized(m, fsample);
     PSDall = PSDall+PSDm;
     var_m(j+1,:) = var(m);
 end;
@@ -167,7 +167,7 @@ dataToFit = dataToFit(fitRange(1)+1:fitRange(2),1);
 
 startingGuess = [1E14 , 1000, 45000, 0];
 %[estimates, sse, model] = fitLorentz(fm', PSDmean(:,2), startingGuess);
-[estimates, sse, model] = fitLorentzErik((fitRange(1)+1:fitRange(2))'*(fm(2)-fm(1)), dataToFit, startingGuess);
+[estimates, sse, model] = fitLorentz((fitRange(1)+1:fitRange(2))'*(fm(2)-fm(1)), dataToFit, startingGuess);
 estimates1 = estimates;
 [sse, FittedCurve] = model(estimates);
 

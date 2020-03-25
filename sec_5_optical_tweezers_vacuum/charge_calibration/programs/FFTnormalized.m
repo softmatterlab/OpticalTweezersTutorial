@@ -1,4 +1,4 @@
- function [psd, absFFTout, getfft, f]=MartinFFTnormalized(signal, fsample )
+ function [psd, absFFTout, getfft, f]=FFTnormalized(signal, fsample )
 
 NFFT = 2^nextpow2(size(signal,1)); % Next power of 2 from length of signal
 getfft = fft(signal,NFFT)/size(signal,1);
