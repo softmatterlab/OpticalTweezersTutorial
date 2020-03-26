@@ -14,6 +14,8 @@ $1=counter $2=trap distance(nm) $3=time (s) $4=force(pN)
 The files have been sorted in order to have the trap distance order toward
 increasing values.
 
+The program will run the correspondent analysis and  save the output in folder **[results](results/)**, this is useful if you want to use another program for doing th plot. 
+
 
 ![alt text](figures/work_distributions.jpg)
 
