@@ -1,2 +1,14 @@
+<<<<<<< HEAD
 
 .DS_Store
+=======
+*.DS_Store
+
+
+sec_4_5_statistical_physics/double_well/results/MapafuerzasDoblePozo.mat
+sec_4_5_statistical_physics/double_well/results/PerfilPotencialFuerzaDoblePozo.mat
+sec_4_5_statistical_physics/double_well/results/CriticalPoints.mat
+sec_5_optical_tweezers_vacuum/temporal/_DS_Store
+sec_5_optical_tweezers_vacuum/temporal/_DS_Store
+*._DS_Store
+>>>>>>> bring_ales_last
