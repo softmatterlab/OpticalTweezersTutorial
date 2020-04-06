@@ -20,7 +20,7 @@ potential along the critical points. FORMA identifies two wells (full circles in
 (empty circle in B ) points, and measures their stiffness (dashed lines) along x-y-directions in (a). The
 separation between equilibrium points along x-direction is dAB = 0.71 um. Probability per unit time
 of the residence time in a bistable potential. (d) Probability for well A and (b) probability for well B, for
-a brownian particle in the bistable optical potential shown in Fig. 22. Red curves show the expoential
+a brownian particle in the bistable optical potential shown in Fig. 22. Red curves show the exponential
 probability function defined by Eq. (39), with the mean residence time estimated from the experimental
 data: τA = 3.03 s and τB = 0.67 s. The probability in wells A and B were estimated with 900 and
 1000 crossing events correspondingly.
