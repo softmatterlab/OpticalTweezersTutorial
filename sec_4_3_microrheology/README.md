@@ -14,7 +14,7 @@ fit. Inset: semilog representration of the position autocorrelation function for
 cases, normalized by their corresponding variances.
 
 the second part of this program calculates the velocity autocorrelation of a particle trapped by optical tweezers in a 
-simple fluid and determine viscosity from decay time. The files used for this script are [Water.txt](data/PassiveMicrorheologyData/Water.txt),  [PNP.txt](data/PassiveMicrorheologyData/PNP.txt) and  [CPyCl4mM.txt](data/PassiveMicrorheologyData/CPyCl4mM.txt)contained in **[PassiveMicrorheologyData](data/PassiveMicrorheologyData/)**. The first column of these files contains the particle position (a), while the second has the corresponding times. 
+simple fluid and determines viscosity from decay time. The files used for this script are [Water.txt](data/PassiveMicrorheologyData/Water.txt),  [PNP.txt](data/PassiveMicrorheologyData/PNP.txt) and  [CPyCl4mM.txt](data/PassiveMicrorheologyData/CPyCl4mM.txt) contained in **[PassiveMicrorheologyData](data/PassiveMicrorheologyData/)**. The first column of these files contains the particle position (a), while the second has the corresponding times. 
 
 
 
@@ -42,7 +42,7 @@ A file containing the coordinates of the trapped article and the corresponding t
 
 **Active microrheology**
 
-Run [Determination_of_Storage_and_Loss_Moduli.m](programs/Determination_of_Storage_and_Loss_Moduli_Fig23.m) to obtain (a)Power spectral density of the particle position, driven at different frequencies by a sinusoidal motion of the optical trap. The peaks are located at the imposed frequencies fd. Inset: exemplary time evolution of the perturbative force at fd = 1 Hz (thick solid line) and resulting particle position (thin solid line) (b) Numerical values of the storage (red circles) and loss (blue saures) modulus. The dotted and dashed lines depict the corresponding curves shown in  the previous figure obtained
+Run [Determination_of_Storage_and_Loss_Moduli.m](programs/Determination_of_Storage_and_Loss_Moduli_Fig23.m) to obtain (a) Power spectral density of the particle position, driven at different frequencies by a sinusoidal motion of the optical trap. The peaks are located at the imposed frequencies fd. Inset: exemplary time evolution of the perturbative force at fd = 1 Hz (thick solid line) and resulting particle position (thin solid line) (b) Numerical values of the storage (red circles) and loss (blue saures) modulus. The dotted and dashed lines depict the corresponding curves shown in  the previous figure obtained
 by Passive Microrheology.
 
 
