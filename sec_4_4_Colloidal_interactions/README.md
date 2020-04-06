@@ -7,7 +7,7 @@ This folder contains the analysis for the data shown in section 4.4 Colloidal in
 
 **Potential analysis**
 
-Run [Fig24.m](Potential_analyisis/Fig24.m) in folder [Potential_analysis](Potential_analyisis/) to obtain (a)Time evolution of the probability density distribution of the inter-particles
+Run [Fig24.m](Potential_analyisis/Fig24.m) in folder [Potential_analysis](Potential_analyisis/) to obtain time evolution of the probability density distribution of the inter-particles
 distance r (t) obtained from 400 different trajectories after the optical traps are switched off at
 t = 0 ms for decreasing values of ΔT: (a) ΔT = 456  ± 2mK, (b) 200 ± 2mK, (c) 163 ± 2mK,
 and (d) 108 ±  2mK. The solid lines indicate representative individual trajectories while the
