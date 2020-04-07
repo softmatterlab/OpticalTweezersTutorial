@@ -61,8 +61,8 @@ opt=2 : ACF, non-linear fit
 
 opt=3 :  MSD, non-linear fit
 
-More information about wlsice method can be found [here](https://www.nature.com/articles/s41598-018-24983-y):
-
+ Follow [this link](https://www.nature.com/articles/s41598-018-24983-y). 
+ to the the article by  Fogelmark, K., Lomholt, M.A., Irbäck, A. et al. Fitting a function to time-dependent ensemble averaged data. Sci Rep 8, 6984 (2018). About the wlsice method. 
 [//]: # (| Method        | Input variables           | Output variables |
 | ------------- |-------------| -------------|
 |Drift method  | ... |  ...|
