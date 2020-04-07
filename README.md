@@ -21,5 +21,5 @@ The number at the beggining of the folder name indicates the section correspondi
 [Section 4.5 Statistical physics](sec_4_5_statistical_physics/).
 
   
-Finally in [Section 5](sec_5_optical_tweezers_vacuum/) you will find the code to analuyze the data for trapping in vacuum. 
+Finally in [Section 5](sec_5_optical_tweezers_vacuum/) you will find the code to analyze the data for trapping in vacuum. 
  
