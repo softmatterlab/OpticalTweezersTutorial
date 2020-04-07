@@ -6,5 +6,5 @@ This repository includes the analysis and plot codes for the the article **Optic
 The number at the beggining of the folder name indicates the section corresponding to the material.
  Each section includes a guide to follow the content.
  
-  [Calibration](# Section 3: Calibration)
+  [Calibration](# section-3-calibration)
  
