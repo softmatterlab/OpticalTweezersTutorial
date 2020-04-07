@@ -6,17 +6,20 @@ This repository includes the analysis and plot codes for the the article **Optic
 The number at the beggining of the folder name indicates the section corresponding to the material.
  Each section includes a guide to follow the content.
  
-  [Calibration](sec_3_calibration/)
+ First in [Section 3. Calibration](sec_3_calibration/) you can find the codes to obtain the stiffness and difussion coefficient from a time series with the position of a trapped particle.
   
-  [Sec 4.1](sec_4_1_single_molecule_mechanics/)
+ Then in the following folders you will find the necessary codes for the  different applications of optical tweezers. Correspondingly:
+ 
+[Section 4.1 Single-molecule mechanics](sec_4_1_single_molecule_mechanics/)
+
+[Section 4.2 Single-cell mechanics](sec_4_2_single_cell_mechanics/)
+
+[Section 4.3 Microrheology](sec_4_3_microrheology/)
+
+[Section 4.4 Colloidal interactions](sec_4_4_Colloidal_interactions/) and, 
+
+[Section 4.5 Statistical physics](sec_4_5_statistical_physics/).
+
   
-  [Sec 4.2](sec_4_2_single_cell_mechanics/)
-  
-  [Sec 4.3](sec_4_3_microrheology/)
-  
-  [Sec 4.4](sec_4_4_Colloidal_interactions/)
-  
-  [Sec 4.5](sec_4_5_statistical_physics/)
-  
-  [Sec 5](sec_5_optical_tweezers_vacuum/)
+Finally in [Section 5](sec_5_optical_tweezers_vacuum/) you will find the code to analuyze the data for trapping in vacuum. 
  
