@@ -4,7 +4,7 @@ This folder contains the codes to analyze the data obtained from the experiments
 
 
 
-## From overdamped to underdamped**
+## From overdamped to underdamped
 
 
 Run [overdamped_to_uderdamped_Fig35.m](overdamped_to_underdamped/programs/overdamped_to_uderdamped_Fig35.m)
@@ -24,7 +24,7 @@ colored vertical solid lines indicate the roll-off frequencies
 
 
 
-## Gas composition**
+## Gas composition
 
 Run [composition_gas_Fig39.m](gas_composition/programs/composition_gas_Fig39.m) Gas composition in a vacuum chamber. Gas composition in the vacuum chamber
 at pressures below 10^3 mbar plotted over time. The solid lines show the partial pressures of
@@ -39,7 +39,7 @@ gases from the filament of the RGA. Reproduced from Ref. [467].
 ***
  
  
-## Particle loading**
+## Particle loading
  
 Run [particle_loading_Fig40.m](particle_loading/programs/particle_loading_Fig40.m) Particle loading with a nebulizer. The particle is loaded by spraying a solution
 of nanoparticles through a nozzle which is placed above the focus. (a) Positioning of the
@@ -62,7 +62,7 @@ figure in the text.
 ![alt text](detector_calibration/figures/detector_calibration.jpg "Detector calibration")
 
 
-## Sideband thermometry**
+## Sideband thermometry
 
 Run [sideband_thermometry_Fig43.m](sideband_thermometry/programs/sideband_thermometry_Fig42.m) (a-b) Motional sideband asymmetry measured with
 heterodyne measurement. The frequency difference Δf is measured relative to the (absolute)
@@ -83,7 +83,7 @@ Felix Tebbenjohanns, Martin Frimmer, Vijay Jain, Dominik Windey, and Lukas Novot
  – Published 8 January 2020
  
 
-## Charge calibration**
+## Charge calibration
 
 Run [charge_calibration_Fig44.m](charge_calibration/programs/charge_calibration_Fig44.m) to obtain (a) Power spectral density of the motion along the optical
 axis of a charge-carrying particle at a pressure of 1:9 mbar in the presence of a drive tone
@@ -99,7 +99,7 @@ nanoparticle optically levitated in vacuum,” Phys. Rev. A 95, 061801 (2017).
 ![alt text](charge_calibration/figures/PSD_quadrature.jpg "charge calibration")
 
 
-## Mass calibration**
+## Mass calibration
 
 Run [mass_calibration_Fig45.m](mass_calibration/programs/mass_calibration_Fig45.m) Power spectral density Sv(w) of a thermally and harmonically
 driven resonator at P = 50 mbar. The broad peak centered at 
@@ -115,7 +115,7 @@ noise, which is ∼ 40 dB below the particle’s signal. Figure adapted from F. 
 
 ![alt text](mass_calibration/figures/mass_calibration.jpg "mass_calibration")
 
-## Particle heating**
+## Particle heating
 
 Run [particle_heating_fig_46.m](particle_heating/programs/particle_heating_fig_46.m)(a) Heating rates as a function of pressure extracted from
 relaxation measurements without additional heating of the internal temperature (blue) and
@@ -131,7 +131,7 @@ temperature. Adapted from E. Hebestreit, R. Reimann, M. Frimmer, and L. Novotny,
 ![alt text](particle_heating/figures/particle_heating_Fig46.jpg " Particle heating")
 
 
-## Feedback cooling**
+## Feedback cooling
 
 Run [feedback_cooling_Fig47.m](feedback_cooling/programs/feedback_cooling_Fig47.m) (a) Single-sided power spectral densities S^ol_
 yy of the motion
