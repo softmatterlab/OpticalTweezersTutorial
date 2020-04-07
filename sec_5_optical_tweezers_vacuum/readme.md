@@ -4,7 +4,7 @@ This folder contains the codes to analyze the data obtained from the experiments
 
 
 
-**From overdamped to underdamped**
+## From overdamped to underdamped**
 
 
 Run [overdamped_to_uderdamped_Fig35.m](overdamped_to_underdamped/programs/overdamped_to_uderdamped_Fig35.m)
@@ -24,7 +24,7 @@ colored vertical solid lines indicate the roll-off frequencies
 
 
 
-**Gas composition**
+## Gas composition**
 
 Run [composition_gas_Fig39.m](gas_composition/programs/composition_gas_Fig39.m) Gas composition in a vacuum chamber. Gas composition in the vacuum chamber
 at pressures below 10^3 mbar plotted over time. The solid lines show the partial pressures of
@@ -39,7 +39,7 @@ gases from the filament of the RGA. Reproduced from Ref. [467].
 ***
  
  
- **Particle loading**
+## Particle loading**
  
 Run [particle_loading_Fig40.m](particle_loading/programs/particle_loading_Fig40.m) Particle loading with a nebulizer. The particle is loaded by spraying a solution
 of nanoparticles through a nozzle which is placed above the focus. (a) Positioning of the
@@ -52,37 +52,38 @@ adapted from F. Ricci, “Levitodynamics toward force nano-sensors in vacuum,”
 
 ![alt text](particle_loading/figures/particle_loading.jpg "Particle loading")
 
-**Detector calibration**
+## Detector calibration**
 
-Run [detector_calibration_Fig42.m)](detector_calibration/programs/detector_calibration_Fig42.m) to obtain Sideband thermometry. (a-b) Motional sideband asymmetry measured with
-heterodyne measurement. The frequency difference  f is measured relative to the (absolute)
-local oscillator shift of 1MHz. The grey solid lines show the measurement noise floor,
-limited by technical laser noise. The vertical dashed lines indicate the integration bandwidth
-(see equation 188). (c) Mean occupation number as a function of feedback gain. The red
-diamonds are obtained by integrating the red sideband of the heterodyne spectrum. The
-black circles show the mean occupation number extracted according to equation (189). The
-black solid line corresponds to a parameter-free model (see also section 5.7.1). Figures
-adapted from F. Tebbenjohanns, M. Frimmer, V. Jain, D.Windey, and L. Novotny, “Motional sideband asymmetry of a nanoparticle
-optically levitated in free space,” arXiv preprint arXiv:1908.05079 (2019).].
+Run [detector_calibration_Fig42.m)](detector_calibration/programs/detector_calibration_Fig42.m) to obtain S(a) Calibrated z-detector signal
+at 10  1 mbar with electric driving response. The area under that peak corresponds to the
+thermal temperature kBT. (b) Uncalibrated feedback-cooled oscillator signal with electric
+drive for recalibration of the signal. Jan: Add explicit references to each of the panels in this
+figure in the text.
 ![alt text](detector_calibration/figures/detector_calibration.jpg "Detector calibration")
 
 
-**Sideband thermometry**
+## Sideband thermometry**
 
 Run [sideband_thermometry_Fig43.m](sideband_thermometry/programs/sideband_thermometry_Fig42.m) (a-b) Motional sideband asymmetry measured with
-heterodyne measurement. The frequency difference  f is measured relative to the (absolute)
+heterodyne measurement. The frequency difference Δf is measured relative to the (absolute)
 local oscillator shift of 1MHz. The grey solid lines show the measurement noise floor,
 limited by technical laser noise. The vertical dashed lines indicate the integration bandwidth
 (see equation 188). (c) Mean occupation number as a function of feedback gain. The red
 diamonds are obtained by integrating the red sideband of the heterodyne spectrum. The
 black circles show the mean occupation number extracted according to equation (189). The
 black solid line corresponds to a parameter-free model (see also section 5.7.1). Figures
-adapted from F. Tebbenjohanns, M. Frimmer, V. Jain, D.Windey, and L. Novotny, “Motional sideband asymmetry of a nanoparticle
-optically levitated in free space,” arXiv preprint arXiv:1908.05079 (2019).
+adapted from F. Tebbenjohanns, M. Frimmer, V. Jain, D.Windey, and L. Novotny, “Motional Sideband Asymmetry of a Nanoparticle
+Optically Levitated in Free Space, Phys. Rev. Lett. 124, 013603 (2020).
 
 ![alt text](sideband_thermometry/figures/sideband_thermometry.jpg "sideband thermometry")
 
-**Charge calibration**
+
+Motional Sideband Asymmetry of a Nanoparticle Optically Levitated in Free Space
+Felix Tebbenjohanns, Martin Frimmer, Vijay Jain, Dominik Windey, and Lukas Novotny
+ – Published 8 January 2020
+ 
+
+## Charge calibration**
 
 Run [charge_calibration_Fig44.m](charge_calibration/programs/charge_calibration_Fig44.m) to obtain (a) Power spectral density of the motion along the optical
 axis of a charge-carrying particle at a pressure of 1:9 mbar in the presence of a drive tone
@@ -98,7 +99,7 @@ nanoparticle optically levitated in vacuum,” Phys. Rev. A 95, 061801 (2017).
 ![alt text](charge_calibration/figures/PSD_quadrature.jpg "charge calibration")
 
 
-**Mass calibration**
+## Mass calibration**
 
 Run [mass_calibration_Fig45.m](mass_calibration/programs/mass_calibration_Fig45.m) Power spectral density Sv(w) of a thermally and harmonically
 driven resonator at P = 50 mbar. The broad peak centered at 
@@ -106,21 +107,21 @@ driven resonator at P = 50 mbar. The broad peak centered at
 to the thermally driven state. We fit it with a Lorentzian function (orange) to extract S^th
 _vv (ω_d)
 together with G/(2π) = 31.8 kHz and the corresponding uncertainties. The narrowband
-peak at ! = 135 kHz, also shown in detail in the inset, depicts the electrical excitation from
+peak at ω = 135 kHz, also shown in detail in the inset, depicts the electrical excitation from
 which we retrieve S^th
 _vv (ω_d). Gray data points at the bottom of the plot is the measurement
 which we retrieve Sd
-noise, which is ∼ 40 dB below the particle’s signal. Figure adapted fromF. Ricci, “Levitodynamics toward force nano-sensors in vacuum,” Ph.D. thesis, Universitat Politècnica de Catalunya (2019).
+noise, which is ∼ 40 dB below the particle’s signal. Figure adapted from F. Ricci, “Levitodynamics toward force nano-sensors in vacuum,” Ph.D. thesis, Universitat Politècnica de Catalunya (2019).
 
 ![alt text](mass_calibration/figures/mass_calibration.jpg "mass_calibration")
 
-**Particle heating**
+## Particle heating**
 
 Run [particle_heating_fig_46.m](particle_heating/programs/particle_heating_fig_46.m)(a) Heating rates as a function of pressure extracted from
 relaxation measurements without additional heating of the internal temperature (blue) and
-with heating by a CO2 laser intensity of 0:47 Wm􀀀2 (orange). The dashed lines are linear
+with heating by a CO2 laser intensity of 0.47 μWμm^2 (orange). The dashed lines are linear
 fits to the data points. Error bars are smaller than the marker size. (b) Heating rates at
-different intensities of the CO2 laser measured at a pressure of 1  10􀀀5 mbar. The error bars
+different intensities of the CO2 laser measured at a pressure of 1 x 10^-5 mbar. The error bars
 indicate the standard deviation of the measurements. (c) Calculated temperature dependence
 of oscillation frequency. When the particle is heated with the CO2 laser, its oscillation
 frequency increases due to changes in the particle’s material properties. This leads to a
@@ -130,7 +131,7 @@ temperature. Adapted from E. Hebestreit, R. Reimann, M. Frimmer, and L. Novotny,
 ![alt text](particle_heating/figures/particle_heating_Fig46.jpg " Particle heating")
 
 
-**Feedback cooling**
+## Feedback cooling**
 
 Run [feedback_cooling_Fig47.m](feedback_cooling/programs/feedback_cooling_Fig47.m) (a) Single-sided power spectral densities S^ol_
 yy of the motion
