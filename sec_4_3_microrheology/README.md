@@ -4,8 +4,7 @@ This folder contains the codes to analyze the data obtained from the microrheolo
  
 How to use the Microrheology section:
 
-
-**Determination of Zero Shear Viscosities**
+## Determination of Zero Shear Viscosities
 
 Run [PosAutocorrelationFunction.m](programs/PosAutocorrelationFunction_Fig21.m)  to obtain (a)Trajectories of particle of distinct diameter trapped in different fluids. From top to bottom: water (2R = 2.73 um), PNP
 (2R = 3.25 um) and aqueous miceller solution of CPyCl/NaSal at 4 mM (2R = 3.25 um). (b) Autocorrelation function of the particle position x trapped in the three different cases:
@@ -21,7 +20,7 @@ simple fluid and determines viscosity from decay time. The files used for this s
 ![alt text](figures/1_Zero_shear_visc.jpg 
 "Zero Shear viscosities")
 
-**Determination of storage and loss moduli**
+## Determination of storage and loss moduli
 
 
 Run [PassiveMicrorheologyKramersKronig.m](programs/PassiveMicrorheologyKramersKronig_Fig22.m) to obtain (a) Power spectral density of
@@ -40,7 +39,7 @@ A file containing the coordinates of the trapped article and the corresponding t
 
 
 
-**Active microrheology**
+## Active microrheology
 
 Run [Determination_of_Storage_and_Loss_Moduli.m](programs/Determination_of_Storage_and_Loss_Moduli_Fig23.m) to obtain (a) Power spectral density of the particle position, driven at different frequencies by a sinusoidal motion of the optical trap. The peaks are located at the imposed frequencies fd. Inset: exemplary time evolution of the perturbative force at fd = 1 Hz (thick solid line) and resulting particle position (thin solid line) (b) Numerical values of the storage (red circles) and loss (blue saures) modulus. The dotted and dashed lines depict the corresponding curves shown in  the previous figure obtained
 by Passive Microrheology.
