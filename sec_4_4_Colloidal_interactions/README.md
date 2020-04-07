@@ -5,7 +5,7 @@ This folder contains the analysis for the data shown in section 4.4 Colloidal in
 
 
 
-## Potential analysis**
+## Potential analysis
 
 Run [Fig24.m](Potential_analyisis/Fig24.m) in folder [Potential_analysis](Potential_analyisis/) to obtain time evolution of the probability density distribution of the inter-particles
 distance r (t) obtained from 400 different trajectories after the optical traps are switched off at
@@ -29,7 +29,7 @@ total potential V (**R**<sub>1</sub>, **R**<sub>2</sub>)
 ![alt text](https://github.com/LauraPerezG/tweezers_AOP_tutorial/blob/merge_26nov_ales_lau/sec_4_4_Colloidal_interactions/figures/Fig24.jpg
 "Potential analysis")
 
-## Drift analysis**
+## Drift analysis
 
 Run [Fig25.m](Drift_analysis/Diffusion_coefficients/Fig25.m) in folder [Diffusion_coefficients](Drift_analysis/Diffusion_coefficients/) to obtain(a) Experimental values of the normalized parallel  D∥/D<sub>0</sub> (circles) and perpendicular
 D⊥/D<sub>0</sub> (triangles) diffusion constants as functions of r/d. The parallel and perpendicular
