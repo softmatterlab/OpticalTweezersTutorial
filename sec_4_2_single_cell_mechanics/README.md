@@ -3,7 +3,7 @@
  
 How to use the Single  cell mechanics section:
 
-**Force extension and stiffness**
+## Force extension and stiffness
 
 Run [CelullarMechanics.m](programs/CelullarMechanics.m) in  folder [programs](programs/) to obtain separated trajectories and stiffness of the cell from pulling protocol. Given a txt file, the program asks to select the number of columns of the file, the columns of Y force, trap A Y distance, trap B Y distance, value of trap stiffness, maximum force, minimum force and number of stiffness intervals,it returns the separated trajectories in diferent files named 'filename_#trajectoryT_U.txt'(ex:RBC1_1T_U.txt') if we are going from low forces to high forces and 'filename_#trajectoryT_D.txt'(ex:RBC1_1T_D.txt') if we are going from high forces to low forces. In these files the first column will be celullar extension and the second column will be Y force. All the trajectories will be forced to start to (0,0) in order to correct any drift. The second file named 'filename_Stiffness.txt' (ex: RBC1_Stiffness.txt) where first column will correspond to the mean Y force and the second one to the Stiffness value.
 
