@@ -6,7 +6,7 @@ This repository includes the analysis and plot codes for the the article **Optic
 The number at the beggining of the folder name indicates the section corresponding to the material.
  Each section includes a guide to follow the content.
  
- First in [Section 3. Calibration](sec_3_calibration/) you can find the codes to obtain the stiffness and difussion coefficient from a time series with the position of a trapped particle.
+ First, in [Section 3. Calibration](sec_3_calibration/) you can find the codes to obtain the stiffness and difussion coefficient from a time series with the position of a trapped particle.
   
  Then in the following folders you will find the necessary codes for the  different applications of optical tweezers. Correspondingly:
  
