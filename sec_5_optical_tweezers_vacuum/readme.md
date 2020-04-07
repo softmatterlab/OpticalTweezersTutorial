@@ -22,8 +22,6 @@ colored vertical solid lines indicate the roll-off frequencies
 ![alt text](/sec_5_optical_tweezers_vacuum/overdamped_to_underdamped/figures/Fig35.jpg 
 "overdamped to underdamped ")
 
-
-
 ## Gas composition
 
 Run [composition_gas_Fig39.m](gas_composition/programs/composition_gas_Fig39.m) Gas composition in a vacuum chamber. Gas composition in the vacuum chamber
@@ -36,7 +34,7 @@ pressures after turning on the RGA is attributed to the warm-up process and deso
 gases from the filament of the RGA. Reproduced from Ref. [467].
 
 ![alt text](/sec_5_optical_tweezers_vacuum/gas_composition/figures/pressure.jpg "Gas composition")
-***
+
  
  
 ## Particle loading
@@ -52,10 +50,11 @@ adapted from F. Ricci, “Levitodynamics toward force nano-sensors in vacuum,”
 
 ![alt text](particle_loading/figures/particle_loading.jpg "Particle loading")
 
-## Detector calibration**
+
+## Detector calibration
 
 Run [detector_calibration_Fig42.m)](detector_calibration/programs/detector_calibration_Fig42.m) to obtain S(a) Calibrated z-detector signal
-at 10  1 mbar with electric driving response. The area under that peak corresponds to the
+at 10 ± 1 mbar with electric driving response. The area under that peak corresponds to the
 thermal temperature kBT. (b) Uncalibrated feedback-cooled oscillator signal with electric
 drive for recalibration of the signal. Jan: Add explicit references to each of the panels in this
 figure in the text.
@@ -78,9 +77,7 @@ Optically Levitated in Free Space, Phys. Rev. Lett. 124, 013603 (2020).
 ![alt text](sideband_thermometry/figures/sideband_thermometry.jpg "sideband thermometry")
 
 
-Motional Sideband Asymmetry of a Nanoparticle Optically Levitated in Free Space
-Felix Tebbenjohanns, Martin Frimmer, Vijay Jain, Dominik Windey, and Lukas Novotny
- – Published 8 January 2020
+
  
 
 ## Charge calibration
@@ -114,6 +111,7 @@ which we retrieve Sd
 noise, which is ∼ 40 dB below the particle’s signal. Figure adapted from F. Ricci, “Levitodynamics toward force nano-sensors in vacuum,” Ph.D. thesis, Universitat Politècnica de Catalunya (2019).
 
 ![alt text](mass_calibration/figures/mass_calibration.jpg "mass_calibration")
+
 
 ## Particle heating
 
