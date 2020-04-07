@@ -26,7 +26,7 @@ colored vertical solid lines indicate the roll-off frequencies
 
 **Gas composition**
 
-Run [composition_gas_Fig39.m](gas_composition/programs/composition_gas_Fig39.m)Gas composition in a vaccum chamber. Gas composition in the vacuum chamber
+Run [composition_gas_Fig39.m](gas_composition/programs/composition_gas_Fig39.m) Gas composition in a vacuum chamber. Gas composition in the vacuum chamber
 at pressures below 10^3 mbar plotted over time. The solid lines show the partial pressures of
 different gas species measured with a residual gas analyzer (RGA). The sum of all the partial
 pressures yields the total pressure at the RGA (dashed line). Due to the configuration of the
