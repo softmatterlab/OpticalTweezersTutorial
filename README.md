@@ -24,4 +24,5 @@ The number at the beggining of the folder name indicates the section correspondi
 
 [Section 5 Optical tweezers in vacuum](sec_5_optical_tweezers_vacuum/) contains the code to analyze the data for trapping in vacuum. Trapping in vacuum implies a different physical setting, meaning we need to use the equations of the underdamped regime.   
 
-<a href="test.html" onclick="return ! window.open(this.href);">Open in a new window</a>
+
+
