@@ -5,7 +5,7 @@ This folder contains the codes to analyze the data obtained from the double well
 
 
 
-**Kramers transitions and stochastic resonance**
+## Kramers transitions and stochastic resonance
 
 Run [double_well_Fig27.m](double_well/programs/double_well_Fig27.m) in subfolder [double_well/programs/](double_well/programs/) to obtain (a) Trajectory of a brownian bead in a bistable optical potential. A particle
 with radius rp = 0.48 um in an aqueous solution at temperature T = 22C is subjected to the bistable
@@ -34,7 +34,7 @@ The data file is contained in tyhe following link: https://drive.google.com/open
 ![alt text](/sec_4_5_statistical_physics/double_well/figures/double_well.jpg
 "Double- well potential")
 
-**Fluctuation-dissipation relation for non-equilibrium steady states**
+## Fluctuation-dissipation relation for non-equilibrium steady states
 
 Run [NESSFDT_Fig28.m](Fluctuation_dissipation_relation_for_NESS/programs/NESSFDT_Fig28.m) in subfolder  [Fluctuation_dissipation_relation_for_NESS/programs/](Fluctuation_dissipation_relation_for_NESS/programs) to obtain (a) Typical trajectories Θ(t) of a colloidal particle in a NESS, defined over the inverval [0,∞). The dashed line represents the mean drift, <θ(t)><sub>0</sub> = 2πjt+ const :, due to the non-zero probability current j induced by thenon-conservative term F. Inset: example of trajectory θ(t) defined over [0, 2π) (b) NESS probability
 density function of θ, defined over [0, 2π) (bars) and reconstructed potential energy U(θ) (solid
