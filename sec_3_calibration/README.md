@@ -3,6 +3,8 @@
  
 How to use the calibration section:
 
+In the folder [data](data/) you will fint the time-series positions for a trapped particle with different laser powers [2.3 mW](data/Data_x_positions_Exp_I.mat), [6.0 mW](data/Data_x_positions_Exp_II.mat) and [9.2 mW](data/Data_x_positions_Exp_III.mat).
+
 ## Potential and Equipartition Method
 
 Run [pot_analysis.m](pot/pot_analysis.m) to obtain the values of the stiffness given by the potential method. This will call the functions, [prob_dist_energy.m](pot/prob_dist_energy.m), [pot_lfit.m](pot/pot_lfit.m)  and   [pot_nlfit.m](pot/pot_nlfit.m) contained in the folder **[pot](pot/)**.
@@ -61,7 +63,7 @@ opt=2 : ACF, non-linear fit
 
 opt=3 :  MSD, non-linear fit
 
- Follow [this link](https://www.nature.com/articles/s41598-018-24983-y). 
+ Follow [this link](https://www.nature.com/articles/s41598-018-24983-y) 
  to the the article by  Fogelmark, K., Lomholt, M.A., Irbäck, A. et al. Fitting a function to time-dependent ensemble averaged data. Sci Rep 8, 6984 (2018),  about the wlsice method. 
  ***
 [//]: # (| Method        | Input variables           | Output variables |
